@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "hands_behind"
+name: "Руки за спиной"
+category: "standing"
+
+tags:
+  - "спокойное"
+  - "скромное"
+  - "официальное"
+
+rating: "sfw"
+
+mood_hints:
+  - "calm"
+  - "shy"
+  - "polite"
+
+renderer_prompts:
+  sdxl:
+    positive: "standing, arms behind back, looking at viewer"
+    negative: "sitting, arms up, waving"
+
+preview: "preview.png"

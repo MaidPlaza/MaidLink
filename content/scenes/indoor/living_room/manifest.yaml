@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "living_room"
+name: "Гостиная"
+category: "indoor"
+
+tags:
+  - "уютное"
+  - "домашнее"
+  - "вечернее"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, living room, armchair"
+    negative: "outdoors, bedroom, kitchen"
+
+preview: "preview.png"

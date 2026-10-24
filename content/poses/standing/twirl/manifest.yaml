@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "twirl"
+name: "Кружится"
+category: "standing"
+
+tags:
+  - "игривое"
+  - "динамичное"
+  - "радостное"
+
+rating: "sfw"
+
+mood_hints:
+  - "playful"
+  - "joyful"
+  - "carefree"
+
+renderer_prompts:
+  sdxl:
+    positive: "dancing, standing, spread arms, looking at viewer"
+    negative: "sitting, lying, crossed arms"
+
+preview: "preview.png"

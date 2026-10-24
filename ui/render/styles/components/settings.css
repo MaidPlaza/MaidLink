@@ -1,0 +1,518 @@
+.settings-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 34px;
+  height: 18px;
+  cursor: pointer;
+  border-radius: var(--chat-settings-toggle-border-radius);
+  background: var(--chat-settings-toggle-background);
+  transition: background 0.2s ease;
+}
+.settings-toggle.is-on {
+  background: var(--chat-settings-toggle-background-active);
+}
+.settings-toggle-knob {
+  position: absolute;
+  top: var(--chat-settings-toggle-knob-top);
+  left: var(--chat-settings-toggle-knob-left);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--chat-settings-toggle-knob-background);
+  transition: left 0.2s ease;
+}
+.settings-toggle.is-on .settings-toggle-knob {
+  left: var(--chat-settings-toggle-knob-left-active);
+}
+
+.settings-dropdown {
+  position: relative;
+}
+.settings-dropdown-face {
+  font-family: var(--chat-settings-dropdown-font);
+  font-size: var(--chat-settings-dropdown-font-size);
+  color: var(--chat-settings-dropdown-font-color);
+  background: var(--chat-settings-dropdown-background);
+  border: var(--chat-settings-dropdown-border);
+  border-radius: var(--chat-settings-dropdown-border-radius);
+}
+.settings-dropdown-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+  padding: var(--chat-settings-dropdown-button-padding);
+  cursor: pointer;
+}
+.settings-dropdown-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.settings-dropdown-caret {
+  font-size: var(--chat-settings-dropdown-caret-font-size);
+  opacity: var(--chat-settings-dropdown-caret-opacity);
+}
+.settings-dropdown-menu {
+  position: fixed;
+  z-index: 100000;
+  max-height: 200px;
+  overflow-y: auto;
+  color: var(--chat-settings-dropdown-menu-font-color);
+  background: var(--chat-settings-dropdown-menu-background);
+  box-shadow: var(--chat-settings-dropdown-menu-box-shadow);
+}
+.settings-dropdown-option {
+  padding: var(--chat-settings-dropdown-option-padding);
+  cursor: pointer;
+  white-space: nowrap;
+  background: var(--chat-settings-dropdown-option-background);
+}
+.settings-dropdown-option.is-selected {
+  background: var(--chat-settings-dropdown-option-background-selected);
+}
+.settings-dropdown-empty {
+  padding: var(--chat-settings-dropdown-empty-padding);
+  white-space: nowrap;
+  font-style: italic;
+  opacity: var(--chat-settings-dropdown-empty-opacity);
+}
+
+.chat-settings-scroll::-webkit-scrollbar-thumb {
+  background: var(--chat-settings-thumb-color);
+}
+
+.settings-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: var(--chat-settings-panel-padding);
+}
+.settings-panel-header {
+  flex-shrink: 0;
+  margin-bottom: 0;
+  padding: var(--chat-settings-panel-header-padding);
+  border-bottom: var(--chat-settings-panel-header-border-bottom);
+  font-family: var(--chat-settings-panel-header-font);
+  font-size: var(--chat-settings-panel-header-font-size);
+  font-weight: var(--chat-settings-panel-header-font-weight);
+  letter-spacing: var(--chat-settings-panel-header-letter-spacing);
+  color: var(--chat-settings-panel-header-font-color);
+}
+.settings-panel-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.settings-panel-scroll {
+  height: 100%;
+  overflow-y: auto;
+}
+.settings-panel-empty {
+  padding: var(--chat-settings-panel-empty-padding);
+  font-family: var(--chat-settings-panel-empty-font);
+  font-size: var(--chat-settings-panel-empty-font-size);
+  color: var(--chat-settings-panel-empty-font-color);
+  opacity: var(--chat-settings-panel-empty-opacity);
+}
+.settings-section {
+  margin-bottom: 16px;
+}
+.settings-section-title {
+  margin-bottom: 6px;
+  padding: var(--chat-settings-panel-section-title-padding);
+  font-family: var(--chat-settings-panel-section-title-font);
+  font-size: var(--chat-settings-panel-section-title-font-size);
+  font-weight: var(--chat-settings-panel-section-title-font-weight);
+  letter-spacing: var(--chat-settings-panel-section-title-letter-spacing);
+  text-transform: uppercase;
+  color: var(--chat-settings-panel-section-title-font-color);
+}
+.settings-section-card {
+  overflow: hidden;
+  border: var(--chat-settings-panel-card-border);
+  border-radius: var(--chat-settings-panel-card-border-radius);
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--chat-settings-panel-row-padding);
+  border-bottom: var(--chat-settings-panel-row-border-bottom);
+  background: var(--chat-settings-panel-row-background);
+}
+.settings-row.is-last {
+  border-bottom: var(--chat-settings-panel-row-last-border-bottom);
+}
+.settings-row-label {
+  font-family: var(--chat-settings-panel-row-label-font);
+  font-size: var(--chat-settings-panel-row-label-font-size);
+  font-weight: var(--chat-settings-panel-row-label-font-weight);
+  color: var(--chat-settings-panel-row-label-font-color);
+}
+.settings-control-locked {
+  pointer-events: none;
+  opacity: var(--chat-settings-panel-control-opacity-locked);
+}
+.settings-select {
+  min-width: 120px;
+  flex-shrink: 0;
+}
+.settings-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.settings-range-input {
+  width: 110px;
+  accent-color: var(--chat-settings-panel-range-accent-color);
+}
+.settings-range-value {
+  width: 32px;
+  flex-shrink: 0;
+  text-align: right;
+  font-family: var(--chat-settings-panel-range-value-font);
+  font-size: var(--chat-settings-panel-range-value-font-size);
+  color: var(--chat-settings-panel-range-value-font-color);
+}
+
+.settings-sound-volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.settings-sound-volume.is-disabled {
+  pointer-events: none;
+  opacity: var(--chat-settings-sound-volume-opacity-disabled);
+}
+.settings-sound-range {
+  width: 110px;
+  accent-color: var(--chat-settings-sound-range-accent-color);
+}
+.settings-sound-value {
+  width: 32px;
+  flex-shrink: 0;
+  text-align: right;
+  font-family: var(--chat-settings-sound-value-font);
+  font-size: var(--chat-settings-sound-value-font-size);
+  color: var(--chat-settings-sound-value-font-color);
+}
+
+.settings-nsfw {
+  padding: var(--chat-settings-nsfw-padding);
+  background: var(--chat-settings-nsfw-background);
+}
+.settings-nsfw-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.settings-nsfw-label {
+  font-family: var(--chat-settings-nsfw-label-font);
+  font-size: var(--chat-settings-nsfw-label-font-size);
+  color: var(--chat-settings-nsfw-label-font-color);
+}
+.settings-nsfw-hint {
+  margin-top: 6px;
+  font-family: var(--chat-settings-nsfw-hint-font);
+  font-size: var(--chat-settings-nsfw-hint-font-size);
+  color: var(--chat-settings-nsfw-hint-font-color);
+  opacity: var(--chat-settings-nsfw-hint-opacity);
+}
+
+.settings-drawing {
+  padding: var(--chat-settings-drawing-padding);
+  background: var(--chat-settings-drawing-background);
+}
+.settings-drawing-status {
+  font-family: var(--chat-settings-drawing-status-font);
+  font-size: var(--chat-settings-drawing-status-font-size);
+  color: var(--chat-settings-drawing-status-font-color);
+  opacity: var(--chat-settings-drawing-status-opacity);
+}
+
+.settings-addons {
+  background: var(--chat-settings-addons-background);
+}
+.settings-addons-item {
+  padding: var(--chat-settings-addons-item-padding);
+  border-bottom: var(--chat-settings-addons-item-border-bottom);
+}
+.settings-addons-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.settings-addons-label {
+  font-family: var(--chat-settings-addons-item-label-font);
+  font-size: var(--chat-settings-addons-item-label-font-size);
+  font-weight: var(--chat-settings-addons-item-label-font-weight);
+  color: var(--chat-settings-addons-item-label-font-color);
+}
+.settings-addons-hint {
+  font-family: var(--chat-settings-addons-hint-font);
+  font-size: var(--chat-settings-addons-hint-font-size);
+  color: var(--chat-settings-addons-hint-font-color);
+  opacity: var(--chat-settings-addons-hint-opacity);
+}
+.settings-addons-desc {
+  margin-top: 4px;
+}
+.settings-addons-empty {
+  padding: var(--chat-settings-addons-empty-padding);
+}
+.settings-addons-footnote {
+  margin-top: 6px;
+}
+.settings-addons-install {
+  padding: var(--chat-settings-addons-install-padding);
+}
+.settings-addons-drop {
+  padding: var(--chat-settings-addons-drop-padding);
+  border: var(--chat-settings-addons-drop-border);
+  border-radius: var(--chat-settings-addons-drop-border-radius);
+  background: var(--chat-settings-addons-drop-background);
+  color: var(--chat-settings-addons-drop-font-color);
+  font-size: var(--chat-settings-addons-drop-font-size);
+  text-align: center;
+}
+.settings-addons-drop.is-over {
+  border: var(--chat-settings-addons-drop-border-over);
+  background: var(--chat-settings-addons-drop-background-over);
+}
+.settings-addons-path {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.settings-addons-input {
+  flex: 1;
+  min-width: 0;
+  padding: var(--chat-settings-addons-input-padding);
+  border: var(--chat-settings-addons-input-border);
+  border-radius: var(--chat-settings-addons-input-border-radius);
+  background: var(--chat-settings-addons-input-background);
+  font-family: var(--chat-settings-addons-input-font);
+  font-size: var(--chat-settings-addons-input-font-size);
+  color: var(--chat-settings-addons-input-font-color);
+}
+.settings-addons-button {
+  padding: var(--chat-settings-addons-button-padding);
+  border: var(--chat-settings-addons-button-border);
+  border-radius: var(--chat-settings-addons-button-border-radius);
+  background: var(--chat-settings-addons-button-background);
+  font-size: var(--chat-settings-addons-button-font-size);
+  color: var(--chat-settings-addons-button-font-color);
+  cursor: pointer;
+}
+.settings-addons-note {
+  margin-top: 6px;
+  font-size: var(--chat-settings-addons-note-font-size);
+  color: var(--chat-settings-addons-note-font-color);
+}
+.settings-addons-note.is-ok {
+  color: var(--chat-settings-addons-note-font-color-ok);
+}
+
+.settings-protection-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: var(--chat-settings-protection-row-padding);
+  border-bottom: var(--chat-settings-protection-row-border-bottom);
+  background: var(--chat-settings-protection-row-background);
+}
+.settings-protection-row.is-last {
+  border-bottom: var(--chat-settings-protection-row-last-border-bottom);
+}
+.settings-protection-row-label {
+  font-family: var(--chat-settings-protection-row-label-font);
+  font-size: var(--chat-settings-protection-row-label-font-size);
+  color: var(--chat-settings-protection-row-label-font-color);
+}
+.settings-protection-actions {
+  display: flex;
+  gap: 6px;
+}
+.settings-protection-input {
+  width: 150px;
+  padding: var(--chat-settings-protection-input-padding);
+  border: var(--chat-settings-protection-input-border);
+  border-radius: var(--chat-settings-protection-input-border-radius);
+  outline: var(--chat-settings-protection-input-outline);
+  font-family: var(--chat-settings-protection-input-font);
+  font-size: var(--chat-settings-protection-input-font-size);
+  color: var(--chat-settings-protection-input-font-color);
+}
+.settings-protection-button {
+  flex-shrink: 0;
+  padding: var(--chat-settings-protection-button-padding);
+  border: var(--chat-settings-protection-button-border);
+  border-radius: var(--chat-settings-protection-button-border-radius);
+  background: var(--chat-settings-protection-button-background);
+  font-family: var(--chat-settings-protection-button-font);
+  font-size: var(--chat-settings-protection-button-font-size);
+  color: var(--chat-settings-protection-button-font-color);
+  cursor: pointer;
+}
+.settings-protection-button.is-secondary {
+  border: var(--chat-settings-protection-button-secondary-border);
+  background: var(--chat-settings-protection-button-secondary-background);
+  color: var(--chat-settings-protection-button-secondary-font-color);
+}
+.settings-protection-button.is-cancel {
+  border: var(--chat-settings-protection-button-cancel-border);
+  background: var(--chat-settings-protection-button-cancel-background);
+  color: var(--chat-settings-protection-button-cancel-font-color);
+}
+.settings-protection-error {
+  padding: var(--chat-settings-protection-error-padding);
+  background: var(--chat-settings-protection-error-background);
+  font-family: var(--chat-settings-protection-error-font);
+  font-size: var(--chat-settings-protection-error-font-size);
+  color: var(--chat-settings-protection-error-font-color);
+}
+.settings-protection-code {
+  padding: var(--chat-settings-protection-code-padding);
+  border-top: var(--chat-settings-protection-code-border-top);
+  background: var(--chat-settings-protection-code-background);
+  font-family: var(--chat-settings-protection-code-font);
+  font-size: var(--chat-settings-protection-code-font-size);
+  line-height: var(--chat-settings-protection-code-line-height);
+  color: var(--chat-settings-protection-code-font-color);
+}
+.settings-protection-code-text {
+  margin-bottom: 6px;
+}
+.settings-protection-code-value {
+  padding: var(--chat-settings-protection-code-value-padding);
+  border: var(--chat-settings-protection-code-value-border);
+  border-radius: var(--chat-settings-protection-code-value-border-radius);
+  background: var(--chat-settings-protection-code-value-background);
+  font-family: var(--chat-settings-protection-code-value-font);
+  font-size: var(--chat-settings-protection-code-value-font-size);
+  letter-spacing: var(--chat-settings-protection-code-value-letter-spacing);
+  color: var(--chat-settings-protection-code-value-font-color);
+  text-align: center;
+  user-select: all;
+}
+.settings-protection-code-ack {
+  margin-top: 8px;
+}
+
+.settings-imagegen {
+  padding: var(--chat-settings-image-gen-setup-padding);
+  background: var(--chat-settings-image-gen-setup-background);
+  font-family: var(--chat-settings-image-gen-setup-font);
+  font-size: var(--chat-settings-image-gen-setup-font-size);
+  line-height: var(--chat-settings-image-gen-setup-line-height);
+  color: var(--chat-settings-image-gen-setup-font-color);
+}
+.settings-imagegen.is-loading {
+  background: var(--chat-settings-image-gen-setup-loading-background);
+}
+.settings-imagegen-ready {
+  margin-bottom: 8px;
+  color: var(--chat-settings-image-gen-setup-ready-font-color);
+}
+.settings-imagegen-intro {
+  margin-bottom: 8px;
+}
+.settings-imagegen-component {
+  margin-bottom: 5px;
+}
+.settings-imagegen-component-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.settings-imagegen-component-state {
+  flex-shrink: 0;
+  opacity: var(--chat-settings-image-gen-setup-component-state-opacity);
+}
+.settings-imagegen-component-error {
+  font-size: var(--chat-settings-image-gen-setup-component-error-font-size);
+  color: var(--chat-settings-image-gen-setup-component-error-font-color);
+}
+.settings-imagegen-checkpoint {
+  margin-top: 4px;
+}
+.settings-imagegen-drop {
+  padding: var(--chat-settings-image-gen-setup-drop-padding);
+  border: var(--chat-settings-image-gen-setup-drop-border);
+  border-radius: var(--chat-settings-image-gen-setup-drop-border-radius);
+  background: var(--chat-settings-image-gen-setup-drop-background);
+  color: var(--chat-settings-image-gen-setup-drop-font-color);
+  font-size: var(--chat-settings-image-gen-setup-drop-font-size);
+  text-align: center;
+  cursor: default;
+}
+.settings-imagegen-drop.is-over {
+  border: var(--chat-settings-image-gen-setup-drop-border-over);
+  background: var(--chat-settings-image-gen-setup-drop-background-over);
+}
+.settings-imagegen-path {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.settings-imagegen-input {
+  flex: 1;
+  min-width: 0;
+  padding: var(--chat-settings-image-gen-setup-input-padding);
+  border: var(--chat-settings-image-gen-setup-input-border);
+  border-radius: var(--chat-settings-image-gen-setup-input-border-radius);
+  background: var(--chat-settings-image-gen-setup-input-background);
+  font-family: var(--chat-settings-image-gen-setup-input-font);
+  font-size: var(--chat-settings-image-gen-setup-input-font-size);
+  color: var(--chat-settings-image-gen-setup-input-font-color);
+}
+.settings-imagegen-button {
+  padding: var(--chat-settings-image-gen-setup-button-padding);
+  border: var(--chat-settings-image-gen-setup-button-border);
+  border-radius: var(--chat-settings-image-gen-setup-button-border-radius);
+  background: var(--chat-settings-image-gen-setup-button-background);
+  font-size: var(--chat-settings-image-gen-setup-button-font-size);
+  color: var(--chat-settings-image-gen-setup-button-font-color);
+  cursor: pointer;
+}
+.settings-imagegen-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.settings-imagegen-install {
+  margin-top: 10px;
+  padding: var(--chat-settings-image-gen-setup-install-padding);
+  border: var(--chat-settings-image-gen-setup-install-border);
+  border-radius: var(--chat-settings-image-gen-setup-install-border-radius);
+  background: var(--chat-settings-image-gen-setup-install-background);
+  font-family: var(--chat-settings-image-gen-setup-install-font);
+  font-size: var(--chat-settings-image-gen-setup-install-font-size);
+  font-weight: var(--chat-settings-image-gen-setup-install-font-weight);
+  color: var(--chat-settings-image-gen-setup-install-font-color);
+  cursor: pointer;
+}
+.settings-imagegen-install:disabled {
+  background: var(--chat-settings-image-gen-setup-install-background-disabled);
+  cursor: default;
+}
+.settings-imagegen-installing {
+  margin-top: 8px;
+  opacity: var(--chat-settings-image-gen-setup-installing-opacity);
+}
+.settings-imagegen-note {
+  margin-top: 6px;
+  color: var(--chat-settings-image-gen-setup-note-font-color);
+}
+.settings-imagegen-note.is-ok {
+  color: var(--chat-settings-image-gen-setup-note-font-color-ok);
+}

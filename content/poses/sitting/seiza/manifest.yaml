@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "seiza"
+name: "Сидя на коленях (сэйдза)"
+category: "sitting"
+
+tags:
+  - "традиционное"
+  - "спокойное"
+  - "японское"
+
+rating: "sfw"
+
+mood_hints:
+  - "calm"
+  - "formal"
+  - "serene"
+
+renderer_prompts:
+  sdxl:
+    positive: "seiza, kneeling, hands on own thighs, looking at viewer"
+    negative: "standing, lying, crossed legs"
+
+preview: "preview.png"

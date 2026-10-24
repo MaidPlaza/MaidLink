@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "garden"
+name: "Сад"
+category: "outdoor"
+
+tags:
+  - "лёгкое"
+  - "природа"
+  - "дневное"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, garden, flower"
+    negative: "indoors, city, night"
+
+preview: "preview.png"

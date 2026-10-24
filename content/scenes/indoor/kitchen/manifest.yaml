@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "kitchen"
+name: "Кухня"
+category: "indoor"
+
+tags:
+  - "повседневное"
+  - "уютное"
+  - "домашнее"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, kitchen, indoors"
+    negative: "outdoors, restaurant"
+
+preview: "preview.png"

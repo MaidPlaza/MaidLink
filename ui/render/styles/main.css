@@ -1,0 +1,25 @@
+@import './base/main-window.css';
+@import './dashboard/grid.css';
+@import './base/window-controls.css';
+@import './components/chat.css';
+@import './components/chip-container.css';
+@import './base/fonts.css';
+@import './svg.css';
+@import './components/startup-chip-insertion.css';
+@import './components/dashboard.css';
+@import './components/character-preview-window.css';
+@import './components/settings.css';
+@import './components/character-select.css';
+@import './components/setup-wizard.css';
+@import './components/resize-edges.css';
+@import './components/rich-text.css';
+@import './components/character-information.css';
+@import './components/character-wardrobe.css';
+@import './components/character-gallery.css';
+@import './components/model-presets.css';
+
+@import './components/context-model-settings.css';
+
+
+:root {
+}

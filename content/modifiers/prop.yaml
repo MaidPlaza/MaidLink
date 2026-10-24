@@ -1,0 +1,95 @@
+modifier_format_version: 1
+
+category: "prop"
+description: "Предмет с которым взаимодействует персонаж (опционально, даёт контекст). Совместим с pose только если у позы свободны руки."
+
+options:
+  - id: "tea_cup"
+    name: "Чашка чая"
+    renderer_prompts:
+      sdxl: "holding cup, teacup, tea, steam"
+
+  - id: "coffee_cup"
+    name: "Чашка кофе"
+    renderer_prompts:
+      sdxl: "holding cup, coffee, steam"
+
+  - id: "broom"
+    name: "Метёлка"
+    renderer_prompts:
+      sdxl: "holding broom, broom, cleaning"
+
+  - id: "feather_duster"
+    name: "Метёлка из перьев"
+    renderer_prompts:
+      sdxl: "feather duster, holding, cleaning"
+
+  - id: "smartphone"
+    name: "Смартфон"
+    renderer_prompts:
+      sdxl: "holding phone, smartphone"
+
+  - id: "flower_held"
+    name: "Цветок в руках"
+    renderer_prompts:
+      sdxl: "holding flower, flower"
+
+  - id: "bouquet"
+    name: "Букет цветов"
+    renderer_prompts:
+      sdxl: "holding bouquet, bouquet"
+
+  - id: "book_held"
+    name: "Книга в руках"
+    renderer_prompts:
+      sdxl: "holding book, book"
+
+  - id: "headphones_worn"
+    name: "В наушниках"
+    renderer_prompts:
+      sdxl: "headphones"
+
+  - id: "umbrella"
+    name: "Зонтик"
+    renderer_prompts:
+      sdxl: "holding umbrella, umbrella"
+
+  - id: "plush_toy"
+    name: "Плюшевая игрушка"
+    renderer_prompts:
+      sdxl: "holding stuffed toy, stuffed toy"
+
+  - id: "cat"
+    name: "Кошка на руках"
+    renderer_prompts:
+      sdxl: "holding cat, cat"
+
+  - id: "fan_folding"
+    name: "Складной веер"
+    renderer_prompts:
+      sdxl: "holding fan, folding fan"
+
+  - id: "ice_cream"
+    name: "Мороженое"
+    renderer_prompts:
+      sdxl: "ice cream, holding food"
+
+  - id: "gift_box"
+    name: "Подарочная коробка"
+    renderer_prompts:
+      sdxl: "holding gift, gift, box"
+
+  - id: "lantern"
+    name: "Бумажный фонарик"
+    renderer_prompts:
+      sdxl: "holding lantern, paper lantern"
+
+  - id: "watering_can"
+    name: "Лейка"
+    renderer_prompts:
+      sdxl: "watering can, holding"
+
+  - id: "notebook_pen"
+    name: "Блокнот и ручка"
+    renderer_prompts:
+      sdxl: "holding pen, notebook, writing"

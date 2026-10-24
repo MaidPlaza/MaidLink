@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>MaidLink — снимок</title>
+<style>
+  :root {
+    --bar: #252836;
+    --fg: #e8e6f0;
+    --stage: #121319;
+  }
+  html, body {
+    margin: 0; height: 100%; overflow: hidden; user-select: none;
+    background: var(--bar); color: var(--fg);
+    font-family: Inter, "Segoe UI", sans-serif;
+  }
+  .bar {
+    height: 36px; display: flex; align-items: center; gap: 8px;
+    padding: 0 8px 0 12px; -webkit-app-region: drag;
+    background: var(--bar);
+    border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  }
+  .bar .title {
+    flex: 1; min-width: 0; font-size: 12px; opacity: .9;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .bar button {
+    -webkit-app-region: no-drag; font: inherit; font-size: 11px;
+    padding: 4px 10px; border-radius: 5px; cursor: pointer;
+    border: 1px solid color-mix(in srgb, var(--fg) 35%, transparent);
+    background: color-mix(in srgb, var(--fg) 10%, transparent); color: var(--fg);
+  }
+  .bar button:hover { background: color-mix(in srgb, var(--fg) 22%, transparent); }
+  .bar button.danger { border-color: #e07a7a; color: #ffb3b3; }
+  .bar button.x { width: 28px; padding: 4px 0; }
+  .stage {
+    position: absolute; top: 36px; left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--stage);
+  }
+  .stage img { max-width: 100%; max-height: 100%; object-fit: contain; }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <div class="title" id="title"></div>
+    <button id="del">Удалить из галереи</button>
+    <button id="yes" class="danger" hidden>Точно удалить</button>
+    <button id="no" hidden>Оставить</button>
+    <button id="close" class="x" title="Закрыть (Esc)">✕</button>
+  </div>
+  <div class="stage"><img id="img" alt=""></div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const url = q.get("url") || "";
+    const id = q.get("id") || "";
+    const intent = q.get("intent") || "";
+    const addedAt = Number(q.get("added_at") || 0);
+    const api = q.get("api") || "http://localhost:8001";
+    const $ = (s) => document.getElementById(s);
+    for (const [key, name] of [["bar", "--bar"], ["fg", "--fg"], ["stage", "--stage"]]) {
+      const v = q.get(key) || "";
+      if (/^#[0-9a-fA-F]{6}$/.test(v)) document.documentElement.style.setProperty(name, v);
+    }
+    const when = addedAt
+      ? new Date(addedAt * 1000).toLocaleString("ru-RU", {
+          day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit",
+        })
+      : "";
+    $("img").src = url;
+    $("title").textContent = when || "Снимок";
+    $("title").title = intent;
+    document.title = when ? `Снимок — ${when}` : "Снимок";
+    $("close").onclick = () => window.close();
+    $("del").onclick = () => { $("del").hidden = true; $("yes").hidden = false; $("no").hidden = false; };
+    $("no").onclick = () => { $("del").hidden = false; $("yes").hidden = true; $("no").hidden = true; };
+    $("yes").onclick = async () => {
+      const token = (window.maidViewer && window.maidViewer.apiToken) || "";
+      try {
+        const r = await fetch(api + "/api/gallery/remove", {
+          method: "POST",
+          headers: { "Content-Type": "application/json",
+                     ...(token ? { "X-MaidLink-Token": token } : {}) },
+          body: JSON.stringify({ id }),
+        });
+        const j = await r.json();
+        if (j && j.ok) {
+          if (window.maidViewer) window.maidViewer.galleryChanged();
+          window.close();
+          return;
+        }
+      } catch (e) {}
+      $("title").textContent = "Не удалось удалить";
+    };
+    window.addEventListener("keydown", (e) => { if (e.key === "Escape") window.close(); });
+  </script>
+</body>
+</html>

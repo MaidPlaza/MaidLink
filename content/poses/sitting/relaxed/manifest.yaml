@@ -1,0 +1,23 @@
+pose_format_version: 1
+
+id: "relaxed"
+name: "Расслабленное сидение"
+category: "sitting"
+
+tags:
+  - "спокойное"
+  - "уютное"
+
+rating: "sfw"
+
+mood_hints:
+  - "calm"
+  - "gentle"
+  - "warm"
+
+renderer_prompts:
+  sdxl:
+    positive: "sitting, hands on own thighs, looking at viewer, light smile, chair"
+    negative: "standing, reading"
+
+preview: "preview.png"

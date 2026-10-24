@@ -1,0 +1,11 @@
+styles:
+  - id: default
+    name: По умолчанию
+    description: Плоское аниме — cel shading, плоские цвета, чёткая обводка
+    renderer_id: sdxl
+    tags:
+      - "flat color"
+      - "cel shading"
+      - "simple background"
+      - "white outline"
+    exclude: ["scene"]

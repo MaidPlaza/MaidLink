@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "park"
+name: "Парк"
+category: "outdoor"
+
+tags:
+  - "лёгкое"
+  - "природа"
+  - "дневное"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, park, bench"
+    negative: "indoors, city, night"
+
+preview: "preview.png"

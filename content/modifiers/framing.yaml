@@ -1,0 +1,50 @@
+modifier_format_version: 1
+
+category: "framing"
+description: "Кадрирование и ракурс камеры"
+
+options:
+  - id: "portrait"
+    name: "Портрет (плечи и голова)"
+    renderer_prompts:
+      sdxl: "portrait"
+
+  - id: "close_up"
+    name: "Крупный план (лицо)"
+    renderer_prompts:
+      sdxl: "close-up, portrait"
+
+  - id: "medium"
+    name: "Средний план (по пояс)"
+    renderer_prompts:
+      sdxl: "upper body"
+
+  - id: "cowboy_shot"
+    name: "Ковбойский план (по середину бедра)"
+    renderer_prompts:
+      sdxl: "cowboy shot"
+
+  - id: "full_body"
+    name: "В полный рост"
+    renderer_prompts:
+      sdxl: "full body"
+
+  - id: "from_above"
+    name: "Сверху вниз"
+    renderer_prompts:
+      sdxl: "from above, looking up"
+
+  - id: "from_below"
+    name: "Снизу вверх"
+    renderer_prompts:
+      sdxl: "from below, looking down"
+
+  - id: "from_side"
+    name: "Профиль (сбоку)"
+    renderer_prompts:
+      sdxl: "from side, profile"
+
+  - id: "dutch_angle"
+    name: "Наклонённый кадр"
+    renderer_prompts:
+      sdxl: "dutch angle"

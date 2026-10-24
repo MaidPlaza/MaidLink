@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "reading"
+name: "Чтение"
+category: "sitting"
+
+tags:
+  - "спокойное"
+  - "вдумчивое"
+  - "уютное"
+
+rating: "sfw"
+
+mood_hints:
+  - "thoughtful"
+  - "calm"
+  - "absorbed"
+
+renderer_prompts:
+  sdxl:
+    positive: "sitting, reading, holding book, book, looking down, chair"
+    negative: "standing, looking at viewer"
+
+preview: "preview.png"

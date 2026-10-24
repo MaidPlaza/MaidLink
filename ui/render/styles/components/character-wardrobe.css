@@ -1,0 +1,235 @@
+.character-wardrobe .character-information-list {
+  margin-top: var(--chat-character-information-header-container-top);
+}
+
+.character-wardrobe-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: var(--chat-character-wardrobe-hero-padding);
+  border-top: 2px solid var(--chat-character-information-tier-gauge-value-color);
+  border-bottom: 1px solid var(--chat-character-information-item-svg-line-fill);
+  background: var(--chat-character-wardrobe-hero-background);
+  color: var(--chat-character-information-header-text-font-color);
+}
+.character-wardrobe-hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--chat-character-information-header-title-font);
+  font-size: var(--chat-character-wardrobe-hero-kicker-font-size);
+  letter-spacing: var(--chat-character-wardrobe-hero-kicker-letter-spacing);
+  text-transform: uppercase;
+  color: var(--chat-character-information-header-title-font-color);
+}
+.character-wardrobe-hero-kicker.is-sub { margin-top: 6px; }
+.character-wardrobe-hero-kicker i {
+  flex: 1;
+  height: 0;
+  border-top: var(--chat-character-wardrobe-hero-kicker-line-border-top);
+  opacity: var(--chat-character-wardrobe-hero-kicker-line-opacity);
+}
+.character-wardrobe-hero-title {
+  font-family: var(--chat-character-information-header-text-font);
+  font-weight: var(--chat-character-information-header-text-font-weight);
+  font-size: var(--chat-character-wardrobe-hero-title-font-size);
+  line-height: var(--chat-character-wardrobe-hero-title-line-height);
+  letter-spacing: var(--chat-character-wardrobe-hero-title-letter-spacing);
+  overflow-wrap: anywhere;
+}
+.character-wardrobe-hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--chat-character-wardrobe-hero-meta-font);
+  font-size: var(--chat-character-wardrobe-hero-meta-font-size);
+}
+.character-wardrobe-hero-look {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  column-gap: 14px;
+  row-gap: 8px;
+  align-items: center;
+}
+.character-wardrobe-hero-look-label {
+  font-family: var(--chat-character-wardrobe-hero-look-label-font);
+  font-size: var(--chat-character-wardrobe-hero-look-label-font-size);
+  letter-spacing: var(--chat-character-wardrobe-hero-look-label-letter-spacing);
+  text-transform: uppercase;
+  opacity: var(--chat-character-wardrobe-hero-look-label-opacity);
+  color: var(--chat-character-information-header-title-font-color);
+}
+.character-wardrobe-hero-look-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+}
+.character-wardrobe-hero-muted {
+  font-family: var(--chat-character-wardrobe-hero-muted-font);
+  font-size: var(--chat-character-wardrobe-hero-muted-font-size);
+  opacity: var(--chat-character-wardrobe-hero-muted-opacity);
+}
+
+.character-wardrobe-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--chat-character-wardrobe-head-font);
+  font-size: var(--chat-character-wardrobe-head-font-size);
+}
+.character-wardrobe-head b { font-weight: var(--chat-character-wardrobe-head-count-font-weight); }
+.character-wardrobe-head-note {
+  font-size: var(--chat-character-wardrobe-head-note-font-size);
+  opacity: var(--chat-character-wardrobe-head-note-opacity);
+  white-space: nowrap;
+}
+
+.character-wardrobe-outfits,
+.character-wardrobe-styles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--chat-character-wardrobe-content-padding);
+  color: var(--chat-character-information-header-text-font-color);
+}
+
+.character-wardrobe-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: var(--chat-character-wardrobe-row-padding);
+  border-left: var(--chat-character-wardrobe-row-border-left);
+}
+.character-wardrobe-row.is-current {
+  border-left-color: var(--chat-character-information-tier-gauge-value-color);
+}
+.character-wardrobe-row-main {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+.character-wardrobe-name {
+  font-family: var(--chat-character-wardrobe-name-font);
+  font-size: var(--chat-character-wardrobe-name-font-size);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.character-wardrobe-row.is-current .character-wardrobe-name { font-weight: var(--chat-character-wardrobe-name-current-font-weight); }
+.character-wardrobe-id {
+  font-family: var(--chat-character-wardrobe-id-font);
+  font-size: var(--chat-character-wardrobe-id-font-size);
+  letter-spacing: var(--chat-character-wardrobe-id-letter-spacing);
+  opacity: var(--chat-character-wardrobe-id-opacity);
+}
+.character-wardrobe-hint {
+  font-family: var(--chat-character-wardrobe-hint-font);
+  font-size: var(--chat-character-wardrobe-hint-font-size);
+  opacity: var(--chat-character-wardrobe-hint-opacity);
+}
+.character-wardrobe-row-side {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+}
+
+.character-wardrobe-tag {
+  font-family: var(--chat-character-wardrobe-tag-font);
+  font-size: var(--chat-character-wardrobe-tag-font-size);
+  letter-spacing: var(--chat-character-wardrobe-tag-letter-spacing);
+  text-transform: uppercase;
+  padding: var(--chat-character-wardrobe-tag-padding);
+  border-radius: var(--chat-character-wardrobe-tag-border-radius);
+  border: var(--chat-character-wardrobe-tag-border);
+  white-space: nowrap;
+  color: var(--chat-character-information-header-title-font-color);
+}
+.character-wardrobe-tag.is-current {
+  border-color: var(--chat-character-information-tier-gauge-value-color);
+  background: var(--chat-character-information-tier-gauge-value-color);
+  color: var(--chat-character-wardrobe-tag-current-font-color);
+  font-weight: var(--chat-character-wardrobe-tag-current-font-weight);
+}
+.character-wardrobe-tag.is-ready { font-weight: var(--chat-character-wardrobe-tag-ready-font-weight); }
+.character-wardrobe-tag.is-preparing { animation: character-wardrobe-pulse 1.4s ease-in-out infinite; }
+.character-wardrobe-tag.is-queued { border: var(--chat-character-wardrobe-tag-queued-border); }
+.character-wardrobe-tag.is-idle {
+  border: var(--chat-character-wardrobe-tag-idle-border);
+  opacity: var(--chat-character-wardrobe-tag-idle-opacity);
+}
+@keyframes character-wardrobe-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .character-wardrobe-tag.is-preparing { animation: none; }
+}
+
+.character-wardrobe-btn {
+  font-family: var(--chat-character-wardrobe-button-font);
+  font-size: var(--chat-character-wardrobe-button-font-size);
+  font-weight: var(--chat-character-wardrobe-button-font-weight);
+  padding: var(--chat-character-wardrobe-button-padding);
+  border-radius: var(--chat-character-wardrobe-button-border-radius);
+  border: var(--chat-character-wardrobe-button-border);
+  background: var(--chat-character-wardrobe-button-background);
+  color: var(--chat-character-information-header-text-font-color);
+  cursor: pointer;
+  white-space: nowrap;
+  flex: none;
+}
+.character-wardrobe-btn:disabled {
+  opacity: var(--chat-character-wardrobe-button-opacity-disabled);
+  cursor: default;
+}
+.character-wardrobe-btn.is-armed {
+  border-color: var(--chat-character-information-tier-gauge-value-color);
+  background: var(--chat-character-information-tier-gauge-value-color);
+  color: var(--chat-character-wardrobe-button-font-color-armed);
+}
+
+.character-wardrobe-import {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--chat-character-wardrobe-import-padding);
+}
+.character-wardrobe-input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--chat-character-wardrobe-input-font);
+  font-size: var(--chat-character-wardrobe-input-font-size);
+  padding: var(--chat-character-wardrobe-input-padding);
+  border-radius: var(--chat-character-wardrobe-input-border-radius);
+  border: var(--chat-character-wardrobe-input-border);
+  background: var(--chat-character-wardrobe-input-background);
+  color: var(--chat-character-information-header-text-font-color);
+  outline: var(--chat-character-wardrobe-input-outline);
+}
+.character-wardrobe-input::placeholder {
+  color: var(--chat-character-information-header-text-font-color);
+  opacity: var(--chat-character-wardrobe-input-placeholder-opacity);
+}
+
+.character-wardrobe-worn-as {
+  font-style: normal;
+  font-family: var(--chat-character-wardrobe-worn-as-font);
+  font-size: var(--chat-character-wardrobe-worn-as-font-size);
+  opacity: var(--chat-character-wardrobe-worn-as-opacity);
+}
+
+.character-wardrobe-error,
+.character-wardrobe-notice {
+  font-family: var(--chat-character-wardrobe-notice-font);
+  font-size: var(--chat-character-wardrobe-notice-font-size);
+  padding: var(--chat-character-wardrobe-notice-padding);
+  border-left: var(--chat-character-wardrobe-notice-border-left);
+}
+.character-wardrobe-error { font-weight: var(--chat-character-wardrobe-error-font-weight); }

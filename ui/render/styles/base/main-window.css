@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+
+.drag-region {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 610px;
+  height: 50px;
+  -webkit-app-region: drag;
+  background-color: var(--app-window-drag-region-background);
+}
+
+.main-window {
+  position: absolute;
+  top:0;
+  width: 657px;
+  left:0;
+  bottom: 0;
+  background: var(--app-window-background);
+  border: var(--app-window-border);
+  border-radius: var(--app-window-border-radius);
+  transition: width 0.3s ease;
+}
+
+.main-window-expanded {
+  position: absolute;
+  top:0;
+  width: calc(100% - 0px);
+  left:0;
+  bottom: 0;
+  background:var(--app-window-background);
+  border: var(--app-window-border);
+  border-radius: var(--app-window-border-radius);
+  margin-right: 0;
+  transition: width 0.3s ease;
+}
+.main-window-expanded-avatar {
+  position: absolute;
+  top:0;
+  width: 657px;
+  left:0;
+  bottom: 0;
+  background-color:var(--app-window-background);
+  border: var(--app-window-border);
+  border-radius: var(--app-window-border-radius);
+  margin-right: 0;
+  transition: width 0.3s ease;
+}
+.main-window--boot {
+  background: var(--app-window-boot-background);
+}
+
+.loading-screen {
+  position: absolute;
+  top: var(--app-window-loading-screen-top);
+  left: var(--app-window-loading-screen-left);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--app-window-loading-screen-background);
+  width: 100px;
+  height: 100px;
+  border-radius: var(--app-window-loading-screen-border-radius);
+  z-index: 9999;
+  opacity: 1;
+}
+
+@keyframes loading-exit {
+  0%   { width: 100px;  height: 100px;  opacity: 1; }
+  33%  { width: 656px;  height: 906px;  opacity: 1; }
+  66%  { width: 656px;  height: 906px;  opacity: 1; }
+  100% { width: 656px;  height: 906px;  opacity: 0; }
+}
+
+.loading-screen--exit {
+  animation: loading-exit 0.9s ease forwards;
+}
+
+.loading-logo {
+    width: 80px;
+    height: 80px;
+    display: block;
+    user-select: none;
+}
+
+.loading-slow-hint {
+  position: absolute;
+  top: var(--app-window-loading-slow-hint-top);
+  left: var(--app-window-loading-slow-hint-left);
+  transform: translateX(-50%);
+  max-width: 300px;
+  text-align: center;
+  background: var(--app-window-loading-slow-hint-background);
+  border-radius: var(--app-window-loading-slow-hint-border-radius);
+  padding: var(--app-window-loading-slow-hint-padding);
+  font-family: var(--app-window-loading-slow-hint-font);
+  font-size: var(--app-window-loading-slow-hint-font-size);
+  line-height: var(--app-window-loading-slow-hint-line-height);
+  color: var(--app-window-loading-slow-hint-font-color);
+  z-index: 9999;
+  box-shadow: var(--app-window-loading-slow-hint-box-shadow);
+}
+
+.main-window-content {
+  position: relative;
+  overflow: visible;
+  height: 100%;
+  width: 100%;
+}
+
+.resize-handle-right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 6px;
+  cursor: e-resize;
+  z-index: 99999;
+  -webkit-app-region: no-drag;
+}
+
+.resize-handle-right-blocked {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 6px;
+  z-index: 99999;
+  -webkit-app-region: no-drag;
+  pointer-events: none;
+}
+
+.pixel-wave-startup{
+  position: absolute;
+  inset: 0;
+  border-radius: var(--app-window-pixel-wave-border-radius);
+  background: var(--app-window-pixel-wave-background);
+  z-index: 10000;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.diagonal-pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.diagonal-pattern rect {
+  fill: var(--app-window-diagonal-pattern-color);
+}
+
+.chip-activation-region{
+  position: absolute;
+  width: 118px;
+  height: 185px;
+  background: var(--app-window-chip-activation-region-background);
+  bottom: var(--app-window-chip-activation-region-bottom);
+  left: var(--app-window-chip-activation-region-left);
+  z-index: 5;
+  cursor: pointer;
+  transition: width 0.3s ease;
+}
+.chip-activation-region:hover{
+  width: 148px;
+}
+.chip-activation-region--over-select {
+  z-index: 9001;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}

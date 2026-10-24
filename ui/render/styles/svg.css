@@ -1,0 +1,13 @@
+.svg-window-controls-button-close {
+  stroke: var(--chat-window-controls-close-color);
+  fill: var(--chat-window-controls-close-color);
+}
+.svg-window-controls-button-minimize {
+  fill: var(--chat-window-controls-minimize-color);
+}
+.svg-window-controls-button-maximize {
+  stroke: var(--chat-window-controls-maximize-color);
+}
+.svg-window-controls-button-dots {
+  fill: var(--chat-window-controls-dots-color);
+}

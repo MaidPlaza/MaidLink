@@ -1,0 +1,38 @@
+costume_format_version: 1
+
+id: "maid_classic"
+name: "Классическая форма горничной"
+author: "MaidLink"
+license: "official"
+created_at: "2026-05-27"
+
+tags:
+  - "формальный"
+  - "рабочий"
+  - "закрытый"
+  - "горничная"
+
+rating: "sfw"
+pairs: ["f4*"]
+required_tier: "estranged"
+
+character_restrictions:
+  required_archetypes: []
+  block_list: []
+
+compatibility:
+  scenes:
+    - "indoor"
+    - "kitchen"
+    - "living_room"
+    - "library"
+  blocks:
+    - "beach"
+    - "pool"
+
+renderer_prompts:
+  sdxl:
+    positive: "maid, maid apron, black dress, white apron, frilled apron, frilled dress, collared dress, long sleeves"
+    negative: "casual clothes, swimsuit, waist apron, collarbone, off shoulder, bare shoulders, cleavage"
+
+preview: "preview.png"

@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "library"
+name: "Библиотека"
+category: "indoor"
+
+tags:
+  - "спокойное"
+  - "учебное"
+  - "тёплое"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, library, bookshelf"
+    negative: "outdoors, kitchen, bedroom"
+
+preview: "preview.png"

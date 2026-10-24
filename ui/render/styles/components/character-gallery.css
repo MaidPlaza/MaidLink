@@ -1,0 +1,116 @@
+.character-gallery {
+  padding: var(--chat-character-information-gallery-padding);
+}
+.character-gallery-count {
+  font-family: var(--chat-character-information-gallery-count-font);
+  font-size: var(--chat-character-information-gallery-count-font-size);
+  color: var(--chat-character-information-header-text-font-color);
+  text-align: right;
+  margin-bottom: 6px;
+}
+.character-gallery-empty {
+  font-family: var(--chat-character-information-gallery-empty-font);
+  font-size: var(--chat-character-information-gallery-empty-font-size);
+  color: var(--chat-character-information-header-text-font-color);
+  padding: var(--chat-character-information-gallery-empty-padding);
+}
+.character-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 6px;
+}
+.character-gallery-cell {
+  aspect-ratio: 1;
+  padding: var(--chat-character-information-gallery-cell-padding);
+  border: var(--chat-character-information-gallery-cell-border);
+  border-radius: var(--chat-character-information-gallery-cell-border-radius);
+  overflow: hidden;
+  background: var(--chat-character-information-gallery-cell-background);
+  cursor: pointer;
+  transition: transform .12s;
+}
+.character-gallery-cell:hover { transform: scale(1.04); }
+.character-gallery-cell.is-blurred img {
+  filter: blur(14px) saturate(0.85);
+  transform: scale(1.18);
+}
+.character-gallery-cell-badge {
+  position: absolute;
+  top: var(--chat-character-information-gallery-cell-badge-top);
+  right: var(--chat-character-information-gallery-cell-badge-right);
+  bottom: var(--chat-character-information-gallery-cell-badge-bottom);
+  left: var(--chat-character-information-gallery-cell-badge-left);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--chat-character-information-gallery-cell-badge-font);
+  font-size: var(--chat-character-information-gallery-cell-badge-font-size);
+  font-weight: var(--chat-character-information-gallery-cell-badge-font-weight);
+  letter-spacing: var(--chat-character-information-gallery-cell-badge-letter-spacing);
+  color: var(--chat-character-information-gallery-cell-badge-font-color);
+  text-shadow: var(--chat-character-information-gallery-cell-badge-text-shadow);
+  background: var(--chat-character-information-gallery-cell-badge-background);
+  pointer-events: none;
+}
+.character-gallery-cell { position: relative; }
+.character-gallery-cell img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100001;
+  background: var(--chat-character-information-gallery-lightbox-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.character-gallery-lightbox-body {
+  max-width: 92vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+.character-gallery-lightbox-body img {
+  max-width: 92vw;
+  max-height: calc(92vh - 44px);
+  border-radius: var(--chat-character-information-gallery-lightbox-image-border-radius);
+  box-shadow: var(--chat-character-information-gallery-lightbox-image-box-shadow);
+}
+.character-gallery-lightbox-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: 92vw;
+}
+.character-gallery-lightbox-intent {
+  font-family: var(--chat-character-information-gallery-lightbox-intent-font);
+  font-size: var(--chat-character-information-gallery-lightbox-intent-font-size);
+  color: var(--chat-character-information-gallery-lightbox-intent-font-color);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.character-gallery-lightbox-bar button {
+  font-family: var(--chat-character-information-gallery-lightbox-button-font);
+  font-size: var(--chat-character-information-gallery-lightbox-button-font-size);
+  padding: var(--chat-character-information-gallery-lightbox-button-padding);
+  border-radius: var(--chat-character-information-gallery-lightbox-button-border-radius);
+  border: var(--chat-character-information-gallery-lightbox-button-border);
+  background: var(--chat-character-information-gallery-lightbox-button-background);
+  color: var(--chat-character-information-gallery-lightbox-button-font-color);
+  cursor: pointer;
+}
+.character-gallery-lightbox-bar button:hover { background: var(--chat-character-information-gallery-lightbox-button-background-hover); }
+.character-gallery-lightbox-bar button.is-danger {
+  border: var(--chat-character-information-gallery-lightbox-button-danger-border);
+  color: var(--chat-character-information-gallery-lightbox-button-danger-font-color);
+}

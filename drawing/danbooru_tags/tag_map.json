@@ -1,0 +1,2571 @@
+{
+  "_meta": {
+    "source": "https://danbooru.donmai.us/wiki_pages/tag_groups",
+    "fetched": "2026-06-03",
+    "format": "spaces (prompt-ready), not underscores",
+    "structure": "group -> subgroup -> [tags] (плоский словарь, без rating-уровня)",
+    "note": "Канонические danbooru-теги для drawing-подсистемы. Чистый словарь тегов; рейтинг (sfw/nsfw), зона и метки вынесены в tag_attributes.json (per-tag). Цвет/узор композиционны: хранится базовый тег.",
+    "rating_note": "Рейтинг тега — в tag_attributes.json (поле 'rating': 'nsfw'; sfw = отсутствие поля). Источник nsfw-членства — NSFW_PATHS в scripts/build_tag_attributes.py.",
+    "coverage": "SFW: ~34 группы повседневной композиции. NSFW: ~11 групп/подгрупп (преимущественно анатомия тела/действия).",
+    "nsfw_excluded": "Намеренно исключены abusive/illegal категории: rape/molestation, underage (loli/shota/ageplay), guro/mutilation, scat/watersports, bestiality, necrophilia, incest, vore.",
+    "attire_note": "Группы attire/headwear/legwear/sleeves в развёрнутом виде (базовый тег), цвет/узор — отдельная композиционная часть.",
+    "composition_added": "2026-09-29: композиционные теги (где тело, позы, ракурс/кадр, занятия) — лаборатория eval_draw_diversity: без них композитор терял «на полу», селфи, «по-турецки»",
+    "groups_added": "2026-09-29: пять групп вики (posture, focus_tags, gestures, body_parts, nudity) — популярные недостающие; новые подгруппы hands/clothes и attire/clothing_state"
+  },
+  "posture": {
+    "basic_positions": [
+      "kneeling",
+      "on one knee",
+      "lying",
+      "crossed legs",
+      "fetal position",
+      "on back",
+      "on side",
+      "on stomach",
+      "sitting",
+      "seiza",
+      "wariza",
+      "yokozuwari",
+      "reclining",
+      "standing",
+      "legs apart",
+      "standing on one leg",
+      "straddling",
+      "indian style",
+      "balancing"
+    ],
+    "movement": [
+      "crawling",
+      "midair",
+      "falling",
+      "floating",
+      "flying",
+      "jumping",
+      "running",
+      "walking"
+    ],
+    "whole_body": [
+      "all fours",
+      "squatting",
+      "stretching",
+      "upside-down",
+      "handstand",
+      "yoga",
+      "fighting stance",
+      "the pose",
+      "peeking out"
+    ],
+    "head_posture": [
+      "head down",
+      "head tilt",
+      "head back",
+      "head on pillow"
+    ],
+    "torso": [
+      "arched back",
+      "bent over",
+      "leaning back",
+      "leaning forward",
+      "slouching",
+      "twisted torso",
+      "leaning to the side"
+    ],
+    "arms": [
+      "arm behind back",
+      "arms behind back",
+      "arm up",
+      "arms up",
+      "arm behind head",
+      "arms behind head",
+      "outstretched arm",
+      "outstretched arms",
+      "spread arms",
+      "arm at side",
+      "arms at sides",
+      "crossed arms",
+      "flexing",
+      "reaching",
+      "shrugging",
+      "t-pose",
+      "v arms",
+      "w arms",
+      "arm support",
+      "elbow rest",
+      "reaching towards viewer"
+    ],
+    "hands": [
+      "outstretched hand",
+      "stroking own chin",
+      "interlocked fingers",
+      "own hands clasped",
+      "own hands together"
+    ],
+    "hips": [
+      "contrapposto"
+    ],
+    "legs": [
+      "crossed ankles",
+      "leg up",
+      "legs up",
+      "knees to chest",
+      "outstretched leg",
+      "split",
+      "spread legs",
+      "standing split",
+      "knee up",
+      "knees up",
+      "feet up",
+      "kicking",
+      "knees together feet apart",
+      "leg lift",
+      "knees apart feet together",
+      "legs together"
+    ],
+    "feet": [
+      "pigeon-toed",
+      "tiptoes",
+      "toe scrunch"
+    ],
+    "hugging": [
+      "hug",
+      "hugging own legs",
+      "hugging object",
+      "arm hug",
+      "hug from behind",
+      "waist hug",
+      "pillow hug"
+    ],
+    "poses_named": [
+      "rabbit pose",
+      "claw pose",
+      "archer pose",
+      "dojikko pose",
+      "ojou-sama pose",
+      "victory pose",
+      "villain pose",
+      "zombie pose",
+      "jojo pose"
+    ],
+    "placement": [
+      "on floor",
+      "on ground",
+      "on bed",
+      "on couch",
+      "on chair",
+      "on desk",
+      "on table",
+      "sitting on stairs",
+      "against wall",
+      "under covers"
+    ]
+  },
+  "face_tags": {
+    "emotions": [
+      "angry",
+      "anger vein",
+      "annoyed",
+      "clenched teeth",
+      "glaring",
+      "scowl",
+      "blush",
+      "blush stickers",
+      "embarrassed",
+      "full-face blush",
+      "nose blush",
+      "bored",
+      "closed eyes",
+      "confused",
+      "despair",
+      "determined",
+      "disappointed",
+      "disdain",
+      "disgust",
+      "distress",
+      "drunk",
+      "excited",
+      "exhausted",
+      "expressionless",
+      "facepalm",
+      "flustered",
+      "frustrated",
+      "furrowed brow",
+      "grimace",
+      "happy",
+      "lonely",
+      "nervous",
+      "one eye closed",
+      "open mouth",
+      "parted lips",
+      "pain",
+      "pout",
+      "puffy cheeks",
+      "raised eyebrow",
+      "raised eyebrows",
+      "rolling eyes",
+      "sad",
+      "depressed",
+      "frown",
+      "gloom (expression)",
+      "tears",
+      "scared",
+      "panicking",
+      "worried",
+      "serious",
+      "shaded face",
+      "shy",
+      "sigh",
+      "skeptical",
+      "sleepy",
+      "squinting",
+      "sulking",
+      "surprised",
+      "thinking",
+      "pensive",
+      "unamused",
+      "v-shaped eyebrows",
+      "wince",
+      "struggling",
+      "laughing"
+    ],
+    "smile_variants": [
+      ":d",
+      "crazy smile",
+      "evil smile",
+      "forced smile",
+      "grin",
+      "evil grin",
+      "light smile",
+      "sad smile",
+      "smile",
+      "stifled laugh"
+    ],
+    "smug": [
+      "doyagao",
+      "smirk",
+      "smug",
+      "troll face"
+    ],
+    "intense": [
+      "horrified",
+      "screaming",
+      "sobbing",
+      "traumatized",
+      "turn pale",
+      "wavy mouth"
+    ],
+    "mouth_styles": [
+      "closed mouth",
+      "dot mouth",
+      "heart-shaped mouth",
+      "hollow mouth",
+      "mouth drool",
+      "no mouth",
+      "fang"
+    ],
+    "sexual": [
+      "afterglow",
+      "ahegao",
+      "aroused",
+      "fucked silly",
+      "naughty face",
+      "seductive smile",
+      "torogao"
+    ]
+  },
+  "image_composition": {
+    "view_angle": [
+      "dutch angle",
+      "from above",
+      "from behind",
+      "from below",
+      "from side",
+      "multiple views",
+      "sideways",
+      "three-quarter view",
+      "straight-on",
+      "upside-down",
+      "pov"
+    ],
+    "framing": [
+      "close-up",
+      "portrait",
+      "upper body",
+      "cowboy shot",
+      "feet out of frame",
+      "full body",
+      "wide shot",
+      "very wide shot",
+      "lower body",
+      "head out of frame"
+    ],
+    "other_framing": [
+      "cropped legs",
+      "cropped torso",
+      "cropped arms",
+      "cropped shoulders",
+      "cropped head",
+      "cut-in",
+      "profile",
+      "split crop",
+      "selfie",
+      "mirror selfie",
+      "foreshortening",
+      "fisheye",
+      "reflection"
+    ]
+  },
+  "focus_tags": {
+    "body_part_focus": [
+      "eye focus",
+      "hand focus",
+      "back focus",
+      "hip focus",
+      "leg focus",
+      "thigh focus",
+      "foot focus",
+      "armpit focus"
+    ],
+    "subject_focus": [
+      "solo focus",
+      "male focus",
+      "other focus"
+    ],
+    "object_focus": [
+      "animal focus",
+      "book focus",
+      "clothes focus",
+      "food focus",
+      "footwear focus",
+      "object focus",
+      "weapon focus",
+      "reflection focus"
+    ]
+  },
+  "eyes_tags": {
+    "gaze_direction": [
+      "looking at viewer",
+      "looking to the side",
+      "looking down",
+      "looking up",
+      "looking back",
+      "looking away",
+      "looking afar",
+      "looking around",
+      "averting eyes",
+      "sideways glance"
+    ],
+    "eye_state": [
+      "blinking",
+      "closed eyes",
+      "half-closed eyes",
+      "narrowed eyes",
+      "wide-eyed",
+      "squinting",
+      "staring",
+      "rolling eyes",
+      "cross-eyed",
+      "upturned eyes",
+      "pleading eyes",
+      "one eye closed",
+      "wince"
+    ],
+    "tears": [
+      "tears",
+      "teary eyes",
+      "happy tears",
+      "crying",
+      "crying with eyes open"
+    ],
+    "color": [
+      "brown eyes",
+      "blue eyes",
+      "green eyes",
+      "red eyes",
+      "yellow eyes",
+      "orange eyes",
+      "pink eyes",
+      "purple eyes",
+      "grey eyes",
+      "black eyes",
+      "aqua eyes",
+      "white eyes",
+      "heterochromia",
+      "multicolored eyes"
+    ],
+    "shape": [
+      "tsurime",
+      "tareme",
+      "jitome",
+      "sanpaku",
+      "hooded eyes",
+      "long eyelashes"
+    ]
+  },
+  "gestures": {
+    "one_hand": [
+      "waving",
+      "beckoning",
+      "pointing",
+      "pointing at viewer",
+      "pointing up",
+      "pointing down",
+      "thumbs up",
+      "thumbs down",
+      "shushing",
+      "twirling hair",
+      "pointing at self",
+      "akanbe"
+    ],
+    "fingers": [
+      "v",
+      "inward v",
+      "double v",
+      "finger heart",
+      "finger gun",
+      "ok sign",
+      "index finger raised",
+      "fox shadow puppet",
+      "v over eye",
+      "pinky out",
+      "v over mouth",
+      "gyaru v"
+    ],
+    "whole_hand": [
+      "open hand",
+      "spread fingers",
+      "claw pose",
+      "salute",
+      "reaching",
+      "stop (gesture)",
+      "facepalm",
+      "open hands"
+    ],
+    "closed_hand": [
+      "clenched hand",
+      "raised fist",
+      "fist pump",
+      "paw pose",
+      "clenched hands",
+      "curled fingers"
+    ],
+    "hands_together": [
+      "own hands together",
+      "own hands clasped",
+      "interlocked fingers",
+      "heart hands",
+      "heart arms",
+      "steepled fingers",
+      "cupping hands",
+      "index fingers together",
+      "finger frame"
+    ],
+    "other": [
+      "bowing",
+      "curtsey",
+      "shrugging",
+      "victory pose",
+      "star hands"
+    ],
+    "covering": [
+      "covering own mouth",
+      "covering own eyes",
+      "covering face",
+      "covering one eye"
+    ]
+  },
+  "backgrounds": {
+    "colors": [
+      "aqua background",
+      "black background",
+      "blue background",
+      "brown background",
+      "green background",
+      "grey background",
+      "orange background",
+      "pink background",
+      "purple background",
+      "red background",
+      "simple background",
+      "transparent background",
+      "white background",
+      "yellow background"
+    ],
+    "multiple_colors": [
+      "colorful background",
+      "gradient background",
+      "monochrome background",
+      "two-tone background"
+    ],
+    "descriptive": [
+      "abstract background",
+      "blurry background",
+      "bright background",
+      "dark background"
+    ],
+    "related": [
+      "backlighting",
+      "border",
+      "horizon",
+      "sky",
+      "blue sky",
+      "cloud",
+      "cloudy sky",
+      "night sky",
+      "starry sky"
+    ]
+  },
+  "lighting": {
+    "directional": [
+      "backlighting",
+      "overlighting",
+      "sidelighting",
+      "underlighting"
+    ],
+    "types": [
+      "bloom",
+      "spotlight",
+      "light rays",
+      "sunbeam",
+      "dim lighting",
+      "sunlight",
+      "moonlight",
+      "dappled sunlight"
+    ],
+    "time_of_day": [
+      "morning",
+      "dawn",
+      "twilight",
+      "sunrise",
+      "day",
+      "evening",
+      "sunset",
+      "dusk",
+      "night"
+    ],
+    "sources": [
+      "lamp",
+      "candlelight",
+      "lantern",
+      "chandelier",
+      "ceiling light",
+      "fire",
+      "spotlight"
+    ],
+    "shadow": [
+      "shade",
+      "shadow",
+      "dark",
+      "darkness",
+      "silhouette",
+      "window shadow"
+    ]
+  },
+  "hair": {
+    "actions": [
+      "adjusting hair",
+      "hair flip",
+      "tucking hair",
+      "holding own hair",
+      "twirling hair",
+      "playing with hair",
+      "hand in own hair"
+    ],
+    "accessories": [
+      "hair ornament",
+      "hair bow",
+      "hair ribbon",
+      "hairclip",
+      "hair flower",
+      "kanzashi",
+      "hairband",
+      "headband",
+      "scrunchie",
+      "hair stick"
+    ],
+    "features": [
+      "floating hair",
+      "messy hair",
+      "wet hair",
+      "hair between eyes",
+      "hair over one eye",
+      "hair spread out",
+      "lone nape hair",
+      "loose hair strand"
+    ],
+    "sexual": [
+      "hairjob",
+      "cum on hair"
+    ]
+  },
+  "hair_color": {
+    "specific": [
+      "aqua hair",
+      "black hair",
+      "blonde hair",
+      "blue hair",
+      "brown hair",
+      "green hair",
+      "grey hair",
+      "orange hair",
+      "pink hair",
+      "purple hair",
+      "red hair",
+      "white hair"
+    ],
+    "multiple": [
+      "multicolored hair",
+      "colored inner hair",
+      "colored tips",
+      "gradient hair",
+      "rainbow hair",
+      "split-color hair",
+      "streaked hair",
+      "two-tone hair"
+    ]
+  },
+  "skin_color": {
+    "natural": [
+      "dark skin",
+      "dark-skinned female",
+      "very dark skin",
+      "albino",
+      "pale skin",
+      "tan",
+      "tanlines"
+    ],
+    "unnatural": [
+      "aqua skin",
+      "black skin",
+      "blue skin",
+      "green skin",
+      "grey skin",
+      "pink skin",
+      "purple skin",
+      "red skin",
+      "white skin"
+    ],
+    "related": [
+      "colored skin",
+      "shiny skin",
+      "body blush",
+      "skindentation",
+      "body freckles"
+    ]
+  },
+  "attire": {
+    "topwear": [
+      "blouse",
+      "frilled shirt",
+      "sleeveless shirt",
+      "crop top",
+      "camisole",
+      "cardigan",
+      "coat",
+      "hoodie",
+      "jacket",
+      "blazer",
+      "shirt",
+      "collared shirt",
+      "dress shirt",
+      "off-shoulder shirt",
+      "t-shirt",
+      "sweater",
+      "turtleneck sweater",
+      "sweater vest",
+      "tank top",
+      "tube top",
+      "vest",
+      "corset",
+      "bandeau",
+      "bustier"
+    ],
+    "bottomwear": [
+      "pants",
+      "jeans",
+      "shorts",
+      "bike shorts",
+      "skirt",
+      "miniskirt",
+      "pleated skirt",
+      "long skirt",
+      "high-waist skirt",
+      "plaid skirt",
+      "pencil skirt",
+      "bloomers",
+      "petticoat"
+    ],
+    "dresses": [
+      "dress",
+      "collared dress",
+      "sundress",
+      "china dress",
+      "sailor dress",
+      "sweater dress",
+      "armored dress",
+      "nightgown",
+      "evening gown",
+      "gown",
+      "pencil dress"
+    ],
+    "outerwear": [
+      "coat",
+      "long coat",
+      "trench coat",
+      "winter coat",
+      "jacket",
+      "blazer",
+      "cardigan",
+      "cape",
+      "capelet",
+      "hood",
+      "poncho",
+      "robe",
+      "shawl"
+    ],
+    "uniforms": [
+      "apron",
+      "maid",
+      "maid apron",
+      "waist apron",
+      "nurse",
+      "nurse uniform",
+      "school uniform",
+      "serafuku",
+      "gakuran",
+      "gym uniform",
+      "nun",
+      "miko",
+      "military uniform",
+      "cheerleader",
+      "waitress",
+      "suit",
+      "business suit",
+      "track suit",
+      "pajamas",
+      "armor",
+      "casual clothes"
+    ],
+    "swimwear": [
+      "swimsuit",
+      "one-piece swimsuit",
+      "competition swimsuit",
+      "school swimsuit",
+      "bikini",
+      "string bikini",
+      "tankini",
+      "leotard",
+      "rash guard",
+      "bathrobe"
+    ],
+    "underwear": [
+      "bra",
+      "panties",
+      "thong",
+      "lingerie",
+      "babydoll",
+      "camisole",
+      "garter belt",
+      "cupless bra",
+      "bra peek",
+      "panty peek",
+      "nightgown",
+      "negligee"
+    ],
+    "traditional": [
+      "japanese clothes",
+      "kimono",
+      "furisode",
+      "short kimono",
+      "yukata",
+      "haori",
+      "happi",
+      "hakama",
+      "hakama skirt",
+      "chinese clothes",
+      "hanfu",
+      "tangzhuang",
+      "korean clothes",
+      "hanbok",
+      "ao dai",
+      "sarashi"
+    ],
+    "neckwear": [
+      "ascot",
+      "bowtie",
+      "choker",
+      "collar",
+      "cross tie",
+      "necklace",
+      "necktie",
+      "neck ribbon",
+      "scarf",
+      "shawl",
+      "neckerchief"
+    ],
+    "limbwear": [
+      "gloves",
+      "elbow gloves",
+      "fingerless gloves",
+      "arm warmers",
+      "detached sleeves",
+      "wide sleeves",
+      "wristband",
+      "wrist cuffs",
+      "bracelet",
+      "bangle",
+      "ring",
+      "armlet",
+      "garter straps",
+      "thigh strap"
+    ],
+    "torso_acc": [
+      "belt",
+      "brooch",
+      "buttons",
+      "corsage",
+      "suspenders",
+      "sash",
+      "harness"
+    ],
+    "patterns": [
+      "argyle",
+      "checkered",
+      "floral print",
+      "gingham",
+      "houndstooth",
+      "pinstripe pattern",
+      "plaid",
+      "polka dot",
+      "striped"
+    ],
+    "details": [
+      "frills",
+      "fur trim",
+      "lace trim",
+      "ribbon trim",
+      "gold trim",
+      "clothing cutout",
+      "cleavage cutout",
+      "see-through clothes",
+      "torn clothes",
+      "dress flower",
+      "flower trim",
+      "skirt hold",
+      "dress hold",
+      "ribbon",
+      "pink ribbon",
+      "spaghetti strap",
+      "off shoulder",
+      "taut shirt"
+    ],
+    "footwear": [
+      "shoes",
+      "high heels",
+      "boots",
+      "knee boots",
+      "ankle boots",
+      "sneakers",
+      "loafers",
+      "mary janes",
+      "slippers",
+      "geta",
+      "zouri",
+      "uwabaki",
+      "platform footwear"
+    ],
+    "fashion_styles": [
+      "gothic lolita",
+      "lolita fashion",
+      "victorian",
+      "gyaru",
+      "goth",
+      "alternate costume",
+      "cosplay"
+    ],
+    "revealing": [
+      "micro bikini",
+      "thong bikini",
+      "slingshot swimsuit",
+      "see-through leotard",
+      "strapless leotard",
+      "underbust",
+      "see-through clothes",
+      "center opening",
+      "bikini bottom only",
+      "single breast curtain",
+      "belt bra",
+      "rei no himo",
+      "ass cutout",
+      "bandaid on pussy"
+    ],
+    "clothing_state": [
+      "open jacket",
+      "open coat",
+      "open vest",
+      "open hoodie",
+      "pants rolled up",
+      "zettai ryouiki",
+      "partially unbuttoned",
+      "open collar"
+    ]
+  },
+  "headwear": {
+    "hats": [
+      "hat",
+      "straw hat",
+      "sun hat",
+      "beret",
+      "beanie",
+      "bucket hat",
+      "cowboy hat",
+      "witch hat",
+      "top hat",
+      "baseball cap",
+      "newsboy cap",
+      "mob cap",
+      "bonnet",
+      "fedora",
+      "flat cap",
+      "cloche hat",
+      "party hat",
+      "santa hat"
+    ],
+    "headdress": [
+      "maid headdress",
+      "headdress",
+      "nurse cap",
+      "veil",
+      "headscarf",
+      "bandana",
+      "hood"
+    ],
+    "crowns": [
+      "crown",
+      "circlet",
+      "diadem",
+      "tiara",
+      "mini crown"
+    ],
+    "non_hat": [
+      "hair bow",
+      "hair ribbon",
+      "hairband",
+      "headband",
+      "forehead protector"
+    ],
+    "states": [
+      "tilted headwear",
+      "hat over eyes",
+      "hat over one eye",
+      "hand on headwear",
+      "adjusting headwear"
+    ],
+    "ornaments": [
+      "hat bow",
+      "hat flower",
+      "hat ribbon",
+      "hat ornament",
+      "hat feather"
+    ]
+  },
+  "legwear": {
+    "main": [
+      "socks",
+      "kneehighs",
+      "over-kneehighs",
+      "thighhighs",
+      "pantyhose",
+      "leggings",
+      "ankle socks",
+      "loose socks",
+      "leg warmers"
+    ],
+    "style": [
+      "lace thighhighs",
+      "ribbed socks",
+      "ribbed thighhighs",
+      "fishnet thighhighs",
+      "striped thighhighs",
+      "fur-trimmed legwear",
+      "ribbon-trimmed legwear",
+      "bow legwear",
+      "frilled"
+    ],
+    "color": [
+      "gradient legwear",
+      "two-tone legwear",
+      "multicolored thighhighs",
+      "polka dot thighhighs"
+    ],
+    "states": [
+      "adjusting legwear",
+      "uneven legwear",
+      "torn thighhighs"
+    ]
+  },
+  "sleeves": {
+    "length": [
+      "short sleeves",
+      "short over long sleeves",
+      "three-quarter sleeves",
+      "long sleeves",
+      "sleeves past wrists",
+      "sleeves past fingers",
+      "sleeveless"
+    ],
+    "style": [
+      "detached sleeves",
+      "single detached sleeve",
+      "puffy sleeves",
+      "puffy short sleeves",
+      "puffy long sleeves",
+      "wide sleeves",
+      "bell sleeves",
+      "frilled sleeves",
+      "lace-trimmed sleeves",
+      "ribbon-trimmed sleeves",
+      "juliet sleeves",
+      "raglan sleeves"
+    ],
+    "states": [
+      "sleeves rolled up",
+      "sleeves pushed up",
+      "arm out of sleeve"
+    ]
+  },
+  "handwear": {
+    "gloves": [
+      "gloves",
+      "elbow gloves",
+      "fingerless gloves",
+      "half gloves",
+      "paw gloves",
+      "fold-over gloves",
+      "torn gloves",
+      "layered gloves"
+    ],
+    "trims_materials": [
+      "fur-trimmed gloves",
+      "frilled gloves",
+      "lace-trimmed gloves",
+      "lace gloves",
+      "latex gloves",
+      "leather gloves",
+      "fishnet gloves"
+    ],
+    "other": [
+      "mittens",
+      "gauntlets",
+      "bridal gauntlets",
+      "boxing gloves",
+      "arm warmers"
+    ],
+    "accessories": [
+      "bracelet",
+      "bangle",
+      "wristband",
+      "wrist cuffs",
+      "ring",
+      "wedding ring",
+      "bandaged hand",
+      "bandaid on hand"
+    ],
+    "states": [
+      "adjusting gloves",
+      "single glove",
+      "holding gloves",
+      "removing glove"
+    ]
+  },
+  "eyewear": {
+    "main": [
+      "glasses",
+      "sunglasses",
+      "goggles",
+      "monocle"
+    ],
+    "types": [
+      "round eyewear",
+      "cat eye-framed eyewear",
+      "rectangular eyewear",
+      "rimless eyewear",
+      "semi-rimless eyewear",
+      "heart-shaped eyewear",
+      "over-rim eyewear"
+    ],
+    "specific": [
+      "aviator sunglasses",
+      "ski goggles",
+      "safety glasses",
+      "opera glasses",
+      "diving mask"
+    ],
+    "states": [
+      "bespectacled",
+      "adjusting eyewear",
+      "looking over eyewear",
+      "eyewear on head",
+      "fogged glasses",
+      "no eyewear"
+    ]
+  },
+  "makeup": {
+    "types": [
+      "lipstick",
+      "lipgloss",
+      "eyeliner",
+      "eyeshadow",
+      "mascara",
+      "highlighter (makeup)",
+      "glitter makeup",
+      "gyaru makeup",
+      "nail polish",
+      "toenail polish"
+    ],
+    "marks": [
+      "lipstick mark",
+      "smeared lipstick",
+      "runny makeup",
+      "mole",
+      "facepaint",
+      "face jewel",
+      "aegyo sal"
+    ],
+    "states": [
+      "applying own makeup",
+      "applying lipstick"
+    ]
+  },
+  "neck_and_neckwear": {
+    "anatomy": [
+      "collarbone",
+      "nape",
+      "neck",
+      "long neck"
+    ],
+    "neckwear": [
+      "choker",
+      "collar",
+      "ribbon choker",
+      "frilled collar",
+      "lace-trimmed collar",
+      "neck ribbon",
+      "neck warmer",
+      "scarf"
+    ],
+    "ties": [
+      "ascot",
+      "bowtie",
+      "cross tie",
+      "neckerchief",
+      "necktie",
+      "bolo tie"
+    ],
+    "necklaces": [
+      "necklace",
+      "pendant",
+      "locket",
+      "pearl necklace",
+      "heart necklace",
+      "cross necklace",
+      "chain necklace",
+      "bead necklace",
+      "flower necklace"
+    ],
+    "collar_designs": [
+      "turtleneck",
+      "crew neck",
+      "v-neck",
+      "scoop neck",
+      "square neckline",
+      "low neckline",
+      "plunging neckline",
+      "halterneck",
+      "sailor collar",
+      "high collar",
+      "mandarin collar",
+      "peter pan collar",
+      "open collar",
+      "detached collar"
+    ],
+    "on_shoulders": [
+      "feather boa",
+      "stole",
+      "capelet",
+      "cloak",
+      "shrug"
+    ],
+    "states": [
+      "adjusting necktie",
+      "loose necktie",
+      "unworn necktie",
+      "no necktie"
+    ]
+  },
+  "body_parts": {
+    "head": [
+      "eyebrows",
+      "eyelashes",
+      "forehead",
+      "nose",
+      "lips",
+      "nape",
+      "tongue"
+    ],
+    "upper": [
+      "armpits",
+      "back",
+      "collarbone",
+      "neck",
+      "shoulders",
+      "ribs",
+      "pectorals"
+    ],
+    "arms_hands": [
+      "arms",
+      "biceps",
+      "hands",
+      "palms",
+      "thick arms"
+    ],
+    "legs_feet": [
+      "feet",
+      "barefoot",
+      "legs",
+      "long legs",
+      "slim legs",
+      "knees",
+      "thighs",
+      "thick thighs",
+      "toes",
+      "thigh gap",
+      "kneepits"
+    ],
+    "torso": [
+      "abs",
+      "belly",
+      "navel",
+      "narrow waist",
+      "stomach",
+      "linea alba"
+    ],
+    "appendages": [
+      "joints",
+      "tail",
+      "wings"
+    ],
+    "exposure": [
+      "bare shoulders",
+      "bare arms",
+      "bare back",
+      "bare legs",
+      "bare midriff",
+      "midriff",
+      "off shoulder",
+      "single bare shoulder",
+      "strap slip"
+    ],
+    "body_type": [
+      "petite",
+      "slim",
+      "curvy",
+      "toned",
+      "plump",
+      "tall",
+      "skinny",
+      "mature female",
+      "toned female",
+      "toned male",
+      "muscular male"
+    ],
+    "anatomy": [
+      "breasts",
+      "areolae",
+      "nipples",
+      "ass",
+      "anus",
+      "groin",
+      "hips",
+      "wide hips",
+      "hip dips",
+      "penis",
+      "testicles",
+      "pussy",
+      "pubic hair",
+      "female pubic hair",
+      "male pubic hair"
+    ],
+    "marks": [
+      "mole on stomach",
+      "mole on thigh",
+      "mole on ass",
+      "mole on collarbone"
+    ]
+  },
+  "hands": {
+    "on_own_upper": [
+      "hand on own face",
+      "hand on own cheek",
+      "hand on own chin",
+      "hand on own forehead",
+      "hand on own head",
+      "hand on own neck",
+      "hand on own chest",
+      "hand on own shoulder",
+      "hand on own stomach",
+      "hand on own arm",
+      "head rest"
+    ],
+    "on_own_lower": [
+      "hand on own hip",
+      "hands on own hips",
+      "hand on own thigh",
+      "hands on own thighs",
+      "hand on own knee",
+      "hand on own leg"
+    ],
+    "pockets": [
+      "hand in pocket",
+      "hands in pockets"
+    ],
+    "on_another": [
+      "headpat",
+      "hand on another's head",
+      "hand on another's face",
+      "hand on another's cheek",
+      "cheek poking",
+      "arm around shoulder",
+      "hand on another's shoulder",
+      "holding hands"
+    ],
+    "clothes": [
+      "adjusting clothes",
+      "clothes grab",
+      "shirt tug",
+      "necktie grab",
+      "skirt tug",
+      "dress tug"
+    ]
+  },
+  "feet": {
+    "main": [
+      "feet",
+      "barefoot",
+      "no shoes"
+    ],
+    "anatomy": [
+      "soles",
+      "heel",
+      "ankles",
+      "toes",
+      "toenails",
+      "toenail polish"
+    ],
+    "poses": [
+      "dorsiflexion",
+      "plantar flexion",
+      "en pointe",
+      "tiptoes",
+      "foot dangle",
+      "pigeon-toed"
+    ],
+    "accessories": [
+      "anklet",
+      "toe ring",
+      "socks",
+      "toe socks",
+      "sandals",
+      "strappy heels"
+    ],
+    "fetish": [
+      "footjob",
+      "foot worship",
+      "kissing foot",
+      "licking foot",
+      "smelling feet",
+      "toe sucking",
+      "tickling feet",
+      "trampling",
+      "dirty feet"
+    ]
+  },
+  "ears_tags": {
+    "animal_ears": [
+      "animal ears",
+      "cat ears",
+      "fox ears",
+      "rabbit ears",
+      "dog ears",
+      "wolf ears",
+      "bear ears",
+      "deer ears",
+      "horse ears",
+      "mouse ears",
+      "tiger ears",
+      "sheep ears",
+      "fake animal ears",
+      "floppy ears",
+      "kemonomimi mode"
+    ],
+    "other": [
+      "pointy ears",
+      "long pointy ears",
+      "robot ears"
+    ],
+    "objects": [
+      "ear piercing",
+      "earrings",
+      "single earring",
+      "object behind ear",
+      "animal ear headphones"
+    ],
+    "actions": [
+      "covering own ears",
+      "ears down",
+      "hand on own ear",
+      "ears through headwear"
+    ]
+  },
+  "colors": {
+    "themes": [
+      "aqua theme",
+      "black theme",
+      "blue theme",
+      "brown theme",
+      "green theme",
+      "grey theme",
+      "orange theme",
+      "pink theme",
+      "purple theme",
+      "red theme",
+      "white theme",
+      "yellow theme",
+      "monochrome"
+    ],
+    "palettes": [
+      "pastel colors",
+      "muted colors",
+      "pale colors",
+      "limited palette",
+      "neon palette",
+      "warm colors",
+      "cool colors",
+      "colorful",
+      "saturated"
+    ],
+    "techniques": [
+      "flat color",
+      "lineart",
+      "colored lineart",
+      "anime coloring",
+      "watercolor effect",
+      "ligne claire",
+      "greyscale",
+      "sepia",
+      "high contrast",
+      "cel shading",
+      "white outline",
+      "oil painting",
+      "watercolor",
+      "traditional media",
+      "sketch"
+    ],
+    "effects": [
+      "gradient",
+      "vignetting",
+      "blending",
+      "chromatic aberration",
+      "inverted colors",
+      "spot color"
+    ]
+  },
+  "locations": {
+    "indoors": [
+      "bedroom",
+      "bathroom",
+      "kitchen",
+      "living room",
+      "dining room",
+      "classroom",
+      "library",
+      "office",
+      "cafeteria",
+      "infirmary",
+      "locker room",
+      "changing room",
+      "dressing room",
+      "conservatory",
+      "clubroom",
+      "staff room",
+      "storage room",
+      "closet",
+      "workshop",
+      "stage",
+      "school gym",
+      "hotel room",
+      "messy room",
+      "otaku room"
+    ],
+    "outdoors_natural": [
+      "beach",
+      "shore",
+      "forest",
+      "bamboo forest",
+      "jungle",
+      "meadow",
+      "hill",
+      "mountain",
+      "cliff",
+      "cave",
+      "canyon",
+      "desert",
+      "oasis",
+      "island",
+      "lake",
+      "ocean",
+      "pond",
+      "river",
+      "stream",
+      "waterfall",
+      "park",
+      "garden",
+      "flower field",
+      "field",
+      "nature",
+      "wetland"
+    ],
+    "outdoors_manmade": [
+      "city",
+      "town",
+      "village",
+      "rural",
+      "street",
+      "alley",
+      "sidewalk",
+      "crosswalk",
+      "road",
+      "path",
+      "bridge",
+      "fountain",
+      "market",
+      "playground",
+      "parking lot",
+      "pier",
+      "dock",
+      "harbor",
+      "rooftop",
+      "poolside",
+      "amusement park",
+      "ferris wheel",
+      "railroad tracks",
+      "bus stop",
+      "graveyard",
+      "festival",
+      "summer festival"
+    ],
+    "buildings": [
+      "cafe",
+      "restaurant",
+      "bar",
+      "hotel",
+      "house",
+      "apartment",
+      "school",
+      "hospital",
+      "museum",
+      "mall",
+      "shop",
+      "bakery",
+      "bookstore",
+      "convenience store",
+      "supermarket",
+      "church",
+      "cathedral",
+      "shrine",
+      "temple",
+      "castle",
+      "tower",
+      "train station",
+      "gas station",
+      "greenhouse",
+      "onsen",
+      "aquarium",
+      "arcade",
+      "nightclub",
+      "theater",
+      "stadium",
+      "observatory",
+      "lighthouse",
+      "ruins"
+    ],
+    "scenery": [
+      "cityscape",
+      "landscape",
+      "architecture",
+      "space",
+      "moon",
+      "vehicle interior",
+      "car interior",
+      "train interior"
+    ],
+    "general": [
+      "indoors",
+      "outdoors",
+      "scenery"
+    ]
+  },
+  "food_tags": {
+    "fruits": [
+      "apple",
+      "banana",
+      "strawberry",
+      "cherry",
+      "lemon",
+      "orange",
+      "peach",
+      "watermelon",
+      "grapes",
+      "mango",
+      "pineapple",
+      "kiwi",
+      "berry"
+    ],
+    "vegetables": [
+      "carrot",
+      "tomato",
+      "corn",
+      "potato",
+      "mushroom",
+      "broccoli",
+      "lettuce",
+      "onion",
+      "bell pepper"
+    ],
+    "sweets": [
+      "cake",
+      "ice cream",
+      "chocolate",
+      "cookie",
+      "doughnut",
+      "candy",
+      "pancake",
+      "cupcake",
+      "cheesecake",
+      "macaron",
+      "parfait",
+      "pudding",
+      "wagashi",
+      "dango",
+      "taiyaki",
+      "crepe"
+    ],
+    "savory": [
+      "bread",
+      "croissant",
+      "toast",
+      "bagel",
+      "pasta",
+      "ramen",
+      "rice",
+      "noodles",
+      "pizza",
+      "sushi",
+      "hamburger",
+      "hot dog",
+      "sandwich",
+      "soup",
+      "curry",
+      "egg",
+      "onigiri",
+      "bento"
+    ],
+    "dairy": [
+      "milk",
+      "cheese",
+      "butter",
+      "yogurt",
+      "cream"
+    ],
+    "drinks": [
+      "coffee",
+      "tea",
+      "juice",
+      "soda",
+      "alcohol",
+      "wine",
+      "beer",
+      "cocktail",
+      "milkshake",
+      "bubble tea"
+    ],
+    "tableware": [
+      "cup",
+      "bowl",
+      "plate",
+      "chopsticks",
+      "fork",
+      "spoon",
+      "teapot",
+      "bottle",
+      "mug",
+      "glass"
+    ]
+  },
+  "water": {
+    "water": [
+      "water",
+      "underwater",
+      "partially submerged",
+      "submerged"
+    ],
+    "wet": [
+      "wet",
+      "wet clothes",
+      "wet hair",
+      "wet shirt",
+      "wet skirt",
+      "wet swimsuit"
+    ],
+    "precipitation": [
+      "rain",
+      "snow",
+      "puddle"
+    ],
+    "actions": [
+      "splashing",
+      "swimming",
+      "wading",
+      "bathing",
+      "showering",
+      "diving",
+      "spilling"
+    ],
+    "features": [
+      "waterfall",
+      "ripples",
+      "water drop",
+      "bubble",
+      "steam",
+      "ice"
+    ]
+  },
+  "accessories": {
+    "bags": [
+      "backpack",
+      "handbag",
+      "shoulder bag",
+      "tote bag",
+      "satchel",
+      "suitcase",
+      "briefcase",
+      "pouch",
+      "school bag",
+      "randoseru",
+      "fanny pack"
+    ],
+    "waist": [
+      "belt",
+      "garter belt",
+      "sash",
+      "suspenders",
+      "corset",
+      "harness",
+      "obi",
+      "cape",
+      "capelet"
+    ],
+    "arms": [
+      "bracelet",
+      "wristband",
+      "wristwatch",
+      "armband",
+      "arm warmers",
+      "bangle",
+      "arm garter"
+    ],
+    "legs": [
+      "anklet",
+      "leg warmers",
+      "garter straps",
+      "leg ribbon",
+      "thigh strap",
+      "thighlet"
+    ],
+    "jewelry": [
+      "ring",
+      "brooch",
+      "pendant",
+      "medallion",
+      "torc",
+      "wedding ring",
+      "hoop earrings",
+      "stud earrings"
+    ],
+    "held": [
+      "umbrella",
+      "parasol",
+      "folding fan",
+      "hand fan",
+      "handkerchief",
+      "cane",
+      "wallet",
+      "pocket watch"
+    ]
+  },
+  "hair_styles": {
+    "length": [
+      "very short hair",
+      "short hair",
+      "medium hair",
+      "long hair",
+      "very long hair",
+      "big hair"
+    ],
+    "short_cuts": [
+      "bob cut",
+      "inverted bob",
+      "bowl cut",
+      "pixie cut",
+      "undercut"
+    ],
+    "long_cuts": [
+      "hime cut",
+      "mullet"
+    ],
+    "braids": [
+      "side braid",
+      "front braid",
+      "crown braid",
+      "single braid",
+      "twin braids",
+      "braided bangs"
+    ],
+    "buns": [
+      "single hair bun",
+      "double bun",
+      "cone hair bun",
+      "hair rings"
+    ],
+    "ponytails": [
+      "high ponytail",
+      "low ponytail",
+      "side ponytail",
+      "short ponytail",
+      "folded ponytail",
+      "twintails",
+      "low twintails",
+      "short twintails",
+      "half updo",
+      "one side up",
+      "two side up"
+    ],
+    "texture": [
+      "curly hair",
+      "wavy hair",
+      "straight hair",
+      "messy hair",
+      "fluffy hair",
+      "spiked hair",
+      "drill hair",
+      "ringlets",
+      "flipped hair"
+    ],
+    "bangs": [
+      "blunt bangs",
+      "swept bangs",
+      "parted bangs",
+      "diagonal bangs",
+      "short bangs",
+      "long bangs",
+      "hair between eyes",
+      "hair over one eye",
+      "sidelocks",
+      "single sidelock",
+      "curtained hair"
+    ],
+    "top_of_head": [
+      "ahoge",
+      "antenna hair",
+      "hair slicked back",
+      "parted hair"
+    ],
+    "misc": [
+      "hair down",
+      "hair up",
+      "hair over shoulder",
+      "alternate hairstyle"
+    ]
+  },
+  "fire": {
+    "main": [
+      "fire",
+      "campfire",
+      "fireball",
+      "fireworks",
+      "fireflies",
+      "sparks",
+      "explosion",
+      "lava"
+    ],
+    "colors": [
+      "blue fire",
+      "green fire",
+      "purple fire",
+      "white fire",
+      "black fire",
+      "pink fire"
+    ],
+    "objects": [
+      "candle",
+      "candlelight",
+      "lantern",
+      "torch",
+      "lighter",
+      "matchstick",
+      "fireplace",
+      "brazier",
+      "stove"
+    ],
+    "actions": [
+      "burning",
+      "cooking",
+      "grilling",
+      "breathing fire",
+      "pyrokinesis"
+    ]
+  },
+  "furniture": {
+    "seating": [
+      "chair",
+      "armchair",
+      "office chair",
+      "sofa",
+      "couch",
+      "stool",
+      "bench",
+      "wheelchair"
+    ],
+    "surfaces": [
+      "table",
+      "desk",
+      "kotatsu",
+      "counter",
+      "nightstand"
+    ],
+    "storage": [
+      "shelf",
+      "bookshelf",
+      "cabinet",
+      "drawer",
+      "wardrobe",
+      "locker"
+    ],
+    "bedding": [
+      "bed",
+      "bunk bed",
+      "futon",
+      "pillow",
+      "cushion",
+      "blanket",
+      "bed sheet"
+    ],
+    "decor": [
+      "curtains",
+      "window",
+      "rug",
+      "carpet",
+      "mirror",
+      "lamp",
+      "clock",
+      "vase",
+      "picture frame",
+      "potted plant",
+      "plant",
+      "painting"
+    ],
+    "fixtures": [
+      "door",
+      "stairs",
+      "railing",
+      "fence",
+      "bathtub",
+      "sink",
+      "toilet",
+      "chalkboard",
+      "blackboard",
+      "whiteboard",
+      "television",
+      "refrigerator"
+    ]
+  },
+  "objects": {
+    "drinkware": [
+      "cup",
+      "teacup",
+      "mug",
+      "glass",
+      "bottle",
+      "wine glass",
+      "water bottle",
+      "can"
+    ],
+    "tableware": [
+      "plate",
+      "bowl",
+      "tray",
+      "basket",
+      "chopsticks",
+      "fork",
+      "spoon",
+      "knife",
+      "ladle",
+      "teapot",
+      "kettle",
+      "frying pan"
+    ],
+    "reading_writing": [
+      "book",
+      "open book",
+      "notebook",
+      "paper",
+      "pen",
+      "pencil",
+      "paintbrush",
+      "clipboard",
+      "scroll",
+      "letter",
+      "envelope",
+      "newspaper",
+      "magazine"
+    ],
+    "electronics": [
+      "cellphone",
+      "smartphone",
+      "laptop",
+      "computer",
+      "tablet",
+      "headphones",
+      "earphones",
+      "handheld game console",
+      "controller",
+      "camera",
+      "microphone",
+      "game controller"
+    ],
+    "cleaning": [
+      "broom",
+      "mop",
+      "bucket",
+      "feather duster",
+      "dustpan",
+      "spray bottle",
+      "rag",
+      "towel"
+    ],
+    "toys_gifts": [
+      "stuffed toy",
+      "stuffed animal",
+      "teddy bear",
+      "doll",
+      "balloon",
+      "gift",
+      "box"
+    ],
+    "carry": [
+      "umbrella",
+      "transparent umbrella",
+      "lantern",
+      "paper lantern",
+      "candle",
+      "watering can",
+      "key",
+      "wallet",
+      "money",
+      "shopping bag",
+      "handbag"
+    ],
+    "food_props": [
+      "ice cream",
+      "ice cream cone",
+      "popsicle",
+      "lollipop",
+      "candy apple",
+      "cake",
+      "bento"
+    ],
+    "plants": [
+      "flower",
+      "bouquet",
+      "rose",
+      "sunflower",
+      "tulip",
+      "cherry blossoms",
+      "leaf",
+      "petals",
+      "tree",
+      "bush"
+    ],
+    "animals": [
+      "cat",
+      "dog",
+      "rabbit",
+      "bird",
+      "animal",
+      "small animal",
+      "kitten",
+      "puppy"
+    ]
+  },
+  "holding": {
+    "general": [
+      "holding",
+      "holding object",
+      "carrying",
+      "holding hands"
+    ],
+    "drink_food": [
+      "holding cup",
+      "holding bottle",
+      "holding food",
+      "holding plate",
+      "holding tray",
+      "holding bowl",
+      "holding spoon",
+      "holding chopsticks"
+    ],
+    "items": [
+      "holding book",
+      "holding pen",
+      "holding paper",
+      "holding phone",
+      "holding umbrella",
+      "holding flower",
+      "holding bouquet",
+      "holding stuffed toy",
+      "holding gift",
+      "holding bag",
+      "holding broom",
+      "holding fan",
+      "holding clothes",
+      "holding towel",
+      "holding cat",
+      "holding animal",
+      "holding lantern",
+      "holding knife",
+      "holding controller",
+      "holding camera"
+    ]
+  },
+  "activities": {
+    "daily": [
+      "reading",
+      "writing",
+      "drawing",
+      "studying",
+      "typing",
+      "cooking",
+      "cleaning",
+      "sweeping",
+      "eating",
+      "drinking",
+      "sleeping",
+      "bathing",
+      "sewing",
+      "painting",
+      "shopping",
+      "dancing",
+      "yawning",
+      "playing games",
+      "taking picture"
+    ]
+  },
+  "nudity": {
+    "complete": [
+      "nude",
+      "completely nude",
+      "bottomless",
+      "underwear only",
+      "naked apron",
+      "naked towel",
+      "naked shirt",
+      "naked ribbon",
+      "naked sheet"
+    ],
+    "undressing": [
+      "undressing",
+      "open clothes",
+      "clothes aside",
+      "unbuttoned",
+      "unzipped",
+      "clothing aside",
+      "removing clothes",
+      "open shorts",
+      "open robe",
+      "open pants",
+      "open skirt",
+      "clothes down",
+      "skirt around one leg"
+    ],
+    "lifts_pulls": [
+      "dress lift",
+      "skirt lift",
+      "shirt lift",
+      "clothes lift",
+      "bra lift",
+      "panty pull",
+      "breasts out",
+      "breast slip",
+      "pants pull",
+      "pantyhose pull",
+      "skirt pull",
+      "shorts pull",
+      "shirt pull",
+      "bra pull",
+      "dress pull",
+      "leotard pull",
+      "kimono pull",
+      "sweater lift",
+      "panties aside",
+      "leotard aside"
+    ],
+    "exposed": [
+      "see-through clothes",
+      "revealing clothes",
+      "no panties",
+      "no bra",
+      "nipple slip",
+      "areola slip",
+      "topless female",
+      "topless male",
+      "no shirt",
+      "no pants"
+    ],
+    "pov": [
+      "downblouse",
+      "upskirt",
+      "pantyshot"
+    ],
+    "covering": [
+      "covering breasts",
+      "covering crotch",
+      "covering privates",
+      "nude cover"
+    ]
+  },
+  "breasts": {
+    "size": [
+      "flat chest",
+      "small breasts",
+      "medium breasts",
+      "large breasts",
+      "huge breasts",
+      "gigantic breasts"
+    ],
+    "shape": [
+      "asymmetrical breasts",
+      "hanging breasts",
+      "perky breasts",
+      "sagging breasts",
+      "pointy breasts",
+      "unaligned breasts",
+      "veiny breasts",
+      "bursting breasts",
+      "breasts apart",
+      "bouncing breasts"
+    ],
+    "visibility": [
+      "cleavage",
+      "breasts out",
+      "breast slip",
+      "nipple slip",
+      "sideboob",
+      "underboob",
+      "backboob",
+      "one breast out",
+      "breastless clothes",
+      "impossible shirt",
+      "framed breasts",
+      "nipple indents"
+    ],
+    "nipples": [
+      "nipples",
+      "areolae",
+      "puffy nipples",
+      "inverted nipples",
+      "dark nipples",
+      "covered nipples",
+      "large areolae",
+      "huge nipples",
+      "colored nipples",
+      "light areolae",
+      "dark areolae"
+    ],
+    "marks": [
+      "mole on breast"
+    ],
+    "lactation": [
+      "lactation",
+      "projectile lactation",
+      "lactation through clothes",
+      "breastfeeding"
+    ],
+    "adornments": [
+      "nipple piercing",
+      "nipple rings",
+      "nipple bar"
+    ],
+    "acts": [
+      "breast press",
+      "breasts squeezed together",
+      "nipple tweak",
+      "breast lift",
+      "breast suppress",
+      "guided breast grab",
+      "breasts on glass",
+      "breasts on table",
+      "chocolate on breasts",
+      "arm between breasts",
+      "between breasts",
+      "necktie between breasts",
+      "breast rest"
+    ]
+  },
+  "ass": {
+    "anatomy": [
+      "ass",
+      "huge ass",
+      "flat ass",
+      "spread ass",
+      "butt crack",
+      "underbutt",
+      "wedgie",
+      "ass focus",
+      "ass visible through thighs",
+      "bouncing ass",
+      "ass ripple"
+    ],
+    "anus": [
+      "anus",
+      "puckered anus",
+      "spread anus",
+      "anal hair"
+    ],
+    "actions": [
+      "covering ass",
+      "grabbing own ass",
+      "hand on own ass",
+      "ass smack",
+      "groping",
+      "grabbing another's ass",
+      "hand on another's ass",
+      "hands on own ass",
+      "ass shake"
+    ]
+  },
+  "sex_objects": {
+    "toys": [
+      "dildo",
+      "vibrator",
+      "butt plug",
+      "anal beads",
+      "strap-on",
+      "sex toy",
+      "egg vibrator",
+      "cock ring",
+      "sex machine",
+      "sybian",
+      "hitachi magic wand",
+      "onahole",
+      "milking machine"
+    ],
+    "bdsm_gear": [
+      "ball gag",
+      "gag",
+      "blindfold",
+      "collar",
+      "leash",
+      "handcuffs",
+      "cuffs",
+      "shackles",
+      "rope",
+      "crotch rope",
+      "spreader bar",
+      "nipple clamps",
+      "chastity belt",
+      "whip",
+      "riding crop",
+      "pillory",
+      "chastity cage"
+    ],
+    "fluids": [
+      "aphrodisiac",
+      "enema",
+      "lube",
+      "lotion"
+    ]
+  },
+  "sex_acts": {
+    "stimulation": [
+      "handjob",
+      "fingering",
+      "masturbation",
+      "paizuri",
+      "footjob",
+      "pussyjob",
+      "thigh sex",
+      "frottage",
+      "groping",
+      "grabbing another's breast",
+      "crotch grab",
+      "anal fingering",
+      "hand between own legs",
+      "male masturbation",
+      "futanari masturbation",
+      "grabbing another's penis",
+      "paizuri under clothes",
+      "straddling paizuri",
+      "perpendicular paizuri",
+      "nursing handjob"
+    ],
+    "oral": [
+      "oral",
+      "fellatio",
+      "cunnilingus",
+      "deepthroat",
+      "breast sucking",
+      "licking",
+      "irrumatio",
+      "licking nipple",
+      "licking penis"
+    ],
+    "penetration": [
+      "sex",
+      "vaginal",
+      "anal",
+      "double penetration",
+      "object insertion",
+      "fisting",
+      "deep penetration",
+      "sex from behind",
+      "clothed sex",
+      "rough sex",
+      "after sex"
+    ],
+    "cum": [
+      "cum",
+      "ejaculation",
+      "bukkake",
+      "cumdrip",
+      "facial",
+      "cum in pussy",
+      "cum on body",
+      "cum on breasts",
+      "internal cumshot",
+      "cum in mouth",
+      "cum in ass",
+      "cum on ass",
+      "cum on penis",
+      "cumdrip from penis"
+    ],
+    "bdsm": [
+      "bdsm",
+      "bondage",
+      "shibari",
+      "breast bondage",
+      "spanked",
+      "femdom",
+      "dominatrix",
+      "humiliation",
+      "suspension"
+    ],
+    "positions": [
+      "cowgirl position",
+      "reverse cowgirl position",
+      "missionary",
+      "doggystyle",
+      "spooning",
+      "standing sex",
+      "suspended congress",
+      "straddling",
+      "breast smother",
+      "face to breasts",
+      "head between breasts",
+      "breasts on head"
+    ]
+  },
+  "pussy": {
+    "anatomy": [
+      "pussy",
+      "clitoris",
+      "labia",
+      "mons pubis",
+      "pubic hair",
+      "cleft of venus",
+      "fat mons",
+      "long labia",
+      "dark labia"
+    ],
+    "under_clothes": [
+      "cameltoe",
+      "wedgie",
+      "spread pussy under clothes"
+    ],
+    "states": [
+      "spread pussy",
+      "pussy peek",
+      "clitoris slip",
+      "partially visible vulva",
+      "spreading own pussy",
+      "spreading another's pussy"
+    ],
+    "fluids": [
+      "pussy juice",
+      "cum in pussy",
+      "cum on pussy",
+      "pussy juice trail",
+      "pussy juice puddle"
+    ],
+    "adornments": [
+      "clitoris piercing",
+      "clitoris ring",
+      "maebari",
+      "pasties",
+      "clitoral piercing"
+    ]
+  },
+  "penis": {
+    "size": [
+      "large penis",
+      "huge penis",
+      "gigantic penis",
+      "small penis",
+      "girthy penis"
+    ],
+    "parts": [
+      "foreskin",
+      "phimosis"
+    ],
+    "condition": [
+      "erection",
+      "flaccid",
+      "twitching penis"
+    ],
+    "appearance": [
+      "veiny penis",
+      "dark penis",
+      "condom on penis"
+    ],
+    "acts": [
+      "penis awe",
+      "looking at penis",
+      "penis on face"
+    ],
+    "clothed": [
+      "bulge",
+      "erection under clothes",
+      "covered penis",
+      "penis out",
+      "penis peek"
+    ]
+  }
+}

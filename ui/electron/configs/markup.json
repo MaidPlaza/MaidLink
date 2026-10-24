@@ -1,0 +1,14 @@
+{
+  "rules": [
+
+    { "marker": "%%",  "color": "var(--emphasis-color, var(--chat-rich-text-emphasis-font-color))", "effect": "", "weight": 600 },
+
+    { "marker": "**",  "color": "var(--emphasis-color, var(--chat-rich-text-emphasis-font-color))", "effect": "", "weight": 600 },
+
+    { "marker": "*",   "action": true },
+
+    { "marker": "⟦",   "close": "⟧", "gesture": true }
+  ]
+}
+
+

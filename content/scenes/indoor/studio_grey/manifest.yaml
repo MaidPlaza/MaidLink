@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "studio_grey"
+name: "Студия (нейтральный серый фон)"
+category: "indoor"
+
+tags:
+  - "нейтральный"
+  - "студия"
+  - "портретный"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "grey background, simple background"
+    negative: "outdoors, scenery"
+
+preview: "preview.png"

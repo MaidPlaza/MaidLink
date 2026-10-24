@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "office"
+name: "Офис"
+category: "indoor"
+
+tags:
+  - "рабочее"
+  - "деловое"
+  - "дневное"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, office, desk, laptop"
+    negative: "outdoors, kitchen, bedroom"
+
+preview: "preview.png"

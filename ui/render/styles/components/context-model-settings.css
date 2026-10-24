@@ -1,0 +1,8 @@
+.context-model-settings-main-container {
+  position: absolute;
+  top: var(--chat-settings-context-model-top);
+  right: var(--chat-settings-context-model-right);
+  bottom: var(--chat-settings-context-model-bottom);
+  left: var(--chat-settings-context-model-left);
+  background: var(--chat-settings-context-model-background);
+}

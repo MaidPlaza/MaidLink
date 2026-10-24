@@ -1,0 +1,65 @@
+MaidLink — Third-Party Licenses
+===============================
+
+MaidLink's own code is licensed under PolyForm Noncommercial 1.0.0 (see LICENSE).
+
+This file lists third-party software DISTRIBUTED WITH the installer. Full license
+texts are installed into  <install folder>\licenses  (index: licenses\INDEX.txt);
+the build collects them with build/collect_licenses.py. Components that are
+downloaded on first run, or by the optional image-generation module, are obtained
+directly from their authors under their own licenses — see NOTICE.md.
+
+BUNDLED IN THE INSTALLER
+------------------------
+- Electron .................................. MIT
+                                              (+ Chromium / Node.js notices:
+                                              LICENSE.electron.txt,
+                                              LICENSES.chromium.html)
+- React, React DOM, scheduler ............... MIT
+- llama.cpp (llama-server.exe, ggml*.dll) ... MIT
+- LLVM OpenMP runtime (libomp.dll, ships
+  with the llama.cpp build) ................. Apache-2.0 WITH LLVM-exception
+- Python 3.13 runtime ....................... PSF License
+- PyInstaller bootloader (backend.exe) ...... GPL-2.0-or-later with the PyInstaller
+                                              bootloader exception
+- Backend Python packages (FastAPI, Starlette, uvicorn, pydantic, httpx, PyYAML,
+  numpy, Pillow, cryptography, pypdf, ddgs, rich, lxml and their dependencies) —
+  permissive licenses (MIT, BSD, Apache-2.0, MPL-2.0, PSF, HPND/MIT-CMU); the
+  exact list with versions and texts is in licenses\python\.
+- Fonts: Chakra Petch, Geologica, Inter, JetBrains Mono, Kantumruy Pro,
+  Noto Sans Display ......................... SIL Open Font License 1.1
+  The FuturaDemiC and Francy families of the interface are served by Geologica
+  in public builds; the proprietary originals are not distributed.
+- Drawing embeddings lazypos / lazyneg /
+  lazyhand / lazywet (textual inversions) ... Fair AI Public License 1.0-SD
+  Source: Lazy Embeddings, civitai.com/models/1302719.
+
+Build tools (Vite, TypeScript, electron-builder, PyInstaller itself) are used to
+produce the installer and are not distributed with it.
+
+DOWNLOADED ON FIRST RUN (see NOTICE.md) — NOT distributed by us
+---------------------------------------------------------------
+- NVIDIA CUDA runtime (cudart64_*, cublas64_*,
+  cublasLt64_*) — archive from the llama.cpp
+  GitHub release matching the bundled
+  llama-server build ........................ NVIDIA CUDA EULA (redistributable);
+                                              parts of cuBLAS (c) V. Volkov et al.,
+                                              Modified BSD
+- one language model chosen in the wizard:
+  Gemma 4 12B (QAT GGUF) + vision projector,
+  or Gemma 4 31B GGUF (IQ3_XXS / Q3_K_XL),
+  with MTP draft models ..................... Apache-2.0 (Google; GGUF by Google
+                                              and Unsloth)
+- nomic-embed-text v1.5 (GGUF) .............. Apache-2.0 (Nomic AI)
+
+IMAGE-GEN MODULE (installed by the first-run wizard; AGPL parts opt-in)
+— NOT distributed by us
+-----------------------------------------------------------------------
+- ComfyUI ................................... GNU GPL-3.0
+- ComfyUI Impact Pack ....................... GNU GPL-3.0
+- ComfyUI Impact Subpack .................... GNU AGPL-3.0 (opt-in)
+- YOLO face / hand detectors (Ultralytics) .. AGPL-3.0 (opt-in)
+- SAM ViT-H (Meta) .......................... Apache-2.0
+- isnet-anime (anime-segmentation, rembg) ... Apache-2.0
+- SDXL checkpoint chosen by the user ........ per the model's own license
+  (e.g. NoobAI family = Fair AI Public License, NONCOMMERCIAL)

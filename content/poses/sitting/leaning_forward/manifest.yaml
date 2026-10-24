@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "leaning_forward"
+name: "Наклонилась вперёд"
+category: "sitting"
+
+tags:
+  - "заинтересованное"
+  - "внимательное"
+  - "живое"
+
+rating: "sfw"
+
+mood_hints:
+  - "curious"
+  - "engaged"
+  - "playful"
+
+renderer_prompts:
+  sdxl:
+    positive: "sitting, leaning forward, head rest, looking at viewer"
+    negative: "standing, lying, leaning back"
+
+preview: "preview.png"

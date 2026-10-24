@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "bedroom"
+name: "Спальня"
+category: "indoor"
+
+tags:
+  - "уютное"
+  - "домашнее"
+  - "личное"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, bedroom, bed"
+    negative: "outdoors, kitchen, office"
+
+preview: "preview.png"

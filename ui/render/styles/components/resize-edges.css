@@ -1,0 +1,10 @@
+.resize-handle {
+  position: fixed;
+  z-index: 99999;
+  -webkit-app-region: no-drag;
+}
+
+.rh-n  { top: 0;    left: var(--app-window-resize-edges-left); width: 650px; height: 6px; cursor: n-resize;  }
+.rh-s  { bottom: 0; left: var(--app-window-resize-edges-left); width: 650px; height: 6px; cursor: s-resize;  }
+
+.resize-handle--full { left: 0; right: 0; width: auto; }

@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "smile_wave"
+name: "Улыбка и приветственный жест"
+category: "standing"
+
+tags:
+  - "приветствие"
+  - "дружелюбное"
+  - "открытое"
+
+rating: "sfw"
+
+mood_hints:
+  - "cheerful"
+  - "warm"
+  - "welcoming"
+
+renderer_prompts:
+  sdxl:
+    positive: "standing, smile, waving, looking at viewer, arm up"
+    negative: "sitting, lying, from behind"
+
+preview: "preview.png"

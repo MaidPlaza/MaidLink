@@ -1,0 +1,301 @@
+.startup-chip-insertion {
+    background: var(--app-window-startup-background);
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+   
+}
+.startup-chip-insertion-lines{
+    position: absolute;
+    top: var(--app-window-startup-lines-top);
+    left: var(--app-window-startup-lines-left);
+    width: 657px;
+    height: 907px;
+    z-index: 9999;
+    right: var(--app-window-startup-lines-right);
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 46%, #EBEAFB 100%);
+    border-radius: 20px
+}
+.startup-chip-insertion-lines-plate {
+    fill: var(--app-window-startup-lines-background);
+}
+.startup-chip-insertion-lines-grid {
+    fill: var(--app-window-startup-lines-color);
+}
+
+.startup-chip-insertion-warning{
+    position: absolute;
+    top: var(--app-window-startup-status-top);
+    right: var(--app-window-startup-status-right);
+    background: var(--app-window-startup-status-background);
+    height: 360px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--app-window-startup-status-box-shadow);
+}
+
+.startup-status {
+    flex-direction: column;
+    cursor: default;
+}
+.startup-status--ready {
+    cursor: pointer;
+}
+.startup-status--ready:hover {
+    box-shadow: var(--app-window-startup-status-box-shadow-hover);
+}
+.startup-status-inner {
+    width: 100%;
+    padding: var(--app-window-startup-status-padding);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    color: var(--app-window-startup-status-font-color);
+    font-family: var(--app-window-startup-status-font);
+}
+.startup-status-title {
+    font-size: var(--app-window-startup-status-title-font-size);
+    font-weight: var(--app-window-startup-status-title-font-weight);
+    letter-spacing: var(--app-window-startup-status-title-letter-spacing);
+    text-align: center;
+}
+.startup-status-subtitle {
+    font-size: var(--app-window-startup-status-subtitle-font-size);
+    letter-spacing: var(--app-window-startup-status-subtitle-letter-spacing);
+    text-align: center;
+    opacity: 0.75;
+    margin-top: 4px;
+    margin-bottom: 22px;
+}
+.startup-status-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.startup-status-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: var(--app-window-startup-status-row-font-size);
+    letter-spacing: var(--app-window-startup-status-row-letter-spacing);
+}
+.startup-status-dots {
+    flex: 1;
+    border-bottom: var(--app-window-startup-status-dots-border-bottom);
+    transform: translateY(-2px);
+}
+.startup-status-value--wait {
+    opacity: 0.55;
+}
+.startup-status-value--warming {
+    animation: startup-blink 1.1s ease-in-out infinite;
+}
+.startup-status-bar {
+    height: 7px;
+    border: var(--app-window-startup-status-bar-border);
+    padding: var(--app-window-startup-status-bar-padding);
+}
+.startup-status-bar-fill {
+    height: 100%;
+    background: var(--app-window-startup-status-bar-fill-background);
+    transition: width 500ms ease;
+}
+.startup-status-pct {
+    font-size: var(--app-window-startup-status-percent-font-size);
+    letter-spacing: var(--app-window-startup-status-percent-letter-spacing);
+    text-align: right;
+    opacity: 0.75;
+    margin-top: 4px;
+}
+.startup-status-hint {
+    font-size: var(--app-window-startup-status-hint-font-size);
+    font-weight: var(--app-window-startup-status-hint-font-weight);
+    letter-spacing: var(--app-window-startup-status-hint-letter-spacing);
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0.55;
+}
+.startup-status-hint--ready {
+    opacity: 1;
+    animation: startup-pulse 1.6s ease-in-out infinite;
+}
+@keyframes startup-blink {
+    0%, 100% { opacity: 0.35; }
+    50%      { opacity: 1; }
+}
+@keyframes startup-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.45; }
+}
+
+.chip-reveal {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 900ms ease 250ms;
+}
+.chip-reveal--on {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.startup-chip-insertion-curtain {
+    position: absolute;
+    inset: 0;
+    z-index: 9998;
+    animation: curtain-wipe linear forwards;
+}
+
+@keyframes curtain-wipe {
+    from { clip-path: polygon(0%   0%, 100% 0%, 100% 100%, -36% 100%); }
+    to   { clip-path: polygon(136% 0%, 100% 0%, 100% 100%, 100% 100%); }
+}
+
+
+.loading-screen-progress-container{
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+}
+.loading-screen-progress-container--in{
+    animation: loading-progress-in 0.3s ease both;
+}
+@keyframes loading-progress-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.loading-screen-progress-container--exit{
+    animation: loading-progress-out 0.3s ease forwards;
+}
+@keyframes loading-progress-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+.loading-screen-progress-bar-container{
+    margin-top: 60px;
+}
+
+.loading-screen-progress-bar{
+    margin-top: -55px;
+    width: 527px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loading-screen-progress-bar-track{
+    width: 100%;
+    height: 5px;
+    border-radius: 999px;
+    background: #FF9C00;
+    overflow: hidden;
+}
+.loading-screen-progress-bar-fill{
+    height: 100%;
+    background: #726FA8;
+    transition: width 500ms ease;
+}
+.loading-screen-progress-bar-pct{
+    margin-top: 8px;
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 200;
+    font-size: 32px;
+    line-height: 1;
+    color: #726FA8;
+}
+
+.loading-screen-progress-tips-container{
+    margin-top: 20px;
+}
+.loading-screen-progress-status-switcher{
+    position: absolute;
+    top: 177px;
+
+    width: 180px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+.loading-screen-progress-status{
+    display: block;
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #706FA6;
+    animation: loading-status-in 400ms ease;
+}
+@keyframes loading-status-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.loading-screen-progress-tips{
+    position: absolute;
+    top: 285px;
+    left: 105px;
+    width: 315px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(123, 121, 171, 0.7);
+}
+.loading-screen-progress-tip{
+    display: block;
+    text-align: center;
+    animation: loading-status-in 400ms ease;
+}
+.loading-screen-disclaimer{
+    margin-top: var(--app-window-startup-disclaimer-margin-top);
+    width: var(--app-window-startup-disclaimer-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.loading-screen-disclaimer-badge{
+    margin-bottom: var(--app-window-startup-disclaimer-badge-margin-bottom);
+    padding: var(--app-window-startup-disclaimer-badge-padding);
+    border-radius: var(--app-window-startup-disclaimer-badge-border-radius);
+    background: var(--app-window-startup-disclaimer-badge-background);
+    color: var(--app-window-startup-disclaimer-badge-font-color);
+    font-family: var(--app-window-startup-disclaimer-badge-font-family);
+    font-size: var(--app-window-startup-disclaimer-badge-font-size);
+    font-weight: var(--app-window-startup-disclaimer-badge-font-weight);
+    letter-spacing: var(--app-window-startup-disclaimer-badge-letter-spacing);
+    line-height: 1;
+    text-transform: uppercase;
+}
+.loading-screen-disclaimer-text{
+    margin: 0;
+    color: var(--app-window-startup-disclaimer-text-font-color);
+    font-family: var(--app-window-startup-disclaimer-text-font-family);
+    font-size: var(--app-window-startup-disclaimer-text-font-size);
+    font-weight: var(--app-window-startup-disclaimer-text-font-weight);
+    line-height: var(--app-window-startup-disclaimer-text-line-height);
+    text-wrap: pretty;
+}
+.startup-chip-insertion-pattern {
+    position: absolute;
+    top: var(--app-window-startup-pattern-canvas-top);
+    left: var(--app-window-startup-pattern-canvas-left);
+    width: 100%;
+    height: 100%;
+    border-radius: var(--app-window-startup-pattern-canvas-border-radius);
+    pointer-events: none;
+}
+.startup-chip-insertion-lines-stripes {
+    position: relative;
+}

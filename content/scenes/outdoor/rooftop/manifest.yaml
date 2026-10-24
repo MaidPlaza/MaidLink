@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "rooftop"
+name: "Крыша"
+category: "outdoor"
+
+tags:
+  - "открытое"
+  - "городское"
+  - "вечернее"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, rooftop, sky"
+    negative: "indoors, kitchen, bedroom"
+
+preview: "preview.png"

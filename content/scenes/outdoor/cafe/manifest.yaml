@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "cafe"
+name: "Уличное кафе"
+category: "outdoor"
+
+tags:
+  - "городское"
+  - "уютное"
+  - "дневное"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, cafe, table, coffee"
+    negative: "indoors, restaurant, night"
+
+preview: "preview.png"

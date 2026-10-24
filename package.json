@@ -1,0 +1,83 @@
+{
+  "name": "maidlink",
+  "productName": "MaidLink",
+  "version": "0.7.0",
+  "description": "MaidLink — AI companion with anime character archetypes",
+  "main": "electron/main.js",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "Fractal",
+  "scripts": {
+    "electron": "electron electron/main.js",
+    "start": "electron electron/main.js",
+    "dev:api": "python -m uvicorn api.server:app --port 8001 --host 127.0.0.1",
+    "dev:ui": "cd ui && npm run dev",
+    "build:ui": "npm --prefix ui run build",
+    "dist": "powershell -ExecutionPolicy Bypass -File build/build_installer.ps1"
+  },
+  "keywords": [
+    "ai",
+    "companion",
+    "maid",
+    "local-llm"
+  ],
+  "build": {
+    "appId": "com.maidlink.app",
+    "productName": "MaidLink",
+    "copyright": "Copyright © 2026 Fractal",
+    "publish": null,
+    "directories": {
+      "output": "release"
+    },
+    "asar": false,
+    "files": [
+      "electron/**/*",
+      "ui/dist/**/*",
+      "ui/electron/configs/**/*",
+      "package.json"
+    ],
+    "extraFiles": [
+      {
+        "from": "build/dist/licenses",
+        "to": "licenses"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "build/dist/backend",
+        "to": "backend"
+      }
+    ],
+    "fileAssociations": [
+      {
+        "ext": "maid",
+        "name": "MaidLink Maid Character",
+        "description": "Персонаж MaidLink (мейд)",
+        "icon": "build/icons/maid.ico"
+      },
+      {
+        "ext": "butler",
+        "name": "MaidLink Butler Character",
+        "description": "Персонаж MaidLink (батлер)",
+        "icon": "build/icons/butler.ico"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "MaidLink-Setup-${version}.${ext}",
+      "license": "build/dist/licenses/MaidLink-TERMS.txt",
+      "include": "build/installer.nsh"
+    }
+  },
+  "devDependencies": {
+    "electron": "^41.2.0",
+    "electron-builder": "^25.1.8"
+  }
+}

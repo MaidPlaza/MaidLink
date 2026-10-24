@@ -1,0 +1,98 @@
+@font-face {
+  font-family: 'FuturaDemiC';
+  src: url('../fonts/Geologica.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Francy';
+  src: url('../fonts/Geologica.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Display';
+  src: url('../fonts/NotoSansDisplay-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 62.5% 100%;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geologica';
+  src: url('../fonts/Geologica.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-Variable-Fonts.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Kantumruy Pro';
+  src: url('../fonts/KantumruyPro-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('../fonts/ChakraPetch-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}

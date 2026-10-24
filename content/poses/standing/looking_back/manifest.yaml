@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "looking_back"
+name: "Обернулась через плечо"
+category: "standing"
+
+tags:
+  - "кокетливое"
+  - "динамичное"
+  - "характерное"
+
+rating: "sfw"
+
+mood_hints:
+  - "playful"
+  - "curious"
+  - "mysterious"
+
+renderer_prompts:
+  sdxl:
+    positive: "standing, looking back, from behind, light smile"
+    negative: "sitting, lying"
+
+preview: "preview.png"

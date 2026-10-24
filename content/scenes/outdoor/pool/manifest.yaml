@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "pool"
+name: "Бассейн"
+category: "outdoor"
+
+tags:
+  - "летнее"
+  - "водное"
+  - "дневное"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, poolside, water"
+    negative: "indoors, office, night, snow"
+
+preview: "preview.png"

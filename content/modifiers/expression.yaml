@@ -1,0 +1,105 @@
+modifier_format_version: 1
+
+category: "expression"
+description: "Выражение лица персонажа (эмоция)"
+
+options:
+  - id: "gentle_smile"
+    name: "Мягкая улыбка"
+    renderer_prompts:
+      sdxl: "light smile"
+
+  - id: "cheerful"
+    name: "Бодрая радость"
+    renderer_prompts:
+      sdxl: "happy, smile, open mouth"
+
+  - id: "laughing"
+    name: "Смех"
+    renderer_prompts:
+      sdxl: "laughing, open mouth, closed eyes"
+
+  - id: "shy"
+    name: "Застенчивое"
+    renderer_prompts:
+      sdxl: "shy, blush, looking away"
+
+  - id: "embarrassed"
+    name: "Смущение"
+    renderer_prompts:
+      sdxl: "embarrassed, full-face blush, flustered"
+
+  - id: "curious"
+    name: "Любопытное"
+    renderer_prompts:
+      sdxl: "head tilt, raised eyebrow"
+
+  - id: "thoughtful"
+    name: "Задумчивое"
+    renderer_prompts:
+      sdxl: "thinking, looking up"
+
+  - id: "neutral_calm"
+    name: "Нейтральное спокойное"
+    renderer_prompts:
+      sdxl: "expressionless, closed mouth"
+
+  - id: "surprised"
+    name: "Удивление"
+    renderer_prompts:
+      sdxl: "surprised, wide-eyed, open mouth, raised eyebrows"
+
+  - id: "touched"
+    name: "Растроганное"
+    renderer_prompts:
+      sdxl: "light smile, happy tears, blush"
+
+  - id: "scared"
+    name: "Испуг"
+    renderer_prompts:
+      sdxl: "scared, wide-eyed, wavy mouth"
+
+  - id: "sad"
+    name: "Грусть"
+    renderer_prompts:
+      sdxl: "sad, looking down, frown"
+
+  - id: "teary"
+    name: "На грани слёз"
+    renderer_prompts:
+      sdxl: "teary eyes, frown"
+
+  - id: "pout"
+    name: "Надутые губки"
+    renderer_prompts:
+      sdxl: "pout, annoyed, looking to the side"
+
+  - id: "smug"
+    name: "Самодовольное"
+    renderer_prompts:
+      sdxl: "smug, smirk, half-closed eyes"
+
+  - id: "determined"
+    name: "Решительное"
+    renderer_prompts:
+      sdxl: "determined, serious"
+
+  - id: "sleepy"
+    name: "Сонное"
+    renderer_prompts:
+      sdxl: "sleepy, half-closed eyes"
+
+  - id: "wink"
+    name: "Подмигивание"
+    renderer_prompts:
+      sdxl: "one eye closed, smile"
+
+  - id: "serene"
+    name: "Безмятежное"
+    renderer_prompts:
+      sdxl: "closed eyes, light smile"
+
+  - id: "worried"
+    name: "Тревожное"
+    renderer_prompts:
+      sdxl: "worried, nervous, furrowed brow"

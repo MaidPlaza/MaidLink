@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "relaxed_lying"
+name: "Лёжа отдыхая"
+category: "lying"
+
+tags:
+  - "расслабленное"
+  - "уютное"
+  - "интимное"
+
+rating: "sfw"
+
+mood_hints:
+  - "relaxed"
+  - "sleepy"
+  - "intimate"
+
+renderer_prompts:
+  sdxl:
+    positive: "lying, on side, head rest, light smile, looking at viewer"
+    negative: "standing, sitting"
+
+preview: "preview.png"

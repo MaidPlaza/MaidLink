@@ -1,0 +1,75 @@
+modifier_format_version: 1
+
+category: "gesture"
+description: "Дополнительный жест руками (опционально, добавляет деталь). Не выбирай если pose уже занимает руки (reading, leaning_forward, hands_on_hips и т.п.)"
+
+options:
+  - id: "heart_hands"
+    name: "Сердечко из рук"
+    renderer_prompts:
+      sdxl: "heart hands"
+
+  - id: "peace_v"
+    name: "V-знак (peace)"
+    renderer_prompts:
+      sdxl: "v"
+
+  - id: "finger_to_lip"
+    name: "Палец у губ"
+    renderer_prompts:
+      sdxl: "shushing"
+
+  - id: "wave_hand"
+    name: "Машет рукой"
+    renderer_prompts:
+      sdxl: "waving, arm up"
+
+  - id: "thumbs_up"
+    name: "Большой палец вверх"
+    renderer_prompts:
+      sdxl: "thumbs up"
+
+  - id: "covering_mouth"
+    name: "Прикрывает рот рукой"
+    renderer_prompts:
+      sdxl: "covering own mouth"
+
+  - id: "hand_on_cheek"
+    name: "Рука у щеки"
+    renderer_prompts:
+      sdxl: "hand on own cheek"
+
+  - id: "pointing"
+    name: "Указывает пальцем"
+    renderer_prompts:
+      sdxl: "pointing"
+
+  - id: "ok_sign"
+    name: "Жест OK"
+    renderer_prompts:
+      sdxl: "ok sign"
+
+  - id: "hands_clasped"
+    name: "Руки сложены вместе"
+    renderer_prompts:
+      sdxl: "own hands clasped"
+
+  - id: "salute"
+    name: "Салют"
+    renderer_prompts:
+      sdxl: "salute"
+
+  - id: "beckoning"
+    name: "Манит к себе"
+    renderer_prompts:
+      sdxl: "beckoning"
+
+  - id: "hair_tucking"
+    name: "Поправляет волосы"
+    renderer_prompts:
+      sdxl: "tucking hair"
+
+  - id: "stretching"
+    name: "Потягивается"
+    renderer_prompts:
+      sdxl: "stretching, arms up"

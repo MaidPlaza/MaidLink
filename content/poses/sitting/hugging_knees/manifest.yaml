@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "hugging_knees"
+name: "Обнимая колени"
+category: "sitting"
+
+tags:
+  - "уязвимое"
+  - "уютное"
+  - "задумчивое"
+
+rating: "sfw"
+
+mood_hints:
+  - "vulnerable"
+  - "cozy"
+  - "pensive"
+
+renderer_prompts:
+  sdxl:
+    positive: "sitting, hugging own legs, knees up, looking at viewer"
+    negative: "standing, lying, spread arms"
+
+preview: "preview.png"

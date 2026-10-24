@@ -1,0 +1,28 @@
+# Зависимости и результаты сборки
+node_modules/
+ui/node_modules/
+ui/dist/
+build/venv_build/
+build/work/
+build/dist/
+release/
+__pycache__/
+*.pyc
+
+# llama.cpp — скачивает build/fetch_llama_server.py
+/llama-server/*
+!/llama-server/gemma4-fixed.jinja
+
+# Данные приложения при запуске из исходников
+/characters/
+/data/
+/logs/
+/models/
+/runtime/
+/runtime_cache/
+/addons/
+/portraits/
+/userdata/
+/image_gen/ComfyUI_windows_portable/
+/image_gen/generated/
+/image_gen/comfy_output/

@@ -1,0 +1,15 @@
+[
+  { "id_mood": 0,  "name_mood": "Ровное" },
+  { "id_mood": 1,  "name_mood": "Довольное" },
+  { "id_mood": 2,  "name_mood": "Растроганное" },
+  { "id_mood": 3,  "name_mood": "Воодушевлённое" },
+  { "id_mood": 4,  "name_mood": "Игривое" },
+  { "id_mood": 5,  "name_mood": "Грустное" },
+  { "id_mood": 6,  "name_mood": "Обиженное" },
+  { "id_mood": 7,  "name_mood": "Встревоженное" },
+  { "id_mood": 8,  "name_mood": "Смущённое" },
+  { "id_mood": 9,  "name_mood": "Раздражённое" },
+  { "id_mood": 10, "name_mood": "Удивление" },
+  { "id_mood": 11, "name_mood": "Испуг" },
+  { "id_mood": 12, "name_mood": "Смех" }
+]

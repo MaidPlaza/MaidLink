@@ -1,0 +1,48 @@
+.rich-fx {
+  color: var(--fx-color);
+  white-space: pre-wrap;
+}
+
+[data-rich-shader] .rich-fx {
+  color: transparent;
+}
+
+.action-fx {
+  color: var(--action-color, var(--chat-rich-text-action-font-color));
+  background: var(--action-bg, var(--chat-rich-text-action-background));
+  font-style: italic;
+  border-radius: var(--chat-rich-text-action-border-radius);
+  padding: var(--chat-rich-text-action-padding);
+  margin: 0 0.06em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.rich-shader-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gesture-fx {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  color: var(--action-color, var(--chat-rich-text-action-font-color));
+  background: var(--action-bg, var(--chat-rich-text-action-background));
+  border: var(--chat-rich-text-gesture-border);
+  border-radius: var(--chat-rich-text-gesture-border-radius);
+  padding: var(--chat-rich-text-gesture-padding);
+  margin: 0 0.1em;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+.gesture-fx svg {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}

@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "lying_on_back"
+name: "Лёжа на спине"
+category: "lying"
+
+tags:
+  - "расслабленное"
+  - "спокойное"
+  - "уютное"
+
+rating: "sfw"
+
+mood_hints:
+  - "relaxed"
+  - "calm"
+  - "dreamy"
+
+renderer_prompts:
+  sdxl:
+    positive: "lying, on back, looking up, hair spread out"
+    negative: "standing, sitting"
+
+preview: "preview.png"

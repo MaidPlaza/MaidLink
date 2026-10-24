@@ -1,0 +1,281 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 980666168417375,
+      "steps": 30,
+      "cfg": 5,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "17",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "JANKUTrainedChenkinNoobai_v777.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Загрузить сheckpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Пустое латентное изображение"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "embedding:lazyneg, embedding:lazyhand,",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Кодирование текста CLIP (Запрос)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "Декодировать VAE"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "velka",
+      "images": [
+        "30",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Сохранить изображение"
+    }
+  },
+  "17": {
+    "inputs": {
+      "text": "embedding:lazypos",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Кодирование текста CLIP (Запрос)"
+    }
+  },
+  "24": {
+    "inputs": {
+      "guide_size": 512,
+      "guide_size_for": true,
+      "max_size": 1024,
+      "seed": 778064231560888,
+      "steps": 25,
+      "cfg": 5,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 0.4,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 2,
+      "sam_detection_hint": "center-1",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "sam_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7,
+      "sam_mask_hint_use_negative": "False",
+      "drop_size": 10,
+      "wildcard": "",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "tiled_encode": false,
+      "tiled_decode": false,
+      "image": [
+        "8",
+        0
+      ],
+      "model": [
+        "4",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ],
+      "vae": [
+        "4",
+        2
+      ],
+      "positive": [
+        "17",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "bbox_detector": [
+        "28",
+        0
+      ],
+      "sam_model_opt": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "FaceDetailer",
+    "_meta": {
+      "title": "FaceDetailer"
+    }
+  },
+  "28": {
+    "inputs": {
+      "model_name": "bbox/face_yolov8m.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "29": {
+    "inputs": {
+      "model_name": "sam_vit_h_4b8939.pth",
+      "device_mode": "AUTO"
+    },
+    "class_type": "SAMLoader",
+    "_meta": {
+      "title": "SAMLoader (Impact)"
+    }
+  },
+  "30": {
+    "inputs": {
+      "guide_size": 384,
+      "guide_size_for": true,
+      "max_size": 1024,
+      "seed": 257391974889586,
+      "steps": 25,
+      "cfg": 5,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 0.45,
+      "feather": 10,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 20,
+      "bbox_crop_factor": 2,
+      "sam_detection_hint": "center-1",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "sam_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7,
+      "sam_mask_hint_use_negative": "False",
+      "drop_size": 10,
+      "wildcard": "",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "tiled_encode": false,
+      "tiled_decode": false,
+      "image": [
+        "24",
+        0
+      ],
+      "model": [
+        "4",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ],
+      "vae": [
+        "4",
+        2
+      ],
+      "positive": [
+        "17",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "bbox_detector": [
+        "31",
+        0
+      ],
+      "sam_model_opt": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "FaceDetailer",
+    "_meta": {
+      "title": "FaceDetailer"
+    }
+  },
+  "31": {
+    "inputs": {
+      "model_name": "bbox/hand_yolov8s.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "32": {
+    "inputs": {
+      "model_name": "sam_vit_h_4b8939.pth",
+      "device_mode": "AUTO"
+    },
+    "class_type": "SAMLoader",
+    "_meta": {
+      "title": "SAMLoader (Impact)"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+pose_format_version: 1
+
+id: "hands_free"
+name: "Свободная стойка"
+category: "standing"
+
+tags:
+  - "спокойное"
+  - "естественное"
+
+rating: "sfw"
+
+mood_hints:
+  - "calm"
+
+renderer_prompts:
+  sdxl:
+    positive: "standing, looking at viewer"
+    negative: "sitting, lying, arms behind back"

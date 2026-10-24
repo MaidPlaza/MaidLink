@@ -1,0 +1,67 @@
+ideas:
+  - {id: wariza_hands_floor, text: "сижу на полу в вариза, ладони упираются в пол между коленями, взгляд снизу вверх", tags: [wariza, looking up]}
+  - {id: crossed_ankles_lean_back, text: "сижу на полу, вытянув ноги и скрестив лодыжки, откидываюсь на руки", tags: [crossed ankles, arm support, leaning back]}
+  - {id: back_feet_up, text: "лежу на спине, ноги подняты вверх и скрещены в лодыжках, снимок сверху", tags: [legs up, crossed ankles, from above]}
+  - {id: fetal_curl, text: "лежу на боку, свернувшись калачиком, ладони у лица, снимок сверху", tags: [fetal position, on side, from above]}
+  - {id: all_fours_look_up, text: "стою на четвереньках, подаюсь к камере и смотрю снизу вверх", tags: [all fours, looking up]}
+  - {id: one_knee, text: "опускаюсь на одно колено, рука лежит на колене, ракурс снизу", tags: [on one knee, from below]}
+  - {id: squat_cheeks, text: "сижу на корточках, подперев щёки обеими ладонями, взгляд вверх", tags: [squatting, hand on own cheek, looking up]}
+  - {id: upside_down_back, text: "лежу на спине, голова запрокинута, снимок вверх ногами", tags: [upside-down, on back, head back]}
+  - {id: sideways_frame, text: "лежу на боку лицом к камере, кадр повёрнут набок вместе со мной", tags: [sideways, on side]}
+  - {id: lean_back_sigh, text: "откидываюсь назад на руки, запрокинув голову, глаза закрыты, выдох", tags: [leaning back, arm support, head back, closed eyes]}
+  - {id: stomach_hands_stomach, text: "сижу, положив обе ладони на живот, глаза прикрыты, по пояс", tags: [hand on own stomach, closed eyes]}
+  - {id: tiptoes_arms_back, text: "стою на цыпочках, руки за спиной, подаюсь к камере", tags: [tiptoes, arms behind back, leaning forward]}
+  - {id: one_leg_balance, text: "балансирую на одной ноге, руки раскинуты в стороны, в полный рост", tags: [standing on one leg, spread arms]}
+  - {id: one_leg_arm_up, text: "стою на одной ноге, другую подгибаю назад, одна рука вскинута вверх", tags: [standing on one leg, arm up]}
+  - {id: walk_away_look_back, text: "ухожу от камеры и оглядываюсь через плечо, снимок в движении", tags: [walking, looking back, from behind]}
+  - {id: run_hand_forward, text: "бегу к камере, одна рука тянется вперёд, в полный рост", tags: [running, outstretched hand]}
+  - {id: jump_tucked, text: "подпрыгиваю, поджав ноги, руки вскинуты вверх, снимок снизу", tags: [jumping, arms up, from below]}
+  - {id: dance_arm_out, text: "танцую: одна рука вытянута в сторону, другая на талии", tags: [dancing, outstretched arm, hand on own hip]}
+  - {id: bent_over_knees, text: "наклоняюсь к камере, упираясь ладонями в колени", tags: [leaning forward, hands on own knee]}
+  - {id: side_stretch, text: "потягиваюсь вбок, сцепив руки над головой, по пояс", tags: [stretching, arms up, leaning to the side]}
+  - {id: arms_behind_head, text: "стою вполоборота, заложив руки за голову, по пояс", tags: [arms behind head]}
+  - {id: spread_arms_here, text: "раскидываю руки в стороны, будто говорю «вот и я», в полный рост", tags: [spread arms, open hands]}
+  - {id: v_arms_below, text: "вскидываю обе руки вверх буквой V, снимок снизу, в полный рост", tags: [v arms, from below]}
+  - {id: w_arms, text: "поднимаю согнутые руки ладонями вперёд, как буква W, по пояс", tags: [w arms]}
+  - {id: salute, text: "выпрямляюсь и отдаю честь, взгляд прямо в камеру, по пояс", tags: [salute]}
+  - {id: zombie, text: "вытягиваю руки вперёд, как зомби, и шагаю к камере", tags: [zombie pose, outstretched arms]}
+  - {id: hip_point, text: "рука на бедре, другой указываю прямо в камеру", tags: [pointing at viewer, hand on own hip]}
+  - {id: floating_knees, text: "парю в воздухе, поджав ноги, руки свободно в стороны", tags: [floating, midair]}
+  - {id: floating_upside, text: "парю вниз головой и смотрю в камеру снизу вверх", tags: [upside-down, floating]}
+  - {id: double_v_grin, text: "показываю «виктори» обеими руками и широко улыбаюсь, по пояс", tags: [double v]}
+  - {id: v_over_eye_wink, text: "подмигиваю, держа знак «виктори» у глаза, лицо крупно", tags: [v over eye, one eye closed]}
+  - {id: finger_heart_cheek, text: "складываю маленькое сердечко пальцами у щеки, по пояс", tags: [finger heart]}
+  - {id: ok_monocle, text: "складываю пальцы колечком «ок» у глаза, как монокль", tags: [ok sign]}
+  - {id: thumbs_up_wink, text: "подмигиваю и показываю большой палец вверх, по пояс", tags: [thumbs up, one eye closed]}
+  - {id: wave_both_tiptoe, text: "машу обеими руками над головой, привстав на цыпочки", tags: [waving, tiptoes, arms up]}
+  - {id: wave_shy, text: "машу ладонью у плеча, чуть смущённо, по пояс", tags: [waving]}
+  - {id: beckon, text: "маню пальцем к себе, прищурившись, по пояс", tags: [beckoning]}
+  - {id: idea_finger_up, text: "поднимаю указательный палец вверх, будто пришла идея", tags: [index finger raised]}
+  - {id: shush_close, text: "прикладываю палец к губам, наклонившись к камере, лицо крупно", tags: [shushing, leaning forward]}
+  - {id: fingers_together_away, text: "свожу кончики указательных пальцев и отвожу взгляд, по пояс", tags: [index fingers together, looking away]}
+  - {id: fox_puppet, text: "складываю из пальцев лисичку и держу её у щеки", tags: [fox shadow puppet]}
+  - {id: claw_growl, text: "сгибаю пальцы когтями на уровне плеч, изображаю рык", tags: [claw pose, open mouth]}
+  - {id: paw_cat, text: "держу ладони лапками у лица, по-кошачьи, лицо крупно", tags: [paw pose]}
+  - {id: bunny_hands, text: "приставляю ладони к макушке ушками, как у кролика", tags: [rabbit pose]}
+  - {id: peek_fingers, text: "закрываю глаза ладонями и подглядываю сквозь пальцы", tags: [covering own eyes, spread fingers]}
+  - {id: shrug_open_hands, text: "развожу руками ладонями вверх и пожимаю плечами", tags: [open hands, shrugging]}
+  - {id: fists_ready, text: "сжимаю кулаки перед грудью, решительный взгляд, по пояс", tags: [clenched hands, determined]}
+  - {id: chin_stroke, text: "поглаживаю подбородок, прищурившись, будто что-то прикидываю", tags: [stroking own chin, thinking]}
+  - {id: hold_elbow, text: "стою вполоборота, обхватив ладонью локоть другой руки", tags: [hand on own arm]}
+  - {id: selfie_v, text: "селфи сверху на вытянутой руке, «виктори» у щеки", tags: [selfie, from above]}
+  - {id: dutch_hands_hips, text: "наклонённый кадр снизу: стою, уперев руки в бока", tags: [dutch angle, from below, hands on own hips]}
+  - {id: fisheye_close, text: "лицо почти у объектива, искажение как у рыбьего глаза", tags: [fisheye, portrait]}
+  - {id: wide_far, text: "снимок издалека: стою маленькой фигуркой посреди пустого кадра", tags: [very wide shot]}
+  - {id: wink_tongue, text: "подмигиваю и показываю язык, наклонившись к камере, крупно", tags: [one eye closed, tongue]}
+  - {id: pout_crossed_arms, text: "надуваю губы, скрестив руки на груди, по пояс", tags: [pout, crossed arms]}
+  - {id: smug_hip, text: "смотрю свысока с самодовольной улыбкой, рука на бедре", tags: [hand on own hip, smirk]}
+  - {id: eye_roll, text: "закатываю глаза, отвернувшись вполоборота, руки скрещены", tags: [rolling eyes, crossed arms]}
+  - {id: eyebrow_fist, text: "приподнимаю бровь, подперев щёку кулаком, лицо крупно", tags: [raised eyebrow, hand on own cheek]}
+  - {id: laugh_cover, text: "смеюсь, зажмурившись и прикрыв рот ладонью", tags: [laughing, closed eyes, covering own mouth]}
+  - {id: grin_lean, text: "широко улыбаюсь во все зубы, наклонившись к камере", tags: [leaning forward, open mouth]}
+  - {id: joy_arms_up, text: "смеюсь с открытым ртом, руки вскинуты вверх, в полный рост", tags: [arms up, laughing]}
+  - {id: surprised_mouth, text: "удивлённо прикрываю рот ладонями, глаза широко раскрыты", tags: [surprised, covering own mouth]}
+  - {id: finger_lip_up, text: "задумчиво касаюсь пальцем губ, смотрю вверх, по пояс", tags: [thinking, looking up]}
+  - {id: happy_tears_wipe, text: "улыбаюсь сквозь слёзы, вытирая уголок глаза пальцем", tags: [happy tears]}
+  - {id: stare_close, text: "молча и пристально смотрю в объектив, лицо крупно", tags: [staring, close-up]}
+  - {id: confused_scratch, text: "чешу затылок в недоумении, взгляд в сторону, по пояс", tags: [confused, hand on own head]}

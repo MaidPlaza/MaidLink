@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "hands_on_hips"
+name: "Руки на бёдрах"
+category: "standing"
+
+tags:
+  - "уверенное"
+  - "энергичное"
+  - "характерное"
+
+rating: "sfw"
+
+mood_hints:
+  - "confident"
+  - "bold"
+  - "playful"
+
+renderer_prompts:
+  sdxl:
+    positive: "standing, hands on own hips, looking at viewer"
+    negative: "sitting, lying, arms behind back, shy"
+
+preview: "preview.png"

@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "festival"
+name: "Фестиваль"
+category: "outdoor"
+
+tags:
+  - "праздничное"
+  - "вечернее"
+  - "японское"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "festival, paper lantern, night, outdoors"
+    negative: "indoors, office, day"
+
+preview: "preview.png"

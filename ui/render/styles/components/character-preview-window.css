@@ -1,0 +1,124 @@
+.character-preview-container{
+  position: absolute;
+  height: 650px;
+  width: 400px;
+  background: var(--character-preview-window-container-background);
+  left: var(--character-preview-window-container-left);
+
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+.character-preview-container--hidden{
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+}
+
+.character-preview-background{
+  position: absolute;
+  top:           var(--character-preview-window-background-top);
+  left:          var(--character-preview-window-background-left);
+  height:        var(--character-preview-window-background-height);
+  width:         var(--character-preview-window-background-width);
+  border-radius: var(--character-preview-window-background-border-radius);
+  box-shadow:    var(--character-preview-window-background-box-shadow);
+  background:    var(--character-preview-window-background-background);
+}
+.character-preview-avatar{
+  position: absolute;
+  height: 480px;
+  width: 315px;
+  overflow: hidden;
+  top:  var(--character-preview-window-avatar-top);
+  left: var(--character-preview-window-avatar-left);
+}
+
+ 
+
+.character-preview-avatar img{
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.character-preview-svg{
+  position: relative;
+  height: 650px;
+  width: 400px;
+}
+
+.charater-preview-id-text{
+  position: absolute;
+  top:         var(--character-preview-window-id-top);
+  left:        var(--character-preview-window-id-left);
+  color:       var(--character-preview-window-id-color);
+  transform:   var(--character-preview-window-id-transform);
+  font-family: var(--character-preview-window-id-font-family);
+  font-weight: var(--character-preview-window-id-font-weight);
+  font-size:   var(--character-preview-window-id-font-size);
+}
+
+.charater-preview-name-text{
+  position: absolute;
+  top:  calc(var(--character-preview-window-name-top) + 8px);
+  left: calc(var(--character-preview-window-name-left) + 23.5px);
+  white-space: nowrap;
+  transform-origin: 0 0;
+  transform:   var(--character-preview-window-name-transform) translate(-50%, -50%);
+  color:       var(--character-preview-window-name-color);
+  font-family: var(--character-preview-window-name-font-family);
+  font-weight: var(--character-preview-window-name-font-weight);
+  font-size:   var(--character-preview-window-name-font-size);
+  letter-spacing: var(--character-preview-window-name-letter-spacing);
+}
+
+.charater-preview-thoughts-text{
+  position: absolute;
+  top:         var(--character-preview-window-thoughts-top);
+  left:        var(--character-preview-window-thoughts-left);
+  width:       var(--character-preview-window-thoughts-width);
+  height:      var(--character-preview-window-thoughts-height);
+  color:       var(--character-preview-window-thoughts-color);
+  font-family: var(--character-preview-window-thoughts-font-family);
+  font-weight: var(--character-preview-window-thoughts-font-weight);
+  font-size:   var(--character-preview-window-thoughts-font-size);
+}
+
+.charater-preview-mood-text{
+  position: absolute;
+  top:         var(--character-preview-window-mood-top);
+  left:        var(--character-preview-window-mood-left);
+  color:       var(--character-preview-window-mood-color);
+  font-family: var(--character-preview-window-mood-font-family);
+  font-weight: var(--character-preview-window-mood-font-weight);
+  font-size:   var(--character-preview-window-mood-font-size);
+}
+
+.charater-preview-mood-text::first-letter{
+  text-transform: uppercase;
+}
+
+
+
+.character-preview-pat-zone{
+  position: absolute;
+  top: var(--character-preview-window-pat-zone-top);
+  left: var(--character-preview-window-pat-zone-left);
+  width: 50%;
+  height: 33%;
+  z-index: 2;
+  cursor: pointer;
+  border-radius: var(--character-preview-window-pat-zone-border-radius);
+  background: var(--character-preview-window-pat-zone-background);
+  transition: background 0.2s ease;
+}
+.character-preview-pat-zone:hover{
+  background: var(--character-preview-window-pat-zone-background-hover);
+}
+.character-preview-svg{
+  pointer-events: none;
+}

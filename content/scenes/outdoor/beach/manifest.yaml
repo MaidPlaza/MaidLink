@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "beach"
+name: "Пляж"
+category: "outdoor"
+
+tags:
+  - "летнее"
+  - "морское"
+  - "дневное"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "beach, ocean, outdoors"
+    negative: "indoors, office, night, snow"
+
+preview: "preview.png"

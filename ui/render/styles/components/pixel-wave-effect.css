@@ -1,0 +1,76 @@
+.pixel-wave-layer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+.pixel-wave-grid {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+
+.pixel-wave-cell {
+  opacity: 0;
+  animation-name: pixel-wave-pop;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.2, 0, 0.4, 1);
+  transform-origin: center;
+  will-change: opacity, transform;
+  contain: layout style paint;
+}
+
+.pixel-wave-cell.ca-1 {
+  box-shadow: calc(var(--ca-px) * -1) 0 0 var(--app-window-pixel-wave-aberration-red);
+}
+.pixel-wave-cell.ca-2 {
+  box-shadow: var(--ca-px) 0 0 var(--app-window-pixel-wave-aberration-cyan);
+}
+.pixel-wave-cell.ca-3 {
+  box-shadow:
+    calc(var(--ca-px) * -1) 0 0 var(--app-window-pixel-wave-aberration-red),
+    var(--ca-px) 0 0 var(--app-window-pixel-wave-aberration-cyan);
+}
+.pixel-wave-cell.ca-4 {
+  box-shadow: 0 calc(var(--ca-px) * -0.6) 0 var(--app-window-pixel-wave-aberration-yellow);
+}
+.pixel-wave-cell.ca-5 {
+  box-shadow:
+    calc(var(--ca-px) * -1) 0 0 var(--app-window-pixel-wave-aberration-red),
+    0 calc(var(--ca-px) * -0.6) 0 var(--app-window-pixel-wave-aberration-yellow);
+}
+.pixel-wave-cell.ca-6 {
+  box-shadow:
+    var(--ca-px) 0 0 var(--app-window-pixel-wave-aberration-cyan),
+    0 calc(var(--ca-px) * -0.6) 0 var(--app-window-pixel-wave-aberration-yellow);
+}
+.pixel-wave-cell.ca-7 {
+  box-shadow:
+    calc(var(--ca-px) * -1) 0 0 var(--app-window-pixel-wave-aberration-red),
+    var(--ca-px) 0 0 var(--app-window-pixel-wave-aberration-cyan),
+    0 calc(var(--ca-px) * -0.6) 0 var(--app-window-pixel-wave-aberration-yellow);
+}
+
+.pixel-wave-cell-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--app-window-pixel-wave-cell-font);
+  font-weight: var(--app-window-pixel-wave-cell-font-weight);
+  font-size: min(
+    calc(100vw / var(--gc, 80) / 0.55),
+    calc(100vh / var(--gr, 24) * 0.95)
+  );
+  line-height: var(--app-window-pixel-wave-cell-line-height);
+  color: var(--app-window-pixel-wave-cell-font-color);
+  user-select: none;
+  overflow: hidden;
+}
+
+@keyframes pixel-wave-pop {
+  0%   { opacity: 0;    transform: scale(0.5); }
+  25%  { opacity: 0.92; transform: scale(1.08); }
+  75%  { opacity: 0.85; transform: scale(1); }
+  100% { opacity: 0;    transform: scale(0.9); }
+}

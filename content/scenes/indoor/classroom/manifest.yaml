@@ -1,0 +1,19 @@
+scene_format_version: 1
+
+id: "classroom"
+name: "Класс"
+category: "indoor"
+
+tags:
+  - "учебное"
+  - "светлое"
+  - "дневное"
+
+rating: "sfw"
+
+renderer_prompts:
+  sdxl:
+    positive: "simple background, classroom, chalkboard"
+    negative: "outdoors, kitchen, bedroom"
+
+preview: "preview.png"

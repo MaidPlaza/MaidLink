@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="280" viewBox="83 336 1125 525" fill="none">
+  <style>
+    .caret {
+      animation: blink 1.06s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .caret { animation: none; opacity: 1; }
+    }
+  </style>
+
+  <rect x="261" y="711" width="150" height="150" fill="#706FA6"/>
+  <rect class="caret" x="486" y="711" width="525" height="150" fill="#FF9D00"/>
+</svg>

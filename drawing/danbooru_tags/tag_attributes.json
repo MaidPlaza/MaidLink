@@ -1,0 +1,2962 @@
+{
+  "_meta": {
+    "purpose": "Per-tag метаданные сверх канон-имени (tag_map.json): zone (мин. уровень кадра) + labels (метки для стиль-директив exclude) + rating (nsfw; sfw = отсутствие поля). Расширяемо: добавляй ключи к тегу.",
+    "zones": [
+      "face",
+      "head_shoulders",
+      "upper_body",
+      "cowboy",
+      "full"
+    ],
+    "rule": "тег виден если framing_level >= zone; без zone = face. labels — cross-cutting метки (exclude: ['label:X']). rating='nsfw' прячется при max_rating=sfw; без поля = sfw.",
+    "generated_by": "scripts/build_tag_attributes.py (бутстрап; правится поштучно)"
+  },
+  "tags": {
+    "abs": {
+      "zone": "cowboy"
+    },
+    "adjusting gloves": {
+      "zone": "head_shoulders"
+    },
+    "adjusting hair": {
+      "zone": "head_shoulders"
+    },
+    "adjusting legwear": {
+      "zone": "full"
+    },
+    "after sex": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "afterglow": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "ahegao": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "all fours": {
+      "zone": "full"
+    },
+    "anal": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "anal beads": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "anal fingering": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "anal hair": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "ankle boots": {
+      "zone": "full"
+    },
+    "ankle socks": {
+      "zone": "full"
+    },
+    "ankles": {
+      "zone": "full"
+    },
+    "anklet": {
+      "zone": "full"
+    },
+    "anus": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "aphrodisiac": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "areola slip": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "areolae": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "arm around shoulder": {
+      "zone": "head_shoulders"
+    },
+    "arm at side": {
+      "zone": "head_shoulders"
+    },
+    "arm behind back": {
+      "zone": "head_shoulders"
+    },
+    "arm behind head": {
+      "zone": "head_shoulders"
+    },
+    "arm between breasts": {
+      "zone": "upper_body"
+    },
+    "arm garter": {
+      "zone": "head_shoulders"
+    },
+    "arm up": {
+      "zone": "head_shoulders"
+    },
+    "arm warmers": {
+      "zone": "head_shoulders"
+    },
+    "armband": {
+      "zone": "head_shoulders"
+    },
+    "armpits": {
+      "zone": "upper_body"
+    },
+    "arms": {
+      "zone": "head_shoulders"
+    },
+    "arms at sides": {
+      "zone": "head_shoulders"
+    },
+    "arms behind back": {
+      "zone": "head_shoulders"
+    },
+    "arms behind head": {
+      "zone": "head_shoulders"
+    },
+    "arms up": {
+      "zone": "head_shoulders"
+    },
+    "aroused": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "ascot": {
+      "zone": "head_shoulders"
+    },
+    "ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "ass cutout": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "ass focus": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pussy focus": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "ass ripple": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "ass shake": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "ass smack": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "ass visible through thighs": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "asymmetrical breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "babydoll": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "back": {
+      "zone": "upper_body"
+    },
+    "backboob": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "backlighting": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "ball gag": {
+      "zone": "head_shoulders",
+      "rating": "nsfw"
+    },
+    "balloon": {
+      "zone": "head_shoulders"
+    },
+    "bandaged hand": {
+      "zone": "head_shoulders"
+    },
+    "bandaid on hand": {
+      "zone": "head_shoulders"
+    },
+    "bandaid on pussy": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "bandeau": {
+      "zone": "upper_body"
+    },
+    "bangle": {
+      "zone": "head_shoulders"
+    },
+    "bare arms": {
+      "zone": "upper_body"
+    },
+    "bare back": {
+      "zone": "upper_body"
+    },
+    "bare legs": {
+      "zone": "full"
+    },
+    "bare midriff": {
+      "zone": "cowboy"
+    },
+    "bare shoulders": {
+      "zone": "head_shoulders"
+    },
+    "barefoot": {
+      "zone": "full"
+    },
+    "basket": {
+      "zone": "head_shoulders"
+    },
+    "bdsm": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "bead necklace": {
+      "zone": "head_shoulders"
+    },
+    "beckoning": {
+      "zone": "head_shoulders"
+    },
+    "belly": {
+      "zone": "cowboy"
+    },
+    "belt bra": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "bento": {
+      "zone": "head_shoulders"
+    },
+    "between breasts": {
+      "zone": "upper_body"
+    },
+    "biceps": {
+      "zone": "head_shoulders"
+    },
+    "bike shorts": {
+      "zone": "cowboy"
+    },
+    "bikini bottom only": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "blindfold": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "bloom": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "bloomers": {
+      "zone": "cowboy"
+    },
+    "body freckles": {
+      "zone": "face"
+    },
+    "bolo tie": {
+      "zone": "head_shoulders"
+    },
+    "bondage": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "book": {
+      "zone": "head_shoulders"
+    },
+    "boots": {
+      "zone": "full"
+    },
+    "bottle": {
+      "zone": "head_shoulders"
+    },
+    "bottomless": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "bouncing ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "bouncing breasts": {
+      "zone": "upper_body"
+    },
+    "bow legwear": {
+      "zone": "full"
+    },
+    "bowing": {
+      "zone": "upper_body"
+    },
+    "bowl": {
+      "zone": "head_shoulders"
+    },
+    "bowtie": {
+      "zone": "head_shoulders"
+    },
+    "box": {
+      "zone": "head_shoulders"
+    },
+    "boxing gloves": {
+      "zone": "head_shoulders"
+    },
+    "bra": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "bra lift": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "bracelet": {
+      "zone": "head_shoulders"
+    },
+    "breast bondage": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breast lift": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breast press": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breast rest": {
+      "zone": "upper_body"
+    },
+    "breast slip": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breast smother": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breast sucking": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breast suppress": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breastfeeding": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breastless clothes": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breasts apart": {
+      "zone": "upper_body"
+    },
+    "breasts on glass": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breasts on head": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breasts on table": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breasts out": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "breasts squeezed together": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "bridal gauntlets": {
+      "zone": "head_shoulders"
+    },
+    "broom": {
+      "zone": "head_shoulders"
+    },
+    "bucket": {
+      "zone": "head_shoulders"
+    },
+    "bukkake": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "bulge": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "bursting breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "bustier": {
+      "zone": "upper_body"
+    },
+    "butt crack": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "butt plug": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cake": {
+      "zone": "head_shoulders"
+    },
+    "cameltoe": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "camera": {
+      "zone": "head_shoulders"
+    },
+    "camisole": {
+      "zone": "upper_body"
+    },
+    "can": {
+      "zone": "head_shoulders"
+    },
+    "candle": {
+      "zone": "head_shoulders"
+    },
+    "candy apple": {
+      "zone": "head_shoulders"
+    },
+    "cane": {
+      "zone": "head_shoulders"
+    },
+    "capelet": {
+      "zone": "head_shoulders"
+    },
+    "carrying": {
+      "zone": "head_shoulders"
+    },
+    "cellphone": {
+      "zone": "head_shoulders"
+    },
+    "center opening": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "chain necklace": {
+      "zone": "head_shoulders"
+    },
+    "chastity belt": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "chastity cage": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cheek poking": {
+      "zone": "head_shoulders"
+    },
+    "chocolate on breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "choker": {
+      "zone": "head_shoulders"
+    },
+    "chopsticks": {
+      "zone": "head_shoulders"
+    },
+    "chromatic aberration": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "claw pose": {
+      "zone": "head_shoulders"
+    },
+    "cleavage": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cleft of venus": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "clenched hand": {
+      "zone": "head_shoulders"
+    },
+    "clipboard": {
+      "zone": "head_shoulders"
+    },
+    "clitoral piercing": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "clitoris": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "clitoris piercing": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "clitoris ring": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "clitoris slip": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cloak": {
+      "zone": "head_shoulders"
+    },
+    "clothed sex": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "clothes aside": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "clothes lift": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "clothing aside": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cock ring": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "collar": {
+      "zone": "head_shoulders"
+    },
+    "collarbone": {
+      "zone": "head_shoulders"
+    },
+    "colored nipples": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "completely nude": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "computer": {
+      "zone": "head_shoulders"
+    },
+    "condom on penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "contrapposto": {
+      "zone": "cowboy"
+    },
+    "controller": {
+      "zone": "head_shoulders"
+    },
+    "covered nipples": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "covered penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "covering ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "covering breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "covering crotch": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "covering face": {
+      "zone": "head_shoulders"
+    },
+    "covering one eye": {
+      "zone": "head_shoulders"
+    },
+    "covering own eyes": {
+      "zone": "head_shoulders"
+    },
+    "covering own mouth": {
+      "zone": "head_shoulders"
+    },
+    "covering privates": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cowgirl position": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "crawling": {
+      "zone": "full"
+    },
+    "crew neck": {
+      "zone": "head_shoulders"
+    },
+    "cross necklace": {
+      "zone": "head_shoulders"
+    },
+    "cross tie": {
+      "zone": "head_shoulders"
+    },
+    "crossed ankles": {
+      "zone": "full"
+    },
+    "crossed arms": {
+      "zone": "head_shoulders"
+    },
+    "crossed legs": {
+      "zone": "cowboy"
+    },
+    "crotch grab": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "crotch rope": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cuffs": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cum": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cum in ass": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "cum in mouth": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "cum in pussy": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cum on ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cum on body": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cum on breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cum on hair": {
+      "zone": "head_shoulders",
+      "rating": "nsfw"
+    },
+    "cum on penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cum on pussy": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cumdrip": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cumdrip from penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "cunnilingus": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cup": {
+      "zone": "head_shoulders"
+    },
+    "cupless bra": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "cupping hands": {
+      "zone": "head_shoulders"
+    },
+    "curtsey": {
+      "zone": "cowboy"
+    },
+    "dappled sunlight": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "dark areolae": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "dark labia": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "dark nipples": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "dark penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "deep penetration": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "deepthroat": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "detached collar": {
+      "zone": "head_shoulders"
+    },
+    "dildo": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "dirty feet": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "doggystyle": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "doll": {
+      "zone": "head_shoulders"
+    },
+    "dominatrix": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "dorsiflexion": {
+      "zone": "full"
+    },
+    "double penetration": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "double v": {
+      "zone": "head_shoulders"
+    },
+    "downblouse": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "dress hold": {
+      "zone": "cowboy"
+    },
+    "dress lift": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "dustpan": {
+      "zone": "head_shoulders"
+    },
+    "earphones": {
+      "zone": "head_shoulders"
+    },
+    "egg vibrator": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "ejaculation": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "elbow gloves": {
+      "zone": "head_shoulders"
+    },
+    "en pointe": {
+      "zone": "full"
+    },
+    "enema": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "envelope": {
+      "zone": "head_shoulders"
+    },
+    "erection": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "erection under clothes": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "face to breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "facepalm": {
+      "zone": "head_shoulders"
+    },
+    "facial": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "falling": {
+      "zone": "full"
+    },
+    "fat mons": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "feather boa": {
+      "zone": "head_shoulders"
+    },
+    "feather duster": {
+      "zone": "head_shoulders"
+    },
+    "feet": {
+      "zone": "full"
+    },
+    "fellatio": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "female pubic hair": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "femdom": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "fetal position": {
+      "zone": "full"
+    },
+    "fighting stance": {
+      "zone": "cowboy"
+    },
+    "finger gun": {
+      "zone": "head_shoulders"
+    },
+    "finger heart": {
+      "zone": "head_shoulders"
+    },
+    "fingering": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "fingerless gloves": {
+      "zone": "head_shoulders"
+    },
+    "fishnet gloves": {
+      "zone": "head_shoulders"
+    },
+    "fishnet thighhighs": {
+      "zone": "full"
+    },
+    "fist pump": {
+      "zone": "head_shoulders"
+    },
+    "fisting": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "flaccid": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "flat ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "flat chest": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "flexing": {
+      "zone": "head_shoulders"
+    },
+    "floating": {
+      "zone": "full"
+    },
+    "flower necklace": {
+      "zone": "head_shoulders"
+    },
+    "flying": {
+      "zone": "full"
+    },
+    "fold-over gloves": {
+      "zone": "head_shoulders"
+    },
+    "folding fan": {
+      "zone": "head_shoulders"
+    },
+    "foot dangle": {
+      "zone": "full"
+    },
+    "foot worship": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "footjob": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "foreskin": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "fork": {
+      "zone": "head_shoulders"
+    },
+    "framed breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "frilled": {
+      "zone": "full"
+    },
+    "frilled collar": {
+      "zone": "head_shoulders"
+    },
+    "frilled gloves": {
+      "zone": "head_shoulders"
+    },
+    "frottage": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "frying pan": {
+      "zone": "head_shoulders"
+    },
+    "fucked silly": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "fur-trimmed gloves": {
+      "zone": "head_shoulders"
+    },
+    "fur-trimmed legwear": {
+      "zone": "full"
+    },
+    "futanari masturbation": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "gag": {
+      "zone": "head_shoulders",
+      "rating": "nsfw"
+    },
+    "garter belt": {
+      "zone": "full"
+    },
+    "garter straps": {
+      "zone": "full"
+    },
+    "gauntlets": {
+      "zone": "head_shoulders"
+    },
+    "geta": {
+      "zone": "full"
+    },
+    "gift": {
+      "zone": "head_shoulders"
+    },
+    "gigantic breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "gigantic penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "girthy penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "glass": {
+      "zone": "head_shoulders"
+    },
+    "gloves": {
+      "zone": "head_shoulders"
+    },
+    "grabbing another's ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "grabbing another's breast": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "grabbing another's penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "grabbing own ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "gradient legwear": {
+      "zone": "full"
+    },
+    "groin": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "groping": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "guided breast grab": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "hair flip": {
+      "zone": "head_shoulders"
+    },
+    "hairjob": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "half gloves": {
+      "zone": "head_shoulders"
+    },
+    "halterneck": {
+      "zone": "head_shoulders"
+    },
+    "hand between own legs": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "hand fan": {
+      "zone": "head_shoulders"
+    },
+    "hand in own hair": {
+      "zone": "head_shoulders"
+    },
+    "hand in pocket": {
+      "zone": "cowboy"
+    },
+    "hand on another's ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "hand on another's cheek": {
+      "zone": "head_shoulders"
+    },
+    "hand on another's face": {
+      "zone": "head_shoulders"
+    },
+    "hand on another's head": {
+      "zone": "head_shoulders"
+    },
+    "hand on another's shoulder": {
+      "zone": "head_shoulders"
+    },
+    "hand on own arm": {
+      "zone": "head_shoulders"
+    },
+    "hand on own ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "hand on own cheek": {
+      "zone": "head_shoulders"
+    },
+    "hand on own chest": {
+      "zone": "head_shoulders"
+    },
+    "hand on own chin": {
+      "zone": "head_shoulders"
+    },
+    "hand on own ear": {
+      "zone": "head_shoulders"
+    },
+    "hand on own face": {
+      "zone": "head_shoulders"
+    },
+    "hand on own forehead": {
+      "zone": "head_shoulders"
+    },
+    "hand on own head": {
+      "zone": "head_shoulders"
+    },
+    "hand on own hip": {
+      "zone": "cowboy"
+    },
+    "hand on own knee": {
+      "zone": "cowboy"
+    },
+    "hand on own leg": {
+      "zone": "cowboy"
+    },
+    "hand on own neck": {
+      "zone": "head_shoulders"
+    },
+    "hand on own shoulder": {
+      "zone": "head_shoulders"
+    },
+    "hand on own stomach": {
+      "zone": "head_shoulders"
+    },
+    "hand on own thigh": {
+      "zone": "cowboy"
+    },
+    "handbag": {
+      "zone": "head_shoulders"
+    },
+    "handcuffs": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "handheld game console": {
+      "zone": "head_shoulders"
+    },
+    "handjob": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "handkerchief": {
+      "zone": "head_shoulders"
+    },
+    "hands": {
+      "zone": "head_shoulders"
+    },
+    "hands in pockets": {
+      "zone": "cowboy"
+    },
+    "hands on own ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "hands on own hips": {
+      "zone": "cowboy"
+    },
+    "hands on own thighs": {
+      "zone": "cowboy"
+    },
+    "handstand": {
+      "zone": "full"
+    },
+    "hanging breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "head between breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "head rest": {
+      "zone": "head_shoulders"
+    },
+    "headpat": {
+      "zone": "head_shoulders"
+    },
+    "headphones": {
+      "zone": "head_shoulders"
+    },
+    "heart arms": {
+      "zone": "head_shoulders"
+    },
+    "heart hands": {
+      "zone": "head_shoulders"
+    },
+    "heart necklace": {
+      "zone": "head_shoulders"
+    },
+    "heel": {
+      "zone": "full"
+    },
+    "high collar": {
+      "zone": "head_shoulders"
+    },
+    "high heels": {
+      "zone": "full"
+    },
+    "high-waist skirt": {
+      "zone": "cowboy"
+    },
+    "hip dips": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "hips": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "hitachi magic wand": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "holding": {
+      "zone": "head_shoulders"
+    },
+    "holding animal": {
+      "zone": "head_shoulders"
+    },
+    "holding bag": {
+      "zone": "head_shoulders"
+    },
+    "holding book": {
+      "zone": "head_shoulders"
+    },
+    "holding bottle": {
+      "zone": "head_shoulders"
+    },
+    "holding bouquet": {
+      "zone": "head_shoulders"
+    },
+    "holding bowl": {
+      "zone": "head_shoulders"
+    },
+    "holding broom": {
+      "zone": "head_shoulders"
+    },
+    "holding cat": {
+      "zone": "head_shoulders"
+    },
+    "holding chopsticks": {
+      "zone": "head_shoulders"
+    },
+    "holding clothes": {
+      "zone": "head_shoulders"
+    },
+    "holding cup": {
+      "zone": "head_shoulders"
+    },
+    "holding fan": {
+      "zone": "head_shoulders"
+    },
+    "holding flower": {
+      "zone": "head_shoulders"
+    },
+    "holding food": {
+      "zone": "head_shoulders"
+    },
+    "holding gift": {
+      "zone": "head_shoulders"
+    },
+    "holding gloves": {
+      "zone": "head_shoulders"
+    },
+    "holding hands": {
+      "zone": "head_shoulders"
+    },
+    "holding knife": {
+      "zone": "head_shoulders"
+    },
+    "holding lantern": {
+      "zone": "head_shoulders"
+    },
+    "holding object": {
+      "zone": "head_shoulders"
+    },
+    "holding own hair": {
+      "zone": "head_shoulders"
+    },
+    "holding paper": {
+      "zone": "head_shoulders"
+    },
+    "holding pen": {
+      "zone": "head_shoulders"
+    },
+    "holding phone": {
+      "zone": "head_shoulders"
+    },
+    "holding plate": {
+      "zone": "head_shoulders"
+    },
+    "holding spoon": {
+      "zone": "head_shoulders"
+    },
+    "holding stuffed toy": {
+      "zone": "head_shoulders"
+    },
+    "holding towel": {
+      "zone": "head_shoulders"
+    },
+    "holding tray": {
+      "zone": "head_shoulders"
+    },
+    "holding umbrella": {
+      "zone": "head_shoulders"
+    },
+    "huge ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "huge breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "huge nipples": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "huge penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "humiliation": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "ice cream": {
+      "zone": "head_shoulders"
+    },
+    "ice cream cone": {
+      "zone": "head_shoulders"
+    },
+    "impossible shirt": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "interlocked fingers": {
+      "zone": "head_shoulders"
+    },
+    "internal cumshot": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "inverted nipples": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "inward v": {
+      "zone": "head_shoulders"
+    },
+    "irrumatio": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "jeans": {
+      "zone": "cowboy"
+    },
+    "jumping": {
+      "zone": "full"
+    },
+    "kettle": {
+      "zone": "head_shoulders"
+    },
+    "key": {
+      "zone": "head_shoulders"
+    },
+    "kissing foot": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "knee boots": {
+      "zone": "full"
+    },
+    "knee up": {
+      "zone": "full"
+    },
+    "kneehighs": {
+      "zone": "full"
+    },
+    "kneeling": {
+      "zone": "cowboy"
+    },
+    "knees": {
+      "zone": "full"
+    },
+    "knees to chest": {
+      "zone": "full"
+    },
+    "knees up": {
+      "zone": "full"
+    },
+    "knife": {
+      "zone": "head_shoulders"
+    },
+    "labia": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "lace gloves": {
+      "zone": "head_shoulders"
+    },
+    "lace thighhighs": {
+      "zone": "full"
+    },
+    "lace-trimmed collar": {
+      "zone": "head_shoulders"
+    },
+    "lace-trimmed gloves": {
+      "zone": "head_shoulders"
+    },
+    "lactation": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "lactation through clothes": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "ladle": {
+      "zone": "head_shoulders"
+    },
+    "lantern": {
+      "zone": "head_shoulders"
+    },
+    "laptop": {
+      "zone": "head_shoulders"
+    },
+    "large areolae": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "large breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "large penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "latex gloves": {
+      "zone": "head_shoulders"
+    },
+    "layered gloves": {
+      "zone": "head_shoulders"
+    },
+    "leash": {
+      "zone": "head_shoulders",
+      "rating": "nsfw"
+    },
+    "leather gloves": {
+      "zone": "head_shoulders"
+    },
+    "leg ribbon": {
+      "zone": "full"
+    },
+    "leg up": {
+      "zone": "full"
+    },
+    "leg warmers": {
+      "zone": "full"
+    },
+    "leggings": {
+      "zone": "full"
+    },
+    "legs": {
+      "zone": "full"
+    },
+    "legs up": {
+      "zone": "full"
+    },
+    "letter": {
+      "zone": "head_shoulders"
+    },
+    "licking": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "licking foot": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "licking nipple": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "licking penis": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "light areolae": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "light rays": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "linea alba": {
+      "zone": "cowboy"
+    },
+    "lingerie": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "loafers": {
+      "zone": "full"
+    },
+    "locket": {
+      "zone": "head_shoulders"
+    },
+    "lollipop": {
+      "zone": "head_shoulders"
+    },
+    "long labia": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "long legs": {
+      "zone": "full"
+    },
+    "long neck": {
+      "zone": "head_shoulders"
+    },
+    "long skirt": {
+      "zone": "cowboy"
+    },
+    "looking at penis": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "loose socks": {
+      "zone": "full"
+    },
+    "lotion": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "low neckline": {
+      "zone": "head_shoulders"
+    },
+    "lube": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "lying": {
+      "zone": "full"
+    },
+    "maebari": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "magazine": {
+      "zone": "head_shoulders"
+    },
+    "male masturbation": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "male pubic hair": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "mandarin collar": {
+      "zone": "head_shoulders"
+    },
+    "mary janes": {
+      "zone": "full"
+    },
+    "masturbation": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "mature female": {
+      "zone": "face"
+    },
+    "medium breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "micro bikini": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "microphone": {
+      "zone": "head_shoulders"
+    },
+    "midair": {
+      "zone": "full"
+    },
+    "midriff": {
+      "zone": "cowboy"
+    },
+    "milking machine": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "miniskirt": {
+      "zone": "cowboy"
+    },
+    "missionary": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "mittens": {
+      "zone": "head_shoulders"
+    },
+    "mole on ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "mole on breast": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "mole on collarbone": {
+      "zone": "head_shoulders"
+    },
+    "mole on stomach": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "mole on thigh": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "money": {
+      "zone": "head_shoulders"
+    },
+    "mons pubis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "mop": {
+      "zone": "head_shoulders"
+    },
+    "mug": {
+      "zone": "head_shoulders"
+    },
+    "multicolored thighhighs": {
+      "zone": "full"
+    },
+    "muscular male": {
+      "zone": "face"
+    },
+    "naked apron": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "naked ribbon": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "naked sheet": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "naked shirt": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "naked towel": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nape": {
+      "zone": "head_shoulders"
+    },
+    "narrow waist": {
+      "zone": "cowboy"
+    },
+    "naughty face": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "navel": {
+      "zone": "cowboy"
+    },
+    "neck": {
+      "zone": "head_shoulders"
+    },
+    "neck ribbon": {
+      "zone": "head_shoulders"
+    },
+    "neck warmer": {
+      "zone": "head_shoulders"
+    },
+    "neckerchief": {
+      "zone": "head_shoulders"
+    },
+    "necklace": {
+      "zone": "head_shoulders"
+    },
+    "necktie": {
+      "zone": "head_shoulders"
+    },
+    "necktie between breasts": {
+      "zone": "upper_body"
+    },
+    "newspaper": {
+      "zone": "head_shoulders"
+    },
+    "nipple bar": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nipple clamps": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nipple indents": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nipple piercing": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nipple rings": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nipple slip": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nipple tweak": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nipples": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "no bra": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "no panties": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "no shoes": {
+      "zone": "full"
+    },
+    "notebook": {
+      "zone": "head_shoulders"
+    },
+    "nude": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "nude cover": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "nursing handjob": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "object insertion": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "off shoulder": {
+      "zone": "head_shoulders"
+    },
+    "ok sign": {
+      "zone": "head_shoulders"
+    },
+    "on back": {
+      "zone": "full"
+    },
+    "on one knee": {
+      "zone": "cowboy"
+    },
+    "on side": {
+      "zone": "full"
+    },
+    "on stomach": {
+      "zone": "full"
+    },
+    "onahole": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "one breast out": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "open book": {
+      "zone": "head_shoulders"
+    },
+    "open clothes": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "open collar": {
+      "zone": "head_shoulders"
+    },
+    "open hand": {
+      "zone": "head_shoulders"
+    },
+    "oral": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "outstretched arm": {
+      "zone": "head_shoulders"
+    },
+    "outstretched arms": {
+      "zone": "head_shoulders"
+    },
+    "outstretched hand": {
+      "zone": "head_shoulders"
+    },
+    "outstretched leg": {
+      "zone": "full"
+    },
+    "over-kneehighs": {
+      "zone": "full"
+    },
+    "overlighting": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "own hands clasped": {
+      "zone": "head_shoulders"
+    },
+    "own hands together": {
+      "zone": "head_shoulders"
+    },
+    "paintbrush": {
+      "zone": "head_shoulders"
+    },
+    "paizuri": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "paizuri under clothes": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "palms": {
+      "zone": "head_shoulders"
+    },
+    "panties": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pants": {
+      "zone": "cowboy"
+    },
+    "panty pull": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pantyhose": {
+      "zone": "full"
+    },
+    "pantyshot": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "paper": {
+      "zone": "head_shoulders"
+    },
+    "paper lantern": {
+      "zone": "head_shoulders"
+    },
+    "parasol": {
+      "zone": "head_shoulders"
+    },
+    "partially visible vulva": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pasties": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "paw gloves": {
+      "zone": "head_shoulders"
+    },
+    "paw pose": {
+      "zone": "head_shoulders"
+    },
+    "pearl necklace": {
+      "zone": "head_shoulders"
+    },
+    "pectorals": {
+      "zone": "upper_body"
+    },
+    "pen": {
+      "zone": "head_shoulders"
+    },
+    "pencil": {
+      "zone": "head_shoulders"
+    },
+    "pencil skirt": {
+      "zone": "cowboy"
+    },
+    "pendant": {
+      "zone": "head_shoulders"
+    },
+    "penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "penis awe": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "penis on face": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "penis out": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "penis peek": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "perky breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "perpendicular paizuri": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "peter pan collar": {
+      "zone": "head_shoulders"
+    },
+    "petticoat": {
+      "zone": "cowboy"
+    },
+    "phimosis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pigeon-toed": {
+      "zone": "full"
+    },
+    "pillory": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "plaid skirt": {
+      "zone": "cowboy"
+    },
+    "plantar flexion": {
+      "zone": "full"
+    },
+    "plate": {
+      "zone": "head_shoulders"
+    },
+    "platform footwear": {
+      "zone": "full"
+    },
+    "playing with hair": {
+      "zone": "head_shoulders"
+    },
+    "pleated skirt": {
+      "zone": "cowboy"
+    },
+    "plunging neckline": {
+      "zone": "head_shoulders"
+    },
+    "pocket watch": {
+      "zone": "head_shoulders"
+    },
+    "pointing": {
+      "zone": "head_shoulders"
+    },
+    "pointing at viewer": {
+      "zone": "head_shoulders"
+    },
+    "pointing down": {
+      "zone": "head_shoulders"
+    },
+    "pointing up": {
+      "zone": "head_shoulders"
+    },
+    "pointy breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "polka dot thighhighs": {
+      "zone": "full"
+    },
+    "popsicle": {
+      "zone": "head_shoulders"
+    },
+    "projectile lactation": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "pubic hair": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "puckered anus": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "puffy nipples": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "pussy": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pussy juice": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pussy juice puddle": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "pussy juice trail": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pussy peek": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pussyjob": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "rag": {
+      "zone": "head_shoulders"
+    },
+    "raised fist": {
+      "zone": "head_shoulders"
+    },
+    "reaching": {
+      "zone": "head_shoulders"
+    },
+    "reclining": {
+      "zone": "full"
+    },
+    "rei no himo": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "removing clothes": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "removing glove": {
+      "zone": "head_shoulders"
+    },
+    "revealing clothes": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "reverse cowgirl position": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "ribbed socks": {
+      "zone": "full"
+    },
+    "ribbed thighhighs": {
+      "zone": "full"
+    },
+    "ribbon choker": {
+      "zone": "head_shoulders"
+    },
+    "ribbon-trimmed legwear": {
+      "zone": "full"
+    },
+    "ribs": {
+      "zone": "cowboy"
+    },
+    "riding crop": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "ring": {
+      "zone": "head_shoulders"
+    },
+    "rope": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "rough sex": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "running": {
+      "zone": "full"
+    },
+    "sagging breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "sailor collar": {
+      "zone": "head_shoulders"
+    },
+    "salute": {
+      "zone": "head_shoulders"
+    },
+    "sandals": {
+      "zone": "full"
+    },
+    "sarashi": {
+      "zone": "upper_body"
+    },
+    "scarf": {
+      "zone": "head_shoulders"
+    },
+    "scoop neck": {
+      "zone": "head_shoulders"
+    },
+    "scroll": {
+      "zone": "head_shoulders"
+    },
+    "seductive smile": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "see-through clothes": {
+      "zone": "upper_body"
+    },
+    "see-through leotard": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "seiza": {
+      "zone": "cowboy"
+    },
+    "sex": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "sex from behind": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "sex machine": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "sex toy": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "shackles": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "shibari": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "shirt lift": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "shoes": {
+      "zone": "full"
+    },
+    "shopping bag": {
+      "zone": "head_shoulders"
+    },
+    "shorts": {
+      "zone": "cowboy"
+    },
+    "shoulders": {
+      "zone": "head_shoulders"
+    },
+    "shrug": {
+      "zone": "head_shoulders"
+    },
+    "shrugging": {
+      "zone": "head_shoulders"
+    },
+    "shushing": {
+      "zone": "head_shoulders"
+    },
+    "sideboob": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "sidelighting": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "single breast curtain": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "single glove": {
+      "zone": "head_shoulders"
+    },
+    "sitting": {
+      "zone": "cowboy"
+    },
+    "skindentation": {
+      "zone": "face"
+    },
+    "skinny": {
+      "zone": "face"
+    },
+    "skirt": {
+      "zone": "cowboy"
+    },
+    "skirt hold": {
+      "zone": "cowboy"
+    },
+    "skirt lift": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "slim legs": {
+      "zone": "full"
+    },
+    "slingshot swimsuit": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "slippers": {
+      "zone": "full"
+    },
+    "small breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "small penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "smartphone": {
+      "zone": "head_shoulders"
+    },
+    "smelling feet": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "sneakers": {
+      "zone": "full"
+    },
+    "socks": {
+      "zone": "full"
+    },
+    "soles": {
+      "zone": "full"
+    },
+    "spanked": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "split": {
+      "zone": "full"
+    },
+    "spoon": {
+      "zone": "head_shoulders"
+    },
+    "spooning": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "spotlight": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "spray bottle": {
+      "zone": "head_shoulders"
+    },
+    "spread anus": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "spread arms": {
+      "zone": "head_shoulders"
+    },
+    "spread ass": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "spread fingers": {
+      "zone": "head_shoulders"
+    },
+    "spread legs": {
+      "zone": "full"
+    },
+    "spread pussy": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "spread pussy under clothes": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "spreader bar": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "spreading another's pussy": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "spreading own pussy": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "square neckline": {
+      "zone": "head_shoulders"
+    },
+    "squatting": {
+      "zone": "full"
+    },
+    "standing sex": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "standing split": {
+      "zone": "full"
+    },
+    "star hands": {
+      "zone": "head_shoulders"
+    },
+    "steepled fingers": {
+      "zone": "head_shoulders"
+    },
+    "stole": {
+      "zone": "head_shoulders"
+    },
+    "stomach": {
+      "zone": "cowboy"
+    },
+    "stop (gesture)": {
+      "zone": "head_shoulders"
+    },
+    "straddling": {
+      "zone": "full"
+    },
+    "straddling paizuri": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "strap-on": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "strapless leotard": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "strappy heels": {
+      "zone": "full"
+    },
+    "stretching": {
+      "zone": "upper_body"
+    },
+    "striped thighhighs": {
+      "zone": "full"
+    },
+    "stroking own chin": {
+      "zone": "head_shoulders"
+    },
+    "stuffed animal": {
+      "zone": "head_shoulders"
+    },
+    "stuffed toy": {
+      "zone": "head_shoulders"
+    },
+    "sunbeam": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "suspended congress": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "suspension": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "sybian": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "t-pose": {
+      "zone": "head_shoulders"
+    },
+    "tablet": {
+      "zone": "head_shoulders"
+    },
+    "taut shirt": {
+      "zone": "upper_body"
+    },
+    "teacup": {
+      "zone": "head_shoulders"
+    },
+    "teapot": {
+      "zone": "head_shoulders"
+    },
+    "teddy bear": {
+      "zone": "head_shoulders"
+    },
+    "testicles": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "thick arms": {
+      "zone": "head_shoulders"
+    },
+    "thick thighs": {
+      "zone": "cowboy"
+    },
+    "thigh gap": {
+      "zone": "cowboy"
+    },
+    "thigh sex": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "thigh strap": {
+      "zone": "full"
+    },
+    "thighhighs": {
+      "zone": "full"
+    },
+    "thighlet": {
+      "zone": "full"
+    },
+    "thighs": {
+      "zone": "cowboy"
+    },
+    "thong": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "thong bikini": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "thumbs down": {
+      "zone": "head_shoulders"
+    },
+    "thumbs up": {
+      "zone": "head_shoulders"
+    },
+    "tickling feet": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "tiptoes": {
+      "zone": "full"
+    },
+    "toe ring": {
+      "zone": "full"
+    },
+    "toe scrunch": {
+      "zone": "full"
+    },
+    "toe socks": {
+      "zone": "full"
+    },
+    "toe sucking": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "toenail polish": {
+      "zone": "full"
+    },
+    "toenails": {
+      "zone": "full"
+    },
+    "toes": {
+      "zone": "full"
+    },
+    "toned female": {
+      "zone": "face"
+    },
+    "toned male": {
+      "zone": "face"
+    },
+    "torn gloves": {
+      "zone": "head_shoulders"
+    },
+    "torn thighhighs": {
+      "zone": "full"
+    },
+    "torogao": {
+      "zone": "face",
+      "rating": "nsfw"
+    },
+    "towel": {
+      "zone": "head_shoulders"
+    },
+    "trampling": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "transparent umbrella": {
+      "zone": "head_shoulders"
+    },
+    "tray": {
+      "zone": "head_shoulders"
+    },
+    "tucking hair": {
+      "zone": "head_shoulders"
+    },
+    "turtleneck": {
+      "zone": "head_shoulders"
+    },
+    "twirling hair": {
+      "zone": "head_shoulders"
+    },
+    "twitching penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "two-tone legwear": {
+      "zone": "full"
+    },
+    "umbrella": {
+      "zone": "head_shoulders"
+    },
+    "unaligned breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "unbuttoned": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "underboob": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "underbust": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "underbutt": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "underlighting": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "underwear only": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "undressing": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "uneven legwear": {
+      "zone": "full"
+    },
+    "unzipped": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "upside-down": {
+      "zone": "full"
+    },
+    "upskirt": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "uwabaki": {
+      "zone": "full"
+    },
+    "v": {
+      "zone": "head_shoulders"
+    },
+    "v arms": {
+      "zone": "head_shoulders"
+    },
+    "v-neck": {
+      "zone": "head_shoulders"
+    },
+    "vaginal": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "veiny breasts": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "veiny penis": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "vibrator": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "victory pose": {
+      "zone": "head_shoulders"
+    },
+    "vignetting": {
+      "labels": [
+        "atmospheric"
+      ]
+    },
+    "w arms": {
+      "zone": "head_shoulders"
+    },
+    "walking": {
+      "zone": "full"
+    },
+    "wallet": {
+      "zone": "head_shoulders"
+    },
+    "wariza": {
+      "zone": "cowboy"
+    },
+    "water bottle": {
+      "zone": "head_shoulders"
+    },
+    "watering can": {
+      "zone": "head_shoulders"
+    },
+    "waving": {
+      "zone": "head_shoulders"
+    },
+    "wedding ring": {
+      "zone": "head_shoulders"
+    },
+    "wedgie": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "whip": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "wide hips": {
+      "zone": "cowboy"
+    },
+    "wine glass": {
+      "zone": "head_shoulders"
+    },
+    "wrist cuffs": {
+      "zone": "head_shoulders"
+    },
+    "wristband": {
+      "zone": "head_shoulders"
+    },
+    "wristwatch": {
+      "zone": "head_shoulders"
+    },
+    "yoga": {
+      "zone": "full"
+    },
+    "yokozuwari": {
+      "zone": "cowboy"
+    },
+    "zouri": {
+      "zone": "full"
+    },
+    "against wall": {
+      "zone": "cowboy"
+    },
+    "arm support": {
+      "zone": "head_shoulders"
+    },
+    "elbow rest": {
+      "zone": "head_shoulders"
+    },
+    "feet up": {
+      "zone": "full"
+    },
+    "game controller": {
+      "zone": "head_shoulders"
+    },
+    "holding camera": {
+      "zone": "head_shoulders"
+    },
+    "holding controller": {
+      "zone": "head_shoulders"
+    },
+    "kicking": {
+      "zone": "full"
+    },
+    "on bed": {
+      "zone": "cowboy"
+    },
+    "on chair": {
+      "zone": "cowboy"
+    },
+    "on couch": {
+      "zone": "cowboy"
+    },
+    "on desk": {
+      "zone": "cowboy"
+    },
+    "on floor": {
+      "zone": "full"
+    },
+    "on ground": {
+      "zone": "full"
+    },
+    "on table": {
+      "zone": "cowboy"
+    },
+    "peeking out": {
+      "zone": "upper_body"
+    },
+    "reaching towards viewer": {
+      "zone": "head_shoulders"
+    },
+    "sitting on stairs": {
+      "zone": "full"
+    },
+    "the pose": {
+      "zone": "full"
+    },
+    "under covers": {
+      "zone": "upper_body"
+    },
+    "knees together feet apart": {
+      "zone": "full"
+    },
+    "leg lift": {
+      "zone": "full"
+    },
+    "knees apart feet together": {
+      "zone": "full"
+    },
+    "foot focus": {
+      "zone": "full"
+    },
+    "armpit focus": {
+      "zone": "upper_body"
+    },
+    "index finger raised": {
+      "zone": "head_shoulders"
+    },
+    "fox shadow puppet": {
+      "zone": "head_shoulders"
+    },
+    "v over eye": {
+      "zone": "head_shoulders"
+    },
+    "pinky out": {
+      "zone": "head_shoulders"
+    },
+    "v over mouth": {
+      "zone": "head_shoulders"
+    },
+    "gyaru v": {
+      "zone": "head_shoulders"
+    },
+    "clenched hands": {
+      "zone": "head_shoulders"
+    },
+    "curled fingers": {
+      "zone": "head_shoulders"
+    },
+    "open hands": {
+      "zone": "head_shoulders"
+    },
+    "index fingers together": {
+      "zone": "head_shoulders"
+    },
+    "finger frame": {
+      "zone": "head_shoulders"
+    },
+    "pointing at self": {
+      "zone": "head_shoulders"
+    },
+    "akanbe": {
+      "zone": "head_shoulders"
+    },
+    "kneepits": {
+      "zone": "full"
+    },
+    "adjusting clothes": {
+      "zone": "upper_body"
+    },
+    "clothes grab": {
+      "zone": "upper_body"
+    },
+    "shirt tug": {
+      "zone": "upper_body"
+    },
+    "necktie grab": {
+      "zone": "upper_body"
+    },
+    "skirt tug": {
+      "zone": "cowboy"
+    },
+    "dress tug": {
+      "zone": "cowboy"
+    },
+    "open jacket": {
+      "zone": "upper_body"
+    },
+    "open coat": {
+      "zone": "upper_body"
+    },
+    "open vest": {
+      "zone": "upper_body"
+    },
+    "open hoodie": {
+      "zone": "upper_body"
+    },
+    "pants rolled up": {
+      "zone": "full"
+    },
+    "zettai ryouiki": {
+      "zone": "cowboy"
+    },
+    "topless female": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "topless male": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "no shirt": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "no pants": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pants pull": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "pantyhose pull": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "skirt pull": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "shorts pull": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "shirt pull": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "bra pull": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "dress pull": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "leotard pull": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "kimono pull": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "sweater lift": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "panties aside": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "leotard aside": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "open shorts": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "open robe": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "open pants": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "open skirt": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "clothes down": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "skirt around one leg": {
+      "zone": "full",
+      "rating": "nsfw"
+    },
+    "single bare shoulder": {
+      "zone": "head_shoulders"
+    },
+    "strap slip": {
+      "zone": "head_shoulders"
+    },
+    "partially unbuttoned": {
+      "zone": "upper_body"
+    },
+    "bra peek": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "panty peek": {
+      "zone": "cowboy",
+      "rating": "nsfw"
+    },
+    "nightgown": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "negligee": {
+      "zone": "upper_body",
+      "rating": "nsfw"
+    },
+    "legs together": {
+      "zone": "cowboy"
+    }
+  }
+}

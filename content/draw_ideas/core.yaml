@@ -1,0 +1,47 @@
+ideas:
+  - {id: floor_hug_knees, text: "сижу на полу, обхватив колени, смотрю в камеру снизу вверх", tags: [from below, hugging own legs, knees to chest, on floor, sitting]}
+  - {id: floor_cross_legged, text: "сижу по-турецки на полу, подавшись вперёд к камере", tags: [from above, indian style, leaning forward, on floor, sitting]}
+  - {id: chair_backwards, text: "сижу на стуле задом наперёд, сложив руки на спинке", tags: [arms behind back, chair, leaning back, on chair, sitting]}
+  - {id: table_edge, text: "сижу на краю стола, болтаю ногой, снимок в полный рост", tags: [desk, leg up, sitting]}
+  - {id: windowsill, text: "сижу на подоконнике боком, колени подтянуты, свет сбоку", tags: [from side, hugging own legs, knees to chest, on side, sitting, window]}
+  - {id: stairs, text: "сижу на ступеньках, локти на коленях, подбородок на ладонях", tags: [elbow rest, hand on own chin, sitting on stairs, stairs]}
+  - {id: floor_lean_bed, text: "сижу на полу, прислонившись спиной к кровати, голова запрокинута", tags: [bed, head back, leaning back, on floor, sitting]}
+  - {id: seiza, text: "сижу на коленях, ладони на бёдрах, прямой взгляд в камеру", tags: [hands on own hips, kneeling]}
+  - {id: side_sit_floor, text: "сижу на полу, поджав ноги в сторону, опираюсь на одну руку", tags: [arm support, knees together feet apart, on floor, sitting]}
+  - {id: stomach_legs_up, text: "лежу на животе, подперев щёки ладонями, ноги подняты", tags: [arm support, bed, from above, hand on own cheek, legs up, lying, on stomach]}
+  - {id: back_from_above, text: "лежу на спине, снимок сверху, смотрю прямо в камеру", tags: [from above, lying, on back, on floor]}
+  - {id: side_elbow, text: "лежу на боку, подперев голову рукой", tags: [arm support, hand on own face, lying, on side, reclining]}
+  - {id: curled_blanket, text: "сворачиваюсь клубком под пледом, видно только лицо и плечи", tags: [bed, blanket, fetal position, under covers]}
+  - {id: couch_legs_armrest, text: "лежу на диване, ноги закинуты на подлокотник", tags: [couch, legs up, lying, on couch]}
+  - {id: stomach_reading, text: "лежу на животе с раскрытой книгой, поднимаю взгляд на камеру", tags: [from above, holding book, lying, on stomach]}
+  - {id: squat_camera, text: "присаживаюсь на корточки прямо перед камерой, ракурс сверху", tags: [from above, on floor, squatting]}
+  - {id: kneel_upright, text: "стою на коленях, выпрямившись, руки за спиной", tags: [arms behind back, kneeling]}
+  - {id: stretch_up, text: "потягиваюсь, подняв руки над головой, снимок по пояс", tags: [arched back, arms up, stretching]}
+  - {id: mid_step, text: "иду навстречу камере, снимок в движении", tags: [walking]}
+  - {id: spin, text: "кружусь на месте, снимок в полный рост в движении", tags: [arms up, dancing, dutch angle, midair]}
+  - {id: jump, text: "подпрыгиваю, снимок в полный рост в прыжке", tags: [dutch angle, from below, jumping, midair, tiptoes]}
+  - {id: tiptoe_reach, text: "тянусь на цыпочках к верхней полке, вид сбоку", tags: [bookshelf, from side, leaning forward, outstretched arms, reaching, shelf, stretching, tiptoes]}
+  - {id: over_shoulder, text: "стою спиной к камере и оглядываюсь через плечо", tags: [from behind, twisted torso]}
+  - {id: profile_light, text: "стою в профиль у окна, свет обрисовывает силуэт", tags: [from side, leaning to the side, window]}
+  - {id: from_below, text: "смотрю на камеру сверху вниз, ракурс снизу", tags: [from below, leaning forward]}
+  - {id: from_above_look_up, text: "снимок сверху: запрокидываю голову и смотрю в объектив", tags: [arched back, from above, head back, leaning back]}
+  - {id: selfie_arm, text: "селфи на вытянутой руке, лицо крупно, чуть сверху", tags: [from above, holding camera, outstretched arm, reaching towards viewer]}
+  - {id: mirror, text: "фотографирую себя в зеркале, телефон в руке", tags: [holding phone, mirror]}
+  - {id: dutch_tilt, text: "наклонённый кадр, стою вполоборота, по пояс", tags: [dutch angle, leaning to the side]}
+  - {id: close_face, text: "лицо крупным планом, подбородок на сплетённых пальцах", tags: [hand on own chin]}
+  - {id: back_wall, text: "стою, прислонившись спиной к стене, одна нога согнута", tags: [against wall, leaning back]}
+  - {id: lean_table, text: "опираюсь локтями на стол, наклонившись к камере", tags: [elbow rest, leaning forward, on table]}
+  - {id: mug_both_hands, text: "грею ладони о кружку, сижу боком на диване", tags: [couch, cupping hands, on couch, on side, sitting]}
+  - {id: pillow_hug, text: "обнимаю подушку, сижу на кровати поджав ноги", tags: [bed, hugging object, knees to chest, on bed, sitting]}
+  - {id: umbrella, text: "стою под зонтом, снимок в полный рост", tags: [holding umbrella]}
+  - {id: peek_door, text: "выглядываю из-за двери, видна половина лица", tags: [door, peeking out]}
+  - {id: peek_curtain, text: "выглядываю из-за занавески, рука на ткани", tags: [curtains, peeking out]}
+  - {id: notebook_floor, text: "пишу в блокноте, лёжа на полу", tags: [from above, holding pen, lying, on floor]}
+  - {id: headphones, text: "в наушниках, с закрытыми глазами слушаю музыку", tags: [sitting, closed eyes, headphones]}
+  - {id: game_controller, text: "сижу на полу с геймпадом, не отрываясь от игры", tags: [holding controller, on floor, sitting]}
+  - {id: cat_lap, text: "глажу кота у себя на коленях", tags: [sitting, petting]}
+  - {id: flower_smell, text: "нюхаю цветок, прикрыв глаза, крупный план", tags: [holding flower, leaning forward]}
+  - {id: sleepy_yawn, text: "зеваю, прикрывая рот ладонью, по пояс", tags: [covering own mouth, leaning forward, yawning]}
+  - {id: heart_hands, text: "складываю ладони сердечком перед собой, по пояс", tags: [heart hands, leaning forward]}
+  - {id: camera_reach, text: "тянусь рукой к объективу, будто хочу забрать камеру", tags: [outstretched hand, reaching towards viewer]}
+  - {id: chin_rest_window, text: "смотрю в окно, опершись подбородком на руку, вид сбоку", tags: [arm support, from side, hand on own chin, leaning forward, sitting, window]}

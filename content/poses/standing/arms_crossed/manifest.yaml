@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "arms_crossed"
+name: "Руки скрещены"
+category: "standing"
+
+tags:
+  - "уверенное"
+  - "сдержанное"
+  - "характерное"
+
+rating: "sfw"
+
+mood_hints:
+  - "confident"
+  - "stern"
+  - "cool"
+
+renderer_prompts:
+  sdxl:
+    positive: "standing, crossed arms, looking at viewer"
+    negative: "sitting, lying, arms up, waving"
+
+preview: "preview.png"

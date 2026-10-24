@@ -1,0 +1,24 @@
+pose_format_version: 1
+
+id: "curtsy"
+name: "Реверанс"
+category: "standing"
+
+tags:
+  - "вежливое"
+  - "элегантное"
+  - "служанка"
+
+rating: "sfw"
+
+mood_hints:
+  - "polite"
+  - "graceful"
+  - "formal"
+
+renderer_prompts:
+  sdxl:
+    positive: "standing, curtsey, skirt hold, bowing, looking at viewer"
+    negative: "sitting, lying, crossed arms, slouching"
+
+preview: "preview.png"
