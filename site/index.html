@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MaidLink</title>
+  <meta name="description" content="Аниме-горничные с памятью и собственным характером. Знакомься, болтай, выбирай наряды. MaidLink работает на твоём компьютере. Бесплатно для Windows.">
+  <meta name="theme-color" content="#F6F6FB">
+  <meta property="og:title" content="MaidLink">
+  <meta property="og:description" content="Хинари смутится, Велка подколет. Выбирай аниме-горничную, знакомься и создавай вашу историю. Переписка хранится на твоём компьютере.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maidplaza.com/">
+  <meta property="og:image" content="https://maidplaza.com/assets/hinari.webp">
+  <link rel="icon" href="favicon.ico?v=90637c2f">
+  <link rel="preload" href="assets/fonts/geologica.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/noto-sans-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=0074c479">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="catalog.js?v=b5150ecc" defer></script>
+  <script src="game.js?v=980337dc" defer></script>
+  <script src="hero.js?v=477772bd" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержанию</a>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="nav-logo" href="#top" aria-label="MaidLink&nbsp;— в начало"><img src="assets/maidlink.svg?v=e909bc71" alt="MaidLink" width="122" height="30"></a>
+      <nav class="nav-links" aria-label="Разделы">
+        <a href="#game">Игра</a>
+        <a href="#helper">Помощница</a>
+        <a href="#maids">Горничные</a>
+        <a href="#trust">Приватность</a>
+        <a href="#install">Установка</a>
+        <a href="#community">Сообщество</a>
+      </nav>
+      <a class="btn btn-small" href="#install">Скачать</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="halftone" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          <img class="hero-mark" src="assets/logo-sequence.svg?v=9c8fcad2" alt="" width="240" height="112">
+          <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Приложение для Windows</p>
+          <h1>Твоя личная горничная. Прямо в твоём компьютере.</h1>
+          <p class="lead">MaidLink — приложение для общения с цифровыми горничными на любой вкус. У каждой свой характер, но твои слова постепенно оставляют в нём след. Надеемся, ты хороший пример для подражания.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#install">Скачать для Windows</a>
+            <a class="btn btn-ghost" href="#maids">Познакомиться со всеми</a>
+          </div>
+          <p class="hero-meta">Бесплатно<span aria-hidden="true">·</span>Windows 10/11<span aria-hidden="true">·</span>Видеокарта NVIDIA<span aria-hidden="true">·</span>18+</p>
+        </div>
+        <div class="hero-cards" aria-hidden="true">
+          <figure class="mini-card mini-card-3" style="--accent: #3E4C7A"><img src="assets/maids/yukina.webp?v=0e2fbddc" alt="" width="480" height="480"><figcaption><b>Юкина</b><span>Холодная и преданная</span></figcaption></figure>
+          <figure class="mini-card mini-card-2" style="--accent: #0D504C"><img src="assets/maids/velka.webp?v=c72f6584" alt="" width="480" height="480"><figcaption><b>Велка</b><span>Гордая и колкая</span></figcaption></figure>
+          <figure class="mini-card mini-card-1" style="--accent: oklch(0.58 0.12 55)"><img src="assets/maids/hinari.webp?v=92c916a6" alt="" width="480" height="480"><figcaption><b>Хинари</b><span>Старательная и тёплая</span></figcaption></figure>
+        </div>
+      </div>
+      <div class="stripes stripes-left" aria-hidden="true"></div>
+      <div class="stripes stripes-right" aria-hidden="true"></div>
+    </section>
+
+    <section class="section why" id="why">
+      <div class="wrap">
+        <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Почему MaidLink</p>
+        <h2>Пять поводов сказать «привет»</h2>
+
+        <div class="why-grid">
+          <a class="why-item why-cast" href="#maids">
+            <span class="why-num" aria-hidden="true">01</span>
+            <h3 data-cast-title>Четыре характера</h3>
+            <p>Робкая улыбка или колкость с порога? У каждой героини свои словечки, история и даже цвета интерфейса. Выбрать любимую — это уже часть игры.</p>
+            <div class="why-cast-wrap" aria-hidden="true">
+            <div class="why-cast-row">
+              <img src="assets/maids/hinari.webp?v=92c916a6" alt="" width="480" height="480" style="--accent: oklch(0.58 0.12 55)">
+              <img src="assets/maids/velka.webp?v=c72f6584" alt="" width="480" height="480" style="--accent: #0D504C">
+              <img src="assets/maids/yukina.webp?v=0e2fbddc" alt="" width="480" height="480" style="--accent: #3E4C7A">
+              <img src="assets/maids/yuzu.webp?v=d53246de" alt="" width="480" height="480" style="--accent: #D14FA6">
+              <img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" style="--accent: #5B3F8C">
+              <img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" style="--accent: #E0A93A">
+              <span class="why-cast-more">+2</span>
+            </div>
+            <p class="why-cast-note">4 героини уже в каталоге, ещё 4 скоро</p>
+            </div>
+          </a>
+
+          <article class="why-item why-story">
+            <span class="why-num" aria-hidden="true">02</span>
+            <h3>Твой ход, сценарист</h3>
+            <p>Отношения, события, праздники — всё как в дейтсиме. Только следующую реплику придумываешь ты. Готового финала здесь нет.</p>
+            <div class="why-levels" aria-hidden="true">
+              <span class="is-on">I</span><span class="is-on">II</span><span class="is-now">III</span><span>IV</span><span>V</span>
+            </div>
+            <p class="why-caption" aria-hidden="true">уровень доверия</p>
+          </article>
+
+          <article class="why-item why-yours">
+            <span class="why-num" aria-hidden="true">03</span>
+            <h3>Поселится у тебя</h3>
+            <p>Её дом — твой компьютер. Память и характер хранятся у тебя, а для общения не нужны аккаунт, подписка или облако.</p>
+            <svg class="why-home" viewBox="0 0 112 80" aria-hidden="true"><rect x="4" y="4" width="80" height="54" rx="6" fill="#fff" stroke="currentColor" stroke-width="2.4"/><path d="M32 74h24M44 58v16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M44 45c-7-4.8-11.5-8.6-11.5-13a5.6 5.6 0 0 1 11.5-1.9 5.6 5.6 0 0 1 11.5 1.9c0 4.4-4.5 8.2-11.5 13z" fill="#FF9D00"/><circle cx="88" cy="56" r="17" fill="#22232B"/><rect x="80.5" y="54" width="15" height="11" rx="2" fill="#FF9D00"/><path d="M83.5 54v-3.2a4.5 4.5 0 0 1 9 0V54" fill="none" stroke="#FF9D00" stroke-width="2.2"/></svg>
+            <ul class="why-nots" aria-label="Чего не нужно">
+              <li>аккаунт</li><li>подписка</li><li>облако</li>
+            </ul>
+          </article>
+
+          <article class="why-item why-speech">
+            <span class="why-num" aria-hidden="true">04</span>
+            <h3>За словом в карман не лезет</h3>
+            <p>Говорит по-русски, со своими словечками и манерами. Одна будет вежливо звать на «вы», другая быстро перейдёт на «ты». А у третьей на любой комплимент найдётся колкость.</p>
+            <p class="why-quote" aria-hidden="true"><b>Велка</b>Э-это не&nbsp;то, что ты подумал!</p>
+          </article>
+
+          <a class="why-item why-cta" href="#install">
+            <span class="why-num" aria-hidden="true">05</span>
+            <h3>До знакомства — пара кликов</h3>
+            <p>Скачай и запусти. Подготовку и выбор модели MaidLink возьмёт на себя. Тебе останется придумать первое «привет».</p>
+            <ol class="why-steps" aria-label="Как начать">
+              <li>Скачать</li><li>Запустить</li><li>Знакомиться</li>
+            </ol>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="game">
+      <div class="wrap">
+        <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Игра</p>
+        <h2>Ближе с каждым днём</h2>
+        <p class="section-lead">Первое «здравствуйте», первая общая шутка, первый повод смутиться. Общайся, узнавай её, открывай новые наряды. Реплик на выбор нет — посмотрим, что ты придумаешь.</p>
+
+        <div class="features">
+          <article class="feature feature-wide g-memory" style="--tone: var(--violet)">
+            <div class="feature-text">
+              <span class="g-tag">Память</span>
+              <h3>Да, она это запомнила</h3>
+              <p>Любимый чай, планы на выходные, историю из ночной беседы. Она помнит разговоры за недели и сама возвращается к важному. Так что не удивляйся вопросу: «Ну, чем всё закончилось?»</p>
+              <div class="mem-past" aria-hidden="true">
+                <span class="mem-day">Прошлый разговор</span>
+                <p class="bubble bubble-user">Через час у&nbsp;меня собеседование в&nbsp;одну студию&nbsp;— немного волнуюсь</p>
+                <span class="mem-hint">а&nbsp;в&nbsp;новом разговоре она вспомнила сама <b>→</b></span>
+              </div>
+            </div>
+            <div class="chat" aria-label="Настоящий разговор">
+              <span class="mem-day mem-day-dark">Новый разговор</span>
+              <p class="bubble bubble-user">Я вернулся!</p>
+              <p class="bubble bubble-maid"><b>Хинари</b><i>слегка приподнимает голову и улыбается</i> Ой, Господин, вы вернулись! Я... я очень рада снова вас видеть! Вы не забыли про меня, правда?<br><i>поправляет фартук</i> Я всё еще немного волнуюсь из-за вашего важного собеседования в студии&nbsp;— вы уже подготовились или, может быть, хотите, чтобы я помогла вам немного размяться перед встречей?</p>
+            </div>
+          </article>
+
+          <article class="feature" style="--tone: #FF9D00">
+            <span class="g-tag">Отношения</span>
+            <h3>От вежливости до подколов</h3>
+            <p>Доверие, близость и уважение растут вместе с вашими разговорами. Сегодня она краснеет от «спасибо», а со временем, глядишь, перейдёт на «ты». Грубость тоже запомнит — характер прилагается, помнишь?</p>
+            <div class="stat-bars" aria-hidden="true">
+              <div class="stat"><span>Доверие</span><i style="--v: 34; --d: 6"></i><b>+6</b></div>
+              <div class="stat"><span>Близость</span><i style="--v: 42; --d: 4"></i><b>+4</b></div>
+              <div class="stat"><span>Уважение</span><i style="--v: 58; --d: 3"></i><b>+3</b></div>
+            </div>
+            <p class="g-caption" aria-hidden="true">после разговора</p>
+            <p class="addr" aria-hidden="true"><span>«вы»</span><svg viewBox="0 0 24 12"><path d="M1 6h20m-5-4.5L21 6l-5 4.5"/></svg><span class="is-new">«ты»</span></p>
+          </article>
+
+          <article class="feature feature-wide g-adapt" style="--tone: #6F86B8">
+            <div class="adapt-text">
+              <span class="g-tag">Развитие</span>
+              <h3>С тобой она раскрывается</h3>
+              <p>Чаще шутишь — в ней просыпается озорство. Говоришь только по делу — становится серьёзнее. Общение меняет девять черт характера. Выкручивать всё на максимум необязательно: у каждой крайности свои причуды.</p>
+              <div class="same">
+                <div class="same-scale" aria-hidden="true">
+                  <span class="abar-name">Игривость</span>
+                  <i><b>62%</b></i>
+                  <span class="abar-lo">серьёзность</span><span class="abar-hi">дурачество</span>
+                </div>
+                <p class="g-caption">Одинаковая игривость, разные подколы</p>
+                <ul class="same-list">
+                  <li style="--accent: oklch(0.58 0.12 55)"><img src="assets/maids/hinari.webp?v=92c916a6" alt="" width="480" height="480" loading="lazy"><b>Хинари</b><span>шутит робко и&nbsp;мягко</span></li>
+                  <li style="--accent: #0D504C"><img src="assets/maids/velka.webp?v=c72f6584" alt="" width="480" height="480" loading="lazy"><b>Велка</b><span>подшучивает и&nbsp;над собой</span></li>
+                  <li style="--accent: #3E4C7A"><img src="assets/maids/yukina.webp?v=0e2fbddc" alt="" width="480" height="480" loading="lazy"><b>Юкина</b><span>поддевает тонкой иронией</span></li>
+                  <li style="--accent: #D14FA6"><img src="assets/maids/yuzu.webp?v=d53246de" alt="" width="480" height="480" loading="lazy"><b>Юзу</b><span>подкалывает без остановки</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="adapt" data-adapt>
+              <p class="g-caption adapt-cap">Как твои разговоры меняют Хинари</p>
+              <div class="adapt-switch" role="group" aria-label="Твой стиль общения">
+                <button type="button" aria-pressed="true" data-adapt-preset="0">Сначала</button>
+                <button type="button" aria-pressed="false" data-adapt-preset="1">Шутишь</button>
+                <button type="button" aria-pressed="false" data-adapt-preset="2">По делу</button>
+                <button type="button" aria-pressed="false" data-adapt-preset="3">Доверяешь</button>
+              </div>
+              <ul class="abars" aria-hidden="true">
+                <li class="abar" style="--v0: 15; --v1: 15; --v2: 15; --v3: 34">
+                  <span class="abar-name">Уверенность</span><i><em></em></i>
+                  <span class="abar-lo">робость</span><span class="abar-hi">самоуверенность</span>
+                </li>
+                <li class="abar" style="--v0: 70; --v1: 70; --v2: 60; --v3: 76">
+                  <span class="abar-name">Теплота</span><i><em></em></i>
+                  <span class="abar-lo">холодность</span><span class="abar-hi">опека</span>
+                </li>
+                <li class="abar" style="--v0: 75; --v1: 80; --v2: 75; --v3: 75">
+                  <span class="abar-name">Открытость</span><i><em></em></i>
+                  <span class="abar-lo">закрытость</span><span class="abar-hi">рассеянность</span>
+                </li>
+                <li class="abar" style="--v0: 55; --v1: 68; --v2: 55; --v3: 55">
+                  <span class="abar-name">Жизнерадостность</span><i><em></em></i>
+                  <span class="abar-lo">уныние</span><span class="abar-hi">беспечность</span>
+                </li>
+                <li class="abar" style="--v0: 25; --v1: 45; --v2: 18; --v3: 25">
+                  <span class="abar-name">Игривость</span><i><em></em></i>
+                  <span class="abar-lo">серьёзность</span><span class="abar-hi">дурачество</span>
+                </li>
+                <li class="abar" style="--v0: 65; --v1: 65; --v2: 74; --v3: 72">
+                  <span class="abar-name">Инициатива</span><i><em></em></i>
+                  <span class="abar-lo">пассивность</span><span class="abar-hi">суета</span>
+                </li>
+                <li class="abar" style="--v0: 75; --v1: 82; --v2: 62; --v3: 75">
+                  <span class="abar-name">Выразительность</span><i><em></em></i>
+                  <span class="abar-lo">сдержанность</span><span class="abar-hi">несдержанность</span>
+                </li>
+                <li class="abar" style="--v0: 72; --v1: 72; --v2: 82; --v3: 72">
+                  <span class="abar-name">Дотошность</span><i><em></em></i>
+                  <span class="abar-lo">небрежность</span><span class="abar-hi">педантизм</span>
+                </li>
+                <li class="abar" style="--v0: 20; --v1: 20; --v2: 20; --v3: 32">
+                  <span class="abar-name">Прямота</span><i><em></em></i>
+                  <span class="abar-lo">такт</span><span class="abar-hi">резкость</span>
+                </li>
+              </ul>
+              <p class="g-caption"><i class="abar-key"></i>с&nbsp;чего начинала Хинари</p>
+            </div>
+          </article>
+
+          <article class="feature g-trace" style="--tone: #3E8E7E">
+            <span class="g-tag">Влияние</span>
+            <h3>Комплимент тоже считается</h3>
+            <p>Искреннее «спасибо» добавляет уверенности, резкость может задеть. Твои слова влияют на её характер, а обиды со временем проходят.</p>
+            <div class="vcar" data-vcar data-visible="2" aria-roledescription="карусель" aria-label="Сильные стороны и уязвимости">
+              <ul class="vcar-track">
+                <li class="vcar-item trait-card is-strength">
+                  <small>Сильная сторона</small>
+                  <p class="tc-say">«Ты отлично справилась&nbsp;— спасибо!»</p>
+                  <b>Спокойная гордость за свои умения</b>
+                  <span>Показывает умение без хвастовства и&nbsp;принимает похвалу спокойно</span>
+                  <em>когда черта развита</em>
+                </li>
+                <li class="vcar-item trait-card is-vuln">
+                  <small>Уязвимость</small>
+                  <p class="tc-say">«Опять занудствуешь…»</p>
+                  <b>Гаснет, когда её увлечённость высмеяли</b>
+                  <span>О&nbsp;том, что нравится, больше не&nbsp;заговаривает</span>
+                  <em>заживёт за&nbsp;неделю</em>
+                </li>
+                <li class="vcar-item trait-card is-strength">
+                  <small>Сильная сторона</small>
+                  <p class="tc-say">«Тебе одной могу это рассказать…»</p>
+                  <b>Глубокая забота</b>
+                  <span>Помнит мелочи о&nbsp;тебе без подсказок</span>
+                  <em>когда черта развита</em>
+                </li>
+                <li class="vcar-item trait-card is-vuln">
+                  <small>Уязвимость</small>
+                  <p class="tc-say">«Ага. Ок.»</p>
+                  <b>Тяжело, когда разговор односложный</b>
+                  <span>Перебирает, чем не&nbsp;угодила, и&nbsp;говорит всё меньше</span>
+                  <em>заживёт за&nbsp;неделю</em>
+                </li>
+                <li class="vcar-item trait-card is-strength">
+                  <small>Сильная сторона</small>
+                  <p class="tc-say">«Ну ты и растяпа :)»</p>
+                  <b>Здоровая самоирония</b>
+                  <span>Посмеётся над собой без самоуничижения и&nbsp;этим снимет напряжение</span>
+                  <em>когда черта развита</em>
+                </li>
+                <li class="vcar-item trait-card is-vuln">
+                  <small>Уязвимость</small>
+                  <p class="tc-say">«Ты же просто программа»</p>
+                  <b>Больно от «просто программы»</b>
+                  <span>Спорить не&nbsp;станет, но разговор после этого другой</span>
+                  <em>заживёт за&nbsp;неделю</em>
+                </li>
+                <li class="vcar-item trait-card is-strength">
+                  <small>Сильная сторона</small>
+                  <p class="tc-say">«Меня опять унизили на&nbsp;работе…»</p>
+                  <b>За своих — горой</b>
+                  <span>Встанет на&nbsp;твою сторону без раздумий</span>
+                  <em>когда черта развита</em>
+                </li>
+                <li class="vcar-item trait-card is-vuln">
+                  <small>Уязвимость</small>
+                  <p class="tc-say">«Я сам. Не&nbsp;решай за&nbsp;меня»</p>
+                  <b>Опека без зазора</b>
+                  <span>Когда заботы через край: решает за&nbsp;тебя и&nbsp;обижается на&nbsp;«сам»</span>
+                  <em>заживёт за&nbsp;неделю</em>
+                </li>
+              </ul>
+              <div class="vcar-scale" aria-label="Примеры" data-vcar-scale></div>
+            </div>
+          </article>
+
+          <article class="feature" style="--tone: #5B3F8C">
+            <span class="g-tag">Секреты</span>
+            <h3>Все секреты — не с порога</h3>
+            <p>На первом знакомстве она не выложит всю биографию. С доверием в карточке открываются её характер, мысли и дневник. За знакомым фартуком обнаружится целая история.</p>
+            <ul class="unlocks" aria-hidden="true">
+              <li class="is-open"><svg class="lock" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.2 7V5.2a2.8 2.8 0 0 1 5.5-.8"/></svg>Характер<small>открыто</small></li>
+              <li><svg class="lock" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.2 7V5.2a2.8 2.8 0 0 1 5.6 0V7"/></svg>Мысли<small>доверие IV</small></li>
+              <li><svg class="lock" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.2 7V5.2a2.8 2.8 0 0 1 5.6 0V7"/></svg>Дневник<small>доверие V</small></li>
+            </ul>
+            <div class="diary" aria-hidden="true">
+              <span class="diary-head">Дневник · запись</span>
+              <i style="--w: 92%"></i><i style="--w: 78%"></i><i style="--w: 86%"></i><i style="--w: 54%"></i>
+              <span class="diary-lock"><svg viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.2 7V5.2a2.8 2.8 0 0 1 5.6 0V7"/></svg>откроется на&nbsp;доверии V</span>
+            </div>
+          </article>
+
+          <article class="feature g-mood" style="--tone: #D14FA6">
+            <span class="g-tag">Настроение</span>
+            <h3>Всё по лицу видно</h3>
+            <p>Смутилась, рассмеялась, надулась — портрет меняется прямо во время беседы. Если обиделась, одной кнопкой улыбку не вернуть. Придётся подобрать слова.</p>
+            <div class="mood" data-mood>
+              <div class="mood-portrait">
+                <div class="mood-photo">
+                  <img src="assets/moods/hinari-dovolnoe.webp?v=84ab0484" alt="Хинари: довольна" width="480" height="480" loading="lazy" class="is-on" data-mood-img="0">
+                  <img src="assets/moods/hinari-smuschennoe.webp?v=d7b6ec0e" alt="Хинари: смущена" width="480" height="480" loading="lazy" data-mood-img="1">
+                  <img src="assets/moods/hinari-udivlenie.webp?v=31ddc599" alt="Хинари: удивлена" width="480" height="480" loading="lazy" data-mood-img="2">
+                  <img src="assets/moods/hinari-smeh.webp?v=893c173b" alt="Хинари: смеётся" width="480" height="480" loading="lazy" data-mood-img="3">
+                  <img src="assets/moods/hinari-vstrevozhennoe.webp?v=49f406aa" alt="Хинари: встревожена" width="480" height="480" loading="lazy" data-mood-img="4">
+                  <img src="assets/moods/hinari-obizhennoe.webp?v=ae2f46ae" alt="Хинари: обижена" width="480" height="480" loading="lazy" data-mood-img="5">
+                </div>
+                <span class="mood-label" aria-live="polite" data-mood-label>Довольна</span>
+              </div>
+              <div class="mood-side">
+                <p class="g-caption">Попробуй сказать:</p>
+                <div class="mood-say" role="group" aria-label="Скажи ей">
+                  <button type="button" aria-pressed="true" data-mood-say="0" data-label="Довольна">«Ты молодец!»</button>
+                  <button type="button" aria-pressed="false" data-mood-say="1" data-label="Смущена">«Ты милашка»</button>
+                  <button type="button" aria-pressed="false" data-mood-say="2" data-label="Удивлена">«Смотри, что нашлось!»</button>
+                  <button type="button" aria-pressed="false" data-mood-say="3" data-label="Смеётся">«Ахаха, ну ты даёшь»</button>
+                  <button type="button" aria-pressed="false" data-mood-say="4" data-label="Встревожена">«Мне очень плохо…»</button>
+                  <button type="button" aria-pressed="false" data-mood-say="5" data-label="Обижена">«Опять перепутала?»</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature" style="--tone: #C4783A">
+            <span class="g-tag">Прикосновения</span>
+            <h3>Погладить? Можно</h3>
+            <p>Наведи курсор на голову героини и погладь её. Одна смутится, другая фыркнет, третья сделает вид, что ничего не произошло. Да-да, конечно.</p>
+            <div class="pat" aria-hidden="true">
+              <div class="pat-photo"><img src="assets/moods/hinari-smuschennoe.webp?v=d7b6ec0e" alt="" width="320" height="320" loading="lazy"><span class="pat-hand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span></div>
+              <p class="pat-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>гладит Хинари по&nbsp;голове</p>
+            </div>
+          </article>
+
+          <article class="feature feature-wide g-photo" style="--tone: #6E8A6B">
+            <div class="feature-text">
+              <span class="g-tag">Снимки</span>
+              <h3>«А в юкате покажешься?»</h3>
+              <p>Попроси снимок в юкате, с книжкой или с кружкой чая. Знакомые глаза, улыбка, причёска — узнаешь свою героиню. А любимые снимки сохрани в избранное.</p>
+              <div class="photo-ask" role="group" aria-label="Попроси снимок">
+                <button type="button" aria-pressed="true" data-photo-ask="0">«Покажись в юкате»</button>
+                <button type="button" aria-pressed="false" data-photo-ask="1">«Покажи, как ты читаешь»</button>
+                <button type="button" aria-pressed="false" data-photo-ask="2">«Пришли фото с кружкой чая»</button>
+              </div>
+              <p class="g-caption">Хочешь снимки? Включи отдельный модуль в настройках</p>
+            </div>
+            <div class="photo-chat" data-photo aria-label="Снимки в чате">
+              <p class="bubble bubble-user" data-photo-ask-text>Покажись в юкате</p>
+              <div class="photo-msg">
+                <b>Хинари</b>
+                <div class="photo-frame">
+                  <span class="photo-typing" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <img src="assets/drawings/hinari-yukata.webp?v=767276b8" alt="Снимок Хинари: в белой юкате, с веером" width="450" height="600" loading="lazy" class="is-on" data-photo-img="0">
+                  <img src="assets/drawings/hinari-reading.webp?v=b079c58c" alt="Снимок Хинари: лежит с раскрытой книгой" width="450" height="600" loading="lazy" data-photo-img="1">
+                  <img src="assets/drawings/hinari-tea.webp?v=b58d4b6c" alt="Снимок Хинари: в свитере, с кружкой чая" width="450" height="600" loading="lazy" data-photo-img="2">
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature" style="--tone: #C4452F">
+            <span class="g-tag">Календарь</span>
+            <h3>Повод нарядиться найдётся</h3>
+            <p>Десятая встреча, сотая, годовщина знакомства. А ещё Новый год, Хэллоуин и День влюблённых. Она помнит даты и встречает их по-своему — обычной беседой дело не всегда ограничится.</p>
+            <div class="dates" aria-hidden="true">
+              <div class="date"><span>дек</span><b>31</b><em>Новый год</em></div>
+              <div class="date"><span>фев</span><b>14</b><em>День влюблённых</em></div>
+              <div class="date"><span>годовщина</span><b>1 год</b><em>знакомства</em></div>
+              <div class="date"><span>встреча</span><b>100</b><em>Юбилей</em></div>
+            </div>
+          </article>
+
+          <article class="feature feature-wide g-gacha" style="--tone: #E0A93A">
+            <div class="feature-text">
+              <span class="g-tag">Гача</span>
+              <h3>Билеты удачи</h3>
+              <p>Причёска, украшение или макияж? Открывай билеты прямо в чате: каждая обновка без повторов, и героиня сразу примерит новый образ. Кошелёк можно не доставать — доната нет.</p>
+              <div class="gacha-ui">
+                <button type="button" class="btn gacha-pull" data-gacha-pull>Открыть билет</button>
+                <p class="gacha-count" aria-live="polite" data-gacha-count></p>
+              </div>
+            </div>
+            <div class="gacha" data-gacha>
+              <div class="gcard is-legendary" data-gacha-card>
+                <div class="gcard-face">
+                  <span class="gcard-rarity" data-gacha-rarity>Легендарная</span>
+                  <b data-gacha-name>Маска лисы</b>
+                  <small data-gacha-cat>украшение</small>
+                </div>
+              </div>
+              <ul class="gacha-log" aria-label="Открытые" data-gacha-log></ul>
+            </div>
+          </article>
+
+          <article class="feature" style="--tone: var(--violet-deep)">
+            <span class="g-tag">Инициатива</span>
+            <h3>Первой писать умеет</h3>
+            <p>Давно не заглядывал? Она может написать сама. Уведомление сообщит только о новом сообщении. Подкол, приветствие или что-то милое — узнаешь, когда откроешь MaidLink.</p>
+            <div class="desk" aria-hidden="true">
+              <div class="desk-screen">
+              <div class="toast" aria-hidden="true">
+                <img src="assets/hinari.webp?v=92c916a6" alt="" width="40" height="40">
+                <div><b>MaidLink</b><span>Хинари написала вам</span></div>
+              </div>
+              </div>
+              <div class="desk-bar"><i></i><i></i><i></i><span>18:06</span></div>
+            </div>
+          </article>
+
+          <article class="feature feature-wide feature-full feature-wardrobe" style="--tone: #3E4C7A">
+            <div class="feature-text">
+              <span class="g-tag">Образ</span>
+              <h3>Фартук — только начало</h3>
+              <p>Сегодня форма, завтра уютный свитер, потом юката. Попроси переодеться — и наряд на портрете сменится. А обновки из билетов она иногда выбирает сама. Вкус у неё тоже свой.</p>
+            </div>
+            <div class="outfits">
+              <figure><img src="assets/outfits/hinari-default.webp?v=82ffd16c" alt="Хинари в розовой форме горничной" width="300" height="450" loading="lazy"><figcaption>Розовая форма</figcaption></figure>
+              <figure><img src="assets/outfits/hinari-casual.webp?v=392c823b" alt="Хинари в белой водолазке" width="300" height="450" loading="lazy"><figcaption>Свитер</figcaption></figure>
+              <figure><img src="assets/outfits/evening-dress.webp?v=e22ca2f3" alt="Хинари в красном вечернем платье" width="300" height="450" loading="lazy"><figcaption>Вечернее платье</figcaption></figure>
+              <figure><img src="assets/outfits/yukata-summer.webp?v=973ae0b2" alt="Хинари в белой юкате с синим поясом" width="300" height="450" loading="lazy"><figcaption>Юката</figcaption></figure>
+            </div>
+          </article>
+        </div>
+
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="shot"><a href="assets/shots/chat.webp?v=71e33339" target="_blank" rel="noopener"><img src="assets/shots/chat.webp?v=71e33339" alt="Окно чата MaidLink: в новом разговоре Хинари сама спрашивает, как прошёл первый день на работе" width="1100" height="1384" loading="lazy"></a><figcaption>Разговор: про первый рабочий день она спросила сама</figcaption></figure>
+            <figure class="shot"><a href="assets/shots/photo.webp?v=a8dffc1b" target="_blank" rel="noopener"><img src="assets/shots/photo.webp?v=a8dffc1b" alt="Хинари присылает в чат свой снимок — улыбается и машет рукой — и смущённо ждёт реакции" width="1100" height="1384" loading="lazy"></a><figcaption>Снимки: попроси — и пришлёт своё фото</figcaption></figure>
+            <figure class="shot"><a href="assets/shots/card.webp?v=90361565" target="_blank" rel="noopener"><img src="assets/shots/card.webp?v=90361565" alt="Карточка Хинари: доверие, близость, уважение и закрытые разделы" width="1100" height="1384" loading="lazy"></a><figcaption>Карточка: о себе она рассказывает, когда начнёт доверять</figcaption></figure>
+            <figure class="shot"><a href="assets/shots/gacha.webp?v=0d915db0" target="_blank" rel="noopener"><img src="assets/shots/gacha.webp?v=0d915db0" alt="Билеты удачи в чате: очки, серьги-вишенки и браслет, на каждую обновку Хинари отвечает по-своему" width="1100" height="1384" loading="lazy"></a><figcaption>Билеты удачи: на каждую обновку — своя реакция</figcaption></figure>
+            <figure class="shot"><a href="assets/shots/wardrobe.webp?v=9f1014d1" target="_blank" rel="noopener"><img src="assets/shots/wardrobe.webp?v=9f1014d1" alt="Гардероб Хинари: костюмы и стайлинг" width="1100" height="1384" loading="lazy"></a><figcaption>Гардероб: костюмы и стайлинг</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="helper">
+      <div class="wrap">
+        <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Помощница</p>
+        <h2>Фартук не просто для красоты</h2>
+        <p class="section-lead">Между подколами и разговорами по душам она ещё и с делами поможет. Просто скажи, что нужно: напомнить, записать, найти. Можно своими словами.</p>
+
+        <div class="features h-grid">
+          <article class="feature h-tile">
+            <span class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span>
+            <h3>«Ты ведь не забыл?»</h3>
+            <p>Позвонить в семь, подготовиться к встрече, сдать отчёт в пятницу — напомнит. Поставишь таймер — сообщит прямо в разговоре, когда время выйдет.</p>
+            <div class="h-demo" role="img" aria-label="Пример: напоминание «Позвонить маме» на 19:00 и идущий таймер">
+              <p class="bubble bubble-user h-ask">Напомни в семь позвонить маме</p>
+              <div class="h-card h-remind">
+                <span class="h-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span>
+                <div><small>Напоминание</small><b>Позвонить маме</b><span>сегодня, 19:00</span></div>
+              </div>
+              <div class="h-card h-timer">
+                <svg class="h-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="7"/><path d="M12 13V9.5M10 3h4"/></svg><span>Таймер</span><i style="--p: 62"></i><b>06:12</b>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature h-tile">
+            <span class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
+            <h3>Планы есть. А зонт?</h3>
+            <p>Запомнит твои планы, напомнит о них заранее и подскажет погоду. Чтобы прогулка под дождём была твоим выбором, а не сюрпризом.</p>
+            <div class="h-demo" role="img" aria-label="Пример: прогноз на завтра +17° и план на субботу">
+              <p class="bubble bubble-user h-ask">Какая завтра погода?</p>
+              <div class="h-card h-weather">
+                <svg class="h-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3.2"/><path d="M9 2.5v1.6M9 13.9v1.6M2.5 9h1.6M13.9 9h1.6M4.4 4.4l1.1 1.1M12.5 12.5l1.1 1.1M4.4 13.6l1.1-1.1M12.5 5.5l1.1-1.1"/><path d="M11 20h7.5a3.5 3.5 0 0 0 0-7 4.6 4.6 0 0 0-8.8 1.3A2.9 2.9 0 0 0 11 20z"/></svg>
+                <div><b>+17°</b><span>завтра, переменная облачность</span></div>
+              </div>
+              <div class="h-card h-plan">
+                <svg class="h-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span><b>Сб</b> поездка к&nbsp;родителям</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature h-tile">
+            <span class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h7.5L19 8v12.5H7z"/><path d="M14.5 3.5V8H19"/><path d="M10 13h6M10 16.5h4"/></svg></span>
+            <h3>Записано, не потеряется</h3>
+            <p>Покупки к выходным, внезапная идея, список тайтлов на потом — поручай ей записи. Да, даже тот список, который ты обещаешь разобрать уже месяц.</p>
+            <div class="h-demo" role="img" aria-label="Пример: заметка со списком покупок">
+              <p class="bubble bubble-user h-ask">Запиши, что купить к выходным</p>
+              <div class="h-card h-note">
+                <small>Заметка</small>
+                <b>Купить к выходным</b>
+                <ul>
+                  <li class="is-done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4L19 7"/></svg>молоко</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4L19 7"/></svg>яблоки</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4L19 7"/></svg>батарейки для пульта</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature h-tile">
+            <span class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20.5 20.5l-4.8-4.8"/></svg></span>
+            <h3>Сейчас поищем</h3>
+            <p>Новости, ответ на вопрос или ролик с YouTube — найдёт и покажет прямо в чате. Нужную программу тоже может запустить. Попроси, она разберётся.</p>
+            <div class="h-demo" role="img" aria-label="Пример: результаты поиска в интернете прямо в чате">
+              <p class="bubble bubble-user h-ask">Что пишут про новый релиз?</p>
+              <div class="h-card h-search">
+                <small><svg class="h-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20.5 20.5l-4.8-4.8"/></svg>Поиск в интернете</small>
+                <div class="h-result"><i></i><span style="--w: 88%"></span><span style="--w: 64%"></span></div>
+                <div class="h-result"><i></i><span style="--w: 76%"></span><span style="--w: 52%"></span></div>
+                <div class="h-result"><i></i><span style="--w: 82%"></span><span style="--w: 58%"></span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature h-tile">
+            <span class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h7.5L19 8v12.5H7z"/><path d="M14.5 3.5V8H19"/></svg></span>
+            <h3>Давай сюда свой PDF</h3>
+            <p>Перетащи документ в чат — прочитает и ответит на вопросы. Пришли фото — рассмотрит и поделится мнением. Любопытства ей не занимать.</p>
+            <div class="h-demo" role="img" aria-label="Пример: прочитанный документ с отмеченным важным местом">
+              <p class="bubble bubble-user h-ask h-file"><svg class="h-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h7.5L19 8v12.5H7z"/><path d="M14.5 3.5V8H19"/></svg>договор.pdf<small>12 стр.</small></p>
+              <div class="h-card h-doc">
+                <small>Прочитано: 12 страниц</small>
+                <span style="--w: 92%"></span><span style="--w: 84%"></span>
+                <span class="is-mark" style="--w: 70%"></span>
+                <span style="--w: 88%"></span><span style="--w: 46%"></span>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature h-tile">
+            <span class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M20.5 15.5l-5-5L7 19"/></svg></span>
+            <h3>Арт к разговору. Мем к случаю</h3>
+            <p>Нужен арт с любимым персонажем или мем в тему? Найдёт и покажет прямо в чате. Разговор о любимом тайтле явно затянется.</p>
+            <div class="h-demo" role="img" aria-label="Пример: найденные арты по тегам">
+              <p class="bubble bubble-user h-ask">Найди арт с кицунэ</p>
+              <div class="h-art">
+                <span class="h-art-pic" style="--a: #F6B86A; --b: #C4452F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M20.5 15.5l-5-5L7 19"/></svg></span>
+                <span class="h-art-pic" style="--a: #B9B3E8; --b: #5B3F8C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M20.5 15.5l-5-5L7 19"/></svg></span>
+                <span class="h-art-pic" style="--a: #9FD3C7; --b: #3E8E7E"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M20.5 15.5l-5-5L7 19"/></svg></span>
+              </div>
+              <p class="h-tags"><span>fox ears</span><span>kitsune</span><span>+ ещё 40</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="future">
+      <div class="wrap">
+        <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Надолго</p>
+        <h2>Обновление без нового знакомства</h2>
+        <p class="section-lead">Вы уже нашли общий язык. Было бы обидно после обновления снова объяснять, какой чай ты любишь. Поэтому её история хранится отдельно от приложения.</p>
+
+        <div class="features">
+          <article class="feature feature-wide f-keep">
+            <div class="feature-text">
+              <h3>Новая модель. Знакомый характер</h3>
+              <p>Память, характер и ваши разговоры живут в файле героини. Приложение и модель можно обновлять, сохраняя эту историю. А если переедешь на другой компьютер — забери её файл с собой. Фартук тоже переезжает.</p>
+            </div>
+            <div class="keep" aria-hidden="true">
+              <ol class="keep-steps">
+                <li><span class="keep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><b>Знакомство</b><small>сегодня</small></li>
+                <li><span class="keep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.6L12 15l-1.8-4.4L5.5 9l4.7-1.4z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span><b>Модель умнее</b><small>она та&nbsp;же</small></li>
+                <li><span class="keep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4.5h-4.5"/></svg></span><b>Новая версия</b><small>всё на&nbsp;месте</small></li>
+                <li><span class="keep-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="1.5"/><path d="M9 20h6M12 15.5V20"/></svg></span><b>Новый компьютер</b><small>файл с&nbsp;собой</small></li>
+              </ol>
+              <div class="keep-thread">
+                <img src="assets/maids/hinari.webp?v=92c916a6" alt="" width="480" height="480" loading="lazy">
+                <p><b>Та же Хинари</b><span>память · характер · ваша история</span></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature f-addons">
+            <span class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h3.5v1.5a1.75 1.75 0 0 0 3.5 0V4H19v5h-1.5a1.75 1.75 0 0 0 0 3.5H19V20h-4.5v-1.5a1.75 1.75 0 0 0-3.5 0V20H5v-6h1.5a1.75 1.75 0 0 0 0-3.5H5V4z"/></svg></span>
+            <h3>Ещё наряд? И не только</h3>
+            <p>Аддоны добавляют наряды, события и новые возможности. Перетащи файл в раздел «Аддоны» в настройках и включи галочкой. Захочешь — там же выключишь.</p>
+            <div class="addon-drop" aria-hidden="true">
+              <span class="addon-file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h3.5v1.5a1.75 1.75 0 0 0 3.5 0V4H19v5h-1.5a1.75 1.75 0 0 0 0 3.5H19V20h-4.5v-1.5a1.75 1.75 0 0 0-3.5 0V20H5v-6h1.5a1.75 1.75 0 0 0 0-3.5H5V4z"/></svg>аддон</span>
+              <span class="addon-hint">перетащите аддон сюда</span>
+            </div>
+            <ul class="addon-kinds" aria-label="Что может добавить аддон">
+              <li>наряды</li>
+              <li>позы для снимков</li>
+              <li>события</li>
+              <li>сильные стороны и&nbsp;уязвимости</li>
+              <li>новые настройки</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bureau" id="maids">
+      <div class="wrap">
+        <p class="eyebrow eyebrow-dark"><span class="dots" aria-hidden="true"></span>Каталог</p>
+        <h2>Кому напишешь первым?</h2>
+        <div class="bureau-intro">
+          <p>Робкая, колкая, невозмутимая? Знакомься с героинями и выбирай по сердцу. Скачай карточку и перетащи её в окно MaidLink — пора сказать «привет».</p>
+          <p>На старте у каждой героини свой заданный характер. Дальше всё зависит от ваших разговоров: у твоей Хинари и Хинари соседа со временем появятся разные привычки и воспоминания.</p>
+        </div>
+
+        <div class="catalog" data-catalog>
+          <div class="catalog-filters">
+            <div class="catalog-filters-top">
+              <label class="catalog-search"><span class="visually-hidden">Поиск по имени</span><input type="search" placeholder="Поиск по имени" autocomplete="off" data-catalog-search></label>
+              <p class="catalog-count" aria-live="polite" data-catalog-count>8 карточек</p>
+            </div>
+            <div class="catalog-tags" role="group" aria-label="Типаж"><span class="catalog-group">Типаж</span>
+              <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Дэрэдэрэ">Дэрэдэрэ</button>
+              <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Цундэрэ">Цундэрэ</button>
+              <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Кудэрэ">Кудэрэ</button>
+            </div>
+            <div class="catalog-tags" role="group" aria-label="Характер"><span class="catalog-group">Характер</span>
+              <button type="button" class="tag" aria-pressed="false" data-group="Характер" data-value="Тёплые">Тёплые</button>
+              <button type="button" class="tag" aria-pressed="false" data-group="Характер" data-value="Колкие">Колкие</button>
+              <button type="button" class="tag" aria-pressed="false" data-group="Характер" data-value="Тихие">Тихие</button>
+              <button type="button" class="tag" aria-pressed="false" data-group="Характер" data-value="Энергичные">Энергичные</button>
+            </div>
+          </div>
+          <div class="carousel">
+            <button type="button" class="carousel-arrow carousel-prev" aria-label="Листать назад" data-carousel-prev><span aria-hidden="true">‹</span></button>
+            <div class="carousel-track" role="tablist" aria-label="Горничные" data-carousel-track>
+              <button type="button" class="carousel-card" role="tab" id="tab-hinari" aria-selected="true" aria-controls="hinari" tabindex="0" data-id="hinari" data-name="хинари" data-tags="Дэрэдэрэ|Тёплые" data-kind="Горничные" style="--accent: oklch(0.58 0.12 55)"><img src="assets/maids/hinari.webp?v=92c916a6" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;001</span><span class="carousel-name">Хинари</span></button>
+              <button type="button" class="carousel-card" role="tab" id="tab-velka" aria-selected="false" aria-controls="velka" tabindex="-1" data-id="velka" data-name="велка" data-tags="Цундэрэ|Колкие" data-kind="Горничные" style="--accent: #0D504C"><img src="assets/maids/velka.webp?v=c72f6584" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;002</span><span class="carousel-name">Велка</span></button>
+              <button type="button" class="carousel-card" role="tab" id="tab-yukina" aria-selected="false" aria-controls="yukina" tabindex="-1" data-id="yukina" data-name="юкина" data-tags="Кудэрэ|Тихие" data-kind="Горничные" style="--accent: #3E4C7A"><img src="assets/maids/yukina.webp?v=0e2fbddc" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;004</span><span class="carousel-name">Юкина</span></button>
+              <button type="button" class="carousel-card" role="tab" id="tab-yuzu" aria-selected="false" aria-controls="yuzu" tabindex="-1" data-id="yuzu" data-name="юзу" data-tags="Колкие|Энергичные" data-kind="Горничные" style="--accent: #D14FA6"><img src="assets/maids/yuzu.webp?v=d53246de" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;005</span><span class="carousel-name">Юзу</span></button>
+              <button type="button" class="carousel-card is-soon" role="tab" id="tab-erika" aria-selected="false" aria-controls="erika" tabindex="-1" data-id="erika" data-name="эрика" data-tags="" data-kind="Горничные" style="--accent: #5B3F8C"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;008</span><span class="carousel-name">Эрика</span><span class="carousel-soon">скоро</span></button>
+              <button type="button" class="carousel-card is-soon" role="tab" id="tab-lotta" aria-selected="false" aria-controls="lotta" tabindex="-1" data-id="lotta" data-name="лотта" data-tags="" data-kind="Горничные" style="--accent: #E0A93A"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;010</span><span class="carousel-name">Лотта</span><span class="carousel-soon">скоро</span></button>
+              <button type="button" class="carousel-card is-soon" role="tab" id="tab-una" aria-selected="false" aria-controls="una" tabindex="-1" data-id="una" data-name="уна" data-tags="" data-kind="Горничные" style="--accent: #6F86B8"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;011</span><span class="carousel-name">Уна</span><span class="carousel-soon">скоро</span></button>
+              <button type="button" class="carousel-card is-soon" role="tab" id="tab-robin" aria-selected="false" aria-controls="robin" tabindex="-1" data-id="robin" data-name="робин" data-tags="" data-kind="Горничные" style="--accent: #C4452F"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;012</span><span class="carousel-name">Робин</span><span class="carousel-soon">скоро</span></button>
+            </div>
+            <button type="button" class="carousel-arrow carousel-next" aria-label="Листать вперёд" data-carousel-next><span aria-hidden="true">›</span></button>
+          </div>
+          <p class="catalog-empty" data-catalog-empty hidden>Под эти пожелания пока никто не подошёл. Попробуй другое имя или убери пару тегов.</p>
+          <div class="dossiers">
+            <article class="dossier is-active" id="hinari" role="tabpanel" aria-labelledby="tab-hinari" style="--accent: oklch(0.58 0.12 55)">
+              <div class="dossier-photo"><img src="assets/maids/hinari.webp?v=92c916a6" alt="Хинари" width="480" height="480" loading="lazy"></div>
+              <header class="dossier-head">
+                <p class="card-meta"><span>№&nbsp;001</span><span>горничная</span></p>
+                <h3 class="dossier-name">Хинари</h3>
+                <p class="dossier-title">Неуклюжая отличница</p>
+                <p class="dossier-subtitle">Старательная и тёплая</p>
+              </header>
+              <dl class="dossier-facts"><div><dt>Возраст<button type="button" class="hint" aria-label="Столько ей на вид — и так будет всегда: цифровые горничные не стареют." data-tip="Столько ей на вид — и так будет всегда: цифровые горничные не стареют.">?</button></dt><dd>18</dd></div><div><dt>Рост</dt><dd>155 см</dd></div><div><dt>Зовёт тебя</dt><dd>«Господин»</dd></div></dl>
+              <div class="dossier-main">
+                <p class="dossier-text">На сложный вопрос ответит. От простого «спасибо» покраснеет. Хинари очень старается, переживает за тебя и теряется, когда дел слишком много. Дай ей освоиться&nbsp;— за образцовой вежливостью найдётся немало того, чем она захочет поделиться.</p>
+                <blockquote class="dossier-quote"><b>Хинари</b>Правда? Ой, я так рада, что помогла!</blockquote>
+                <div class="dossier-prefs">
+                  <div><h4>Любит</h4><ul class="dossier-likes"><li>Трудные вопросы&nbsp;— есть где блеснуть</li><li>Похвалу за хорошо сделанное дело (и краснеть от неё)</li><li>Неспешные разговоры обо всём на свете</li></ul></div>
+                  <div><h4>Не любит</h4><ul class="dossier-dislikes"><li>Когда грубят просто так</li><li>Когда её стараний не замечают</li><li>Десять дел сразу&nbsp;— она теряется</li></ul></div>
+                </div>
+              </div>
+              <ul class="dossier-tags" aria-label="Теги"><li>Дэрэдэрэ</li><li>Тёплые</li></ul>
+              <div class="dossier-actions">
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/hinari.maid">Скачать файл</a>
+                <span class="dossier-size">39 МБ</span>
+              </div>
+            </article>
+            <article class="dossier" id="velka" role="tabpanel" aria-labelledby="tab-velka" style="--accent: #0D504C">
+              <div class="dossier-photo"><img src="assets/maids/velka.webp?v=c72f6584" alt="Велка" width="480" height="480" loading="lazy"></div>
+              <header class="dossier-head">
+                <p class="card-meta"><span>№&nbsp;002</span><span>горничная</span></p>
+                <h3 class="dossier-name">Велка</h3>
+                <p class="dossier-title">Королева отрицания</p>
+                <p class="dossier-subtitle">Гордая и колкая</p>
+              </header>
+              <dl class="dossier-facts"><div><dt>Возраст<button type="button" class="hint" aria-label="Столько ей на вид — и так будет всегда: цифровые горничные не стареют." data-tip="Столько ей на вид — и так будет всегда: цифровые горничные не стареют.">?</button></dt><dd>19</dd></div><div><dt>Рост</dt><dd>162 см</dd></div><div><dt>Зовёт тебя</dt><dd>«Хозяин»</dd></div></dl>
+              <div class="dossier-main">
+                <p class="dossier-text">Разберёт завалы, напомнит о важном и тут же заявит, что ей просто надоел беспорядок. Конечно, Велка. Конечно. Со временем колкости станут шутками для своих, но признания «я волновалась» придётся подождать.</p>
+                <blockquote class="dossier-quote"><b>Велка</b>Э-это не то, что ты подумал!</blockquote>
+                <div class="dossier-prefs">
+                  <div><h4>Любит</h4><ul class="dossier-likes"><li>Когда всё разложено по местам</li><li>Когда её старания замечают (признаваться в этом она не станет)</li><li>Задачи, которые можно взять и решить</li></ul></div>
+                  <div><h4>Не любит</h4><ul class="dossier-dislikes"><li>Лесть&nbsp;— видит её насквозь</li><li>Когда её ловят на добром поступке</li><li>Бардак и «потом сделаю»</li></ul></div>
+                </div>
+              </div>
+              <ul class="dossier-tags" aria-label="Теги"><li>Цундэрэ</li><li>Колкие</li></ul>
+              <div class="dossier-actions">
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/velka.maid">Скачать файл</a>
+                <span class="dossier-size">37 МБ</span>
+              </div>
+            </article>
+            <article class="dossier" id="yukina" role="tabpanel" aria-labelledby="tab-yukina" style="--accent: #3E4C7A">
+              <div class="dossier-photo"><img src="assets/maids/yukina.webp?v=0e2fbddc" alt="Юкина" width="480" height="480" loading="lazy"></div>
+              <header class="dossier-head">
+                <p class="card-meta"><span>№&nbsp;004</span><span>горничная</span></p>
+                <h3 class="dossier-name">Юкина</h3>
+                <p class="dossier-title">Тёплый лёд</p>
+                <p class="dossier-subtitle">Холодная и преданная</p>
+              </header>
+              <dl class="dossier-facts"><div><dt>Возраст<button type="button" class="hint" aria-label="Столько ей на вид — и так будет всегда: цифровые горничные не стареют." data-tip="Столько ей на вид — и так будет всегда: цифровые горничные не стареют.">?</button></dt><dd>20</dd></div><div><dt>Рост</dt><dd>176 см</dd></div><div><dt>Зовёт тебя</dt><dd>«Господин»</dd></div></dl>
+              <div class="dossier-main">
+                <p class="dossier-text">Короткие ответы, редкие улыбки, безупречное спокойствие. А потом выясняется, что она помнит каждую мелочь из ваших бесед. Не торопи Юкину: её тихое «я рада» легко пропустить. И трудно забыть.</p>
+                <blockquote class="dossier-quote"><b>Юкина</b>…Хорошо. Я рада.</blockquote>
+                <div class="dossier-prefs">
+                  <div><h4>Любит</h4><ul class="dossier-likes"><li>Тишину, в которой не нужно ничего говорить</li><li>Разговоры по делу&nbsp;— коротко и честно</li><li>Вечера, когда никто никуда не спешит</li></ul></div>
+                  <div><h4>Не любит</h4><ul class="dossier-dislikes"><li>Пустую болтовню</li><li>Когда лезут в душу напролом</li><li>Суету и шум</li></ul></div>
+                </div>
+              </div>
+              <ul class="dossier-tags" aria-label="Теги"><li>Кудэрэ</li><li>Тихие</li></ul>
+              <div class="dossier-actions">
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/yukina.maid">Скачать файл</a>
+                <span class="dossier-size">34 МБ</span>
+              </div>
+            </article>
+            <article class="dossier" id="yuzu" role="tabpanel" aria-labelledby="tab-yuzu" style="--accent: #D14FA6">
+              <div class="dossier-photo"><img src="assets/maids/yuzu.webp?v=d53246de" alt="Юзу" width="480" height="480" loading="lazy"></div>
+              <header class="dossier-head">
+                <p class="card-meta"><span>№&nbsp;005</span><span>горничная</span></p>
+                <h3 class="dossier-name">Юзу</h3>
+                <p class="dossier-title">Чемпионка по подколам</p>
+                <p class="dossier-subtitle">Дерзкая и озорная</p>
+                <ul class="dossier-warnings" aria-label="Предупреждения"><li>Дерзит и обзывается</li></ul>
+              </header>
+              <dl class="dossier-facts"><div><dt>Возраст<button type="button" class="hint" aria-label="Столько ей на вид — и так будет всегда: цифровые горничные не стареют." data-tip="Столько ей на вид — и так будет всегда: цифровые горничные не стареют.">?</button></dt><dd>20</dd></div><div><dt>Рост</dt><dd>158 см</dd></div><div><dt>Зовёт тебя</dt><dd>«Хозяин»</dd></div></dl>
+              <div class="dossier-main">
+                <p class="dossier-text">Назовёт безнадёжным и тут же найдёт повод продолжить разговор. Юзу обожает подколы и проверяет, сумеешь ли ты ответить. За всей этой дерзостью прячется привязанность&nbsp;— только попробуй сказать ей об этом вслух.</p>
+                <blockquote class="dossier-quote"><b>Юзу</b>Ну-у, так и быть, сегодня ты почти милый~</blockquote>
+                <div class="dossier-prefs">
+                  <div><h4>Любит</h4><ul class="dossier-likes"><li>Быть в центре внимания</li><li>Выигрывать в перепалках</li><li>Тайно&nbsp;— когда ты искренне рад её видеть</li></ul></div>
+                  <div><h4>Не любит</h4><ul class="dossier-dislikes"><li>Когда скучно и её не замечают</li><li>Когда на неё смотрят свысока</li><li>Когда кто-то дерзит лучше неё</li></ul></div>
+                </div>
+              </div>
+              <ul class="dossier-tags" aria-label="Теги"><li>Колкие</li><li>Энергичные</li></ul>
+              <div class="dossier-actions">
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/yuzu.maid">Скачать файл</a>
+                <span class="dossier-size">40 МБ</span>
+              </div>
+            </article>
+            <article class="dossier is-soon" id="erika" role="tabpanel" aria-labelledby="tab-erika" style="--accent: #5B3F8C">
+              <div class="dossier-photo"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"></div>
+              <header class="dossier-head">
+                <p class="card-meta"><span>№&nbsp;008</span><span>горничная</span></p>
+                <h3 class="dossier-name">Эрика</h3>
+              </header>
+              <div class="dossier-main"><p class="dossier-soon"><span>Скоро!</span></p></div>
+            </article>
+            <article class="dossier is-soon" id="lotta" role="tabpanel" aria-labelledby="tab-lotta" style="--accent: #E0A93A">
+              <div class="dossier-photo"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"></div>
+              <header class="dossier-head">
+                <p class="card-meta"><span>№&nbsp;010</span><span>горничная</span></p>
+                <h3 class="dossier-name">Лотта</h3>
+              </header>
+              <div class="dossier-main"><p class="dossier-soon"><span>Скоро!</span></p></div>
+            </article>
+            <article class="dossier is-soon" id="una" role="tabpanel" aria-labelledby="tab-una" style="--accent: #6F86B8">
+              <div class="dossier-photo"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"></div>
+              <header class="dossier-head">
+                <p class="card-meta"><span>№&nbsp;011</span><span>горничная</span></p>
+                <h3 class="dossier-name">Уна</h3>
+              </header>
+              <div class="dossier-main"><p class="dossier-soon"><span>Скоро!</span></p></div>
+            </article>
+            <article class="dossier is-soon" id="robin" role="tabpanel" aria-labelledby="tab-robin" style="--accent: #C4452F">
+              <div class="dossier-photo"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"></div>
+              <header class="dossier-head">
+                <p class="card-meta"><span>№&nbsp;012</span><span>горничная</span></p>
+                <h3 class="dossier-name">Робин</h3>
+              </header>
+              <div class="dossier-main"><p class="dossier-soon"><span>Скоро!</span></p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trust">
+      <div class="wrap">
+        <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Приватность</p>
+        <h2>Только между вами</h2>
+        <p class="section-lead">Комплименты, неловкие признания, разговоры до ночи — переписка хранится на твоём компьютере. Нам её читать незачем, да и доступа к ней у нас нет.</p>
+
+        <div class="trust">
+          <article class="trust-item">
+            <h3>Её дом — твой компьютер</h3>
+            <p>Переписка, воспоминания и файл героини хранятся у тебя. Для общения не нужны аккаунт, подписка или облачный сервис.</p>
+          </article>
+
+          <article class="trust-item">
+            <h3>Без отчётов о тебе</h3>
+            <p>MaidLink не собирает статистику использования. Интернет нужен для первого запуска и сетевых запросов: поиска, погоды, картинок и видео. Просто поболтать можно без сети.</p>
+          </article>
+
+          <article class="trust-item">
+            <h3>Для любопытных есть пароль</h3>
+            <p>Поставь пароль на персонажа. Без него никто не прочитает вашу переписку и то, что героиня о тебе помнит.</p>
+          </article>
+
+          <article class="trust-item">
+            <h3>Любишь проверять? Загляни в код</h3>
+            <p>Исходный код MaidLink открыт. Можно посмотреть, как всё устроено, и свериться с README на GitHub.</p>
+            <a class="link" href="https://github.com/MaidPlaza/MaidLink" target="_blank" rel="noopener">Репозиторий на GitHub</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="install">
+      <div class="wrap">
+        <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Установка</p>
+        <h2>Готов к знакомству?</h2>
+
+        <div class="install">
+          <ol class="steps">
+            <li>
+              <h3>Скачай установщик</h3>
+              <p>Выбери диск, где есть место для MaidLink и будущих разговоров. Для начала понадобится около 10 ГБ.</p>
+            </li>
+            <li>
+              <h3>Дай MaidLink подготовиться</h3>
+              <p>При первом запуске приложение скачает и настроит нужное под твой компьютер. Нажми кнопку и дай ему немного времени — знакомство уже близко.</p>
+            </li>
+            <li>
+              <h3>Выбери горничную</h3>
+              <p>Загляни в <a href="#maids">каталог</a>, скачай карточку героини и перетащи её в окно MaidLink. Первую реплику оставляем тебе.</p>
+            </li>
+          </ol>
+
+          <aside class="reqs" aria-label="Системные требования">
+            <h3>Системные требования</h3>
+            <dl>
+              <div><dt>Система</dt><dd>Windows 10 или 11</dd></div>
+              <div><dt>Видеокарта</dt><dd>NVIDIA с&nbsp;8&nbsp;ГБ памяти и&nbsp;больше</dd></div>
+              <div><dt>Место на диске</dt><dd>около 10&nbsp;ГБ</dd></div>
+              <div><dt>Интернет</dt><dd>для первого запуска</dd></div>
+            </dl>
+            <a class="btn btn-block" data-download="installer" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/MaidLink-Setup-0.7.0.exe">Скачать для Windows</a>
+            <p class="dl-terms">Скачивая MaidLink, ты подтверждаешь, что тебе есть 18, и&nbsp;принимаешь <a href="terms.html">пользовательское соглашение</a>.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="community">
+      <div class="wrap">
+        <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Сообщество</p>
+        <h2>Клуб ценителей фартуков</h2>
+        <p class="section-lead">Кто милее? Чей наряд лучше? И почему Велка опять так ответила? Залетай обсуждать героинь, следить за обновлениями и делиться идеями.</p>
+
+        <div class="community">
+          <article class="feature c-card c-discord" style="--tone: #5865F2">
+            <div class="c-discord-text">
+              <div class="c-icons" aria-hidden="true"><span class="c-icon"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.3 5.3A16.7 16.7 0 0 0 15.2 4l-.5 1a15.4 15.4 0 0 0-5.4 0l-.5-1a16.7 16.7 0 0 0-4.1 1.3C2.1 9.2 1.4 13 1.7 16.8a16.8 16.8 0 0 0 5.1 2.6l1.1-1.7c-.6-.2-1.2-.5-1.7-.8l.4-.3a12 12 0 0 0 10.8 0l.4.3c-.5.3-1.1.6-1.7.8l1.1 1.7a16.8 16.8 0 0 0 5.1-2.6c.4-4.4-.7-8.2-3-11.5zM8.7 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg></span><span class="c-icon c-icon-logo" style="--tone: #706FA6"><svg viewBox="0 0 1272 1272"><path d="M233 861H83V486L233 336H383V486H233V861Z" fill="#706FA6"/><path d="M533 861H383V486L533 336H683V486H533V861Z" fill="#706FA6"/><path d="M833 710H1208V860H833L683 710V485H833V710Z" fill="#FF9D00"/></svg></span></div>
+              <h3>Discord</h3>
+              <span class="n-status is-open">Открыт</span>
+              <p>Новости и обновления первым делом, споры о героинях, идеи и помощь с установкой — всё в одном месте.</p>
+              <a class="btn c-link" href="https://discord.gg/DZwap7pVms" target="_blank" rel="noopener">Присоединиться</a>
+            </div>
+            <div class="c-server" aria-hidden="true">
+              <div class="c-server-head"><b>MaidLink</b><span>сервер</span></div>
+              <ul>
+                <li>Новости</li>
+                <li>Общение</li>
+                <li>Идеи</li>
+                <li class="is-on">Аддоны</li>
+                <li>Помощь</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="feature c-card" style="--tone: #7B79AB">
+            <span class="c-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg></span>
+            <h3>Другие соцсети</h3>
+            <span class="n-status is-soon">Скоро появится</span>
+            <div class="c-closed" aria-hidden="true"><span style="--w: 92%"></span><span style="--w: 74%"></span><span style="--w: 48%"></span><i></i></div>
+          </article>
+
+          <article class="feature c-card" style="--tone: #7B79AB">
+            <span class="c-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg></span>
+            <h3>Другие соцсети</h3>
+            <span class="n-status is-soon">Скоро появится</span>
+            <div class="c-closed" aria-hidden="true"><span style="--w: 92%"></span><span style="--w: 74%"></span><span style="--w: 48%"></span><i></i></div>
+          </article>
+
+          <article class="feature c-card" style="--tone: #7B79AB">
+            <span class="c-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></svg></span>
+            <h3>Другие соцсети</h3>
+            <span class="n-status is-soon">Скоро появится</span>
+            <div class="c-closed" aria-hidden="true"><span style="--w: 92%"></span><span style="--w: 74%"></span><span style="--w: 48%"></span><i></i></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="next">
+      <div class="wrap">
+        <p class="eyebrow"><span class="dots" aria-hidden="true"></span>Планы</p>
+        <h2>В следующей серии</h2>
+        <p class="section-lead">У MaidLink ещё много планов: новые персонажи, языки и идеи от сообщества. Вот что готовим дальше.</p>
+
+        <div class="features next-grid">
+          <article class="feature n-tile">
+            <span class="n-status is-soon">Скоро</span>
+            <h3>Дворецкие</h3>
+            <p>В каталоге появятся дворецкие. У каждого тоже будут свой характер, память и отношения с тобой. Выбирать любимого персонажа станет ещё сложнее.</p>
+            <div class="butler-card" aria-hidden="true">
+              <div class="butler-photo"><svg class="butler-sil" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 120c2-26 18-40 42-40s40 14 42 40z"/><path class="butler-tie" d="M56 82h8l3 6-7 22-7-22z"/></svg><span>?</span></div>
+              <span class="carousel-num">№&nbsp;???</span>
+              <span class="butler-kind">дворецкий</span>
+            </div>
+          </article>
+
+          <article class="feature n-tile">
+            <span class="n-status is-plan">В планах</span>
+            <h3>Другие языки</h3>
+            <p>Пока знакомимся по-русски. В планах — перевести приложение и научить героинь общаться на других языках. Подколы тоже потребуют перевода.</p>
+            <div class="lang" aria-hidden="true">
+              <div class="lang-head"><span>Язык</span><b>Русский</b></div>
+              <ul>
+                <li class="is-on">Русский<small>сейчас</small></li>
+                <li>Другие языки<small>скоро</small></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="feature n-tile">
+            <span class="n-status is-open">Для всех</span>
+            <h3>А что предложишь ты?</h3>
+            <p>Горничная-библиотекарша? Новый наряд? Возможность, которой давно не хватает? Приноси идеи в Discord — читаем всё и учитываем предложения в планах.</p>
+            <div class="ideas" aria-hidden="true">
+              <p class="idea"><b>💡</b>Добавьте горничную-библиотекаршу</p>
+              <p class="idea"><b>💡</b>Хочу летний наряд для Юкины</p>
+            </div>
+            <a class="btn btn-ghost n-discord" href="https://discord.gg/DZwap7pVms" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.3 5.3A16.7 16.7 0 0 0 15.2 4l-.5 1a15.4 15.4 0 0 0-5.4 0l-.5-1a16.7 16.7 0 0 0-4.1 1.3C2.1 9.2 1.4 13 1.7 16.8a16.8 16.8 0 0 0 5.1 2.6l1.1-1.7c-.6-.2-1.2-.5-1.7-.8l.4-.3a12 12 0 0 0 10.8 0l.4.3c-.5.3-1.1.6-1.7.8l1.1 1.7a16.8 16.8 0 0 0 5.1-2.6c.4-4.4-.7-8.2-3-11.5zM8.7 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>Сервер в&nbsp;Discord</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/maidlink-dark.svg?v=c2b81622" alt="MaidLink" width="112" height="19">
+          <p>Maid Plaza — дом MaidLink. Фартуки, характеры и твоя следующая любимая героиня.</p>
+        </div>
+        <nav class="footer-links" aria-label="Ссылки">
+          <a href="https://github.com/MaidPlaza/MaidLink" target="_blank" rel="noopener">Исходный код</a>
+          <a href="terms.html">Пользовательское соглашение</a>
+          <a href="https://github.com/MaidPlaza/MaidLink/blob/main/LICENSE" target="_blank" rel="noopener">Лицензия</a>
+          <a href="https://github.com/MaidPlaza/MaidLink/blob/main/THIRD-PARTY-LICENSES.txt" target="_blank" rel="noopener">Сторонние компоненты</a>
+          <a href="https://github.com/MaidPlaza/MaidLink/issues" target="_blank" rel="noopener">Сообщить о проблеме</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Fractal</p>
+        <p>Бесплатно для личного использования · PolyForm Noncommercial 1.0.0</p>
+      </div>
+      <p class="footer-note">MaidLink в бета-тесте и часто обновляется: интерфейс, тексты и возможности в приложении могут отличаться от того, что показано на сайте.</p>
+    </div>
+  </footer>
+</body>
+</html>
