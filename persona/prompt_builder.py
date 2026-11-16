@@ -1293,6 +1293,11 @@ def build_prompt_parts(
 
         session_text += ("\nПоприветствуй собеседника с учётом своего настроения."
                          if mood_block else "\nПоприветствуй собеседника.")
+        greeting = (getattr(getattr(character, "speaking_style", None), "greeting", "")
+                    or "").strip()
+        if greeting:
+            session_text += (f" Обычно ты здороваешься так: «{greeting}» — слово приветствия "
+                             f"бери это, остальное говори своими словами.")
         tail.append(f"<новая_сессия>\n{session_text}\n</новая_сессия>")
 
     if mood_block:

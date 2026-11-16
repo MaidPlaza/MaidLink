@@ -67,6 +67,10 @@ class ModelLifecycle:
     def consumer_count(self) -> int:
         return self._counter
 
+    @property
+    def server_pid(self) -> Optional[int]:
+        return getattr(self._llama_mgr, "pid", None)
+
     def add_listener(self, callback: StateChangeCallback) -> Callable[[], None]:
         self._listeners.append(callback)
         return lambda: self._listeners.remove(callback) if callback in self._listeners else None
@@ -109,16 +113,16 @@ class ModelLifecycle:
         except Exception as e:
             print(f"[lifecycle] preload failed: {e!r}")
 
-    async def request_unload(self, reason: str = "manual") -> bool:
+    async def request_unload(self, reason: str = "manual", force: bool = False) -> bool:
         if self._state is not ModelState.LOADED:
             return False
-        if self._counter > 0:
+        if self._counter > 0 and not force:
             return False
 
         async with self._op_lock:
             if self._state is not ModelState.LOADED:
                 return False
-            if self._counter > 0:
+            if self._counter > 0 and not force:
                 return False
 
             print(f"[lifecycle] unload triggered: {reason}")

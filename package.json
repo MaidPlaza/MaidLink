@@ -1,7 +1,7 @@
 {
   "name": "maidlink",
   "productName": "MaidLink",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "MaidLink — AI companion with anime character archetypes",
   "main": "electron/main.js",
   "license": "SEE LICENSE IN LICENSE",

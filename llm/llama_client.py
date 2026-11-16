@@ -163,6 +163,7 @@ class LlamaClient:
         self.last_reasoning: str = ""
         self.reasoning_mode: str = "deep"
         self.fast_post_session: bool = False
+        self.fast_live_rounds: bool = False
         self.system_suffix: str = ""
         self.cancel_requested: bool = False
         self._active_stream_resp = None
@@ -212,7 +213,7 @@ class LlamaClient:
         return not is_simple_message(user_text)
 
     def live_thinking(self, want: bool = True) -> bool:
-        if not want or self.fast_post_session:
+        if not want or self.fast_live_rounds:
             return False
         return self.reasoning_mode == "deep"
 

@@ -143,7 +143,7 @@
     "Chat.Messages.AIMessage.Background": "#FFFFFF",
     "Chat.Messages.AIMessage.Padding": "10px 0 10px 0",
     "Chat.Messages.AIMessage.MinHeight": "30px",
-    "Chat.Messages.AIMessage.Font": "'Rubik', sans-serif",
+    "Chat.Messages.AIMessage.Font": "sans-serif",
     "Chat.Messages.AIMessage.FontSize": "12px",
     "Chat.Messages.AIMessage.FontWeight": "400",
     "Chat.Messages.AIMessage.FontColor": "#7B79AB",
@@ -162,7 +162,7 @@
     "Chat.Messages.UserMessage.Background": "#7B79AB",
     "Chat.Messages.UserMessage.Padding": "7px 14px 7px 12px",
     "Chat.Messages.UserMessage.MinHeight": "30px",
-    "Chat.Messages.UserMessage.Font": "'Rubik', sans-serif",
+    "Chat.Messages.UserMessage.Font": "sans-serif",
     "Chat.Messages.UserMessage.FontSize": "12px",
     "Chat.Messages.UserMessage.FontWeight": "400",
     "Chat.Messages.UserMessage.FontColor": "#FFFFFF",
@@ -941,6 +941,32 @@
     "Chat.Reminder.Ack.Bottom": "5px",
     "Chat.Reminder.Ack.Left": "12px"
   },
+  "Chat.UsageGuide": {
+    "Chat.UsageGuide.Backdrop.Background": "rgba(28, 30, 39, 0.35)",
+    "Chat.UsageGuide.Backdrop.BorderRadius": "10px",
+    "Chat.UsageGuide.Card.Width": "460px",
+    "Chat.UsageGuide.Card.Padding": "18px 22px 14px",
+    "Chat.UsageGuide.Card.BoxShadow": "0 4px 16px rgba(0, 0, 0, 0.25)",
+    "Chat.UsageGuide.Card.Font": "'Inter', sans-serif",
+    "Chat.UsageGuide.Label.FontSize": "10px",
+    "Chat.UsageGuide.Label.FontWeight": "600",
+    "Chat.UsageGuide.Title.FontSize": "16px",
+    "Chat.UsageGuide.Title.FontWeight": "600",
+    "Chat.UsageGuide.Step.Font": "'Rubik', sans-serif",
+    "Chat.UsageGuide.Step.FontSize": "12px",
+    "Chat.UsageGuide.Step.Title.FontWeight": "600",
+    "Chat.UsageGuide.Check.FontSize": "11px",
+    "Chat.UsageGuide.Button.Border": "none",
+    "Chat.UsageGuide.Button.Padding": "6px 20px",
+    "Chat.UsageGuide.Button.FontSize": "12px",
+    "Chat.UsageGuide.Button.FontWeight": "600",
+    "Chat.UsageGuide.Note.FontSize": "10px"
+  },
+  "Chat.UsageGuide.Lead": {
+    "Chat.UsageGuide.Lead.Font": "'Rubik', sans-serif",
+    "Chat.UsageGuide.Lead.FontSize": "13px",
+    "Chat.UsageGuide.Lead.FontWeight": "500"
+  },
   "Chat.Messages.System": {
     "Chat.Messages.System.Border": "1px dashed #7B79AB",
     "Chat.Messages.System.BorderRadius": "10px",
@@ -1068,6 +1094,9 @@
   "Chat.RichText.Emphasis": {
     "Chat.RichText.Emphasis.FontColor": "#3A3786",
     "Chat.RichText.Emphasis.OnUser.FontColor": "#FFFFFF"
+  },
+  "Chat.RichText.Action": {
+    "Chat.RichText.Action.Font": "'Rubik', sans-serif"
   },
   "Chat.Loader": {
     "Chat.Loader.Color": "#1C1E27"
@@ -1370,6 +1399,20 @@
     "Chat.Settings.ImageGenSetup.Installing.Opacity": "0.8",
     "Chat.Settings.ImageGenSetup.Note.FontColor": "#b06a5a",
     "Chat.Settings.ImageGenSetup.Note.FontColorOk": "#4a7a4a"
+  },
+  "Chat.Settings.ImageGenSetup.Status": {
+    "Chat.Settings.ImageGenSetup.Status.Padding": "6px 8px",
+    "Chat.Settings.ImageGenSetup.Status.BorderRadius": "6px",
+    "Chat.Settings.ImageGenSetup.Status.FontWeight": "500",
+    "Chat.Settings.ImageGenSetup.Status.Background": "#f3f0fb",
+    "Chat.Settings.ImageGenSetup.Status.FontColor": "#7B79AB",
+    "Chat.Settings.ImageGenSetup.Status.Warn.Background": "#fbf4e4",
+    "Chat.Settings.ImageGenSetup.Status.Warn.FontColor": "#8a6420",
+    "Chat.Settings.ImageGenSetup.Status.Error.Background": "#fbeeea",
+    "Chat.Settings.ImageGenSetup.Status.Error.FontColor": "#a5533f",
+    "Chat.Settings.ImageGenSetup.Status.Detail.FontSize": "10px",
+    "Chat.Settings.ImageGenSetup.Status.Detail.FontWeight": "400",
+    "Chat.Settings.ImageGenSetup.Status.Detail.Opacity": "0.85"
   },
   "Chat.Settings.ModelPresets": {
     "Chat.Settings.ModelPresets.Background": "#FFFFFF",

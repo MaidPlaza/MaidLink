@@ -51,7 +51,8 @@ def mood_expression_override(base: BaseAppearance, mood_state: str | None,
 HANDS_FREE_POSE = "hands_free"
 _HAND_RX = re.compile(
     r"\b(hands?|fingers?|fists?|arms?|palms?|waving|wave|salute|clasped|"
-    r"peace sign|thumbs? up|pointing|covering|holding|v sign)\b")
+    r"peace sign|thumbs? up|pointing|covering|holding|v sign|double v|v over eye|"
+    r"wiping|rubbing|flexing|biceps|scratching)\b")
 
 
 def expression_uses_hands(tags: str | None) -> bool:

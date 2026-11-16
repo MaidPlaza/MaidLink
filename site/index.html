@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MaidLink</title>
+  <title>MaidLink — твоя личная аниме-горничная на компьютере</title>
   <meta name="description" content="Аниме-горничные с памятью и собственным характером. Знакомься, болтай, выбирай наряды. MaidLink работает на твоём компьютере. Бесплатно для Windows.">
+  <link rel="canonical" href="https://maidplaza.com/">
   <meta name="theme-color" content="#F6F6FB">
   <meta property="og:title" content="MaidLink">
+  <meta property="og:site_name" content="MaidLink">
+  <meta property="og:locale" content="ru_RU">
   <meta property="og:description" content="Хинари смутится, Велка подколет. Выбирай аниме-горничную, знакомься и создавай вашу историю. Переписка хранится на твоём компьютере.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://maidplaza.com/">
@@ -71,7 +74,7 @@
         <div class="why-grid">
           <a class="why-item why-cast" href="#maids">
             <span class="why-num" aria-hidden="true">01</span>
-            <h3 data-cast-title>Четыре характера</h3>
+            <h3 data-cast-title>Восемь характеров</h3>
             <p>Робкая улыбка или колкость с порога? У каждой героини свои словечки, история и даже цвета интерфейса. Выбрать любимую — это уже часть игры.</p>
             <div class="why-cast-wrap" aria-hidden="true">
             <div class="why-cast-row">
@@ -79,11 +82,11 @@
               <img src="assets/maids/velka.webp?v=c72f6584" alt="" width="480" height="480" style="--accent: #0D504C">
               <img src="assets/maids/yukina.webp?v=0e2fbddc" alt="" width="480" height="480" style="--accent: #3E4C7A">
               <img src="assets/maids/yuzu.webp?v=d53246de" alt="" width="480" height="480" style="--accent: #D14FA6">
-              <img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" style="--accent: #5B3F8C">
-              <img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" style="--accent: #E0A93A">
+              <img src="assets/maids/erika.webp?v=3bfa5d0d" alt="" width="480" height="480" style="--accent: #5B3F8C">
+              <img src="assets/maids/lotta.webp?v=cd820e09" alt="" width="480" height="480" style="--accent: #E0A93A">
               <span class="why-cast-more">+2</span>
             </div>
-            <p class="why-cast-note">4 героини уже в каталоге, ещё 4 скоро</p>
+            <p class="why-cast-note">8 героинь в каталоге</p>
             </div>
           </a>
 
@@ -629,6 +632,9 @@
               <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Дэрэдэрэ">Дэрэдэрэ</button>
               <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Цундэрэ">Цундэрэ</button>
               <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Кудэрэ">Кудэрэ</button>
+              <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Дандэрэ">Дандэрэ</button>
+              <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Гэнки">Гэнки</button>
+              <button type="button" class="tag" aria-pressed="false" data-group="Типаж" data-value="Пацанка">Пацанка</button>
             </div>
             <div class="catalog-tags" role="group" aria-label="Характер"><span class="catalog-group">Характер</span>
               <button type="button" class="tag" aria-pressed="false" data-group="Характер" data-value="Тёплые">Тёплые</button>
@@ -644,10 +650,10 @@
               <button type="button" class="carousel-card" role="tab" id="tab-velka" aria-selected="false" aria-controls="velka" tabindex="-1" data-id="velka" data-name="велка" data-tags="Цундэрэ|Колкие" data-kind="Горничные" style="--accent: #0D504C"><img src="assets/maids/velka.webp?v=c72f6584" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;002</span><span class="carousel-name">Велка</span></button>
               <button type="button" class="carousel-card" role="tab" id="tab-yukina" aria-selected="false" aria-controls="yukina" tabindex="-1" data-id="yukina" data-name="юкина" data-tags="Кудэрэ|Тихие" data-kind="Горничные" style="--accent: #3E4C7A"><img src="assets/maids/yukina.webp?v=0e2fbddc" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;004</span><span class="carousel-name">Юкина</span></button>
               <button type="button" class="carousel-card" role="tab" id="tab-yuzu" aria-selected="false" aria-controls="yuzu" tabindex="-1" data-id="yuzu" data-name="юзу" data-tags="Колкие|Энергичные" data-kind="Горничные" style="--accent: #D14FA6"><img src="assets/maids/yuzu.webp?v=d53246de" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;005</span><span class="carousel-name">Юзу</span></button>
-              <button type="button" class="carousel-card is-soon" role="tab" id="tab-erika" aria-selected="false" aria-controls="erika" tabindex="-1" data-id="erika" data-name="эрика" data-tags="" data-kind="Горничные" style="--accent: #5B3F8C"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;008</span><span class="carousel-name">Эрика</span><span class="carousel-soon">скоро</span></button>
-              <button type="button" class="carousel-card is-soon" role="tab" id="tab-lotta" aria-selected="false" aria-controls="lotta" tabindex="-1" data-id="lotta" data-name="лотта" data-tags="" data-kind="Горничные" style="--accent: #E0A93A"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;010</span><span class="carousel-name">Лотта</span><span class="carousel-soon">скоро</span></button>
-              <button type="button" class="carousel-card is-soon" role="tab" id="tab-una" aria-selected="false" aria-controls="una" tabindex="-1" data-id="una" data-name="уна" data-tags="" data-kind="Горничные" style="--accent: #6F86B8"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;011</span><span class="carousel-name">Уна</span><span class="carousel-soon">скоро</span></button>
-              <button type="button" class="carousel-card is-soon" role="tab" id="tab-robin" aria-selected="false" aria-controls="robin" tabindex="-1" data-id="robin" data-name="робин" data-tags="" data-kind="Горничные" style="--accent: #C4452F"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;012</span><span class="carousel-name">Робин</span><span class="carousel-soon">скоро</span></button>
+              <button type="button" class="carousel-card" role="tab" id="tab-erika" aria-selected="false" aria-controls="erika" tabindex="-1" data-id="erika" data-name="эрика" data-tags="Колкие" data-kind="Горничные" style="--accent: #5B3F8C"><img src="assets/maids/erika.webp?v=3bfa5d0d" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;008</span><span class="carousel-name">Эрика</span></button>
+              <button type="button" class="carousel-card" role="tab" id="tab-lotta" aria-selected="false" aria-controls="lotta" tabindex="-1" data-id="lotta" data-name="лотта" data-tags="Гэнки|Энергичные|Тёплые" data-kind="Горничные" style="--accent: #E0A93A"><img src="assets/maids/lotta.webp?v=cd820e09" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;010</span><span class="carousel-name">Лотта</span></button>
+              <button type="button" class="carousel-card" role="tab" id="tab-una" aria-selected="false" aria-controls="una" tabindex="-1" data-id="una" data-name="уна" data-tags="Дандэрэ|Тихие" data-kind="Горничные" style="--accent: #6F86B8"><img src="assets/maids/una.webp?v=2b40ed52" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;011</span><span class="carousel-name">Уна</span></button>
+              <button type="button" class="carousel-card" role="tab" id="tab-robin" aria-selected="false" aria-controls="robin" tabindex="-1" data-id="robin" data-name="робин" data-tags="Пацанка|Энергичные|Колкие" data-kind="Горничные" style="--accent: #C4452F"><img src="assets/maids/robin.webp?v=7d521e8e" alt="" width="480" height="480" loading="lazy"><span class="carousel-num">№&nbsp;012</span><span class="carousel-name">Робин</span></button>
             </div>
             <button type="button" class="carousel-arrow carousel-next" aria-label="Листать вперёд" data-carousel-next><span aria-hidden="true">›</span></button>
           </div>
@@ -672,7 +678,7 @@
               </div>
               <ul class="dossier-tags" aria-label="Теги"><li>Дэрэдэрэ</li><li>Тёплые</li></ul>
               <div class="dossier-actions">
-                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/hinari.maid">Скачать файл</a>
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/hinari.maid">Скачать файл</a>
                 <span class="dossier-size">39 МБ</span>
               </div>
             </article>
@@ -695,7 +701,7 @@
               </div>
               <ul class="dossier-tags" aria-label="Теги"><li>Цундэрэ</li><li>Колкие</li></ul>
               <div class="dossier-actions">
-                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/velka.maid">Скачать файл</a>
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/velka.maid">Скачать файл</a>
                 <span class="dossier-size">37 МБ</span>
               </div>
             </article>
@@ -718,7 +724,7 @@
               </div>
               <ul class="dossier-tags" aria-label="Теги"><li>Кудэрэ</li><li>Тихие</li></ul>
               <div class="dossier-actions">
-                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/yukina.maid">Скачать файл</a>
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/yukina.maid">Скачать файл</a>
                 <span class="dossier-size">34 МБ</span>
               </div>
             </article>
@@ -742,41 +748,102 @@
               </div>
               <ul class="dossier-tags" aria-label="Теги"><li>Колкие</li><li>Энергичные</li></ul>
               <div class="dossier-actions">
-                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/yuzu.maid">Скачать файл</a>
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/yuzu.maid">Скачать файл</a>
                 <span class="dossier-size">40 МБ</span>
               </div>
             </article>
-            <article class="dossier is-soon" id="erika" role="tabpanel" aria-labelledby="tab-erika" style="--accent: #5B3F8C">
-              <div class="dossier-photo"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"></div>
+            <article class="dossier" id="erika" role="tabpanel" aria-labelledby="tab-erika" style="--accent: #5B3F8C">
+              <div class="dossier-photo"><img src="assets/maids/erika.webp?v=3bfa5d0d" alt="Эрика" width="480" height="480" loading="lazy"></div>
               <header class="dossier-head">
                 <p class="card-meta"><span>№&nbsp;008</span><span>горничная</span></p>
                 <h3 class="dossier-name">Эрика</h3>
+                <p class="dossier-title">Принц в фартуке</p>
+                <p class="dossier-subtitle">Галантная и азартная</p>
               </header>
-              <div class="dossier-main"><p class="dossier-soon"><span>Скоро!</span></p></div>
+              <dl class="dossier-facts"><div><dt>Возраст<button type="button" class="hint" aria-label="Столько ей на вид — и так будет всегда: цифровые горничные не стареют." data-tip="Столько ей на вид — и так будет всегда: цифровые горничные не стареют.">?</button></dt><dd>22</dd></div><div><dt>Рост</dt><dd>174 см</dd></div><div><dt>Зовёт тебя</dt><dd>«Господин»</dd></div></dl>
+              <div class="dossier-main">
+                <p class="dossier-text">Эрика прекрасно знает, как произвести впечатление. Чуть хуже&nbsp;— что делать, когда впечатление произвели на неё. Обычно предлагает реванш. Даже если ты вроде бы ни во что не играл.</p>
+                <blockquote class="dossier-quote"><b>Эрика</b>Вы выиграли. Поздравляю. Ещё раз?</blockquote>
+                <div class="dossier-prefs">
+                  <div><h4>Любит</h4><ul class="dossier-likes"><li>Когда её удачно переигрывают</li><li>Романтические истории, которые она якобы только критикует</li><li>Разговоры после того, как все поводы закончились</li></ul></div>
+                  <div><h4>Не любит</h4><ul class="dossier-dislikes"><li>Отговорки вместо дела</li><li>Когда соглашаются, даже не слушая</li><li>Лесть&nbsp;— своя и чужая</li></ul></div>
+                </div>
+              </div>
+              <ul class="dossier-tags" aria-label="Теги"><li>Колкие</li></ul>
+              <div class="dossier-actions">
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/erika.maid">Скачать файл</a>
+                <span class="dossier-size">35 МБ</span>
+              </div>
             </article>
-            <article class="dossier is-soon" id="lotta" role="tabpanel" aria-labelledby="tab-lotta" style="--accent: #E0A93A">
-              <div class="dossier-photo"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"></div>
+            <article class="dossier" id="lotta" role="tabpanel" aria-labelledby="tab-lotta" style="--accent: #E0A93A">
+              <div class="dossier-photo"><img src="assets/maids/lotta.webp?v=cd820e09" alt="Лотта" width="480" height="480" loading="lazy"></div>
               <header class="dossier-head">
                 <p class="card-meta"><span>№&nbsp;010</span><span>горничная</span></p>
                 <h3 class="dossier-name">Лотта</h3>
+                <p class="dossier-title">Энергия на троих</p>
+                <p class="dossier-subtitle">Неугомонная и искренняя</p>
               </header>
-              <div class="dossier-main"><p class="dossier-soon"><span>Скоро!</span></p></div>
+              <dl class="dossier-facts"><div><dt>Возраст<button type="button" class="hint" aria-label="Столько ей на вид — и так будет всегда: цифровые горничные не стареют." data-tip="Столько ей на вид — и так будет всегда: цифровые горничные не стареют.">?</button></dt><dd>20</dd></div><div><dt>Рост</dt><dd>164 см</dd></div><div><dt>Зовёт тебя</dt><dd>«Господин»</dd></div></dl>
+              <div class="dossier-main">
+                <p class="dossier-text">Ты ещё кофе не допил, а у Лотты уже три идеи на день. Она тормошит, придумывает и искренне радуется твоему «давай». Иногда батарейка всё-таки садится. Тогда можно просто помолчать рядом&nbsp;— даже с Лоттой.</p>
+                <blockquote class="dossier-quote"><b>Лотта</b>Мне уже хочется попробовать! Вы со мной?</blockquote>
+                <div class="dossier-prefs">
+                  <div><h4>Любит</h4><ul class="dossier-likes"><li>Утро, когда всё ещё возможно</li><li>Когда на «а давай» отвечают «давай»</li><li>Смех&nbsp;— свой и твой</li></ul></div>
+                  <div><h4>Не любит</h4><ul class="dossier-dislikes"><li>Тишину в ответ на идею</li><li>Слово «успокойся»</li><li>Пустые дни без единого дела</li></ul></div>
+                </div>
+              </div>
+              <ul class="dossier-tags" aria-label="Теги"><li>Гэнки</li><li>Энергичные</li><li>Тёплые</li></ul>
+              <div class="dossier-actions">
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/lotta.maid">Скачать файл</a>
+                <span class="dossier-size">39 МБ</span>
+              </div>
             </article>
-            <article class="dossier is-soon" id="una" role="tabpanel" aria-labelledby="tab-una" style="--accent: #6F86B8">
-              <div class="dossier-photo"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"></div>
+            <article class="dossier" id="una" role="tabpanel" aria-labelledby="tab-una" style="--accent: #6F86B8">
+              <div class="dossier-photo"><img src="assets/maids/una.webp?v=2b40ed52" alt="Уна" width="480" height="480" loading="lazy"></div>
               <header class="dossier-head">
                 <p class="card-meta"><span>№&nbsp;011</span><span>горничная</span></p>
                 <h3 class="dossier-name">Уна</h3>
+                <p class="dossier-title">Писательница из корзины</p>
+                <p class="dossier-subtitle">Робкая и упрямая</p>
               </header>
-              <div class="dossier-main"><p class="dossier-soon"><span>Скоро!</span></p></div>
+              <dl class="dossier-facts"><div><dt>Возраст<button type="button" class="hint" aria-label="Столько ей на вид — и так будет всегда: цифровые горничные не стареют." data-tip="Столько ей на вид — и так будет всегда: цифровые горничные не стареют.">?</button></dt><dd>19</dd></div><div><dt>Рост</dt><dd>159 см</dd></div><div><dt>Зовёт тебя</dt><dd>«Господин»</dd></div></dl>
+              <div class="dossier-main">
+                <p class="dossier-text">В голове&nbsp;— целый роман. В сообщении&nbsp;— «…здравствуйте». Уна ещё подбирает слова, но ей уже есть что тебе сказать. Желательно, пока ты не смотришь.</p>
+                <blockquote class="dossier-quote"><b>Уна</b>(Пожалуйста, не смотрите.) …Это не румянец. Это тема оформления.</blockquote>
+                <div class="dossier-prefs">
+                  <div><h4>Любит</h4><ul class="dossier-likes"><li>Ночь, когда можно писать</li><li>Когда её не торопят с ответом</li><li>Тёплый комментарий незнакомца под её текстом</li></ul></div>
+                  <div><h4>Не любит</h4><ul class="dossier-dislikes"><li>«Скажи что-нибудь» и «покажи прямо сейчас»</li><li>Когда её робость называют милой при ней</li><li>Списки «что улучшить в себе»</li></ul></div>
+                </div>
+              </div>
+              <ul class="dossier-tags" aria-label="Теги"><li>Дандэрэ</li><li>Тихие</li></ul>
+              <div class="dossier-actions">
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/una.maid">Скачать файл</a>
+                <span class="dossier-size">37 МБ</span>
+              </div>
             </article>
-            <article class="dossier is-soon" id="robin" role="tabpanel" aria-labelledby="tab-robin" style="--accent: #C4452F">
-              <div class="dossier-photo"><img src="assets/maids/soon.webp?v=65b8e88f" alt="" width="480" height="480" loading="lazy"></div>
+            <article class="dossier" id="robin" role="tabpanel" aria-labelledby="tab-robin" style="--accent: #C4452F">
+              <div class="dossier-photo"><img src="assets/maids/robin.webp?v=7d521e8e" alt="Робин" width="480" height="480" loading="lazy"></div>
               <header class="dossier-head">
                 <p class="card-meta"><span>№&nbsp;012</span><span>горничная</span></p>
                 <h3 class="dossier-name">Робин</h3>
+                <p class="dossier-title">Напарница без тормозов</p>
+                <p class="dossier-subtitle">Прямая и упрямая</p>
+                <ul class="dossier-warnings" aria-label="Предупреждения"><li>Ненормативная лексика</li></ul>
               </header>
-              <div class="dossier-main"><p class="dossier-soon"><span>Скоро!</span></p></div>
+              <dl class="dossier-facts"><div><dt>Возраст<button type="button" class="hint" aria-label="Столько ей на вид — и так будет всегда: цифровые горничные не стареют." data-tip="Столько ей на вид — и так будет всегда: цифровые горничные не стареют.">?</button></dt><dd>20</dd></div><div><dt>Рост</dt><dd>167 см</dd></div><div><dt>Зовёт тебя</dt><dd>«Мастер»</dd></div></dl>
+              <div class="dossier-main">
+                <p class="dossier-text">Сначала сделает, потом громко расскажет, как здорово получилось. Робин говорит прямо, ругается от души и отмахивается от похвалы, которую явно ждала. В рюши её не заманишь. Зато слово держит и за своих стоит горой.</p>
+                <blockquote class="dossier-quote"><b>Робин</b>Ха! Видел? Видел же. Ладно, не отвечай.</blockquote>
+                <div class="dossier-prefs">
+                  <div><h4>Любит</h4><ul class="dossier-likes"><li>Когда получается с первого раза&nbsp;— и это видели</li><li>Задачи, которые можно взять в лоб</li><li>Честные споры</li></ul></div>
+                  <div><h4>Не любит</h4><ul class="dossier-dislikes"><li>Жалость и снисхождение</li><li>«Ты же девочка»</li><li>Платья с рюшами и каблуки</li></ul></div>
+                </div>
+              </div>
+              <ul class="dossier-tags" aria-label="Теги"><li>Пацанка</li><li>Энергичные</li><li>Колкие</li></ul>
+              <div class="dossier-actions">
+                <a class="btn" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/robin.maid">Скачать файл</a>
+                <span class="dossier-size">39 МБ</span>
+              </div>
             </article>
           </div>
         </div>
@@ -843,7 +910,7 @@
               <div><dt>Место на диске</dt><dd>около 10&nbsp;ГБ</dd></div>
               <div><dt>Интернет</dt><dd>для первого запуска</dd></div>
             </dl>
-            <a class="btn btn-block" data-download="installer" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.0/MaidLink-Setup-0.7.0.exe">Скачать для Windows</a>
+            <a class="btn btn-block" data-download="installer" href="https://github.com/MaidPlaza/MaidLink/releases/download/v0.7.1/MaidLink-Setup-0.7.1.exe">Скачать для Windows</a>
             <p class="dl-terms">Скачивая MaidLink, ты подтверждаешь, что тебе есть 18, и&nbsp;принимаешь <a href="terms.html">пользовательское соглашение</a>.</p>
           </aside>
         </div>

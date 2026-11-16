@@ -144,6 +144,7 @@ class BaseAppearance:
     favorite_colors: tuple[str, ...] = ()
     mood_expressions: dict[str, str] = field(default_factory=dict)
     negative_tags: tuple[str, ...] = ()
+    hair_side: str = ""
 
     @classmethod
     def from_dict(cls, data: dict | None) -> "BaseAppearance":
@@ -178,6 +179,8 @@ class BaseAppearance:
                 for k, v in me_src.items()
                 if str(v).strip()
             },
+            hair_side=(lambda s: s if s in ("right", "left") else "")(
+                str(body.get("hair_side", "") or "").strip().lower()),
         )
 
     def positive_for(self, renderer_id: str) -> str:

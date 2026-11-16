@@ -1215,6 +1215,7 @@ letter-spacing: 0.02em;
   opacity: 0.6;
   cursor: default;
 }
+.chat-gacha-popover-btn--batch { margin-top: 0; }
 .chat-gacha-popover.is-wide { width: 340px; max-height: 420px; overflow-y: auto; }
 .chat-gacha-popover-link,
 .chat-gacha-popover-back {

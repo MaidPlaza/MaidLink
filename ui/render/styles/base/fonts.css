@@ -35,6 +35,19 @@
 }
 
 @font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: italic;
+}
+
+@font-face {
   font-family: 'Kantumruy Pro';
   src: url('../fonts/KantumruyPro-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 700;

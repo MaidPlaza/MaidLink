@@ -165,6 +165,8 @@ def app_status(state: dict) -> dict:
         return {"code": "background", "label": JOB_TEXT.get(name, "Фоновая задача")}
     if state.get("chat_turn_active"):
         return {"code": "chat", "label": "Активный диалог"}
+    if state.get("vram_wait"):
+        return {"code": "idle", "label": "Рефлексия ждёт свободную видеопамять"}
     return {"code": "idle",
             "label": "Активная сессия" if session_engaged(state) else "Ожидание"}
 

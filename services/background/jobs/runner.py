@@ -128,10 +128,12 @@ class JobRunner:
             last_run_at=self._last_run_at(job),
         )
 
-    def _pick_job(self, state: dict,
-                  engaged: bool = False) -> Optional[BackgroundJob]:
+    def _pick_job(self, state: dict, engaged: bool = False,
+                  llm_ok: bool = True) -> Optional[BackgroundJob]:
         for job in self._jobs:
             if engaged and not job.session_safe:
+                continue
+            if not llm_ok and job.requires_llm:
                 continue
             ctx = self._make_ctx_for_should_run(job, state)
             try:
@@ -224,7 +226,7 @@ class JobRunner:
             print("[runner] живая сессия — тяжёлые job-ы ждут её конца"
                   if engaged else "[runner] сессия завершена — фоновые job-ы разрешены")
 
-        job = self._pick_job(state, engaged)
+        job = self._pick_job(state, engaged, llm_ok=not state.get("vram_wait"))
         if job is None:
             return
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import time
 from pathlib import Path
 from typing import Any, Optional
@@ -7,6 +8,47 @@ from typing import Any, Optional
 import httpx
 
 from services import child_auth
+
+
+class ComfyUIRejected(RuntimeError):
+    def __init__(self, status: int, body: str):
+        self.status = status
+        self.body = body
+        super().__init__(describe_rejection(status, body))
+
+
+def describe_rejection(status: int, body: str, max_node_errors: int = 3) -> str:
+    head = f"ComfyUI отклонил workflow (HTTP {status})"
+    try:
+        data = json.loads(body)
+    except ValueError:
+        data = None
+    if not isinstance(data, dict):
+        text = " ".join((body or "").split())[:300]
+        return f"{head}: {text}" if text else head
+    err = data.get("error")
+    parts: list[str] = []
+    if isinstance(err, dict):
+        msg = str(err.get("message") or err.get("type") or "").strip()
+        details = str(err.get("details") or "").strip()
+        if msg:
+            parts.append(f"{msg} ({details})" if details and not data.get("node_errors") else msg)
+    elif err:
+        parts.append(str(err))
+    node_errors = data.get("node_errors")
+    if isinstance(node_errors, dict):
+        lines = []
+        for node_id, ne in node_errors.items():
+            if not isinstance(ne, dict):
+                continue
+            reasons = "; ".join(
+                f"{e.get('message', '')}: {e.get('details', '')}".strip(": ")
+                for e in ne.get("errors") or [] if isinstance(e, dict))
+            lines.append(f"{ne.get('class_type', '?')} #{node_id}: {reasons}"[:300])
+        if len(lines) > max_node_errors:
+            lines = lines[:max_node_errors] + [f"ещё узлов с ошибками: {len(lines) - max_node_errors}"]
+        parts.extend(lines)
+    return f"{head}: " + " — ".join(parts) if parts else head
 
 
 class ComfyUIClient:
@@ -30,13 +72,29 @@ class ComfyUIClient:
     def is_responsive(self, timeout_sec: float = 1.0) -> bool:
         return self.probe(timeout_sec) == 200
 
+    def missing_node_types(self, class_types, timeout_sec: float = 5.0) -> list[str] | None:
+        missing: list[str] = []
+        for cls in class_types:
+            try:
+                r = httpx.get(f"{self.base_url}/object_info/{cls}", timeout=timeout_sec,
+                              headers=child_auth.headers(child_auth.COMFY))
+                r.raise_for_status()
+                known = cls in r.json()
+            except Exception:
+                return None
+            if not known:
+                missing.append(cls)
+        return missing
+
     def submit(self, workflow: dict) -> str:
         r = self._client.post(
             f"{self.base_url}/prompt",
             json={"prompt": workflow},
             timeout=10.0,
         )
-        r.raise_for_status()
+        if r.status_code >= 400:
+            print(f"[comfy] /prompt отклонён (HTTP {r.status_code}): {r.text[:4000]}")
+            raise ComfyUIRejected(r.status_code, r.text)
         data = r.json()
         prompt_id = data.get("prompt_id")
         if not prompt_id:

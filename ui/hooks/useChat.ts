@@ -463,9 +463,14 @@ export function useChat() {
     );
   }, []);
 
+  const endSession = useCallback(() => {
+    socketRef.current?.endSession();
+  }, []);
+
   return {
     messages,
     sendMessage,
+    endSession,
     postFileMessage,
     clearMessages,
     pushSystem,

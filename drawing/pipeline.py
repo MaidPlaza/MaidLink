@@ -637,10 +637,19 @@ class DrawingPipeline:
                 choice=synthetic, gate=gate, error=f"assemble failed: {e}",
             )
 
-        return self._render_loop(
+        result = self._render_loop(
             assembled, request, synthetic, gate,
             before_render=before_render, after_render=after_render,
         )
+        want = getattr(request.base_appearance, "hair_side", "") if request.base_appearance else ""
+        if want and result.is_success:
+            try:
+                from drawing.hair_side import normalize_side
+                if normalize_side(result.image_path, want, tags):
+                    print(f"[draw] снимок отражён: укладка была не на стороне из дизайна ({want})")
+            except Exception as e:
+                print(f"[draw] сторона укладки не проверена: {type(e).__name__}: {e}")
+        return result
 
     def run(
         self,

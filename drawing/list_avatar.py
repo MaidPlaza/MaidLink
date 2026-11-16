@@ -13,8 +13,23 @@ FACE_H = 380.0
 FACE_CX = 512.0
 FACE_CY = 430.0
 SCALE_MIN, SCALE_MAX = 0.4, 3.0
+HEAD_BALANCE = 0.5
+HEAD_SHIFT_MAX = 0.3
 
 MATTE_KEY = "maid_matte"
+
+
+def head_shift(alpha: np.ndarray, bbox: tuple[float, float, float, float]) -> float:
+    x1, _y1, x2, y2 = bbox
+    mask = np.asarray(alpha) > 128
+    rows = mask.any(axis=1)
+    if not rows.any():
+        return 0.0
+    top = int(np.argmax(rows))
+    xs = np.nonzero(mask[top:max(top + 1, int(y2))])[1]
+    if xs.size == 0:
+        return 0.0
+    return float((xs.mean() - (x1 + x2) / 2.0) / max(1.0, x2 - x1))
 
 
 def compose_list_avatar(img: Image.Image, bbox: tuple[float, float, float, float],
@@ -24,6 +39,9 @@ def compose_list_avatar(img: Image.Image, bbox: tuple[float, float, float, float
     face_h = max(1.0, y2 - y1)
     scale = min(SCALE_MAX, max(SCALE_MIN, FACE_H / face_h))
     cx, cy = (x1 + x2) / 2.0, (y1 + y2) / 2.0
+    if alpha is not None:
+        shift = max(-HEAD_SHIFT_MAX, min(HEAD_SHIFT_MAX, head_shift(alpha, bbox)))
+        cx += HEAD_BALANCE * shift * (x2 - x1)
 
     rgb = img.convert("RGB")
     w, h = rgb.size

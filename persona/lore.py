@@ -54,7 +54,7 @@ _app_lore_cache: list[LoreEntry] | None = None
 _world_lore_cache: list[LoreEntry] | None = None
 
 WORLD_LORE_DIR = "world_lore"
-WORLD_CORE_FILES = ("charter.yaml", "bureau.yaml")
+WORLD_CORE_FILES = ("world.yaml",)
 
 
 def _content_dir(content_dir: Path | str | None) -> Path:
@@ -113,6 +113,24 @@ def _norm(text: str) -> str:
     return " ".join(_PUNCT_RX.sub(" ", t).split())
 
 
+_PUNCT_KEEP_Q_RX = re.compile(r"[^\w\s?]+")
+_Q_RX = re.compile(r"\s*\?+")
+
+
+def _norm_q(text: str) -> str:
+    t = (text or "").lower().replace("ё", "е")
+    return _Q_RX.sub("?", " ".join(_PUNCT_KEEP_Q_RX.sub(" ", t).split()))
+
+
+def _hit(trigger: str, text: str, text_q: str) -> bool:
+    t = (trigger or "").strip()
+    if not t:
+        return False
+    if t.endswith("?"):
+        return _norm_q(t) in text_q
+    return _norm(t) in text
+
+
 _GENDER_RX = re.compile(r"\{([^{}|]*)\|([^{}|]*)\}")
 
 
@@ -137,10 +155,10 @@ def match(entries: list[LoreEntry], user_text: str,
           cos_threshold: float = COS_THRESHOLD) -> list[LoreEntry]:
     if not entries or not (user_text or "").strip():
         return []
-    text = _norm(user_text)
+    text, text_q = _norm(user_text), _norm_q(user_text)
     hits: list[LoreEntry] = []
     for e in entries:
-        if any(_norm(t) in text for t in e.triggers if t):
+        if any(_hit(t, text, text_q) for t in e.triggers):
             hits.append(e)
             if len(hits) >= top_k:
                 return hits
@@ -173,9 +191,10 @@ def render_character_block(entries: list[LoreEntry]) -> str:
     body = "\n\n".join(e.text for e in entries)
     return (
         "<твой_лор>\n"
-        "Твой личный канон по теме разговора — это правда о тебе. Опирайся "
-        "на неё, пересказывай своими словами и в своём тоне (не цитируй "
-        "дословно), не противоречь и не выдумывай взамен другого.\n"
+        "Твой личный канон по теме разговора — правда о тебе. Используй его, "
+        "если реплика собеседника касается этой темы; если она о другом — не "
+        "упоминай. Отвечай своими словами и в своём тоне, не цитируй дословно, "
+        "не противоречь канону и не выдумывай взамен другого.\n"
         f"{body}\n"
         "</твой_лор>"
     )
@@ -199,10 +218,11 @@ def render_world_block(entries: list[LoreEntry], gender: str = "female") -> str:
                        f"{expand_gender(e.text, gender)}" for e in entries)
     return (
         "<канон_мира>\n"
-        "Канон мира по теме разговора — правда о тебе, о Бюро и об Уставе. "
-        "Пересказывай своими словами, в характере, не цитируй. Где канон "
-        "говорит «ты не знаешь» — ты не знаешь: можно гадать с пометкой "
-        "«думаю», нельзя выдавать догадку за факт.\n"
+        "Справка о тебе и твоём мире. Используй её, только если собеседник "
+        "спрашивает об этом; если реплика о другом — не упоминай. Отвечай "
+        "своими словами и в своём характере, не пересказывай справку целиком. "
+        "Где сказано «ты не знаешь» — ответа не выдумывай: предположить можно, "
+        "но назови это догадкой.\n"
         f"{body}\n"
         "</канон_мира>"
     )
@@ -214,22 +234,13 @@ def topics_index_line(char_entries: list[LoreEntry],
                       gender: str = "female") -> str:
     parts = []
     if world_entries:
-        def _topic(e: LoreEntry) -> str:
-            return expand_gender(e.topic, gender)
-        arts = [_topic(e).split(":", 1)[1].strip() if ":" in e.topic else _topic(e)
-                for e in world_entries if e.id.startswith("charter_")]
-        rest = [_topic(e) for e in world_entries
-                if not e.id.startswith("charter_")]
-        head = "Ты из Бюро и знаешь Устав"
-        if arts:
-            head += " (статьи: " + "; ".join(arts) + ")"
-        if rest:
-            head += ". Канон мира по темам: " + ", ".join(rest)
+        topics = ", ".join(expand_gender(e.topic, gender) for e in world_entries)
+        who = _gpick(gender, "цифровая горничная", "цифровой дворецкий")
         parts.append(
-            f"{head}. Когда разговор их касается или просят то, чего ты не "
-            f"можешь, точные слова приходят блоком <канон_мира> (или "
-            f"get_lore(topic)); о технике — модель, файлы, память — говори "
-            f"прямо, своими знаниями.")
+            f"Ты {who} из Бюро. О твоей природе и мире есть справка по темам: "
+            f"{topics}. Когда собеседник об этом спрашивает, она приходит "
+            f"блоком <канон_мира> (или вызови get_lore(topic)); без неё "
+            f"подробностей о Бюро и своём прошлом не сочиняй.")
     if char_entries:
         topics = ", ".join(e.topic for e in char_entries)
         parts.append(

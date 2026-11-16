@@ -98,8 +98,15 @@ async def _tick(
                              and hist is not None
                              and bool(getattr(hist, "messages", None)))
         if in_active_session and kind != "timer":
+            if kind != "recurring" and record.details.get("card_shown"):
+                continue
             import api.server as _srv
+            from persona.gender import g as gpick, gender_of
             description = record.details.get("description") or record.title
+            not_done = (f" Это его дело: ты только напоминаешь — не пиши, будто "
+                        f"оно уже сделано или ты "
+                        f"{gpick(gender_of(character), 'сделала', 'сделал')} "
+                        f"что-то сама.")
             if kind == "recurring":
                 from services.recurring_schedule import (describe_schedule,
                                                          is_overdue,
@@ -114,7 +121,8 @@ async def _tick(
                 trig = (f"(Служебное: время твоего регулярного напоминания — "
                         f"«{description}» ({describe_schedule(record.details['schedule'])}). "
                         f"Напомни об этом СВОИМИ словами прямо в текущем "
-                        f"разговоре, коротко и к месту — без «уведомления».)")
+                        f"разговоре, коротко и к месту — без «уведомления»."
+                        f"{not_done})")
                 ev = {"kind": "recurring", "trigger": trig, "card": None}
             else:
                 record.details["card_shown"] = True
@@ -125,10 +133,12 @@ async def _tick(
                         "kind": kind, "title": description}
                 if kind == "pre_event" and record.details.get("event_at_iso"):
                     card["event_at_iso"] = record.details["event_at_iso"]
-                trig = (f"(Служебное: только что сработало твоё напоминание — "
-                        f"«{description}». Панельку он уже видит. Скажи об этом "
-                        f"в текущем разговоре коротко и естественно, в своём "
-                        f"тоне — не «системным уведомлением».)")
+                trig = (f"(Служебное: только что сработало напоминание, которое "
+                        f"ты {gpick(gender_of(character), 'ставила', 'ставил')} "
+                        f"Господину, — «{description}». Панельку он уже видит. "
+                        f"Напомни ему об этом в текущем разговоре коротко и "
+                        f"естественно, в своём тоне — не «системным "
+                        f"уведомлением».{not_done})")
                 ev = {"kind": kind, "trigger": trig, "card": card}
             s["last_reminder_delivered_at"] = now
             try:

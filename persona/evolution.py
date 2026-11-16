@@ -1070,6 +1070,7 @@ def select_axis_text(character: Character, axis_name: str,
 
 
 BASE_SYNC_SECTIONS = ("кто_ты", "внешность", "предпочтения", "внутренний_мир", "уязвимости")
+EVOLUTION_OWNED_SECTIONS = ("внутренний_мир",)
 
 
 def sync_base_statements(identity: "CharacterIdentity", character: Character) -> list[str]:
@@ -1080,6 +1081,15 @@ def sync_base_statements(identity: "CharacterIdentity", character: Character) ->
         new = [s for s in fresh.self_statements if s.section == section and s.source == "base"]
         old_idx = [i for i, s in enumerate(identity.self_statements)
                    if s.section == section and s.source == "base"]
+        if section in EVOLUTION_OWNED_SECTIONS and any(
+                s.section == section and s.source == "evolved"
+                for s in identity.self_statements):
+            if old_idx:
+                drop = set(old_idx)
+                identity.self_statements = [s for i, s in enumerate(identity.self_statements)
+                                            if i not in drop]
+                changed.append(section)
+            continue
         old = [identity.self_statements[i] for i in old_idx]
         if [(s.id, s.text) for s in old] == [(s.id, s.text) for s in new]:
             continue
@@ -1258,17 +1268,17 @@ def select_active_speech_quirks(persona: "CharacterContext") -> list[str]:
     return out
 
 
-def _evolve_inner_world(client, character: Character, identity: CharacterIdentity,
-                        reflections_text: str, full_description: str,
-                        trends_text: str = "") -> int:
+def inner_world_prompt(character: Character, identity: CharacterIdentity,
+                       reflections_text: str, full_description: str,
+                       trends_text: str = "") -> str:
     inner_stmts = [s for s in identity.self_statements if s.section == "внутренний_мир"]
     if not inner_stmts:
-        return 0
+        return ""
 
     current_inner = "\n".join(f"- {s.text}" for s in inner_stmts)
 
     honorific = resolve_honorific(character)
-    prompt = EVOLVE_INNER_WORLD_PROMPT.format(
+    return EVOLVE_INNER_WORLD_PROMPT.format(
         name=character.name,
         honorific=honorific,
         gender_hint=_gender_hint(character),
@@ -1278,6 +1288,46 @@ def _evolve_inner_world(client, character: Character, identity: CharacterIdentit
         current_inner=current_inner,
         source="", section="", text="",
     )
+
+
+def apply_inner_world(identity: CharacterIdentity, data: dict) -> int:
+    inner_stmts = [s for s in identity.self_statements if s.section == "внутренний_мир"]
+    new_statements = data.get("statements", [])
+    reason = data.get("reason", "")
+
+    if not new_statements or reason == "без изменений":
+        print("[EVO] Внутренний мир: без изменений")
+        return 0
+
+    old_texts = [s.text for s in inner_stmts]
+    print(f"[EVO] [внутренний_мир]")
+    print(f"  Было:")
+    for t in old_texts:
+        print(f"    - {priv(t)}")
+    print(f"  Стало:")
+    for t in new_statements:
+        print(f"    - {priv(t)}")
+    print(f"  Причина: {priv(reason)}")
+
+    now = time.time()
+    identity.self_statements = [s for s in identity.self_statements if s.section != "внутренний_мир"]
+    for i, text in enumerate(new_statements):
+        identity.self_statements.append(Statement(
+            id=f"inner_{i}", text=text.strip(), section="внутренний_мир",
+            source="evolved", created_at=now,
+            history=[{"old": "; ".join(old_texts), "new": text.strip(),
+                      "reason": reason, "timestamp": now}],
+        ))
+    return 1
+
+
+def _evolve_inner_world(client, character: Character, identity: CharacterIdentity,
+                        reflections_text: str, full_description: str,
+                        trends_text: str = "") -> int:
+    prompt = inner_world_prompt(character, identity, reflections_text, full_description,
+                                trends_text)
+    if not prompt:
+        return 0
 
     try:
         response = client.chat(
@@ -1291,34 +1341,7 @@ def _evolve_inner_world(client, character: Character, identity: CharacterIdentit
         if start < 0 or end <= start:
             return 0
         data = json.loads(text[start:end])
-
-        new_statements = data.get("statements", [])
-        reason = data.get("reason", "")
-
-        if not new_statements or reason == "без изменений":
-            print("[EVO] Внутренний мир: без изменений")
-            return 0
-
-        old_texts = [s.text for s in inner_stmts]
-        print(f"[EVO] [внутренний_мир]")
-        print(f"  Было:")
-        for t in old_texts:
-            print(f"    - {priv(t)}")
-        print(f"  Стало:")
-        for t in new_statements:
-            print(f"    - {priv(t)}")
-        print(f"  Причина: {priv(reason)}")
-
-        now = time.time()
-        identity.self_statements = [s for s in identity.self_statements if s.section != "внутренний_мир"]
-        for i, text in enumerate(new_statements):
-            identity.self_statements.append(Statement(
-                id=f"inner_{i}", text=text.strip(), section="внутренний_мир",
-                source="evolved", created_at=now,
-                history=[{"old": "; ".join(old_texts), "new": text.strip(),
-                          "reason": reason, "timestamp": now}],
-            ))
-        return 1
+        return apply_inner_world(identity, data)
 
     except Exception as e:
         print(f"[EVO] Inner world error: {e}")

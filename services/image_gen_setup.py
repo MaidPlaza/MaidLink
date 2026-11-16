@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import os
+import re
 import shutil
 import subprocess
 import sys
 import threading
+import time
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -43,6 +46,9 @@ class IGComponent:
     repo_id: str = ""
     filename: str = ""
     revision: str = "main"
+    optional: bool = False
+    imports: tuple[str, ...] = ()
+    provides_nodes: tuple[str, ...] = ()
 
 
 MANIFEST: list[IGComponent] = [
@@ -58,6 +64,8 @@ MANIFEST: list[IGComponent] = [
         dest=f"{_CN}/comfyui-impact-pack",
         title="ComfyUI Impact Pack (детейлер)",
         license="GNU GPL-3.0",
+        imports=("cv2", "segment_anything", "skimage", "piexif"),
+        provides_nodes=("FaceDetailer", "SAMLoader"),
     ),
     IGComponent(
         key="impact-subpack", kind="node",
@@ -65,6 +73,8 @@ MANIFEST: list[IGComponent] = [
         dest=f"{_CN}/comfyui-impact-subpack",
         title="ComfyUI Impact Subpack (YOLO-провайдер)",
         license="GNU AGPL-3.0", agpl=True,
+        imports=("ultralytics", "cv2", "dill"),
+        provides_nodes=("UltralyticsDetectorProvider",),
     ),
     IGComponent(
         key="checkpoint", kind="file", user_provided=True,
@@ -102,12 +112,14 @@ MANIFEST: list[IGComponent] = [
         sha256="f15622d853e8260172812b657053460e20806f04b9e05147d49af7bed31a6e99",
         title="ISNet-anime (вырезание фона для аватарок списка)",
         license="Apache-2.0 (SkyTNT anime-segmentation; сборка rembg, MIT)",
+        optional=True,
     ),
     IGComponent(
         key="embeddings", kind="bundled", source="image_gen/embeddings",
         dest=f"{_MODELS}/embeddings",
         title="Эмбеддинги lazypos/neg/hand/wet",
         license="Fair AI Public License 1.0-SD (бандлим)",
+        optional=True,
     ),
 ]
 
@@ -132,20 +144,47 @@ def checkpoint_installed(project_root: Path) -> bool:
     return bool(comp) and _present(comp, project_root)
 
 
-def status(project_root: Path) -> dict:
+def drawing_files_ready(project_root: Path) -> bool:
+    return not missing_required(project_root)
+
+
+def missing_required(project_root: Path) -> list[IGComponent]:
+    return [c for c in MANIFEST if not c.optional and not _present(c, project_root)]
+
+
+def broken_components(project_root: Path, missing_nodes=()) -> dict[str, str]:
+    missing_nodes = set(missing_nodes or ())
+    out: dict[str, str] = {}
+    for c in MANIFEST:
+        if c.kind != "node" or not _present(c, project_root):
+            continue
+        if c.key in _health:
+            out[c.key] = _health[c.key]
+        elif missing_nodes & set(c.provides_nodes):
+            nodes = ", ".join(sorted(missing_nodes & set(c.provides_nodes)))
+            out[c.key] = f"движок рисования не загрузил узлы {nodes}"
+    return out
+
+
+def status(project_root: Path, missing_nodes=()) -> dict:
+    broken = broken_components(project_root, missing_nodes)
     comps = [{
         "key": c.key, "title": c.title, "license": c.license, "agpl": c.agpl,
-        "user_provided": c.user_provided,
+        "user_provided": c.user_provided, "optional": c.optional,
         "present": _present(c, project_root),
+        "broken": c.key in broken,
+        "error": broken.get(c.key, ""),
     } for c in MANIFEST]
     missing = [c["key"] for c in comps if not c["present"]]
     return {
-        "installed": not missing,
+        "installed": not missing and not broken,
         "components": comps,
         "missing": missing,
+        "broken": sorted(broken),
         "agpl_components": [c.key for c in MANIFEST if c.agpl],
         "installing": is_installing(),
         "progress": get_progress(),
+        "install_log": INSTALL_LOG,
     }
 
 
@@ -161,6 +200,7 @@ class CompProgress:
 _progress: dict[str, CompProgress] = {}
 _lock = threading.Lock()
 _thread: threading.Thread | None = None
+_health: dict[str, str] = {}
 
 
 def get_progress() -> list[dict]:
@@ -196,6 +236,139 @@ def _sha256_ok(path: Path, expected: str) -> bool:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest().lower() == expected.lower()
+
+
+INSTALL_LOG = "logs/imagegen_install.log"
+INSTALL_LOG_MAX_BYTES = 5 * 1024 * 1024
+MARKER = ".maidlink-verified"
+PIP_ATTEMPTS = 2
+PIP_TIMEOUT_SEC = 1800
+VERIFY_TIMEOUT_SEC = 300
+_ERROR_RE = re.compile(r"^ERROR\b|\b\w*(Error|Exception)\b")
+
+
+def _log_write(project_root: Path, text: str) -> None:
+    try:
+        path = project_root / INSTALL_LOG
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if path.exists() and path.stat().st_size > INSTALL_LOG_MAX_BYTES:
+            bak = path.with_name(path.name + ".1")
+            bak.unlink(missing_ok=True)
+            path.rename(bak)
+        with open(path, "a", encoding="utf-8", errors="replace") as f:
+            f.write(text if text.endswith("\n") else text + "\n")
+    except OSError:
+        pass
+
+
+def _run_logged(cmd, project_root: Path, title: str, cwd: Path,
+                timeout: float) -> tuple[int, str]:
+    cmd = [str(c) for c in cmd]
+    _log_write(project_root, f"\n===== {time.strftime('%Y-%m-%d %H:%M:%S')} {title}\n"
+                             f"$ {' '.join(cmd)}")
+    env = dict(os.environ, PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
+    try:
+        r = _run_hidden(cmd, cwd=str(cwd), capture_output=True, text=True,
+                        encoding="utf-8", errors="replace", timeout=timeout, env=env)
+        code, out = r.returncode, (r.stdout or "") + (r.stderr or "")
+    except subprocess.TimeoutExpired:
+        code, out = -1, f"не уложилось в {int(timeout)} с"
+    except OSError as e:
+        code, out = -1, f"{type(e).__name__}: {e}"
+    _log_write(project_root, f"{out.rstrip()}\n[exit {code}]")
+    return code, out
+
+
+def _error_line(output: str) -> str:
+    lines = [ln.strip() for ln in output.splitlines() if ln.strip()]
+    for ln in reversed(lines):
+        if _ERROR_RE.search(ln):
+            return ln[:300]
+    return lines[-1][:300] if lines else "нет вывода"
+
+
+def _requirements(dest: Path) -> list[str]:
+    req = dest / "requirements.txt"
+    if not req.exists():
+        return []
+    return [s for s in (ln.strip() for ln in
+                        req.read_text(encoding="utf-8", errors="replace").splitlines())
+            if s and not s.startswith("#") and "git+" not in s]
+
+
+def _requirements_sha(dest: Path) -> str:
+    req = dest / "requirements.txt"
+    return hashlib.sha256(req.read_bytes()).hexdigest() if req.exists() else ""
+
+
+def _marker_ok(comp: IGComponent, project_root: Path) -> bool:
+    dest = project_root / comp.dest
+    try:
+        data = json.loads((dest / MARKER).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    return data.get("requirements_sha256") == _requirements_sha(dest)
+
+
+def _write_marker(comp: IGComponent, project_root: Path) -> None:
+    dest = project_root / comp.dest
+    try:
+        (dest / MARKER).write_text(json.dumps({
+            "imports": list(comp.imports),
+            "requirements_sha256": _requirements_sha(dest),
+            "verified_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+        }), encoding="utf-8")
+    except OSError:
+        pass
+
+
+def _pip_install(comp: IGComponent, project_root: Path) -> str:
+    dest = project_root / comp.dest
+    pkgs = _requirements(dest)
+    if not pkgs:
+        return ""
+    cmd = [project_root / _PY_EMBED, "-s", "-m", "pip", "install",
+           "--disable-pip-version-check", "--no-warn-script-location",
+           "--progress-bar", "off", *pkgs]
+    out = ""
+    for attempt in range(1, PIP_ATTEMPTS + 1):
+        code, out = _run_logged(cmd, project_root, f"{comp.key}: pip, попытка {attempt}",
+                                dest, PIP_TIMEOUT_SEC)
+        if code == 0:
+            return ""
+        if attempt < PIP_ATTEMPTS:
+            time.sleep(5)
+    return f"pip: {_error_line(out)}"
+
+
+def _verify_imports(comp: IGComponent, project_root: Path) -> str:
+    if not comp.imports:
+        return ""
+    code, out = _run_logged(
+        [project_root / _PY_EMBED, "-s", "-c", "import " + ", ".join(comp.imports)],
+        project_root, f"{comp.key}: проверка импортов",
+        project_root / COMFY_ROOT, VERIFY_TIMEOUT_SEC)
+    return "" if code == 0 else f"не загружается: {_error_line(out)}"
+
+
+def verify_installed_nodes(project_root: Path) -> dict[str, str]:
+    if not comfy_installed(project_root):
+        return {}
+    for c in MANIFEST:
+        if c.kind != "node" or not _present(c, project_root):
+            continue
+        if _marker_ok(c, project_root):
+            _health.pop(c.key, None)
+            continue
+        err = _verify_imports(c, project_root)
+        if err:
+            _health[c.key] = err
+            print(f"[imagegen] {c.key}: {err} — нужна переустановка "
+                  f"(вывод — {INSTALL_LOG})")
+        else:
+            _health.pop(c.key, None)
+            _write_marker(c, project_root)
+    return dict(_health)
 
 
 def _install_one(comp: IGComponent, project_root: Path) -> None:
@@ -239,6 +412,9 @@ def _install_one(comp: IGComponent, project_root: Path) -> None:
             if not comp.url:
                 prog.status, prog.error = "error", "нет URL для kind=node"
                 return
+            if not (project_root / _PY_EMBED).exists():
+                prog.status, prog.error = "error", "сначала нужен движок ComfyUI"
+                return
             tmp = project_root / "image_gen" / f"_{comp.key}.zip"
             _download(comp.url, tmp, prog)
             prog.status = "extracting"
@@ -247,23 +423,22 @@ def _install_one(comp: IGComponent, project_root: Path) -> None:
                 shutil.rmtree(dest, ignore_errors=True)
             _extract_zip_into(tmp, dest)
             tmp.unlink(missing_ok=True)
-            req = dest / "requirements.txt"
-            py = project_root / _PY_EMBED
-            if req.exists() and py.exists():
-                prog.status = "pip"
-                pkgs = [
-                    s for s in (
-                        ln.strip()
-                        for ln in req.read_text(encoding="utf-8", errors="replace").splitlines()
-                    )
-                    if s and not s.startswith("#") and "git+" not in s
-                ]
-                if pkgs:
-                    _run_hidden([str(py), "-s", "-m", "pip", "install", *pkgs],
-                                cwd=str(dest), check=False)
+            prog.status = "pip"
+            err = _pip_install(comp, project_root)
+            if not err:
+                prog.status = "verifying"
+                err = _verify_imports(comp, project_root)
+            if err:
+                _health[comp.key] = err
+                prog.status, prog.error = "error", f"{err} (вывод — {INSTALL_LOG})"
+                return
+            _health.pop(comp.key, None)
+            _write_marker(comp, project_root)
             prog.status = "done"
     except Exception as e:
         prog.status, prog.error = "error", f"{type(e).__name__}: {e}"
+        if comp.kind == "node":
+            _health[comp.key] = prog.error
 
 
 def _find_7z(project_root: Path) -> Path | None:
@@ -328,25 +503,44 @@ def _extract_zip_into(archive: Path, dest: Path) -> None:
                 shutil.copyfileobj(src, out)
 
 
-def select_todo(project_root: Path, include_agpl: bool = True) -> list[IGComponent]:
+def select_todo(project_root: Path, include_agpl: bool = True,
+                repair=()) -> list[IGComponent]:
+    repair = set(repair)
     return [c for c in MANIFEST
-            if not _present(c, project_root) and not c.user_provided
+            if (not _present(c, project_root) or c.key in repair) and not c.user_provided
             and (include_agpl or not c.agpl)]
 
 
-def start_install(project_root: Path, include_agpl: bool = True) -> list[str]:
+def start_install(project_root: Path, include_agpl: bool = True, repair=(),
+                  before=None, after=None) -> list[str]:
     global _thread
     if is_installing():
         return [p.key for p in _progress.values() if p.status not in ("done", "error")]
-    todo = select_todo(project_root, include_agpl=include_agpl)
+    todo = select_todo(project_root, include_agpl=include_agpl, repair=repair)
     with _lock:
         _progress.clear()
         for c in todo:
             _progress[c.key] = CompProgress(key=c.key, total=c.size)
 
     def _run():
-        for c in todo:
-            _install_one(c, project_root)
+        try:
+            if before is not None and any(c.kind == "node" for c in todo):
+                try:
+                    before()
+                except Exception as e:
+                    print(f"[imagegen] не удалось остановить ComfyUI перед установкой: {e}")
+            for c in todo:
+                _install_one(c, project_root)
+                p = _progress[c.key]
+                line = f"[imagegen] {c.key}: {p.status}" + (f" — {p.error}" if p.error else "")
+                print(line)
+                _log_write(project_root, line)
+        finally:
+            if after is not None:
+                try:
+                    after()
+                except Exception as e:
+                    print(f"[imagegen] ComfyUI после установки не поднялся: {e}")
 
     _thread = threading.Thread(target=_run, daemon=True)
     _thread.start()

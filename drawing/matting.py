@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import functools
+import importlib.util
 from pathlib import Path
 
 import numpy as np
@@ -23,8 +25,18 @@ def _model_file(model_path: str | None = None) -> Path:
     return app_paths.PROJECT_ROOT / DEFAULT_MODEL_PATH
 
 
+@functools.lru_cache(maxsize=1)
+def _in_process() -> bool:
+    return importlib.util.find_spec("onnxruntime") is not None
+
+
 def matting_available(model_path: str | None = None) -> bool:
-    return _model_file(model_path).is_file()
+    if not _model_file(model_path).is_file():
+        return False
+    if _in_process():
+        return True
+    from drawing import comfy_python
+    return comfy_python.available("isnet")
 
 
 def _get_session(model_path: str | None = None):
@@ -40,11 +52,18 @@ def _get_session(model_path: str | None = None):
     return _SESSION
 
 
+def _forward(x: np.ndarray, model_path: str | None) -> np.ndarray:
+    if not _in_process():
+        from drawing import comfy_python
+        return comfy_python.isnet_forward(x, _model_file(model_path))
+    sess = _get_session(model_path)
+    return sess.run(None, {sess.get_inputs()[0].name: x})[0]
+
+
 def anime_alpha(img: Image.Image, *, model_path: str | None = None,
                 pockets: bool = True) -> np.ndarray | None:
     if not matting_available(model_path):
         return None
-    sess = _get_session(model_path)
     rgb = img.convert("RGB")
     small = rgb.resize(_INPUT_SIZE, Image.LANCZOS)
     arr = np.asarray(small).astype(np.float32)
@@ -53,8 +72,7 @@ def anime_alpha(img: Image.Image, *, model_path: str | None = None,
     for i in range(3):
         x[:, :, i] = arr[:, :, i] - _MEAN[i]
     x = np.expand_dims(x.transpose((2, 0, 1)), 0)
-    name = sess.get_inputs()[0].name
-    pred = sess.run(None, {name: x})[0][:, 0, :, :]
+    pred = _forward(x, model_path)[:, 0, :, :]
     lo, hi = float(pred.min()), float(pred.max())
     pred = (pred - lo) / max(hi - lo, 1e-6)
     mask = Image.fromarray((np.squeeze(pred) * 255).astype(np.uint8), mode="L")

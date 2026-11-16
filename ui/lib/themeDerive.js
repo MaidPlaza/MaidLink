@@ -142,6 +142,23 @@ export function applyReadableTokens(theme, merged) {
   return merged
 }
 
+const LEGACY_MESSAGE_FONT = /^\s*(['"]?)Rubik\1\s*,\s*sans-serif\s*$/i
+const MESSAGE_FONT_TOKENS = [
+  ['Chat.Messages.AIMessage', 'Chat.Messages.AIMessage.Font'],
+  ['Chat.Messages.UserMessage', 'Chat.Messages.UserMessage.Font'],
+]
+
+export function applyLegacyMessageFont(base, merged) {
+  for (const [block, key] of MESSAGE_FONT_TOKENS) {
+    const def = isBlock(base[block]) ? base[block][key] : undefined
+    if (!nonEmpty(def) || !isBlock(merged[block])) continue
+    if (LEGACY_MESSAGE_FONT.test(String(merged[block][key] ?? ''))) {
+      merged[block] = { ...merged[block], [key]: def }
+    }
+  }
+  return merged
+}
+
 export function deriveBlockTokens(theme) {
   if (!isBlock(theme)) return theme
   let out = theme
@@ -241,6 +258,7 @@ export function composeTheme(lightDefault, darkDefault, rawTheme, { dark = false
   }
   applyComputedTokens(theme, merged, isDark ? base : null)
   applyReadableTokens(theme, merged)
+  applyLegacyMessageFont(base, merged)
   return { theme, merged }
 }
 

@@ -25,6 +25,10 @@ _MANAGED: dict[str, tuple[str, type]] = {
 
 _DEV_ONLY = frozenset({"image_gen.keep_generated"})
 
+_STATE: dict[str, tuple[str, type]] = {
+    "character_id": ("character_id", str),
+}
+
 
 def _managed() -> dict[str, tuple[str, type]]:
     import sys
@@ -99,11 +103,24 @@ def load_overlay(config: Any, project_root: Path) -> None:
         config.llm.reasoning_mode = "fast" if _coerce(bool, data["llm.fast_mode"]) else "deep"
     managed = _managed()
     for key, raw in data.items():
-        spec = managed.get(key)
+        spec = managed.get(key) or _STATE.get(key)
         if spec is None:
             continue
         cfg_path, typ = spec
         _set_attr(config, cfg_path, _coerce(typ, raw))
+
+
+def _save(config: Any, project_root: Path) -> None:
+    data = read_current(config)
+    data.update({key: _get_attr(config, cfg_path) for key, (cfg_path, _t) in _STATE.items()})
+    path = _settings_path(project_root)
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+    except OSError as e:
+        print(f"[settings] не удалось сохранить {path}: {e}")
 
 
 def apply_and_save(config: Any, patch: dict, project_root: Path) -> dict[str, Any]:
@@ -114,13 +131,15 @@ def apply_and_save(config: Any, patch: dict, project_root: Path) -> dict[str, An
             continue
         cfg_path, typ = spec
         _set_attr(config, cfg_path, _coerce(typ, raw))
-    current = read_current(config)
-    path = _settings_path(project_root)
-    try:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(
-            json.dumps(current, ensure_ascii=False, indent=2), encoding="utf-8"
-        )
-    except OSError as e:
-        print(f"[settings] не удалось сохранить {path}: {e}")
-    return current
+    _save(config, project_root)
+    return read_current(config)
+
+
+def remember_state(config: Any, patch: dict, project_root: Path) -> None:
+    for key, raw in (patch or {}).items():
+        spec = _STATE.get(key)
+        if spec is None:
+            continue
+        cfg_path, typ = spec
+        _set_attr(config, cfg_path, _coerce(typ, raw))
+    _save(config, project_root)

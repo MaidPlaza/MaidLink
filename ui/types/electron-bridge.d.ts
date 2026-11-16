@@ -33,6 +33,7 @@ export interface MaidLinkBridge {
   readThemeConfig: (id: string) => Promise<Record<string, string> | null>;
 
   getPathForFile: (file: File) => string;
+  pickFile: (kind: "checkpoint" | "addon") => Promise<string | null>;
 }
 
 declare global {

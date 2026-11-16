@@ -52,6 +52,7 @@ registerSettings([
       { value: "60", label: "60 мин" },
       { value: "0", label: "Никогда" },
     ] },
+  { id: "session.usage_guide", section: "Сессия", label: "Памятка при запуске", type: "toggle", default: true, sectionOrder: 2, order: 2 },
 ]);
 
 registerSettings([
@@ -64,7 +65,7 @@ registerSettings([
     options: REASONING_MODE_OPTIONS },
 ]);
 registerSettings([
-  { id: "llm.vram_free_mib", section: "Видеопамять", home: "context-model", label: "Оставлять свободной после загрузки, МиБ", type: "range", default: "1024", min: 512, max: 4096, step: 256, persist: "backend", sectionOrder: 3.5 },
+  { id: "llm.vram_free_mib", section: "Видеопамять", home: "context-model", label: "Оставлять свободной после загрузки, МиБ", type: "range", default: "1024", min: 0, max: 4096, step: 256, persist: "backend", sectionOrder: 3.5 },
 ]);
 
 registerSettings([

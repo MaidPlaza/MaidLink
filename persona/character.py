@@ -85,6 +85,7 @@ class SpeakingStyle:
     profanity: dict = field(default_factory=dict)
     address_form: str = ""
     address_form_intimate: str = ""
+    greeting: str = ""
 
 
 @dataclass
@@ -351,6 +352,7 @@ class Character:
             profanity=_parse_profanity(style_data.get("profanity")),
             address_form=(style_data.get("address_form", "") or "").strip(),
             address_form_intimate=(style_data.get("address_form_intimate", "") or "").strip(),
+            greeting=str(style_data.get("greeting") or "").strip(),
         )
 
         caps_data = data.get("capabilities", {})

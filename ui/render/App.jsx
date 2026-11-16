@@ -61,7 +61,9 @@ export default function App() {
   const { characters, character, identity, select, refresh, refreshActive } = useCharacter()
   const chat = useChat()
   const activeChar = characters.find((c) => c.active)
-  const chipHint = character !== null && characters.length === 0 && !charSelectOpen && launchDone
+  const awaitingChar = activeChar ? null : characters.find((c) => c.awaiting_unlock) || null
+  const chipHint = character !== null && (characters.length === 0 || !!awaitingChar)
+    && !charSelectOpen && launchDone
   const [moodPortraits] = useSetting('drawing.mood_portraits_enabled')
   const liveMood = identity?.reaction_state || identity?.mood_live || identity?.mood_state || ''
   const moodQ = moodPortraits && liveMood && liveMood !== 'ровное' ? `&mood=${encodeURIComponent(liveMood)}` : ''
@@ -96,6 +98,14 @@ export default function App() {
     }
     if (chipClosesSelect && !pickInFlightRef.current) closeCharSelect()
   }
+
+  const unlockPromptedRef = useRef(false)
+  useEffect(() => {
+    if (!launchDone || needsSetup === true || !awaitingChar || unlockPromptedRef.current) return
+    unlockPromptedRef.current = true
+    setCharSelectOpen(true)
+    handleSelectionLock(true)
+  }, [launchDone, needsSetup, awaitingChar])
 
   function playPatternThen(cb, direction = 'tl-br') {
     patternDoneCallback.current = cb
@@ -369,7 +379,7 @@ export default function App() {
             <Dashboard  character={character} activeChar={activeChar} identity={identity} portraitUrl={portraitUrl} onPlayPattern={() => setPatternPlaying(true)}  onPlayWave={() => setWaveActive(true)} dashboardVisible={dashboardVisible} expandMode={expandMode} />
 
             <div className="chat" style={{ visibility: (charSelectOpen && !panelBare) || startupCoverUp ? 'hidden' : 'visible', pointerEvents: charSelectOpen || startupCoverUp ? 'none' : 'auto' }}>
-              <Chat onToggleExpand={handleToggleExpand} onToggleExpandAvatar={handleToggleExpandAvatar} expanded={expanded} expandMode={expandMode} character={character} characters={characters} onSelectCharacter={select} chatAvatarUrl={chatAvatarUrl} portraitUrl={portraitUrl} chat={chat} contextWindow={chat.contextWindow} />
+              <Chat onToggleExpand={handleToggleExpand} onToggleExpandAvatar={handleToggleExpandAvatar} expanded={expanded} expandMode={expandMode} character={character} characters={characters} onSelectCharacter={select} chatAvatarUrl={chatAvatarUrl} portraitUrl={portraitUrl} chat={chat} contextWindow={chat.contextWindow} usageGuideReady={launchDone && needsSetup === false && !charSelectOpen} />
             </div>
 
             <div style={{ visibility: (charSelectOpen && !panelBare) || startupCoverUp ? 'hidden' : 'visible' }}>
@@ -423,6 +433,7 @@ export default function App() {
             return res
           }}
           selectionLock={selectionLock}
+          initialSelectedId={awaitingChar?.id}
           bare={panelBare}
           onSelectionLock={handleSelectionLock}
           onRefresh={refresh}

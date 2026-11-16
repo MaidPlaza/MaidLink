@@ -1224,6 +1224,116 @@ def _history_marker(item: dict) -> str:
             f"{color} ({item.get('colored_tag') or item['tag']}, "
             f"{item['category_label']}; редкость: {item['rarity_label']}{novelty}).)")
 
+BATCH_SIZE = 10
+
+
+def pull_many(identity, count: int = BATCH_SIZE, *, allow_nsfw: bool = False,
+              cur_len: str = "", rng: random.Random | None = None,
+              now: float | None = None) -> list[dict]:
+    items: list[dict] = []
+    for _ in range(max(1, int(count))):
+        try:
+            items.append(pull(identity, allow_nsfw=allow_nsfw, cur_len=cur_len,
+                              rng=rng, now=now))
+        except (NoTickets, PoolEmpty):
+            if not items:
+                raise
+            break
+    return items
+
+
+def _novelty(item: dict) -> str:
+    if item.get("color") and not item.get("new_item", True):
+        return "новый цвет уже открытой вещи"
+    if item.get("pattern"):
+        return "новый узор уже открытой вещи"
+    return ""
+
+
+def item_line(item: dict) -> str:
+    if item.get("special") == "sphere":
+        n = int(item.get("spheres") or 0)
+        return ("сфера изменения — откроет один новый цвет уже открытой вещи"
+                + (f" (сфер: {n})" if n else ""))
+    text = f"«{item['label']}»"
+    if item.get("color"):
+        text += f", {item.get('color_label') or item['color']}"
+    if item.get("pattern"):
+        text += f", узор {item.get('pattern_label') or item['pattern']}"
+    text += f" — {item['category_label']}, {item['rarity_label']}"
+    novelty = _novelty(item)
+    return text + (f"; {novelty}" if novelty else "")
+
+
+def _item_brief(item: dict) -> str:
+    if item.get("special") == "sphere":
+        return ("сфера изменения — не вещь: откроет один новый цвет уже открытой "
+                "вещи, выбор в гардеробе, раздел «Стайлинг»")
+    color = f", {item['color_label']}" if item.get("color") else ""
+    if item.get("pattern"):
+        color += f", узор {item.get('pattern_label') or item['pattern']}"
+    novelty = _novelty(item)
+    return (f"«{item['label']}»{color} ({item.get('colored_tag') or item['tag']}, "
+            f"{item['category_label']}; редкость: {item['rarity_label']}"
+            f"{'; ' + novelty if novelty else ''})")
+
+
+def _tickets_word(n: int) -> str:
+    n = abs(int(n)) % 100
+    if 10 < n < 20:
+        return "билетов"
+    n %= 10
+    if n == 1:
+        return "билет"
+    if 1 < n < 5:
+        return "билета"
+    return "билетов"
+
+
+def _batch_listing(items: list[dict]) -> str:
+    lines = [f"{i}. {_item_brief(it)}" for i, it in enumerate(items, 1)]
+    if any(it.get("bonus_sphere") for it in items):
+        lines.append(f"плюс бонусная сфера изменения — за каждые {SPHERE_EVERY} "
+                     f"открытых билетов")
+    return "\n".join(lines)
+
+
+def batch_history_marker(items: list[dict]) -> str:
+    if len(items) == 1:
+        return history_marker(items[0])
+    n = len(items)
+    return (f"(Билеты удачи открыты вместе, сразу {n} {_tickets_word(n)} — выпало "
+            f"для образа:\n{_batch_listing(items)})")
+
+
+def batch_reaction_trigger(items: list[dict], *, honorific: str,
+                           female: bool = True) -> str:
+    if len(items) == 1:
+        return reaction_trigger(items[0], honorific=honorific, female=female)
+    who = "сама" if female else "сам"
+    n = len(items)
+    sphere_note = ""
+    if any(it.get("special") == "sphere" or it.get("bonus_sphere") for it in items):
+        sphere_note = (f" Сферы изменения тратит {honorific} в гардеробе, не ты — их "
+                       f"можно упомянуть мимоходом или не упоминать.")
+    nsfw_note = (" Среди находок есть детали под одеждой (18+) — реагируй "
+                 "уместно, без пошлости." if any(it.get("nsfw") for it in items) else "")
+    return (f"(Служебное событие: вы с {honorific} вместе открыли сразу {n} "
+            f"{_tickets_word(n)} удачи — маленькая лотерея на двоих: что выпадет "
+            f"для твоего образа, заранее не знает никто. Выпало:\n"
+            f"{_batch_listing(items)}\n"
+            f"Вещи теперь твои — носить или нет, решишь {who} позже: надеваются "
+            f"инструментом style_self в обычном разговоре, прямо сейчас ничего "
+            f"надевать не нужно.{sphere_note}{nsfw_note} Отреагируй ОДНОЙ репликой "
+            f"на всю пачку целиком, строго в своём характере и по СВОЕМУ вкусу. "
+            f"Не перечисляй всё по порядку: выдели одну-три находки, которые "
+            f"зацепили — понравились или наоборот, — остальное можно обобщить "
+            f"парой слов или не упоминать. Редкость сама по себе ни к восторгу, "
+            f"ни к разочарованию не обязывает. Не больше трёх-четырёх фраз. Не "
+            f"повторяй форму и слова своих прошлых реакций на билеты, начни "
+            f"иначе. Без благодарностей за «подарок» и без пересказа механики "
+            f"билетов.)")
+
 
 CATEGORY_ORDER = ("hair_style", "hair_texture", "hair_bangs", "hair_extra",
                   "makeup",

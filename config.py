@@ -186,6 +186,7 @@ LLM_MODELS: dict[str, dict] = {
         "mtp": "models/llm/mtp-gemma-4-12b-it-Q8_0.gguf",
         "extra_args": ["--chat-template-file", "llama-server/gemma4-fixed.jinja",
                        "--image-max-tokens", str(GEMMA_IMAGE_MAX_TOKENS)],
+        "fast_post": True,
         "expected_tps": 30,
     },
     "gemma-strong": {
@@ -205,6 +206,7 @@ LLM_MODELS: dict[str, dict] = {
                        "--cache-ram", "16384", "-ub", "1024",
                        "--chat-template-file", "llama-server/gemma4-fixed.jinja"],
         "fast_post": True,
+        "fast_live": True,
         "reasoning_budget": 2048,
         "expected_tps": 9,
     },
@@ -224,6 +226,7 @@ LLM_MODELS: dict[str, dict] = {
                        "--cache-ram", "16384", "-ub", "1024",
                        "--chat-template-file", "llama-server/gemma4-fixed.jinja"],
         "fast_post": True,
+        "fast_live": True,
         "reasoning_budget": 3072,
         "expected_tps": 24,
     },

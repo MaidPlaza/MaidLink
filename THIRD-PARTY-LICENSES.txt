@@ -27,7 +27,7 @@ BUNDLED IN THE INSTALLER
   permissive licenses (MIT, BSD, Apache-2.0, MPL-2.0, PSF, HPND/MIT-CMU); the
   exact list with versions and texts is in licenses\python\.
 - Fonts: Chakra Petch, Geologica, Inter, JetBrains Mono, Kantumruy Pro,
-  Noto Sans Display ......................... SIL Open Font License 1.1
+  Noto Sans Display, Rubik .................. SIL Open Font License 1.1
   The FuturaDemiC and Francy families of the interface are served by Geologica
   in public builds; the proprietary originals are not distributed.
 - Drawing embeddings lazypos / lazyneg /

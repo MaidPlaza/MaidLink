@@ -1,4 +1,3 @@
-# Зависимости и результаты сборки
 node_modules/
 ui/node_modules/
 ui/dist/
@@ -9,11 +8,9 @@ release/
 __pycache__/
 *.pyc
 
-# llama.cpp — скачивает build/fetch_llama_server.py
 /llama-server/*
 !/llama-server/gemma4-fixed.jinja
 
-# Данные приложения при запуске из исходников
 /characters/
 /data/
 /logs/

@@ -43,4 +43,5 @@ contextBridge.exposeInMainWorld("maidlink", {
   },
 
   getPathForFile: (file) => webUtils.getPathForFile(file),
+  pickFile: (kind) => ipcRenderer.invoke("pick-file", kind),
 });

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import functools
+import importlib.util
 from pathlib import Path
 
 import numpy as np
@@ -11,6 +13,11 @@ DEFAULT_MODEL_PATH = (
 )
 
 _MODEL = None
+
+
+@functools.lru_cache(maxsize=1)
+def _in_process() -> bool:
+    return importlib.util.find_spec("ultralytics") is not None
 
 
 def default_model_path() -> Path:
@@ -26,24 +33,47 @@ def _get_model(model_path: str | None = None):
     return _MODEL
 
 
-def detect_face_bbox(image_path: str, *, model_path: str | None = None,
-                     min_conf: float = 0.3) -> tuple[float, float, float, float] | None:
+def _face_boxes(paths, model_path: str | None) -> list[list[list[float]]]:
+    if not _in_process():
+        from drawing import comfy_python
+        return comfy_python.face_boxes(paths, model_path or default_model_path())
     model = _get_model(model_path)
-    res = model(image_path, verbose=False, device="cpu")
+    out = []
+    for p in paths:
+        boxes = []
+        for r in model(str(p), verbose=False, device="cpu"):
+            if r.boxes is None:
+                continue
+            for b in r.boxes:
+                boxes.append([float(v) for v in b.xyxy[0]] + [float(b.conf[0])])
+        out.append(boxes)
+    return out
+
+
+def _largest(boxes, min_conf: float) -> tuple[float, float, float, float] | None:
     best_area = -1.0
     best_box = None
-    for r in res:
-        if r.boxes is None:
+    for x1, y1, x2, y2, conf in boxes:
+        if conf < min_conf:
             continue
-        for b in r.boxes:
-            if float(b.conf[0]) < min_conf:
-                continue
-            x1, y1, x2, y2 = (float(v) for v in b.xyxy[0])
-            area = (x2 - x1) * (y2 - y1)
-            if area > best_area:
-                best_area = area
-                best_box = (x1, y1, x2, y2)
+        area = (x2 - x1) * (y2 - y1)
+        if area > best_area:
+            best_area = area
+            best_box = (x1, y1, x2, y2)
     return best_box
+
+
+def detect_face_bboxes(paths, *, model_path: str | None = None,
+                       min_conf: float = 0.3) -> list[tuple[float, float, float, float] | None]:
+    paths = list(paths)
+    if not paths:
+        return []
+    return [_largest(b, min_conf) for b in _face_boxes(paths, model_path)]
+
+
+def detect_face_bbox(image_path: str, *, model_path: str | None = None,
+                     min_conf: float = 0.3) -> tuple[float, float, float, float] | None:
+    return detect_face_bboxes([image_path], model_path=model_path, min_conf=min_conf)[0]
 
 
 def align_face_crop(img: Image.Image, bbox: tuple[float, float, float, float], *,
@@ -114,14 +144,15 @@ def crop_face_avatar(src_path, dst_path, *, target: tuple[int, int] = AVATAR_TAR
 def align_portrait_set(paths, *, scale: float, shift: float,
                        target: tuple[int, int],
                        model_path: str | None = None) -> dict[str, str]:
-    detected: dict[str, tuple[float, float, float, float] | None] = {}
     results: dict[str, str] = {}
+    present = []
     for p in paths:
         path = Path(p)
         if not path.exists():
             results[str(path)] = "missing"
             continue
-        detected[str(path)] = detect_face_bbox(str(path), model_path=model_path)
+        present.append(str(path))
+    detected = dict(zip(present, detect_face_bboxes(present, model_path=model_path)))
 
     heights = [b[3] - b[1] for b in detected.values() if b is not None]
     ref_h = float(np.median(heights)) if heights else None

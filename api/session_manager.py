@@ -62,6 +62,10 @@ class CancelledByActivity(Exception):
     pass
 
 
+class VramPaused(CancelledByActivity):
+    pass
+
+
 class ReflectionQueue:
     def __init__(self, path: str | Path, key_provider=None) -> None:
         self._path = Path(path)
@@ -284,6 +288,8 @@ def describe_session_images(messages: list[dict], client, *, char_name: str,
                                                        char_name, honorific,
                                                        char_gender)
                     except Exception as e:
+                        if check_active is not None:
+                            check_active()
                         print(f"[refl] image describe failed: "
                               f"{type(e).__name__}: {e}")
                 if role == "assistant":
@@ -298,7 +304,7 @@ def describe_session_images(messages: list[dict], client, *, char_name: str,
 
 
 def character_id_from_state(state: dict) -> str:
-    return state.get("character_id") or state["config"].character_id
+    return state.get("character_id") or ""
 
 
 def load_character_state_for_reflection(
@@ -376,6 +382,8 @@ async def _run_reflection(
             raise CancelledByActivity()
         if main_state.get("reflection_cancel_requested"):
             raise CancelledByActivity()
+        if main_state.get("vram_pause"):
+            raise VramPaused()
 
     persist_state = {
         "memory": char_state["memory"], "identity": char_state["identity"],
@@ -394,7 +402,14 @@ async def _run_reflection(
                 "total": len(STEP_LABELS_RU),
             }
         _t0 = time.perf_counter()
-        await loop.run_in_executor(None, fn)
+        try:
+            await loop.run_in_executor(None, fn)
+        except Exception:
+            if main_state.get("vram_pause"):
+                raise VramPaused() from None
+            raise
+        if main_state.get("vram_pause"):
+            raise VramPaused()
         _dt = time.perf_counter() - _t0
         print(f"[refl] step {idx} {STEP_NAMES[idx]}: "
               f"{_dt:.1f}s ({item.character_id})")
@@ -690,6 +705,7 @@ async def reflection_worker(
     project_root: Path,
     config,
 ) -> None:
+    from services.background import vram_guard
     from services.background.analyzer import analyzer_tick, DecisionVerdict
     from services.background.busy import busy_with, session_engaged
 
@@ -727,6 +743,11 @@ async def reflection_worker(
         active_id = character_id_from_state(state)
         item = queue.peek(prefer_character_id=active_id, ready_only=True)
         if item is None:
+            state.pop("vram_wait", None)
+            state.pop("vram_ref", None)
+            continue
+
+        if not await vram_guard.wait_over(state, _get_lc()):
             continue
 
         loop = asyncio.get_event_loop()
@@ -739,9 +760,11 @@ async def reflection_worker(
             priority=2,
         )
         _t_item = time.perf_counter()
+        guard_task = asyncio.create_task(vram_guard.VramGuard(_get_lc(), state).watch())
         try:
             timings = await _run_reflection(state, item, queue, project_root, loop)
             queue.remove(item.id)
+            state.pop("vram_ref", None)
             _total = time.perf_counter() - _t_item
             print(f"[refl-worker] DONE: {item.character_id} ({item.id[:8]}) "
                   f"in {_total:.0f}s")
@@ -750,18 +773,34 @@ async def reflection_worker(
                 print(f"[refl] timings ({item.character_id}): {summary}")
                 state["last_reflection_report"] = (
                     f"{item.character_id}, {_total:.0f}s всего: {summary}")
+        except VramPaused:
+            print(f"[refl-worker] paused at step {item.progress + 1}/{len(STEP_NAMES)}: "
+                  f"{item.character_id} ({item.id[:8]}) — waits for free VRAM")
         except CancelledByActivity:
             print(f"[refl-worker] cancelled at step {item.progress + 1}/{len(STEP_NAMES)}: "
                   f"{item.character_id} ({item.id[:8]}) — resume on next idle window")
         except Exception as e:
-            attempts = queue.increment_attempts(item.id)
-            print(f"[refl-worker] ERROR (attempt {attempts}): {item.character_id} "
-                  f"({item.id[:8]}): {type(e).__name__}: {e}")
-            if attempts >= config.session.reflection_max_attempts:
-                print(f"[refl-worker] giving up on {item.id[:8]} "
-                      f"after {attempts} attempts — dropping")
-                queue.remove(item.id)
+            if state.get("vram_pause"):
+                print(f"[refl-worker] paused at step {item.progress + 1}/{len(STEP_NAMES)}: "
+                      f"{item.character_id} ({item.id[:8]}) — waits for free VRAM "
+                      f"({type(e).__name__})")
+            else:
+                attempts = queue.increment_attempts(item.id)
+                print(f"[refl-worker] ERROR (attempt {attempts}): {item.character_id} "
+                      f"({item.id[:8]}): {type(e).__name__}: {e}")
+                if attempts >= config.session.reflection_max_attempts:
+                    print(f"[refl-worker] giving up on {item.id[:8]} "
+                          f"after {attempts} attempts — dropping")
+                    queue.remove(item.id)
         finally:
+            if state.get("vram_pause") and not guard_task.done():
+                try:
+                    await asyncio.wait_for(guard_task, timeout=120)
+                except Exception as e:
+                    print(f"[vram-guard] pause failed: {type(e).__name__}: {e}")
+            else:
+                guard_task.cancel()
+            state.pop("vram_pause", None)
             state["reflection_running"] = False
             state.pop("reflection_step", None)
             state.pop("reflection_cancel_requested", None)

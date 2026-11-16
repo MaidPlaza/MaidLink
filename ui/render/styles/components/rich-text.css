@@ -3,13 +3,14 @@
   white-space: pre-wrap;
 }
 
-[data-rich-shader] .rich-fx {
+[data-rich-shader] .rich-fx[data-effect] {
   color: transparent;
 }
 
 .action-fx {
   color: var(--action-color, var(--chat-rich-text-action-font-color));
   background: var(--action-bg, var(--chat-rich-text-action-background));
+  font-family: var(--chat-rich-text-action-font);
   font-style: italic;
   border-radius: var(--chat-rich-text-action-border-radius);
   padding: var(--chat-rich-text-action-padding);

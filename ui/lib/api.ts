@@ -85,6 +85,7 @@ export interface GachaItem {
   bonus_sphere?: GachaItem;
 }
 export type GachaPullResult = GachaState & { ok?: boolean; item?: GachaItem };
+export type GachaBatchResult = GachaState & { ok?: boolean; items?: GachaItem[]; lines?: string[] };
 
 export interface ModelPresetFit {
   model: string;
@@ -297,6 +298,7 @@ export interface CharacterListItem {
   active: boolean;
   is_protected?: boolean;
   is_unlocked?: boolean;
+  awaiting_unlock?: boolean;
 }
 
 export interface WardrobeOutfit {
@@ -470,6 +472,8 @@ export const api = {
     postJson<{ ok?: boolean; error?: string }>("/api/gallery/remove", { id }),
   gacha: () => fetchJson<GachaState>("/api/gacha"),
   gachaPull: () => postJson<GachaPullResult>("/api/gacha/pull", {}),
+  gachaPullBatch: (count = 10) =>
+    postJson<GachaBatchResult>("/api/gacha/pull-batch", { count }),
   gachaSphere: (tag: string, color: string, pattern = "") =>
     postJson<{ ok?: boolean; tag?: string; color?: string; pattern?: string; spheres?: number;
                styling?: any; error?: string }>("/api/gacha/sphere", { tag, color, pattern }),
@@ -551,17 +555,31 @@ export const api = {
     fetchJson<{
       installed: boolean;
       drawing_available: boolean;
-      components: Array<{ key: string; title: string; license: string; agpl: boolean; present: boolean }>;
+      drawing_state?: string;
+      drawing_message?: string;
+      drawing_detail?: string;
+      components: Array<{
+        key: string; title: string; license: string; agpl: boolean; present: boolean;
+        user_provided?: boolean; optional?: boolean; broken?: boolean; error?: string;
+      }>;
       missing: string[];
+      broken?: string[];
       agpl_components: string[];
+      missing_nodes?: string[];
       installing: boolean;
       progress: Array<{ key: string; status: string; downloaded: number; total: number; error: string }>;
+      install_log?: string;
     }>("/api/imagegen/status"),
   imagegenInstall: (agplConsent: boolean) =>
-    postJson<{ started: boolean; error?: string; queued?: string[]; agpl_components?: string[] }>(
+    postJson<{
+      started: boolean; error?: string; queued?: string[]; agpl_components?: string[];
+      busy_with?: string;
+    }>(
       "/api/imagegen/install",
       { agpl_consent: agplConsent },
     ),
+  imagegenRestart: () =>
+    postJson<{ ok: boolean; error?: string; busy_with?: string }>("/api/imagegen/restart", {}),
   imagegenInstallNonAgpl: () =>
     postJson<{ started: boolean; queued?: string[] }>(
       "/api/imagegen/install",
@@ -765,6 +783,12 @@ export class ChatSocket {
         type: "acknowledge_reminder",
         record_id,
       }));
+    }
+  }
+
+  endSession() {
+    if (this.ws?.readyState === WebSocket.OPEN) {
+      this.ws.send(JSON.stringify({ type: "end_session" }));
     }
   }
 

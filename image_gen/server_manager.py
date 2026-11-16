@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 import signal
 import subprocess
@@ -17,6 +18,9 @@ GUARD_SCRIPT = Path("image_gen") / "comfy_guard.py"
 
 _FROZEN = getattr(sys, "frozen", False)
 
+LOG_NAME = "comfyui"
+LOG_MAX_BYTES = 5 * 1024 * 1024
+
 
 class ComfyUIServerManager:
     def __init__(self, config: ImageGenConfig, project_root: Path,
@@ -25,6 +29,9 @@ class ComfyUIServerManager:
         self.project_root = project_root
         self.assets_root = assets_root if assets_root is not None else ASSETS_ROOT
         self._proc: Optional[subprocess.Popen] = None
+        self._log_file = None
+        self.missing_nodes: Optional[list[str]] = None
+        self.held: Optional[str] = None
         self.comfy_output_dir = project_root / config.comfy_output_dir
         self.client = ComfyUIClient(
             base_url=config.base_url,
@@ -42,6 +49,8 @@ class ComfyUIServerManager:
         if self.is_running():
             print("[comfy-mgr] Уже запущен (наш процесс)")
             return
+        if self.held:
+            raise RuntimeError(f"ComfyUI остановлен: {self.held}")
 
         status = self.client.probe(timeout_sec=0.5)
         if status == 200:
@@ -50,6 +59,7 @@ class ComfyUIServerManager:
             if self.client.probe(timeout_sec=0.5, auth=False) == 200:
                 print("[comfy-mgr] Внешний ComfyUI без защиты порта (запущен не "
                       "приложением) — Host и ключ не проверяет")
+            self._check_nodes()
             return
         if status == 401:
             raise RuntimeError(
@@ -85,17 +95,65 @@ class ComfyUIServerManager:
 
         env = dict(os.environ)
         env[child_auth.COMFY_TOKEN_ENV] = child_auth.key(child_auth.COMFY)
+        out = self._open_log() if _FROZEN else None
+        if out is not None:
+            env["PYTHONUNBUFFERED"] = "1"
         self._proc = subprocess.Popen(
             cmd,
             cwd=str(self.project_root),
             creationflags=creationflags,
-            stdout=None,
-            stderr=None,
+            stdout=out,
+            stderr=subprocess.STDOUT if out is not None else None,
             env=env,
         )
 
         self.wait_for_ready()
         self._check_locked()
+        self._check_nodes()
+
+    def _open_log(self):
+        self._close_log()
+        try:
+            log_dir = Path(self.project_root) / "logs"
+            log_dir.mkdir(parents=True, exist_ok=True)
+            path = log_dir / f"{LOG_NAME}.log"
+            if path.exists() and path.stat().st_size > LOG_MAX_BYTES:
+                bak = log_dir / f"{LOG_NAME}.log.1"
+                bak.unlink(missing_ok=True)
+                path.rename(bak)
+            f = open(path, "a", encoding="utf-8", errors="replace", buffering=1)
+            f.write(f"\n===== {time.strftime('%Y-%m-%d %H:%M:%S')} запуск =====\n")
+            self._log_file = f
+            return f
+        except OSError:
+            return None
+
+    def _close_log(self) -> None:
+        if self._log_file is not None:
+            try:
+                self._log_file.close()
+            except OSError:
+                pass
+            self._log_file = None
+
+    def workflow_node_types(self) -> list[str]:
+        try:
+            wf = json.loads((self.assets_root / self.config.workflow_default)
+                            .read_text(encoding="utf-8"))
+            return sorted({n["class_type"] for n in wf.values()
+                           if isinstance(n, dict) and n.get("class_type")})
+        except (OSError, ValueError, AttributeError):
+            return []
+
+    def _check_nodes(self) -> None:
+        types = self.workflow_node_types()
+        self.missing_nodes = self.client.missing_node_types(types) if types else None
+        if self.missing_nodes:
+            print(f"[comfy-mgr] ComfyUI не знает узлы workflow: "
+                  f"{', '.join(self.missing_nodes)} — рисование выключено до "
+                  f"перезапуска (ошибки импорта — в logs/{LOG_NAME}.log)")
+        elif self.missing_nodes is None and types:
+            print("[comfy-mgr] Узлы workflow проверить не удалось (/object_info не ответил)")
 
     def _check_locked(self) -> None:
         status = self.client.probe(timeout_sec=5.0, auth=False)
@@ -103,7 +161,8 @@ class ComfyUIServerManager:
             self.stop()
             raise RuntimeError(
                 f"ComfyUI ответил без ключа (HTTP {status}) — защита порта не "
-                f"встала, ComfyUI остановлен. Смотри «[MaidLink guard]» в его логе.")
+                f"встала, ComfyUI остановлен. Смотри «[MaidLink guard]» в его логе "
+                f"(в билде — logs/{LOG_NAME}.log).")
         print("[comfy-mgr] Порт закрыт: Host и ключ запуска (без ключа — 401)")
 
     def wait_for_ready(self, timeout_sec: Optional[int] = None) -> None:
@@ -118,7 +177,8 @@ class ComfyUIServerManager:
             if self._proc and self._proc.poll() is not None:
                 raise RuntimeError(
                     f"ComfyUI упал при старте, exit={self._proc.returncode}. "
-                    f"Смотри консоль: модель не найдена? CUDA? битый custom_node?"
+                    f"Смотри его вывод (в билде — logs/{LOG_NAME}.log): модель не "
+                    f"найдена? CUDA? битый custom_node?"
                 )
             time.sleep(1.0)
 
@@ -154,6 +214,17 @@ class ComfyUIServerManager:
             proc.wait(timeout=5)
 
         self._proc = None
+        self._close_log()
+
+    def hold(self, reason: str) -> None:
+        self.held = reason
+        if not self.is_running() and self.is_responsive(timeout_sec=0.5):
+            print("[comfy-mgr] ComfyUI запущен не приложением — остановить его "
+                  "нечем, установка пойдёт при работающем")
+        self.stop()
+
+    def release(self) -> None:
+        self.held = None
 
     def free_vram(self) -> None:
         self.client.free_memory(unload_models=True, free_memory=True)

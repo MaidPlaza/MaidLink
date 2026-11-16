@@ -417,9 +417,27 @@
 .settings-imagegen.is-loading {
   background: var(--chat-settings-image-gen-setup-loading-background);
 }
-.settings-imagegen-ready {
+.settings-imagegen-status {
   margin-bottom: 8px;
-  color: var(--chat-settings-image-gen-setup-ready-font-color);
+  padding: var(--chat-settings-image-gen-setup-status-padding);
+  border-radius: var(--chat-settings-image-gen-setup-status-border-radius);
+  background: var(--chat-settings-image-gen-setup-status-background);
+  color: var(--chat-settings-image-gen-setup-status-font-color);
+  font-weight: var(--chat-settings-image-gen-setup-status-font-weight);
+}
+.settings-imagegen-status.is-warn {
+  background: var(--chat-settings-image-gen-setup-status-warn-background);
+  color: var(--chat-settings-image-gen-setup-status-warn-font-color);
+}
+.settings-imagegen-status.is-error {
+  background: var(--chat-settings-image-gen-setup-status-error-background);
+  color: var(--chat-settings-image-gen-setup-status-error-font-color);
+}
+.settings-imagegen-status-detail {
+  margin-top: 4px;
+  font-size: var(--chat-settings-image-gen-setup-status-detail-font-size);
+  font-weight: var(--chat-settings-image-gen-setup-status-detail-font-weight);
+  opacity: var(--chat-settings-image-gen-setup-status-detail-opacity);
 }
 .settings-imagegen-intro {
   margin-bottom: 8px;
@@ -504,10 +522,6 @@
 .settings-imagegen-install:disabled {
   background: var(--chat-settings-image-gen-setup-install-background-disabled);
   cursor: default;
-}
-.settings-imagegen-installing {
-  margin-top: 8px;
-  opacity: var(--chat-settings-image-gen-setup-installing-opacity);
 }
 .settings-imagegen-note {
   margin-top: 6px;

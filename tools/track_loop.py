@@ -73,6 +73,9 @@ def _resolve_or_create(name: str, entity_type: str, mem, debug: bool = False):
     found = mem.find_entity(name)
     if found is not None:
         return found.record_id, found.title
+    _is_user = getattr(mem, "_refers_to_user", None)
+    if callable(_is_user) and _is_user(name):
+        return None, ""
     try:
         rec = mem.upsert_entity(entity_type, name)
         if debug:

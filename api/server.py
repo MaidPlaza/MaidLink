@@ -4,6 +4,7 @@ import json
 import re
 import os
 import sys
+import threading
 import time
 from pathlib import Path
 
@@ -35,7 +36,7 @@ from api.session_manager import (
     reflection_worker, character_id_from_state,
     _run_reflection, STEP_NAMES, CancelledByActivity,
 )
-from api.settings_store import load_overlay, read_current, apply_and_save
+from api.settings_store import load_overlay, read_current, apply_and_save, remember_state
 from api import local_guard
 from services.background import (
     AnalyzerConfig, analyzer_loop, app_state_mirror,
@@ -103,6 +104,9 @@ def _effective_honorific(state) -> str:
 _llama_mgr: LlamaServerManager | None = None
 _comfy_mgr: ComfyUIServerManager | None = None
 _comfy_ready: bool = False
+_comfy_phase: str = "idle"
+_comfy_error: str = ""
+_comfy_boot_lock = threading.Lock()
 _embed_mgr: LlamaServerManager | None = None
 _reflection_queue: ReflectionQueue | None = None
 
@@ -144,7 +148,7 @@ async def _lifespan(app: FastAPI):
 
     loop = asyncio.get_event_loop()
     async def _start_comfy_bg():
-        global _comfy_ready
+        global _comfy_phase
         from services import image_gen_setup as _ig
 
         def _comfy_can_start() -> bool:
@@ -152,22 +156,13 @@ async def _lifespan(app: FastAPI):
 
         if not _comfy_can_start():
             print("[lifespan] ComfyUI ждёт установки модуля рисования")
+            _comfy_phase = "waiting_install"
             while not _comfy_can_start():
                 await asyncio.sleep(5)
-        for attempt in (1, 2, 3):
-            try:
-                await loop.run_in_executor(None, _comfy_mgr.start)
-                _comfy_ready = True
-                print("[lifespan] ComfyUI готов (фон); llama будет загружена "
-                      "по требованию")
-                return
-            except Exception as e:
-                tail = (" — рисование недоступно до перезапуска"
-                        if attempt == 3 else " — повтор через 10с")
-                print(f"[lifespan] ComfyUI старт (попытка {attempt}/3) не удался "
-                      f"({type(e).__name__}: {e}){tail}")
-                if attempt < 3:
-                    await asyncio.sleep(10)
+        await loop.run_in_executor(None, _comfy_boot)
+        if _comfy_ready:
+            print("[lifespan] ComfyUI готов (фон); llama будет загружена "
+                  "по требованию")
 
     async def _start_embed_bg():
         embed_model = project_root / config.embedder.model
@@ -553,8 +548,9 @@ def _get_state():
     from config import LLM_MODELS as _LM
     _spec0 = _LM.get(config.llm.model_choice) or {}
     client.fast_post_session = bool(_spec0.get("fast_post", False))
+    client.fast_live_rounds = bool(_spec0.get("fast_live", False))
 
-    from persona.character_store import CharacterLockedError, CharacterStore
+    from persona.character_store import CharacterStore
     store = CharacterStore(
         characters_dir=project_root / "characters",
         baseline_dir=None,
@@ -563,16 +559,8 @@ def _get_state():
     )
     _reflection_queue.set_key_provider(store.session_key)
     _available_ids = [info["id"] for info in store.list_available()]
-    _apply_store_renames(store)
-    character_id = config.character_id
-    if character_id not in _available_ids:
-        character_id = _available_ids[0] if _available_ids else None
-    try:
-        loaded = store.load(character_id) if character_id is not None else None
-    except CharacterLockedError:
-        print(f"[lifespan] {character_id}: защищён паролем — ждёт разблокировки")
-        loaded = None
-        character_id = None
+    _apply_store_renames(store, config)
+    character_id, loaded = _resolve_boot_character(store, _available_ids, config)
     character = loaded["character"] if loaded else None
     identity = loaded["identity"] if loaded else None
 
@@ -819,6 +807,21 @@ def _inject_workflow_prompt(workflow: dict, prompt: str, negative: str = "",
     return wf
 
 
+def _session_snapshots(session_log: list[dict]) -> tuple[list[dict], list[dict]]:
+    summary, reflection = [], []
+    for m in session_log or []:
+        content = m.get("content", "")
+        if isinstance(content, list):
+            text_parts = [p["text"] for p in content
+                          if isinstance(p, dict) and p.get("type") == "text"]
+            flat = " ".join(text_parts) if text_parts else "[изображение]"
+        else:
+            flat = content
+        summary.append({**m, "content": flat})
+        reflection.append({**m, "content": content})
+    return summary, reflection
+
+
 async def _finalize_session_sync(state: dict, ws: WebSocket | None, loop,
                                   reason: str = "") -> None:
     if not state["history"].messages:
@@ -846,18 +849,8 @@ async def _finalize_session_sync(state: dict, ws: WebSocket | None, loop,
         _scenario_close(state, reason="session_end")
         _aftereffect_close(state, reason="session")
 
-        summary_snapshot = []
-        reflection_snapshot = []
-        for m in state["history"].get_session_log():
-            content = m.get("content", "")
-            if isinstance(content, list):
-                text_parts = [p["text"] for p in content
-                              if isinstance(p, dict) and p.get("type") == "text"]
-                flat = " ".join(text_parts) if text_parts else "[изображение]"
-            else:
-                flat = content
-            summary_snapshot.append({"role": m["role"], "content": flat})
-            reflection_snapshot.append({"role": m["role"], "content": content})
+        summary_snapshot, reflection_snapshot = _session_snapshots(
+            state["history"].get_session_log())
 
         if _reflection_queue is not None and reflection_snapshot:
             character_id = character_id_from_state(state)
@@ -2093,6 +2086,33 @@ async def _ack_reminder(s: dict, ws, record_id: str) -> None:
     print(f"[ack] reminder {record_id} acknowledged by user")
 
 
+async def _end_session_manual(s: dict, ws) -> None:
+    if s.get("character") is None or s.get("session_processing"):
+        return
+    if not any(m.get("role") == "user" for m in s["history"].messages):
+        try:
+            await ws.send_json({"type": "system",
+                                "text": "Разговор ещё не начат — завершать нечего."})
+        except Exception:
+            pass
+        return
+    lifecycle = get_lifecycle()
+    held = False
+    if lifecycle is not None:
+        try:
+            await lifecycle.ensure_loaded()
+            lifecycle.acquire()
+            held = True
+        except Exception as e:
+            print(f"[end] модель не поднялась ({e!r}) — закрываю без сводки")
+    try:
+        await _finalize_session_sync(s, ws, asyncio.get_event_loop(),
+                                     reason="вручную")
+    finally:
+        if held:
+            lifecycle.release()
+
+
 async def _collect_burst(s: dict, ws, first_text: str, first_image,
                          lifecycle) -> tuple[str, object]:
     scfg = getattr(s.get("config"), "session", None)
@@ -2130,6 +2150,9 @@ async def _collect_burst(s: dict, ws, first_text: str, first_image,
         if ntype == "acknowledge_reminder":
             await _ack_reminder(s, ws, nxt.get("record_id", ""))
             continue
+        if ntype == "end_session":
+            s.setdefault("queued_ws_messages", []).append(nxt)
+            break
         if ntype == "message":
             t = (nxt.get("text") or "").strip()
             img = nxt.get("image")
@@ -2164,7 +2187,7 @@ async def _watch_ws_during_generation(s: dict, ws, gen_future, ui_visible: dict,
                     data = None
                 if isinstance(data, dict):
                     ntype = data.get("type")
-                    if ntype == "message":
+                    if ntype in ("message", "end_session"):
                         s.setdefault("queued_ws_messages", []).append(data)
                     elif ntype == "acknowledge_reminder":
                         await _ack_reminder(s, ws, data.get("record_id", ""))
@@ -2183,6 +2206,9 @@ async def _watch_ws_during_generation(s: dict, ws, gen_future, ui_visible: dict,
             continue
         if ntype == "acknowledge_reminder":
             await _ack_reminder(s, ws, data.get("record_id", ""))
+            continue
+        if ntype == "end_session":
+            s.setdefault("queued_ws_messages", []).append(data)
             continue
         if ntype != "message":
             continue
@@ -3676,14 +3702,129 @@ def _release_comfy() -> None:
     _comfy_mgr.free_vram()
 
 
+def _comfy_boot(attempts: int = 3) -> None:
+    global _comfy_ready, _comfy_phase, _comfy_error
+    if _comfy_mgr is None:
+        return
+    from services import image_gen_setup as _ig
+    with _comfy_boot_lock:
+        _comfy_ready = False
+        _comfy_phase = "verifying"
+        try:
+            _ig.verify_installed_nodes(PROJECT_ROOT)
+        except Exception as e:
+            print(f"[comfy-boot] проверка нод не удалась: {type(e).__name__}: {e}")
+        _comfy_phase = "starting"
+        for attempt in range(1, attempts + 1):
+            try:
+                _comfy_mgr.start()
+                _comfy_ready, _comfy_phase, _comfy_error = True, "ready", ""
+                return
+            except Exception as e:
+                _comfy_error = f"{type(e).__name__}: {e}"[:400]
+                tail = " — рисование недоступно" if attempt == attempts else " — повтор через 10с"
+                print(f"[comfy-boot] старт (попытка {attempt}/{attempts}) не удался "
+                      f"({_comfy_error}){tail}")
+                if attempt < attempts:
+                    time.sleep(10)
+        _comfy_phase = "failed"
+
+
+def _comfy_pause_for_install() -> None:
+    global _comfy_ready, _comfy_phase
+    if _comfy_mgr is None:
+        return
+    _comfy_ready = False
+    _comfy_mgr.hold("идёт установка модуля рисования")
+    if _comfy_phase != "waiting_install":
+        _comfy_phase = "paused"
+
+
+def _comfy_resume_after_install() -> None:
+    if _comfy_mgr is None:
+        return
+    _comfy_mgr.release()
+    if _comfy_phase in ("waiting_install", "ready"):
+        return
+    if _app_config is None or not getattr(_app_config.image_gen, "enabled", False):
+        return
+    from services import image_gen_setup as _ig
+    if _ig.comfy_installed(PROJECT_ROOT):
+        _comfy_boot()
+
+
+def _comfy_restart() -> None:
+    global _comfy_ready
+    if _comfy_mgr is None:
+        return
+    _comfy_ready = False
+    _comfy_mgr.stop()
+    _comfy_boot()
+
+
+def _live_missing_nodes() -> list[str]:
+    if _comfy_mgr is None or not _comfy_ready:
+        return []
+    return list(_comfy_mgr.missing_nodes or [])
+
+
+_DRAWING_LOG_HINT = ("Если не помогает — пришлите файлы logs\\imagegen_install.log "
+                     "и logs\\comfyui.log из папки данных приложения (userdata).")
+
+
+def drawing_state(config=None) -> dict:
+    cfg = config if config is not None else _app_config
+    if cfg is None or not getattr(cfg.image_gen, "enabled", False):
+        return {"state": "disabled", "message": "Рисование выключено."}
+    from services import image_gen_setup as _ig
+    if _comfy_phase in ("verifying", "starting"):
+        return {"state": "starting", "message": (
+            "Проверяю модуль рисования…" if _comfy_phase == "verifying"
+            else "Движок рисования запускается…")}
+    if _ig.is_installing():
+        copying = {p["key"] for p in _ig.get_progress()} == {"checkpoint"}
+        return {"state": "installing", "message": (
+            "Копирую чекпойнт рисования…" if copying
+            else "Идёт установка модуля рисования — настройки можно закрыть.")}
+    titles = {c.key: c.title for c in _ig.MANIFEST}
+    missing_nodes = _live_missing_nodes()
+    broken = _ig.broken_components(PROJECT_ROOT, missing_nodes)
+    if broken:
+        names = ", ".join(f"«{titles[k]}»" for k in broken)
+        verb = "не установилось" if len(broken) == 1 else "не установились"
+        return {"state": "broken", "detail": _DRAWING_LOG_HINT, "message": (
+            f"Рисование не работает: {verb} {names} — "
+            f"{next(iter(broken.values()))}. Нажмите «Починить».")}
+    missing = _ig.missing_required(PROJECT_ROOT)
+    others = [c for c in missing if not c.user_provided]
+    if others:
+        msg = ("Рисование не работает: не хватает "
+               + ", ".join(f"«{c.title}»" for c in others)
+               + (" и чекпойнта" if len(others) < len(missing) else "") + ".")
+        if any(c.agpl for c in others):
+            msg += " Для компонентов с пометкой AGPL нужно согласие."
+        return {"state": "missing", "message": msg}
+    if missing:
+        return {"state": "need_checkpoint",
+                "message": "Осталось добавить чекпойнт рисования — свой файл .safetensors."}
+    if not _comfy_ready:
+        if _comfy_phase in ("failed", "paused"):
+            why = _comfy_error or "остановлен"
+            return {"state": "engine_failed", "detail": _DRAWING_LOG_HINT, "message": (
+                f"Движок рисования не запустился: {why}. Нажмите «Перезапустить движок».")}
+        return {"state": "starting", "message": "Движок рисования запускается…"}
+    if missing_nodes:
+        return {"state": "nodes_missing", "detail": _DRAWING_LOG_HINT, "message": (
+            f"Движок рисования не видит узлы: {', '.join(missing_nodes)}. "
+            f"Нажмите «Перезапустить движок».")}
+    return {"state": "ready", "message": "Рисование работает."}
+
+
 def drawing_available(state: dict) -> bool:
     config = state.get("config")
-    if config is None or not getattr(config.image_gen, "enabled", False):
+    if config is None:
         return False
-    if not _comfy_ready:
-        return False
-    from services import image_gen_setup as _ig
-    return _ig.checkpoint_installed(PROJECT_ROOT)
+    return drawing_state(config)["state"] == "ready"
 
 
 def vision_available(state: dict) -> bool:
@@ -4032,6 +4173,8 @@ async def setup_start_endpoint(payload: dict | None = None):
                     _state["client"].backend = get_backend(_app_config.llm.family)
                     _state["client"].fast_post_session = bool(
                         LLM_MODELS[preset].get("fast_post", False))
+                    _state["client"].fast_live_rounds = bool(
+                        LLM_MODELS[preset].get("fast_live", False))
             except Exception as e:
                 print(f"[setup] client update failed: {e}")
             print(f"[setup] мастер: выбран пресет {preset} ({LLM_MODELS[preset]['label']})")
@@ -4052,8 +4195,14 @@ async def setup_agreement_endpoint(payload: dict | None = None):
 @app.get("/api/imagegen/status")
 async def imagegen_status_endpoint():
     from services import image_gen_setup as _ig
-    st = _ig.status(PROJECT_ROOT)
-    st["drawing_available"] = drawing_available({"config": _app_config})
+    missing_nodes = _live_missing_nodes()
+    st = _ig.status(PROJECT_ROOT, missing_nodes=missing_nodes)
+    ds = drawing_state(_app_config)
+    st["drawing_state"] = ds["state"]
+    st["drawing_message"] = ds["message"]
+    st["drawing_detail"] = ds.get("detail", "")
+    st["drawing_available"] = ds["state"] == "ready"
+    st["missing_nodes"] = missing_nodes
     return st
 
 
@@ -4061,22 +4210,49 @@ async def imagegen_status_endpoint():
 async def imagegen_install_endpoint(payload: dict):
     from services import image_gen_setup as _ig
     non_agpl_only = bool((payload or {}).get("non_agpl_only"))
-    st = _ig.status(PROJECT_ROOT)
+    who = busy_with(_state) if _state else None
+    if who:
+        return {"started": False, "error": "busy", "busy_with": who}
+    st = _ig.status(PROJECT_ROOT, missing_nodes=_live_missing_nodes())
     missing = set(st["missing"])
     agpl_missing = [k for k in st["agpl_components"] if k in missing]
     if not non_agpl_only and agpl_missing and not (payload or {}).get("agpl_consent"):
         return {"started": False, "error": "agpl_consent_required",
                 "agpl_components": agpl_missing}
-    queued = _ig.start_install(PROJECT_ROOT, include_agpl=not non_agpl_only)
+    queued = _ig.start_install(PROJECT_ROOT, include_agpl=not non_agpl_only,
+                               repair=st["broken"],
+                               before=_comfy_pause_for_install,
+                               after=_comfy_resume_after_install)
     return {"started": True, "queued": queued}
+
+
+@app.post("/api/imagegen/restart")
+async def imagegen_restart_endpoint():
+    from services import image_gen_setup as _ig
+    if _comfy_mgr is None or _app_config is None or not _app_config.image_gen.enabled:
+        return {"ok": False, "error": "disabled"}
+    if _ig.is_installing():
+        return {"ok": False, "error": "installing"}
+    who = busy_with(_state) if _state else None
+    if who:
+        return {"ok": False, "error": "busy", "busy_with": who}
+    asyncio.get_running_loop().run_in_executor(None, _comfy_restart)
+    return {"ok": True}
+
+
+def _typed_path(raw) -> str:
+    s = str(raw or "").strip()
+    if len(s) >= 2 and s[0] == s[-1] and s[0] in "\"'":
+        s = s[1:-1].strip()
+    return s
 
 
 @app.post("/api/imagegen/checkpoint")
 async def imagegen_checkpoint_endpoint(payload: dict):
     from services import image_gen_setup as _ig
-    src = (payload or {}).get("path", "")
+    src = _typed_path((payload or {}).get("path"))
     if not src:
-        return {"ok": False, "error": "no path"}
+        return {"ok": False, "error": "не указан путь к файлу"}
     res = _ig.set_checkpoint_from_path(PROJECT_ROOT, src)
     pl = res.get("pipeline") if isinstance(res, dict) else None
     if res.get("ok") and pl:
@@ -4098,7 +4274,7 @@ async def addons_list_endpoint():
 @app.post("/api/addons/install")
 async def addons_install_endpoint(payload: dict):
     from services import addons as _addons
-    path = str((payload or {}).get("path") or "").strip()
+    path = _typed_path((payload or {}).get("path"))
     if not path:
         return {"ok": False, "error": "не указан путь к пакету"}
     return _addons.install_from_zip(PROJECT_ROOT, path)
@@ -6674,9 +6850,35 @@ def _save_memory():
     save_state_to_disk(_get_state(), with_identity=False)
 
 
-def _apply_store_renames(store) -> None:
+def _resolve_boot_character(store, available_ids: list[str], config) -> tuple[str | None, dict | None]:
+    from persona.character_store import CharacterLockedError
+    character_id = config.character_id
+    if character_id not in available_ids:
+        character_id = available_ids[0] if available_ids else None
+    if character_id is None:
+        return None, None
+    config.character_id = character_id
+    try:
+        return character_id, store.load(character_id)
+    except CharacterLockedError:
+        print(f"[lifespan] {character_id}: защищён паролем — ждёт разблокировки")
+        return None, None
+
+
+def _awaiting_unlock_id(s: dict) -> str | None:
+    if s.get("character") is not None:
+        return None
+    store, cid = s.get("store"), s["config"].character_id
+    if store is None or not cid:
+        return None
+    return cid if store.is_protected(cid) and not store.is_unlocked(cid) else None
+
+
+def _apply_store_renames(store, config=None) -> None:
     renames = store.consume_renames()
     for old_id, new_id in renames:
+        if config is not None and config.character_id == old_id:
+            remember_state(config, {"character_id": new_id}, PROJECT_ROOT)
         if _reflection_queue is not None:
             n = _reflection_queue.rename_character(old_id, new_id)
             if n:
@@ -6696,11 +6898,12 @@ def _apply_store_renames(store) -> None:
 async def list_characters():
     s = _get_state()
     store = s["store"]
-    active_id = s.get("character_id") or s["config"].character_id
+    active_id = s.get("character_id")
 
     characters = []
     _infos = store.list_available()
-    _apply_store_renames(store)
+    _apply_store_renames(store, s["config"])
+    awaiting_id = _awaiting_unlock_id(s)
     for info in _infos:
         char_id = info["id"]
         characters.append({
@@ -6723,6 +6926,7 @@ async def list_characters():
             "training": info.get("training"),
             "is_protected": bool(info.get("is_protected")),
             "is_unlocked": store.is_unlocked(char_id),
+            "awaiting_unlock": char_id == awaiting_id,
         })
     return {"characters": characters}
 
@@ -6960,7 +7164,7 @@ async def select_character(char_id: str, payload: dict | None = None):
     character = loaded["character"]
     identity = loaded["identity"]
 
-    s["config"].character_id = char_id
+    remember_state(s["config"], {"character_id": char_id}, PROJECT_ROOT)
     s["character"] = character
     s["character_id"] = char_id
     s["identity"] = identity
@@ -7230,7 +7434,7 @@ async def update_settings(patch: dict):
         s["client"].reasoning_mode = s["config"].llm.reasoning_mode
     if "llm.vram_free_mib" in (patch or {}):
         _v = int(s["config"].llm.vram_free_mib or 0)
-        s["config"].llm.vram_free_mib = max(256, min(6144, _v))
+        s["config"].llm.vram_free_mib = max(0, min(6144, _v))
         _lc = get_lifecycle()
         if _lc is not None and _lc.state.name == "LOADED":
             asyncio.create_task(_lc.request_unload("vram reserve change"))
@@ -7391,6 +7595,7 @@ async def _apply_model_switch(s: dict, choice: str) -> dict:
     except Exception as e:
         print(f"[model] backend update failed: {e}")
     s["client"].fast_post_session = bool(spec.get("fast_post", False))
+    s["client"].fast_live_rounds = bool(spec.get("fast_live", False))
     print(f"[model] → {choice} ({spec['label']}), family={s['config'].llm.family}"
           f"{', post=fast' if s['client'].fast_post_session else ''}")
     return {"ok": True, "current": choice, "label": model_label(choice)}
@@ -8076,6 +8281,55 @@ async def gacha_pull():
     }
     asyncio.create_task(_interject_event(s, s.get("active_ws"), ev))
     return {"ok": True, "item": out, **summ}
+
+
+@app.post("/api/gacha/pull-batch")
+async def gacha_pull_batch(payload: dict | None = None):
+    from services import gacha
+    s = _get_state()
+    idy = s.get("identity")
+    character = s.get("character")
+    if idy is None or character is None:
+        return {"error": "нет активного персонажа"}
+    try:
+        count = int((payload or {}).get("count") or gacha.BATCH_SIZE)
+    except (TypeError, ValueError):
+        count = gacha.BATCH_SIZE
+    count = max(1, min(gacha.BATCH_SIZE, count))
+    allow_nsfw, cur_len = _gacha_env(s)
+
+    def _do():
+        items = gacha.pull_many(idy, count, allow_nsfw=allow_nsfw, cur_len=cur_len)
+        idy.save()
+        return items, gacha.summary(idy, allow_nsfw=allow_nsfw, cur_len=cur_len)
+
+    try:
+        items, summ = await asyncio.get_event_loop().run_in_executor(None, _do)
+    except gacha.NoTickets:
+        return {"error": "билетов нет — новые приходят каждый день"}
+    except gacha.PoolEmpty:
+        return {"error": "открывать больше нечего — вся коллекция собрана"}
+    except Exception as e:
+        print(f"[gacha] batch pull failed: {type(e).__name__}: {e}")
+        return {"error": "не удалось открыть билеты"}
+    outs = [gacha.describe_item(it) for it in items]
+    print(f"[gacha] batch pull ×{len(outs)}: "
+          + ", ".join(f"{o['tag']} ({o['rarity']})" for o in outs)
+          + f"; tickets={summ['tickets']}, pool={summ['pool']}/{summ['total']}")
+    achs = _achievements_check(s, notify=False)
+    if achs:
+        summ = gacha.summary(idy, allow_nsfw=allow_nsfw, cur_len=cur_len)
+    ev = {
+        "kind": "gacha",
+        "trigger": gacha.batch_reaction_trigger(
+            outs, honorific=_effective_honorific(s),
+            female=(gender_of(character) != "male")),
+        "card": _achievement_cards(achs) or None, "late": False,
+        "history_marker": gacha.batch_history_marker(outs),
+    }
+    asyncio.create_task(_interject_event(s, s.get("active_ws"), ev))
+    return {"ok": True, "items": outs,
+            "lines": [gacha.item_line(o) for o in outs], **summ}
 
 
 @app.post("/api/gacha/sphere")
@@ -9322,6 +9576,10 @@ async def websocket_chat(ws: WebSocket):
                 await _ack_reminder(s, ws, data.get("record_id", ""))
                 continue
 
+            if msg_type == "end_session":
+                await _end_session_manual(s, ws)
+                continue
+
             if msg_type != "message":
                 continue
 
@@ -9333,6 +9591,8 @@ async def websocket_chat(ws: WebSocket):
             if s.get("character") is None:
                 try:
                     await ws.send_json({"type": "system", "text": (
+                        "Персонаж под паролем — нажми на чип внизу и введи пароль."
+                        if _awaiting_unlock_id(s) else
                         "Сначала выбери персонажа — нажми на чип внизу, "
                         "чтобы открыть окно выбора.")})
                 except Exception:

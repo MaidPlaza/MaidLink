@@ -20,6 +20,7 @@ import { useCapability } from '@/lib/capabilities'
 import { sounds } from '@/lib/sounds'
 import { gachaBadgeColors, gachaButtonSvg, profileBlockTopSvg, frameAsBlockMiddle, frameAsBlockBottom } from '@/lib/gachaButton'
 import GachaHowTo from './GachaHowTo'
+import UsageGuide from './UsageGuide'
 import GachaRevealCard, { isGachaRevealed } from './GachaRevealCard'
 import { markOffscreen } from '@/lib/offscreen'
 
@@ -110,6 +111,15 @@ function fmtTime(d) {
   catch { return '' }
 }
 
+const GACHA_BATCH = 10
+function ticketsWord(n) {
+  const h = Math.abs(n) % 100
+  if (h > 10 && h < 20) return 'билетов'
+  const d = h % 10
+  if (d === 1) return 'билет'
+  if (d > 1 && d < 5) return 'билета'
+  return 'билетов'
+}
 function fmtStats(s) {
   if (!s) return ''
   const p = []
@@ -160,7 +170,7 @@ function renderInline(text) {
       : seg.rule?.action
       ? <span key={i} className="action-fx">{seg.text}</span>
       : seg.rule
-      ? <span key={i} className="rich-fx" data-effect={seg.rule.effect} style={{ '--fx-color': seg.rule.color, fontWeight: seg.rule.weight || undefined }}>{seg.text}</span>
+      ? <span key={i} className="rich-fx" data-effect={seg.rule.effect || undefined} style={{ '--fx-color': seg.rule.color, fontWeight: seg.rule.weight || undefined, fontStyle: seg.rule.italic ? 'italic' : undefined }}>{seg.text}</span>
       : <React.Fragment key={i}>{seg.text}</React.Fragment>
   )
 }
@@ -171,7 +181,7 @@ function fmtWhen(iso) {
   catch { return '' }
 }
 
-export default function Chat({ onClose, onToggleExpand, onToggleExpandAvatar, expanded, expandMode, character, characters = [], onSelectCharacter, chatAvatarUrl, portraitUrl, chat, contextWindow = 0 }) {
+export default function Chat({ onClose, onToggleExpand, onToggleExpandAvatar, expanded, expandMode, character, characters = [], onSelectCharacter, chatAvatarUrl, portraitUrl, chat, contextWindow = 0, usageGuideReady = false }) {
   const svgStructure = useUIStructure()
   const ctxFill = Math.max(0, Math.min(1, contextWindow))
 
@@ -216,7 +226,18 @@ export default function Chat({ onClose, onToggleExpand, onToggleExpandAvatar, ex
   const sentHistoryRef = useRef([])
   const historyIndexRef = useRef(null)
   const draftRef = useRef('')
-  const { messages, sendMessage: sendChat, postFileMessage, notifyKeystroke, isGenerating, pushSystem, pushGachaCard, acknowledgeReminder, appStatus, gachaVersion } = chat
+  const { messages, sendMessage: sendChat, endSession, postFileMessage, notifyKeystroke, isGenerating, pushSystem, pushGachaCard, acknowledgeReminder, appStatus, gachaVersion } = chat
+
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key !== 'Enter' || !e.ctrlKey || !e.shiftKey || e.altKey || e.metaKey || e.repeat) return
+      e.preventDefault()
+      e.stopPropagation()
+      endSession()
+    }
+    window.addEventListener('keydown', onKey, true)
+    return () => window.removeEventListener('keydown', onKey, true)
+  }, [endSession])
 
   useEffect(() => {
     function onGesture(e) {
@@ -305,6 +326,38 @@ export default function Chat({ onClose, onToggleExpand, onToggleExpandAvatar, ex
             + `${bonus.spheres ? ` (сфер: ${bonus.spheres})` : ''}.`
             + ' Открыть ею цвет вещи — в гардеробе, раздел «Стайлинг».')
         }
+        setGacha((g) => ({ ...(g || {}), tickets: r.tickets, unlocked: r.unlocked, pool: r.pool, total: r.total, cap: r.cap, per_day: r.per_day, sphere_in: r.sphere_in }))
+        setGachaOpen(false)
+        sounds.play('notify')
+      } else if (r && r.error) {
+        pushSystem(r.error)
+        loadGacha()
+      }
+    } catch {
+      pushSystem('Не удалось связаться с бэкендом')
+    } finally {
+      setPulling(false)
+    }
+  }
+  async function pullBatch() {
+    if (pulling) return
+    const count = Math.min(GACHA_BATCH, gacha?.tickets || 0)
+    if (count < 2) return
+    setPulling(true)
+    try {
+      const r = await api.gachaPullBatch(count)
+      if (r && r.ok && Array.isArray(r.items) && r.items.length) {
+        const total = r.items.length
+        r.items.forEach((item, i) => {
+          const line = (r.lines && r.lines[i]) || item.label || item.tag
+          pushSystem(`🎟 ${i + 1}/${total} · ${line}`)
+          const bonus = item.bonus_sphere
+          if (bonus) {
+            pushSystem(`🔮 Сфера изменения — ${bonus.category_label || 'бонус'}`
+              + `${bonus.spheres ? ` (сфер: ${bonus.spheres})` : ''}.`
+              + ' Открыть ею цвет вещи — в гардеробе, раздел «Стайлинг».')
+          }
+        })
         setGacha((g) => ({ ...(g || {}), tickets: r.tickets, unlocked: r.unlocked, pool: r.pool, total: r.total, cap: r.cap, per_day: r.per_day, sphere_in: r.sphere_in }))
         setGachaOpen(false)
         sounds.play('notify')
@@ -1382,6 +1435,8 @@ export default function Chat({ onClose, onToggleExpand, onToggleExpandAvatar, ex
               ""
               }
           </div>
+
+          <UsageGuide ready={usageGuideReady} name={character?.name} />
           
           
           
@@ -1445,6 +1500,16 @@ export default function Chat({ onClose, onToggleExpand, onToggleExpandAvatar, ex
                 >
                   {pulling ? 'Открываем…' : (gacha.pool === 0 ? 'Коллекция собрана' : 'Открыть билет')}
                 </button>
+                {(gacha.tickets || 0) >= 2 && gacha.pool !== 0 && (
+                  <button
+                    className="chat-gacha-popover-btn chat-gacha-popover-btn--batch"
+                    disabled={pulling}
+                    onClick={pullBatch}
+                    title="Все находки придут списком, персонаж ответит один раз на всю пачку"
+                  >
+                    {`Открыть сразу ${Math.min(GACHA_BATCH, gacha.tickets)} ${ticketsWord(Math.min(GACHA_BATCH, gacha.tickets))}`}
+                  </button>
+                )}
                 <button className="chat-gacha-popover-link" onClick={openHowTo}>Как получить билеты?</button>
               </>
             )}
@@ -1632,7 +1697,7 @@ export default function Chat({ onClose, onToggleExpand, onToggleExpandAvatar, ex
         </div>
 
         <div className="chat-textbox-footer inter-footer no-select">
-            Нажмите Enter для отправки, Shift+Enter для новой строки
+            Ctrl+Shift+Enter — завершить разговор
         </div>
          <div className={`chat-textbox-content-dropped-items-container${isDragging ? ' chat-textbox-content-dropped-items-container--hidden' : ''}`}>
            {droppedFiles.map(file => (

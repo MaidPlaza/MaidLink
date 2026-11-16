@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Tray, Menu, nativeImage, Notification, screen, session, shell } = require("electron");
+const { app, BrowserWindow, dialog, ipcMain, Tray, Menu, nativeImage, Notification, screen, session, shell } = require("electron");
 const { spawn, execSync } = require("child_process");
 const path = require("path");
 const http = require("http");
@@ -508,6 +508,16 @@ app.on("ready", async () => {
       console.log(`[theme] read-theme-config(${id}) failed: ${e}`);
       return null;
     }
+  });
+  const PICK_FILE = {
+    checkpoint: { title: "Чекпойнт рисования", filters: [{ name: "Чекпойнт", extensions: ["safetensors"] }] },
+    addon: { title: "Пакет аддона", filters: [{ name: "Пакет аддона", extensions: ["zip", "maidaddon"] }] },
+  };
+  ipcMain.handle("pick-file", async (_event, kind) => {
+    const spec = PICK_FILE[kind];
+    if (!spec || !mainWindow) return null;
+    const r = await dialog.showOpenDialog(mainWindow, { ...spec, properties: ["openFile"] });
+    return r.canceled || !r.filePaths.length ? null : r.filePaths[0];
   });
 
   const viewerWindows = new Map();

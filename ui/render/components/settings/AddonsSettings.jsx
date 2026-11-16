@@ -10,6 +10,14 @@ export default function AddonsSettings() {
   const [note, setNote] = useState('')
   const [noteOk, setNoteOk] = useState(false)
 
+  async function pickPackage() {
+    setNoteOk(false)
+    if (path.trim()) { install(path.trim()); return }
+    if (!window.maidlink?.pickFile) { setNote('Впишите путь к .zip-пакету в поле слева.'); return }
+    const p = await window.maidlink.pickFile('addon')
+    if (p) install(p)
+  }
+
   async function install(p) {
     if (!p) return
     setNote(''); setNoteOk(false)
@@ -62,7 +70,7 @@ export default function AddonsSettings() {
         <div className="settings-addons-path">
           <input value={path} onChange={(e) => setPath(e.target.value)}
             placeholder="…или путь к пакету" className="settings-addons-input" />
-          <button onClick={() => install(path.trim())} className="settings-addons-button">Указать</button>
+          <button onClick={pickPackage} className="settings-addons-button">Указать</button>
         </div>
         {note && <div className={`settings-addons-note${noteOk ? ' is-ok' : ''}`}>{note}</div>}
         <div className="settings-addons-hint settings-addons-footnote">

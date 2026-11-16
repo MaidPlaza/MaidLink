@@ -173,6 +173,7 @@ export default function SetupWizard({ onDone }) {
     if (p.status === 'error') return 'ошибка'
     if (p.status === 'extracting') return 'распаковка…'
     if (p.status === 'pip') return 'зависимости…'
+    if (p.status === 'verifying') return 'проверка…'
     if (p.total) return `${Math.round((p.downloaded / p.total) * 100)}%`
     return 'загрузка…'
   }

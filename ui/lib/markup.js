@@ -1,28 +1,31 @@
 export function parseMarkup(text, rules) {
   if (!text || !rules || rules.length === 0) return [{ text: text || '' }]
 
-  const markers = [...rules].sort((a, b) => b.marker.length - a.marker.length)
+  const markers = rules.filter((r) => r.marker).sort((a, b) => b.marker.length - a.marker.length)
 
   const out = []
   let buf = ''
   let i = 0
   const flush = () => { if (buf) { out.push({ text: buf }); buf = '' } }
 
+  const closeAt = (rule, at, lineEnd) => {
+    if (!text.startsWith(rule.marker, at)) return -1
+    const openEnd = at + rule.marker.length
+    const close = text.indexOf(rule.close || rule.marker, openEnd)
+    if (close === -1 || close >= lineEnd) return -1
+    return text.slice(openEnd, close).trim() ? close : -1
+  }
+
   while (i < text.length) {
-    const rule = markers.find((r) => r.marker && text.startsWith(r.marker, i))
+    let lineEnd = text.indexOf('\n', i)
+    if (lineEnd === -1) lineEnd = text.length
+    let close = -1
+    const rule = markers.find((r) => (close = closeAt(r, i, lineEnd)) !== -1)
     if (rule) {
-      const closeMarker = rule.close || rule.marker
-      const openEnd = i + rule.marker.length
-      const close = text.indexOf(closeMarker, openEnd)
-      if (close !== -1) {
-        const inner = text.slice(openEnd, close)
-        if (inner.length > 0) {
-          flush()
-          out.push({ text: inner, rule })
-          i = close + closeMarker.length
-          continue
-        }
-      }
+      flush()
+      out.push({ text: text.slice(i + rule.marker.length, close), rule })
+      i = close + (rule.close || rule.marker).length
+      continue
     }
     buf += text[i]
     i += 1

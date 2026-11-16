@@ -217,6 +217,7 @@ export default function CharacterSelect({
   onRefresh,
   selectionLock = false,
   onSelectionLock,
+  initialSelectedId = null,
   bare = false,
 }) {
   useCharacterUiVersion()
@@ -233,7 +234,7 @@ export default function CharacterSelect({
   const [note, setNote] = useState('')
   const [noteOk, setNoteOk] = useState(false)
   const [busy, setBusy] = useState(false)
-  const [selectedId, setSelectedId] = useState(null)
+  const [selectedId, setSelectedId] = useState(initialSelectedId)
   const selectedCharacter = characters.find((x) => x.id === selectedId) || null
   const passwordVars = useMemo(() => {
     if (!selectedCharacter) return undefined

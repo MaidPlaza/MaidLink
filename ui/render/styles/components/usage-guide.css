@@ -1,0 +1,111 @@
+.usage-guide-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--chat-usage-guide-backdrop-border-radius);
+  background: var(--chat-usage-guide-backdrop-background);
+  animation: usage-guide-in 0.3s ease both;
+}
+
+.usage-guide-card {
+  width: var(--chat-usage-guide-card-width);
+  max-width: calc(100% - 32px);
+  max-height: calc(100% - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: var(--chat-usage-guide-card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--chat-settings-dropdown-menu-background);
+  border: var(--chat-settings-dropdown-border);
+  border-radius: var(--chat-settings-dropdown-border-radius);
+  box-shadow: var(--chat-usage-guide-card-box-shadow);
+  color: var(--chat-settings-dropdown-menu-font-color);
+  font-family: var(--chat-usage-guide-card-font);
+}
+
+.usage-guide-label {
+  font-size: var(--chat-usage-guide-label-font-size);
+  font-weight: var(--chat-usage-guide-label-font-weight);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.usage-guide-title {
+  margin-top: -6px;
+  font-size: var(--chat-usage-guide-title-font-size);
+  font-weight: var(--chat-usage-guide-title-font-weight);
+}
+
+.usage-guide-lead {
+  margin: 0;
+  font-family: var(--chat-usage-guide-lead-font);
+  font-size: var(--chat-usage-guide-lead-font-size);
+  font-weight: var(--chat-usage-guide-lead-font-weight);
+  line-height: 1.45;
+}
+
+.usage-guide-steps {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.usage-guide-step {
+  font-family: var(--chat-usage-guide-step-font);
+  font-size: var(--chat-usage-guide-step-font-size);
+  line-height: 1.45;
+}
+.usage-guide-step::marker {
+  font-weight: var(--chat-usage-guide-step-title-font-weight);
+}
+.usage-guide-step-title {
+  font-weight: var(--chat-usage-guide-step-title-font-weight);
+}
+
+.usage-guide-footer {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.usage-guide-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--chat-usage-guide-check-font-size);
+  cursor: pointer;
+  user-select: none;
+}
+.usage-guide-check input {
+  margin: 0;
+  accent-color: var(--chat-settings-toggle-background-active);
+  cursor: pointer;
+}
+.usage-guide-button {
+  padding: var(--chat-usage-guide-button-padding);
+  border: var(--chat-usage-guide-button-border);
+  border-radius: var(--chat-settings-toggle-border-radius);
+  background: var(--chat-settings-dropdown-menu-font-color);
+  color: var(--chat-settings-dropdown-menu-background);
+  font-family: inherit;
+  font-size: var(--chat-usage-guide-button-font-size);
+  font-weight: var(--chat-usage-guide-button-font-weight);
+  cursor: pointer;
+}
+
+.usage-guide-note {
+  font-size: var(--chat-usage-guide-note-font-size);
+  opacity: 0.6;
+}
+
+@keyframes usage-guide-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
